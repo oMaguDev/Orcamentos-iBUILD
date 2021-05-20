@@ -5,42 +5,42 @@ import { DonationForm, Flex } from "./Containers";
 const CustomTextField = withStyles({
   root: {
     background: "inherit",
-    color: "#45ffb3",
+    color: "#5e03c5",
     '& .MuiInput-input': {
-      fontFamily: "Roboto Mono",
-      color: "#45ffb3",
-      borderBottomColor: '#45ffb3',
+      font: " 'Poppins' ",
+      color: "#5e03c5",
+      borderBottomColor: '#5e03c5',
       fontSize: "2rem",
       textAlign: "center",
     },
     '& label.Mui-focused': {
-      color: '#45ffb3',
+      color: '#5e03c5',
     },
     '& .MuiInput-underline:before': {
-      //   borderBottomColor: '#45ffb3',
+      //   borderBottomColor: '#5e03c5',
       borderBottom: "#242424",
     },
     '& .MuiInput-underline:hover': {
-      //   borderBottomColor: '#45ffb3',
-      borderBottomColor: "#33c588",
+      //   borderBottomColor: '#5e03c5',
+      borderBottomColor: "#8b008b",
     },
     '& .MuiInput-underline:after': {
-      borderBottomColor: '#45ffb3',
+      borderBottomColor: '#5e03c5',
     },
     '& .MuiInputLabel-root': {
-      color: "#45ffb3",
-      fontFamily: "Roboto Mono",
+      color: "#5e03c5",
+      fontFamily: " 'Poppins' ",
     },
     '& .MuiOutlinedInput-root': {
-      color: "#eee",
+      color: "#333A46",
       '& fieldset': {
-        borderColor: '#45ffb3',
+        borderColor: '#5e03c5',
       },
       '&:hover fieldset': {
-        borderColor: "#33c588",
+        borderColor: "#8b008b",
       },
       '&.Mui-focused fieldset': {
-        border: " 1px solid #45ffb3",
+        border: " 1px solid #5e03c5",
       },
     },
     '&:-internal-autofill-selected': {

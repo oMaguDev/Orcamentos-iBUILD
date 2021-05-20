@@ -7,9 +7,10 @@ import StepContent from '@material-ui/core/StepContent';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import { H3, Parag } from '../Text';
+import { H2, Parag } from '../Text';
 import CustomButton from '../Button'
 import AssistentStep from './Step';
+import AssistentStepContent from './AssistentStepContent';
 
 const CustomStepper = withStyles({
     root: {
@@ -60,48 +61,8 @@ function getSteps() {
     ];
 }
 
-function getStepContent(step) {
-  switch (step) {
-    case 0:
-      return `For each ad campaign that you create, you can control how much
-              you're willing to spend on clicks and conversions, which networks
-              and geographical locations you want your ads to show on, and more.`;
-    case 1:
-      return 'An ad group contains one or more ads which target a shared set of keywords.';
-    case 2:
-      return `Try out different ad text to see what brings in the most customers,
-              and learn how to enhance your ads using features like ad extensions.
-              If you run into any problems with your ads, find out how to tell if
-              they're running and how to resolve approval issues.`;
-    default:
-      return 'Unknown step';
-  }
-}
 
-function getStepOptions(step) {
-  switch (step) {
-    case 0:
-      const inputs = [
-        {
-          label: 'Área'
-        }
-      ]
-      return `For each ad campaign that you create, you can control how much
-              you're willing to spend on clicks and conversions, which networks
-              and geographical locations you want your ads to show on, and more.`;
-    case 1:
-      return 'An ad group contains one or more ads which target a shared set of keywords.';
-    case 2:
-      return `Try out different ad text to see what brings in the most customers,
-              and learn how to enhance your ads using features like ad extensions.
-              If you run into any problems with your ads, find out how to tell if
-              they're running and how to resolve approval issues.`;
-    default:
-      return 'Unknown step';
-  }
-}
-
-export default function VerticalLinearStepper() {
+export default function VerticalLinearStepper({ data }) {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
   const steps = getSteps();
@@ -124,23 +85,23 @@ export default function VerticalLinearStepper() {
         {steps.map((label, index) => (
           <Step key={label}>
             <StepLabel>
-                <H3>
+                <H2 fontSize='1.6rem' fontWeight='700'>
                     {label}
-                </H3>
+                </H2>
             </StepLabel>
             <StepContent>
               <AssistentStep>
-
-                <Parag>{getStepContent(index)}</Parag>
+                <AssistentStepContent data={data[index]} />
                 <div className={classes.actionsContainer}>
                   <div>
+                  { activeStep === 0 ? null : (
                     <CustomButton
-                      disabled={activeStep === 0}
                       onClick={handleBack}
                       className={classes.button}
                     >
                       Anterior
                     </CustomButton>
+                  )}
                     <CustomButton
                       variant="contained"
                       color="primary"
