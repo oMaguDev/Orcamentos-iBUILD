@@ -1,11 +1,26 @@
 import { Flex } from '../../Containers'
-import { StyledNav, Triangle } from './styles'
+import { LogoIcon, NavItem, StyledNav, Triangle } from './styles'
 
 const Navbar = () => {
     return (
         <Flex>
             <StyledNav>
-                {/* StyledNav */}
+                <LogoIcon src="/images/icone_vermelho.svg" alt="" />
+                <NavItem>
+                    Seu Cadastro
+                </NavItem>
+                /
+                <NavItem>
+                    Recurso Construção
+                </NavItem>
+                /
+                <NavItem>
+                    Monte Sua Casa
+                </NavItem>
+                /
+                <NavItem>
+                    Resumo
+                </NavItem>
             </StyledNav>
             <Triangle />
         </Flex>
