@@ -10,8 +10,8 @@ const GlobalStyle = createGlobalStyle`
     html, body {
         margin: 0;
         padding: 0;
-        background: #e5e5e5;
-        color: #5e03c5;
+        background: #fff;
+        color: #54596c;
         font-family: 'Poppins', sans-serif;
     }
 
@@ -27,11 +27,16 @@ const GlobalStyle = createGlobalStyle`
 const theme = {
     colors: {
         primary: {
-            purple: '#5e03c5',
+            purple: '#5c14d3',
+            darkPurple: '#360062',
             purplePink: '#8b008b',
+            pink: '#fb1d47',
+            lightGrey: '#ebeaf1',
+            green: 'chartreuse',
         },
         text: {
             title: '#ff1b5f', // '#bd1245', // '#b93f64' // 
+            main: '#54596c',
             neutral200: '#c5cee0',
             neutral400: '#7e8aa4',
             neutral600: '#333A46',

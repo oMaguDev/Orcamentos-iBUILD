@@ -2,11 +2,15 @@ import Navbar from "../components/common/Navbar"
 import StatusBox from "../components/common/StatusBox"
 import Stepper from "../components/common/Stepper"
 import { Flex, Layout } from "../components/Containers"
+import StepContent from '../components/common/StepContent'
 
 
 const Simular = () => {
     return (
-        <>
+        <Flex
+            // alignItems='flex-start'
+            justifyContent='space-between'
+        >
         <Flex
             column
             alignItems='flex-start'
@@ -17,8 +21,8 @@ const Simular = () => {
             <Navbar />
             <Stepper />
         </Flex>
-            <StatusBox />
-            </>
+        <StepContent />
+        </Flex>
     )
 }
 

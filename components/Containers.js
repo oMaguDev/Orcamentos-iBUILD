@@ -23,6 +23,7 @@ export const Flex = styled.div`
     ${(props) => props.fullHeight ? 'height: 100%;' : ''}
 
     ${(props) => props.flex ? `flex: ${props.flex};` : ''}
+    ${(props) => props.transform ? `transform: ${props.transform};` : ''}
     ${(props) => props.margin ? `margin: ${props.margin};` : ''}
     ${(props) => props.width ? `width: ${props.width};` : ''}
     ${(props) => props.height ? `height: ${props.height};` : ''}

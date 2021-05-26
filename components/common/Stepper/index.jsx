@@ -1,9 +1,10 @@
-import { Step, StepLabel, Stepper } from "@material-ui/core"
+import { Step, StepLabel, Stepper as MuiStepper } from "@material-ui/core"
 import { Flex } from "../../Containers"
+import CustomStepper from "../CustomStepper"
 import { Background, StepDot, StepLine, StepperContainer, Triangle, StepDotsContainer, Label } from "./styles"
 
 
-const CustomStepper = ({ children }) => {
+const Stepper = ({ children }) => {
 
     const steps = [
         'Área Total',
@@ -33,9 +34,11 @@ const CustomStepper = ({ children }) => {
             <StepperContainer>
                 <Flex 
                     column
-                    alignItems='right'    
+                    alignItems='flex-start'
+                    transform='translateX(140px)'
                 >
                     <h2>MONTE A SUA CASA</h2>
+                    <CustomStepper steps={steps} />
                     {/* <Flex
                         alignItems='flex-start'
                         justifyContent='center'
@@ -109,4 +112,4 @@ const CustomStepper = ({ children }) => {
     )
 }
 
-export default CustomStepper
+export default Stepper
