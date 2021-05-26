@@ -16,11 +16,11 @@ const GlobalStyle = createGlobalStyle`
     }
 
     .MuiStepIcon-root.MuiStepIcon-active {
-        color: #5e03c5 !important;
+        color: chartreuse !important;
     }
 
     .MuiStepIcon-root.MuiStepIcon-completed {
-        color: #5e03c5 !important;
+        color: chartreuse !important;
     }
 `
 

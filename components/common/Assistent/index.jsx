@@ -7,7 +7,7 @@ import StepContent from '@material-ui/core/StepContent';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import { H2, Parag } from '../Text';
+import { H2, Parag } from '../../Text';
 import CustomButton from '../Button'
 import AssistentStep from './Step';
 import AssistentStepContent from './AssistentStepContent';
@@ -43,21 +43,21 @@ function getSteps() {
         'Área Total',
         'Estilo Arquitetônico',
         'Qtde. Pavimentos',
-        'Paredes Externas',
-        'Tipo Telha',
-        'Garagem',
-        'Sala Estar-TV',
-        'Escritório',
-        'Quartos',
-        'Despensa',
-        'Banheiros',
-        'Cozinha',
-        'Área Gourmet',
-        'Lavabos',
-        'Área de Serviço',
-        'Int. Hid./Ele.',
-        'Conforto',
-        'Acabamentos'
+        // 'Paredes Externas',
+        // 'Tipo Telha',
+        // 'Garagem',
+        // 'Sala Estar-TV',
+        // 'Escritório',
+        // 'Quartos',
+        // 'Despensa',
+        // 'Banheiros',
+        // 'Cozinha',
+        // 'Área Gourmet',
+        // 'Lavabos',
+        // 'Área de Serviço',
+        // 'Int. Hid./Ele.',
+        // 'Conforto',
+        // 'Acabamentos'
     ];
 }
 
@@ -81,7 +81,7 @@ export default function VerticalLinearStepper({ data }) {
 
   return (
     <div className={classes.root}>
-      <CustomStepper activeStep={activeStep} orientation="vertical">
+      <CustomStepper activeStep={activeStep} orientation="vertical"> 
         {steps.map((label, index) => (
           <Step key={label}>
             <StepLabel>
@@ -91,7 +91,7 @@ export default function VerticalLinearStepper({ data }) {
             </StepLabel>
             <StepContent>
               <AssistentStep>
-                <AssistentStepContent data={data[index]} />
+                {/* <AssistentStepContent data={data[index]} /> */}
                 <div className={classes.actionsContainer}>
                   <div>
                   { activeStep === 0 ? null : (
