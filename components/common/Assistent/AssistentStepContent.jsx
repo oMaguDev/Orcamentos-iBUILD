@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import Input from '../Input'
+import Input from '../../common/Input'
 import RadioButtonsGroup from '../Radio'
 import { StepContentContainer } from './styles'
 

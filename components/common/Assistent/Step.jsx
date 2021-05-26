@@ -1,4 +1,4 @@
-import { Flex } from "../Containers"
+import { Flex } from "../../Containers"
 import Input from "../Input"
 
 

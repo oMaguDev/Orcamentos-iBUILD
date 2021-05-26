@@ -1,6 +1,6 @@
 import { Flex, Layout } from "../components/Containers"
 import { H1, H2, H3 } from "../components/Text"
-import Button from '../components/Button'
+import Button from '../components/common/Button'
 import { CaretRight } from 'phosphor-react'
 import { useRouter } from 'next/router'
 

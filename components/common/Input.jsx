@@ -1,6 +1,6 @@
 import { withStyles, TextField as MuiTextField } from "@material-ui/core";
 import { useEffect } from "react";
-import { DonationForm, Flex } from "./Containers";
+import { DonationForm, Flex } from "../Containers";
 
 const CustomTextField = withStyles({
   root: {

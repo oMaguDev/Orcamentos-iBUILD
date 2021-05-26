@@ -5,9 +5,9 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import { withStyles } from '@material-ui/core';
-import { Flex } from '../Containers';
+import { Flex } from '../../Containers';
 import { Image } from './styles';
-import { H3 } from '../Text';
+import { H3 } from '../../Text';
 
 const StyledRadio = withStyles({
     root: {
