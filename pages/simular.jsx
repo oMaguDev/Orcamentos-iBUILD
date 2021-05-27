@@ -1,27 +1,40 @@
 import Navbar from "../components/common/Navbar"
 import StatusBox from "../components/common/StatusBox"
-import Stepper from "../components/common/Stepper"
+import Stepper from "../components/common/StepperBackground"
 import { Flex, Layout } from "../components/Containers"
 import StepContent from '../components/common/StepContent'
+import { CarouselButton, CarouselButtonContainer } from '../components/common/Carousel/styles'
 
 
 const Simular = () => {
     return (
         <Flex
-            // alignItems='flex-start'
-            justifyContent='space-between'
+            // alignItems='center'
+            justifyContent='flex-end'
         >
-        <Flex
+        {/* <Flex
             column
             alignItems='flex-start'
             justifyContent='flex-start'
             fullHeight
             // minHeight='100vh'
-            >
+            > */}
             <Navbar />
             <Stepper />
-        </Flex>
+        {/* </Flex> */}
         <StepContent />
+        <CarouselButtonContainer left>
+            <CarouselButton>
+                
+            </CarouselButton>
+            VOLTAR
+        </CarouselButtonContainer>
+        <CarouselButtonContainer right>
+            AVANÇAR
+            <CarouselButton>
+
+            </CarouselButton>
+        </CarouselButtonContainer>
         </Flex>
     )
 }

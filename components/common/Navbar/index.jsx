@@ -1,9 +1,9 @@
 import { Flex } from '../../Containers'
-import { LogoIcon, NavItem, StyledNav, Triangle } from './styles'
+import { LogoIcon, NavContainer, NavItem, StyledNav, Triangle } from './styles'
 
 const Navbar = () => {
     return (
-        <Flex>
+        <NavContainer>
             <StyledNav>
                 <LogoIcon src="/images/icone_vermelho.svg" alt="" />
                 <NavItem>
@@ -23,7 +23,7 @@ const Navbar = () => {
                 </NavItem>
             </StyledNav>
             <Triangle />
-        </Flex>
+        </NavContainer>
     )
 }
 

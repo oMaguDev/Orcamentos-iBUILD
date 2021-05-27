@@ -25,3 +25,16 @@ export const TitleContainer = styled.div`
     }
 
 `
+
+export const StepContentContainer = styled.div`
+
+    display: flex; 
+    flex-direction: column;
+    align-items: flex-start;
+    // justify-content: flex
+    margin:  100px;
+    width: 450px;
+
+    z-index: 0;
+
+`
