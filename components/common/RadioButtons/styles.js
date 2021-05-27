@@ -40,6 +40,7 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   height: auto;
   width: 100%;
+  margin: 30px 0;
 `;
 
 export const Item = styled.div`

@@ -1,7 +1,7 @@
 import { Step, StepLabel, Stepper as MuiStepper } from "@material-ui/core"
 import { Flex } from "../../Containers"
 import CustomStepper from "../CustomStepper"
-import { Background, StepDot, StepLine, StepperContainer, Triangle, StepDotsContainer, Label } from "./styles"
+import { Background, StepDot, StepLine, StepperContainer, Triangle, StepDotsContainer, Label, MainTitle } from "./styles"
 
 
 const Stepper = ({ children }) => {
@@ -37,7 +37,7 @@ const Stepper = ({ children }) => {
                     alignItems='flex-start'
                     transform='translateX(120px)'
                 >
-                    <h2>MONTE A SUA CASA</h2>
+                    <MainTitle>MONTE A SUA CASA</MainTitle>
                     <CustomStepper steps={steps} />
                     {/* <Flex
                         alignItems='flex-start'

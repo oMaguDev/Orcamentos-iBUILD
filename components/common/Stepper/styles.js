@@ -97,3 +97,8 @@ export const StepDot = styled.div`
     
     transform: translateY(-5px);
 `
+
+export const MainTitle = styled.h2`
+    margin: 10px 0 20px;
+
+`
