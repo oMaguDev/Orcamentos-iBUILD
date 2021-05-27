@@ -34,7 +34,7 @@ export const Triangle = styled.div`
 
 export const StepperContainer = styled.div`
 
-margin-top: 50px;
+margin-top: 10px;
 
     display: block;
     z-index: 5;
@@ -81,6 +81,7 @@ export const StepDot = styled.div`
     
     position: relative;
     // height: 900px;
+    height: 100%;
     // width: 200px;
     align-items: center;
     
