@@ -30,29 +30,51 @@ const RadioButtons = () => {
                         onChange={(event) => handleSelectChange(event)}
                     />
                     <RadioButtonLabel />
-                    <div>Auto accept better price only</div>
+                    <div>NÃO QUERO</div>
                 </Item>
                 <Item>
                     <RadioButton
                         type="radio"
                         name="radio"
-                        value="anyPriceChange"
-                        checked={select === "anyPriceChange"}
+                        value="UM"
+                        checked={select === "UM"}
                         onChange={(event) => handleSelectChange(event)}
                     />
                     <RadioButtonLabel />
-                    <div>Auto accept any price change</div>
+                    <div>01 (UM)</div>
                 </Item>
                 <Item>
                     <RadioButton
                         type="radio"
                         name="radio"
-                        value="neverAutoAccept"
-                        checked={select === "neverAutoAccept"}
+                        value="DOIS"
+                        checked={select === "DOIS"}
                         onChange={(event) => handleSelectChange(event)}
                     />
                     <RadioButtonLabel />
-                    <div>Never auto accept a price change</div>
+                    <div>02 (DOIS)</div>
+                </Item>
+                <Item>
+                    <RadioButton
+                        type="radio"
+                        name="radio"
+                        value="TRES"
+                        checked={select === "TRES"}
+                        onChange={(event) => handleSelectChange(event)}
+                    />
+                    <RadioButtonLabel />
+                    <div>03 (TRÊS)</div>
+                </Item>
+                <Item>
+                    <RadioButton
+                        type="radio"
+                        name="radio"
+                        value="QUATRO"
+                        checked={select === "QUATRO"}
+                        onChange={(event) => handleSelectChange(event)}
+                    />
+                    <RadioButtonLabel />
+                    <div>04 (QUATRO)</div>
                 </Item>
             </Wrapper>
     )

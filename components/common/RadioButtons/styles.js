@@ -48,6 +48,7 @@ export const Item = styled.div`
   justify-content: flex-start;
   height: 48px;
   position: relative;
+
 `;
 
 export const RadioButtonLabel = styled.label`
@@ -59,8 +60,12 @@ export const RadioButtonLabel = styled.label`
   border-radius: 50%;
 //   background: white;
   border: 2px solid #bebebe;
+  
 `;
 export const RadioButton = styled.input`
+  cursor: pointer;  
+
+
   opacity: 0;
   z-index: 1;
   border-radius: 50%;
