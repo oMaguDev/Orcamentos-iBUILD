@@ -5,13 +5,15 @@ export const StatusBoxContainer = styled.div`
 
 z-index: 10;
 
-    background: #ccc;
-    width: 350px;
+    // background: #ccc;
+    background: ${({ theme }) => theme.colors.primary.lightGrey };
+    // width: 450px;
+    width: 100%;
     height: 100px;
 
-    position: fixed;
-    bottom: 50px;
-    right: 80px;
+    // position: fixed;
+    // bottom: 50px;
+    // right: 80px;
 
 `
 
@@ -21,11 +23,11 @@ export const Status = styled.div`
     align-items: center;
     justify-content: center;
 
-    background: chartreuse;
+    background: ${({ theme }) => theme.colors.primary.green };
     width: 100%;
     height: 45%;
 
-    color: red;
+    color: ${({ theme }) => theme.colors.primary.pink };
 `
 
 export const StatusNumbers = styled.div`
