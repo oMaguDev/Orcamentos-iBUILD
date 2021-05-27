@@ -40,6 +40,7 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   height: auto;
   width: 100%;
+  margin: 30px 0;
 `;
 
 export const Item = styled.div`
@@ -48,6 +49,7 @@ export const Item = styled.div`
   justify-content: flex-start;
   height: 48px;
   position: relative;
+
 `;
 
 export const RadioButtonLabel = styled.label`
@@ -59,8 +61,12 @@ export const RadioButtonLabel = styled.label`
   border-radius: 50%;
 //   background: white;
   border: 2px solid #bebebe;
+  
 `;
 export const RadioButton = styled.input`
+  cursor: pointer;  
+
+
   opacity: 0;
   z-index: 1;
   border-radius: 50%;

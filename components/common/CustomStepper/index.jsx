@@ -7,8 +7,44 @@ const CustomStepper = ({ steps }) => {
 
 
     return (
-        <Flex>
-            <Flex 
+        <Flex
+            column
+            height='100%'
+            alignItems='flex-start'
+            justifyContent='flex-start'
+        >
+            { steps && steps.map((e, i) =>  i !== steps.length - 1 ? (
+                // <Flex
+                //     column
+                //     key={e}
+                //     alignItems='flex-start'
+                //     justifyContent='flex-start'
+                // >
+                <>
+                    <Flex
+                        // alignItems='center'
+                        height='8px'
+                    >
+                        <StepperDot />
+                        <StepTitle>{ e.toUpperCase() }</StepTitle>
+                    </Flex>
+                    <StepperLine />
+                </>
+                // </Flex>
+            ) : (
+                // <Flex
+                //     column
+                //     key={e}
+                // >
+                    <Flex
+                        height='8px'
+                    >
+                        <StepperDot />
+                        <StepTitle>{ e.toUpperCase() }</StepTitle>
+                    </Flex>
+                // </Flex>
+            ))}
+            {/* <Flex 
                 column
                 height='100%'
                 justifyContent='flex-start'
@@ -34,13 +70,7 @@ const CustomStepper = ({ steps }) => {
                 { steps && steps.map((e, i) => (
                     <StepTitle key={e}>{ e.toUpperCase() }</StepTitle>
                 ))}
-                {/* <StepTitle>ESTILO</StepTitle>
-                <StepTitle>ESTILO</StepTitle>
-                <StepTitle>ESTILO</StepTitle>
-                <StepTitle>ESTILO</StepTitle>
-                <StepTitle>ESTILO</StepTitle>
-                <StepTitle>ESTILO</StepTitle> */}
-            </Flex>
+            </Flex> */}
         </Flex>
     )
 }
