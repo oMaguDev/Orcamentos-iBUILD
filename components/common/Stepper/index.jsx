@@ -35,7 +35,7 @@ const Stepper = ({ children }) => {
                 <Flex 
                     column
                     alignItems='flex-start'
-                    transform='translateX(140px)'
+                    transform='translateX(120px)'
                 >
                     <h2>MONTE A SUA CASA</h2>
                     <CustomStepper steps={steps} />

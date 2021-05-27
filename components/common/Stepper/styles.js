@@ -4,9 +4,9 @@ import styled from "styled-components";
 export const Background = styled.div`
 
     width: 250px;
-    height: max(calc(100vh - 50px), 800px);
+    height: max(calc(100vh - 50px), 650px);
     // height: 900px;
-    min-height: 800px;
+    min-height: 650px;
     
     background: ${({ theme }) => theme.colors.primary.purple};
     color: ${({ theme }) => theme.colors.text.white};
@@ -26,8 +26,8 @@ export const Triangle = styled.div`
     height: 0;
     border-style: inset;
     border-style: solid;
-    border-width: max(calc(100vh - 50px), 800px) 200px 0 0;
-    // border-width: 900px 200px 0 0;
+    border-width: max(calc(100vh - 50px), 650px) 200px 0 0;
+    // border-width: 650px 200px 0 0;
     border-color: ${({ theme }) => theme.colors.primary.purple} transparent transparent transparent;
     
     `

@@ -11,7 +11,7 @@ const StepContent = () => {
             column
             alignItems='flex-start'
             justifyContent='space-between'
-            margin='100px 5% 50px 50px'
+            margin='50px 5% 50px 50px'
             width='450px'
             height='620px'
         >
