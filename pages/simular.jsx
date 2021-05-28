@@ -4,6 +4,7 @@ import Stepper from "../components/common/StepperBackground"
 import { Flex, Layout } from "../components/Containers"
 import StepContent from '../components/common/StepContent'
 import { CarouselButton, CarouselButtonContainer } from '../components/common/Carousel/styles'
+import Carousel from "../components/common/Carousel"
 
 
 const Simular = () => {
@@ -11,6 +12,7 @@ const Simular = () => {
         <Flex
             // alignItems='center'
             justifyContent='flex-end'
+            height='100%'
         >
         {/* <Flex
             column
@@ -22,19 +24,14 @@ const Simular = () => {
             <Navbar />
             <Stepper />
         {/* </Flex> */}
-        <StepContent />
-        <CarouselButtonContainer left>
-            <CarouselButton>
-                
-            </CarouselButton>
-            VOLTAR
-        </CarouselButtonContainer>
-        <CarouselButtonContainer right>
-            AVANÇAR
-            <CarouselButton>
-
-            </CarouselButton>
-        </CarouselButtonContainer>
+        <Carousel
+            items={[
+                <StepContent />,
+                <StepContent />,
+                <StepContent />,
+                <StepContent />,
+            ]}
+        />
         </Flex>
     )
 }

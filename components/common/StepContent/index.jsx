@@ -1,8 +1,8 @@
-import { Flex } from "../../Containers"
+import { Box, Flex } from "../../Containers"
 import RadioButtons from "../RadioButtons"
 import StatusBox from "../StatusBox"
 import Select from "./Select"
-import { StepContentContainer, TitleContainer } from "./styles"
+import { StepContentContainer, StepImageContainer, TitleContainer } from "./styles"
 
 
 const StepContent = () => {
@@ -17,16 +17,24 @@ const StepContent = () => {
     // >
     // </Flex>
     return (
-        <StepContentContainer>
-            <TitleContainer>
-                <h4>ESCOLHA A QUANTIDADE</h4>
-                <h2>LAVABOS</h2>
-                <p>Lavabos que possuam apenas pias, ducha higiênica e vaso sanitário</p>
-            </TitleContainer>
-            <RadioButtons />
-            {/* <Select /> */}
-            <StatusBox />
-        </StepContentContainer>
+        <Flex 
+            width='100%'
+            justifyContent='space-evenly'
+        >
+            <StepImageContainer>
+                <img style={{ width: '100%'}} src="/images/americana.jpg" alt="" />
+            </StepImageContainer>
+            <StepContentContainer>
+                <TitleContainer>
+                    <h4>ESCOLHA A QUANTIDADE</h4>
+                    <h2>LAVABOS</h2>
+                    <p>Lavabos que possuam apenas pias, ducha higiênica e vaso sanitário</p>
+                </TitleContainer>
+                <RadioButtons />
+                {/* <Select /> */}
+                <StatusBox />
+            </StepContentContainer>
+        </Flex>
     )
 }
 
