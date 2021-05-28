@@ -13,6 +13,11 @@ const GlobalStyle = createGlobalStyle`
         background: #fff;
         color: #54596c;
         font-family: 'Poppins', sans-serif;
+        height: 100%;
+    }
+    
+    #__next {
+        height: 100%;
     }
 
     .MuiStepIcon-root.MuiStepIcon-active {

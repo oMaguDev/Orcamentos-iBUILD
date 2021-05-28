@@ -24,6 +24,7 @@ const CustomStepper = ({ steps }) => {
                     <Flex
                         // alignItems='center'
                         height='8px'
+                        key={e}
                     >
                         <StepperDot />
                         <StepTitle>{ e.toUpperCase() }</StepTitle>
@@ -38,6 +39,7 @@ const CustomStepper = ({ steps }) => {
                 // >
                     <Flex
                         height='8px'
+                        key={e}
                     >
                         <StepperDot />
                         <StepTitle>{ e.toUpperCase() }</StepTitle>

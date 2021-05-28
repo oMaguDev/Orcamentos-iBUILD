@@ -1,6 +1,18 @@
 import styled from "styled-components";
 
 
+export const NavContainer = styled.div`
+
+    display: flex;
+
+    position: absolute;
+    top: 0px;
+    left: 0px;
+
+    z-index: 10;
+
+`
+
 export const StyledNav = styled.nav`
     height: 50px;
     width: 550px;

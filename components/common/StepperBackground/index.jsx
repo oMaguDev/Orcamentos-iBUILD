@@ -27,16 +27,19 @@ const Stepper = ({ children }) => {
         'Acabamentos'
     ]
 
+    // <Flex
+    //     top='50px'
+    // >
 
     return (
-        <Flex>
+        <>
         <Background>
             <StepperContainer>
                 <Flex 
                     column
                     alignItems='flex-start'
                     transform='translateX(120px)'
-                >
+                    >
                     <MainTitle>MONTE A SUA CASA</MainTitle>
                     <CustomStepper steps={steps} />
                     {/* <Flex
@@ -44,72 +47,73 @@ const Stepper = ({ children }) => {
                         justifyContent='center'
                         width='100%'
                         textAlign='left'
-                    >
+                        >
                         <StepDotsContainer>
-                            <StepDot index={0} />
-                            <StepLine />
-                            <StepDot index={1} />
-                            <StepLine />
-                            <StepDot index={2} />
-                            <StepLine />
+                        <StepDot index={0} />
+                        <StepLine />
+                        <StepDot index={1} />
+                        <StepLine />
+                        <StepDot index={2} />
+                        <StepLine />
+                        <StepDot index={3} />
+                        <StepLine />
+                        <StepDot index={3} />
+                        <StepLine />
+                        <StepDot index={3} />
+                        <StepLine />
+                        <StepDot index={3} />
+                        <StepLine />
+                        <StepDot index={3} />
+                        <StepLine />
                             <StepDot index={3} />
-                            <StepLine />
-                            <StepDot index={3} />
-                            <StepLine />
-                            <StepDot index={3} />
-                            <StepLine />
-                            <StepDot index={3} />
-                            <StepLine />
-                            <StepDot index={3} />
-                            <StepLine />
-                            <StepDot index={3} />
-                        </StepDotsContainer>
-                        <Flex
+                            </StepDotsContainer>
+                            <Flex
                             column
                             margin='0 0 0 10px'
                             justifyContent='space-around'
                             alignItems='right'
-                        >
+                            >
                             { steps.map((e, i) => (
                                 <Label first={i === 0}>
-                                    { e }
+                                { e }
                                 </Label>
-                            ))}
-                            <Label first>
+                                ))}
+                                <Label first>
                                 ESTILO
-                            </Label>
-                            <Label>
+                                </Label>
+                                <Label>
                                 ESTILO
-                            </Label>
-                            <Label>
+                                </Label>
+                                <Label>
                                 ESTILO
-                            </Label>
-                            <Label>
+                                </Label>
+                                <Label>
                                 ESTILO
-                            </Label>
-                            <Label>
+                                </Label>
+                                <Label>
                                 ESTILO
-                            </Label>
-                            <Label>
+                                </Label>
+                                <Label>
                                 ESTILO
-                            </Label>
-                            <Label>
+                                </Label>
+                                <Label>
                                 ESTILO
-                            </Label>
-                            <Label>
+                                </Label>
+                                <Label>
                                 ESTILO
-                            </Label>
-                            <Label>
+                                </Label>
+                                <Label>
                                 ESTILO
-                            </Label>
-                        </Flex>
-                    </Flex> */}
+                                </Label>
+                                </Flex>
+                            </Flex> */}
                 </Flex>
             </StepperContainer>
         </Background>
         <Triangle />
-        </Flex>
-    )
+        </>
+        )
+        // </Flex>
 }
 
 export default Stepper

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 
+
 export const Background = styled.div`
 
     width: 250px;
@@ -12,16 +13,22 @@ export const Background = styled.div`
     color: ${({ theme }) => theme.colors.text.white};
     
     overflow: visible;
-    z-index: 1;
+    z-index: 10;
     
     display: flex;
     flex-direction: column;
     align-items: right;
     text-align:right;
     
+    
+    position: absolute;
+    
+    top: 50px;
+    left: 0;
+    
     `
-
-export const Triangle = styled.div`
+    
+    export const Triangle = styled.div`
     width: 0;
     height: 0;
     border-style: inset;
@@ -30,6 +37,10 @@ export const Triangle = styled.div`
     // border-width: 650px 200px 0 0;
     border-color: ${({ theme }) => theme.colors.primary.purple} transparent transparent transparent;
     
+    position: absolute;
+    top: 50px;
+    left: 250px;
+    z-index: 9;
     `
 
 export const StepperContainer = styled.div`
