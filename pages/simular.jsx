@@ -1,37 +1,51 @@
 import Navbar from "../components/common/Navbar"
-import StatusBox from "../components/common/StatusBox"
 import Stepper from "../components/common/StepperBackground"
 import { Flex, Layout } from "../components/Containers"
 import StepContent from '../components/common/StepContent'
-import { CarouselButton, CarouselButtonContainer } from '../components/common/Carousel/styles'
 import Carousel from "../components/common/Carousel"
 
 
 const Simular = () => {
+
+    const steps = [
+        'Área Total',
+        'Estilo Arquitetônico',
+        'Qtde. Pavimentos',
+        'Paredes Externas',
+        'Tipo Telha',
+        'Garagem',
+        'Sala Estar-TV',
+        'Escritório',
+        'Quartos',
+        'Despensa',
+        'Banheiros',
+        'Cozinha',
+        'Área Gourmet',
+        'Lavabos',
+        'Área de Serviço',
+        'Int. Hid./Ele.',
+        'Conforto',
+        'Acabamentos'
+    ]
+
+    const items = [
+        <StepContent key={steps[0]} />,
+        <StepContent key={steps[1]} />,
+        <StepContent key={steps[2]} />,
+        <StepContent key={steps[3]} />,
+    ]
+
     return (
         <Flex
             // alignItems='center'
             justifyContent='flex-end'
             height='100%'
         >
-        {/* <Flex
-            column
-            alignItems='flex-start'
-            justifyContent='flex-start'
-            fullHeight
-            // minHeight='100vh'
-            > */}
             <Navbar />
-            <Stepper />
-        {/* </Flex> */}
-        <Carousel
-            items={[
-                <StepContent />,
-                <StepContent />,
-                <StepContent />,
-                <StepContent />,
-            ]}
-        />
+            <Stepper steps={steps} />
+            <Carousel
+                items={items}
+            />
         </Flex>
     )
 }

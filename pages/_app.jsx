@@ -1,5 +1,7 @@
 import { createGlobalStyle, ThemeConsumer, ThemeProvider } from 'styled-components'
+import { ActiveIndexProvider } from '../contexts/activeIndex'
 // import '../styles/globals.css'
+import Head from 'next/head'
 
 
 const GlobalStyle = createGlobalStyle`
@@ -58,10 +60,15 @@ const theme = {
 function MyApp({ Component, pageProps }) {
     return (
         <>
+            <Head>
+                <title>Orçamento Express | iBuild </title>
+            </Head>
             <GlobalStyle />
-            <ThemeProvider theme={theme}>
-                <Component {...pageProps} />
-            </ThemeProvider>
+            <ActiveIndexProvider>
+                <ThemeProvider theme={theme}>
+                    <Component {...pageProps} />
+                </ThemeProvider>
+            </ActiveIndexProvider>
         </>
     )
 }

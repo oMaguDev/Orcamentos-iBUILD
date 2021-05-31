@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import AliceCarousel from "react-alice-carousel"
 import "react-alice-carousel/lib/alice-carousel.css"
 import { CarouselButton, CarouselButtonContainer, CarouselItem, Dots } from "./styles";
 import Button from '../Button'
 import { Box, Flex } from "../../Containers";
 import { CaretRight, CaretLeft } from 'phosphor-react'
+import { ActiveIndexContext } from "../../../contexts/activeIndex";
 
 const responsive = {
     0: { items: 1 },
@@ -26,10 +27,17 @@ const DotsItem = ({ isActive }) => {
     )
 }
 
+// activeIndex, slidePrev, slideNext, activeIndex, setActiveIndex
+
 const Carousel = ({ items }) => { //, stepper, stepperSubmit, autoPlay = true, infinite
 
-    const [activeIndex, setActiveIndex] = useState(0);
+    
+    // const syncActiveIndex = ({ item }) => setActiveIndex(item);
+
+    // const [activeIndex, setActiveIndex] = useState(0);
     // const [items] = useState(createItems(5, [setActiveIndex]));
+
+    const { activeIndex, setActiveIndex } = useContext(ActiveIndexContext)
 
     const slidePrev = () => {
         console.log('slidePrev')
@@ -43,19 +51,17 @@ const Carousel = ({ items }) => { //, stepper, stepperSubmit, autoPlay = true, i
             if (activeIndex < items.length - 1) {
                 return setActiveIndex(activeIndex + 1);
             }
-        } else {
+        }
+        else {
             if (activeIndex < defaultItems.length - 1) {
                 return setActiveIndex(activeIndex + 1);
             }
         }
     }
-    // const syncActiveIndex = ({ item }) => setActiveIndex(item);
-
-    useEffect(() => {
-        console.log('activeIndex: ', activeIndex)
-    }, [activeIndex])
 
     const carouselItems = items ? items : defaultItems
+
+    console.log(carouselItems)
 
     return (
         <Flex

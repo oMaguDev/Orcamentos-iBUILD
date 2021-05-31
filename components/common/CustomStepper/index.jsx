@@ -1,10 +1,17 @@
 import { StepperDot, StepperLine, StepTitle } from "./styles"
 import { Flex } from '../../Containers'
+import { useContext, useEffect } from "react"
+import { ActiveIndexContext } from "../../../contexts/activeIndex"
 
 
 const CustomStepper = ({ steps }) => {
 
 
+    const { activeIndex } = useContext(ActiveIndexContext)
+
+    useEffect(() => {
+        console.log('activeIndex: ', activeIndex)
+    }, [activeIndex])
 
     return (
         <Flex
@@ -26,7 +33,10 @@ const CustomStepper = ({ steps }) => {
                         height='8px'
                         key={e}
                     >
-                        <StepperDot />
+                        <StepperDot
+                            stepCompleted={ i < activeIndex }
+                            currentStep={ i === activeIndex }
+                        />
                         <StepTitle>{ e.toUpperCase() }</StepTitle>
                     </Flex>
                     <StepperLine />
@@ -41,7 +51,10 @@ const CustomStepper = ({ steps }) => {
                         height='8px'
                         key={e}
                     >
-                        <StepperDot />
+                        <StepperDot
+                            stepCompleted={ i < activeIndex }
+                            currentStep={ i === activeIndex }
+                        />
                         <StepTitle>{ e.toUpperCase() }</StepTitle>
                     </Flex>
                 // </Flex>
