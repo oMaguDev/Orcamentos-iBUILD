@@ -5,7 +5,7 @@ import Select from "./Select"
 import { StepContentContainer, StepImageContainer, TitleContainer } from "./styles"
 
 
-const StepContent = () => {
+const StepContent = ({ data }) => {
     // <Flex
     //     column
     //     alignItems='flex-start'
@@ -26,11 +26,15 @@ const StepContent = () => {
             </StepImageContainer>
             <StepContentContainer>
                 <TitleContainer>
-                    <h4>ESCOLHA A QUANTIDADE</h4>
-                    <h2>LAVABOS</h2>
-                    <p>Lavabos que possuam apenas pias, ducha higiênica e vaso sanitário</p>
+                    <h4>{ data.caption.toUpperCase() }</h4>
+                    <h2>{ data.title.toUpperCase() }</h2>
+                    <p>{ data.subtitle }</p>
                 </TitleContainer>
-                <RadioButtons />
+                <RadioButtons
+                    options={data.options}
+                    onChange={data.onChange}
+                    select={data.value}
+                />
                 {/* <Select /> */}
                 <StatusBox />
             </StepContentContainer>

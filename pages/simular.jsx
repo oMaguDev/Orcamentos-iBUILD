@@ -3,11 +3,15 @@ import Stepper from "../components/common/StepperBackground"
 import { Flex, Layout } from "../components/Containers"
 import StepContent from '../components/common/StepContent'
 import Carousel from "../components/common/Carousel"
+import { useState } from "react"
 
 
 const Simular = () => {
 
-    const steps = [
+    const [lavabos, setLavabos] = useState('')
+    const [estilo, setEstilo] = useState('')
+
+    const stepsTitles = [
         'Área Total',
         'Estilo Arquitetônico',
         'Qtde. Pavimentos',
@@ -28,12 +32,119 @@ const Simular = () => {
         'Acabamentos'
     ]
 
-    const items = [
-        <StepContent key={steps[0]} />,
-        <StepContent key={steps[1]} />,
-        <StepContent key={steps[2]} />,
-        <StepContent key={steps[3]} />,
+    const steps = [
+        {
+            caption: 'Escolha o estilo',
+            title: 'Estilo Arquitetônico',
+            subtitle: 'Tudo bem se não for exatamente igual, a ideia aqui é nos ajudar a entender qual o estilo do seu projeto',
+            value: estilo,
+            onChange: setEstilo,
+            options: [
+                {
+                    label: 'Clássica',
+                    value: 'classica',
+                },
+                {
+                    label: 'Neo-Clássica',
+                    value: 'neoClassica',
+                },
+                {
+                    label: 'Mediterrânea',
+                    value: 'mediterranea',
+                },
+                {
+                    label: 'Brasileira',
+                    value: 'brasileira',
+                },
+                {
+                    label: 'Minimalista',
+                    value: 'minimalista',
+                },
+                {
+                    label: 'Contemporânea',
+                    value: 'contemporanea',
+                },
+                {
+                    label: 'Americana',
+                    value: 'americana',
+                },
+                {
+                    label: 'Europeia',
+                    value: 'europeia',
+                },
+            ]
+        },
+        {
+            caption: 'Escolha a quantidade',
+            title: 'Pavimentos e escadas',
+            subtitle: 'Escolha quantos pavimentos e o estilo das escadas na sua nova casa. ',
+            value: estilo,
+            onChange: setEstilo,
+            options: [
+                {
+                    label: '1',
+                    value: '1',
+                },
+                {
+                    label: '2',
+                    value: '2',
+                },
+                {
+                    label: '3',
+                    value: '3',
+                },
+                {
+                    label: '4',
+                    value: '4',
+                },
+            ]
+        },
+        {
+            caption: 'ESCOLHA A QUANTIDADE',
+            title: 'LAVABOS',
+            subtitle: 'Lavabos que possuam apenas pias, ducha higiênica e vaso sanitário',
+            value: lavabos,
+            onChange: setLavabos,
+            options: [
+                {
+                    label: 'NÃO QUERO',
+                    value: 'none',
+                },
+                {
+                    label: '01 (UM)',
+                    value: 'UM',
+                },
+                {
+                    label: '02 (DOIS)',
+                    value: 'DOIS',
+                },
+                {
+                    label: '03 (TRÊS)',
+                    value: 'TRÊS',
+                },
+                {
+                    label: '04 (QUATRO)',
+                    value: 'QUATRO',
+                },
+            ]
+        },
+        
     ]
+
+    // const items = [
+    //     <StepContent key={steps[0]} />,
+    //     <StepContent key={steps[1]} />,
+    //     <StepContent key={steps[2]} />,
+    //     <StepContent key={steps[3]} />,
+    //     <StepContent key={steps[0]} />,
+    //     <StepContent key={steps[1]} />,
+    //     <StepContent key={steps[2]} />,
+    //     <StepContent key={steps[3]} />,
+    // ]
+
+    const items = steps.map((e, i) => (
+        <StepContent data={e} />
+    ))
 
     return (
         <Flex
@@ -42,7 +153,7 @@ const Simular = () => {
             height='100%'
         >
             <Navbar />
-            <Stepper steps={steps} />
+            <Stepper steps={stepsTitles} />
             <Carousel
                 items={items}
             />
