@@ -1,9 +1,5 @@
-import { useState } from "react";
-import { Flex } from "../../Containers"
+// import { useState } from "react";
 import {
-    // Checkmark,
-    // RadioContainer,
-    // StyledRadio,
     Wrapper,
     Item,
     RadioButton,
@@ -11,22 +7,35 @@ import {
 } from "./styles"
 
 
-const RadioButtons = () => {
+const RadioButtons = ({ options, select, onChange }) => {
 
-    const [select, setSelect] = useState(null);
-    const handleSelectChange = (event) => {
-        const value = event.target.value;
-        setSelect(value);
-    };
+    // const [select, setSelect] = useState(null);
+    // const handleSelectChange = (event) => {
+    //     const value = event.target.value;
+    //     setSelect(value);
+    // };
 
     return (
             <Wrapper>
-                <Item>
+                { options && options.map((e, i) => (
+                    <Item>
+                        <RadioButton
+                            type="radio"
+                            name="radio"
+                            value={e.value}
+                            checked={select === e.value}
+                            onChange={(event) => onChange(event.target.value)}
+                        />
+                        <RadioButtonLabel />
+                        <div>{e.label}</div>
+                    </Item>
+                ))}
+                {/* <Item>
                     <RadioButton
                         type="radio"
                         name="radio"
-                        value="betterPriceOnly"
-                        checked={select === "betterPriceOnly"}
+                        value="none"
+                        checked={select === "none"}
                         onChange={(event) => handleSelectChange(event)}
                     />
                     <RadioButtonLabel />
@@ -75,7 +84,7 @@ const RadioButtons = () => {
                     />
                     <RadioButtonLabel />
                     <div>04 (QUATRO)</div>
-                </Item>
+                </Item> */}
             </Wrapper>
     )
 }

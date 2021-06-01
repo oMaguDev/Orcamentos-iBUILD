@@ -1,36 +1,9 @@
-import { Step, StepLabel, Stepper as MuiStepper } from "@material-ui/core"
 import { Flex } from "../../Containers"
 import CustomStepper from "../CustomStepper"
 import { Background, StepDot, StepLine, StepperContainer, Triangle, StepDotsContainer, Label, MainTitle } from "./styles"
 
 
-const Stepper = ({ children }) => {
-
-    const steps = [
-        'Área Total',
-        'Estilo Arquitetônico',
-        'Qtde. Pavimentos',
-        'Paredes Externas',
-        'Tipo Telha',
-        'Garagem',
-        'Sala Estar-TV',
-        'Escritório',
-        'Quartos',
-        'Despensa',
-        'Banheiros',
-        'Cozinha',
-        'Área Gourmet',
-        'Lavabos',
-        'Área de Serviço',
-        'Int. Hid./Ele.',
-        'Conforto',
-        'Acabamentos'
-    ]
-
-    // <Flex
-    //     top='50px'
-    // >
-
+const Stepper = ({ steps }) => {
     return (
         <>
         <Background>
