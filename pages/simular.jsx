@@ -3,22 +3,41 @@ import Stepper from "../components/common/StepperBackground"
 import { Flex, Layout } from "../components/Containers"
 import StepContent from '../components/common/StepContent'
 import Carousel from "../components/common/Carousel"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 
 const Simular = () => {
 
-    const [lavabos, setLavabos] = useState('')
+    const [area, setArea] = useState('')
     const [estilo, setEstilo] = useState('')
+    const [pavimentos, setPavimentos] = useState('')
+    const [paredes, setParedes] = useState('')
+    const [telhas, setTelhas] = useState('')
+    const [garagem, setGaragem] = useState('')
+    const [sala, setSala] = useState('')
+    const [escritorio, setEscritorio] = useState('')
+    const [quartos, setQuartos] = useState({
+        small: '',
+        medium: '',
+        big: '',
+    })
+    const [lavabos, setLavabos] = useState('')
+
+    useEffect(() => {
+        console.log('area: ', area)
+        console.log('lavabos: ', lavabos)
+        console.log('estilo: ', estilo)
+        console.log('pavimentos: ', pavimentos)
+    }, [area, lavabos, estilo, pavimentos])
 
     const stepsTitles = [
         'Área Total',
         'Estilo Arquitetônico',
         'Qtde. Pavimentos',
         'Paredes Externas',
-        'Tipo Telha',
+        'Telhas',
         'Garagem',
-        'Sala Estar-TV',
+        'Sala de Estar/TV',
         'Escritório',
         'Quartos',
         'Despensa',
@@ -33,6 +52,22 @@ const Simular = () => {
     ]
 
     const steps = [
+        {
+            caption: 'Escolha o tamanho',
+            title: 'Área Total',
+            subtitle: 'Tudo bem se não for exatamente igual, a ideia aqui é nos ajudar a entender qual o estilo do seu projeto',
+            value: area,
+            onChange: setArea,
+            inputs: [
+                {
+                    value: area,
+                    onChange: setArea,
+                    label: 'Área Total',
+                    placeholder: 'Insira a área total',
+                    type: 'number'
+                }
+            ]
+        },
         {
             caption: 'Escolha o estilo',
             title: 'Estilo Arquitetônico',
@@ -78,8 +113,8 @@ const Simular = () => {
             caption: 'Escolha a quantidade',
             title: 'Pavimentos e escadas',
             subtitle: 'Escolha quantos pavimentos e o estilo das escadas na sua nova casa. ',
-            value: estilo,
-            onChange: setEstilo,
+            value: pavimentos,
+            onChange: setPavimentos,
             options: [
                 {
                     label: '1',
@@ -98,6 +133,142 @@ const Simular = () => {
                     value: '4',
                 },
             ]
+        },
+        {
+            caption: 'Escolha o padrão',
+            title: 'Paredes externas',
+            subtitle: 'Escolha o padrão das paredes externas',
+            value: paredes,
+            onChange: setParedes,
+            options: [
+                {
+                    label: 'Standard',
+                    value: 'standard',
+                },
+                {
+                    label: 'Premium',
+                    value: 'premium',
+                },
+            ]
+        },
+        {
+            caption: 'Escolha o tipo',
+            title: 'Telhas',
+            subtitle: 'Escolha o tipo das telhas da casa',
+            value: telhas,
+            onChange: setTelhas,
+            options: [
+                {
+                    label: 'Standard',
+                    value: 'standard',
+                },
+                {
+                    label: 'Premium',
+                    value: 'premium',
+                },
+            ]
+        },
+        {
+            caption: 'Escolha o padrão',
+            title: 'Garagem',
+            subtitle: 'Escolha o padrão de acabamento da garagem',
+            value: garagem,
+            onChange: setGaragem,
+            options: [
+                {
+                    label: 'Standard',
+                    value: 'standard',
+                },
+                {
+                    label: 'Premium',
+                    value: 'premium',
+                },
+            ]
+        },
+        {
+            caption: 'Escolha o tamanho',
+            title: 'Sala de Estar/TV',
+            subtitle: 'Escolha o tamanho da sala de estar/TV',
+            value: sala,
+            onChange: setSala,
+            options: [
+                {
+                    label: '1 sala pequena (Aprox. 10 m²)',
+                    value: 'pequena',
+                },
+                {
+                    label: '1 sala média (Aprox. 25 m²)',
+                    value: 'media',
+                },
+                {
+                    label: '1 sala grande (Aprox. 40 m²)',
+                    value: 'grande',
+                },
+            ],
+            inputs: [
+                {
+                    label: 'Outro tamanho',
+                    value: sala,
+                    onChange: setSala,
+                    placeholder: 'Insira o tamanho em m2',
+                    type: 'number'
+                }
+            ]
+        },
+        {
+            caption: 'Escolha o tamanho',
+            title: 'Escritório',
+            subtitle: 'Escolha o tamanho da escritório',
+            value: escritorio,
+            onChange: setEscritorio,
+            options: [
+                {
+                    label: 'Escritório pequeno (Aprox. 10 m²)',
+                    value: 'pequena',
+                },
+                {
+                    label: 'Escritório médio (Aprox. 25 m²)',
+                    value: 'media',
+                },
+                {
+                    label: 'Escritório grande (Aprox. 40 m²)',
+                    value: 'grande',
+                },
+            ],
+        },
+        {
+            caption: 'Escolha a quantidade',
+            title: 'Quartos',
+            subtitle: 'Escolha a quantidade de quartos',
+            value: quartos,
+            onChange: setQuartos,
+            inputs: [
+                {
+                    label: 'Quarto pequeno',
+                    placeholder: '(Aprox. 10 m²)',
+                    value: quartos.small,
+                    onChange: setQuartos,
+                    type: 'number',
+                    width: '95%',
+                    
+                },
+                {
+                    label: 'Quarto grande',
+                    placeholder: '(Aprox. 40 m²)',
+                    value: quartos.big,
+                    onChange: setQuartos,
+                    type: 'number',
+                    width: '95%',
+                },
+                {
+                    label: 'Quarto médio',
+                    placeholder: '(Aprox. 25 m²)',
+                    value: quartos.medium,
+                    onChange: setQuartos,
+                    type: 'number',
+                    width: '95%',
+                },
+            ],
         },
         {
             caption: 'ESCOLHA A QUANTIDADE',

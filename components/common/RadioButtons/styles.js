@@ -38,9 +38,13 @@ import styled from "styled-components";
 
 
 export const Wrapper = styled.div`
-  height: auto;
+  height: 90%;
   width: 100%;
-  margin: 30px 0;
+  margin: auto;
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 `;
 
 export const Item = styled.div`
