@@ -41,6 +41,7 @@ export const ExplainingP = styled.p`
     color: ${({ theme }) => theme.colors.text.main};
     font-weight: 400;
     font-size: 0.8rem;
+    line-height: 2;
     
 
     ${(props) => props.fontSize ? `font-size: ${props.fontSize};` : ''}

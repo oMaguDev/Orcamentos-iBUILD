@@ -1,8 +1,8 @@
-import { Box, Flex, Layout, TitleContainer } from "../components/Containers"
+import { Box, Flex, Layout, LogoMedium, TitleContainer } from "../components/Containers"
 import { ExplainingP, H1, H2, H3 } from "../components/Text"
-import Button from '../components/common/Button'
 import { CaretRight } from 'phosphor-react'
 import { useRouter } from 'next/router'
+import Button from '../components/common/Button'
 
 const Main = () => {
 
@@ -10,7 +10,7 @@ const Main = () => {
 
     return (
         <Layout>
-            <Flex>
+            <Flex fullHeight fullWidth>
                 <Box width='100%' height='100%'></Box>
                 <Flex
                     column
@@ -40,13 +40,15 @@ const Main = () => {
                     <H3 fontSize='1.3rem'>
                         Simule o custo da sua casa e conte com a iBuild para entregar ela pronta pra você!
                     </H3> */}
-                    <Flex width='100%' maxWidth='350px'>
-                        <Button fullWidth variant='contained' onClick={() => router.push('/simular')}>
-                            <Flex>
-                                Começar a simular
-                                <CaretRight size={24} />
-                            </Flex>
+                    <Flex width='100%' height='50px'>
+                        <Button
+                            fullWidth
+                            fontWeight='600'
+                            onClick={() => router.push('/simular')}
+                        >
+                            EU QUERO A MINHA CASA!
                         </Button>
+                        <LogoMedium src='/images/Logo.svg' />
                     </Flex>
                 </Flex>
             </Flex>

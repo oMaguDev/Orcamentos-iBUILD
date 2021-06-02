@@ -5,11 +5,12 @@ export const Layout = styled.div`
 
     height: 100%;
     width: 100%;
-    max-width: 900px;
+    // max-width: 900px;
     // margin: auto;
-    margin: 10% auto;
+    padding: 50px;
 
     min-height: 100vh;
+    min-width: 100vw;
 
 `
 
@@ -93,5 +94,12 @@ export const TitleContainer = styled.div`
         font-weight: 400;
         font-size: 0.8rem;
     }
+
+`
+
+export const LogoMedium = styled.img`
+
+    height: 55%;
+    width: 100%;
 
 `
