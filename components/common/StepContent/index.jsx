@@ -1,8 +1,8 @@
-import { Box, Flex } from "../../Containers"
+import { Box, Flex, TitleContainer } from "../../Containers"
 import RadioButtons from "../RadioButtons"
 import StatusBox from "../StatusBox"
 import Select from "./Select"
-import { MiddleContainer, StepContentContainer, StepImageContainer, TitleContainer } from "./styles"
+import { MiddleContainer, StepContentContainer, StepImageContainer } from "./styles"
 import Input from '../../form/Input'
 
 
@@ -49,6 +49,7 @@ const StepContent = ({ data }) => {
                             margin='10px'
                             width={e.width ? e.width : '100%'}
                             small
+                            key={e.label}
                         />
                     ))}
                     {/* <Select /> */}

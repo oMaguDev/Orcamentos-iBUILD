@@ -34,8 +34,7 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <link rel="preconnect" href="https://fonts.gstatic.com" />
-          <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+          <link rel="stylesheet" href="https://use.typekit.net/yiz4ljn.css"></link>
         </Head>
         <body>
           <Main />

@@ -14,7 +14,7 @@ const GlobalStyle = createGlobalStyle`
         padding: 0;
         background: #fff;
         color: #54596c;
-        font-family: 'Poppins', sans-serif;
+        font-family: urw-din, sans-serif;
         height: 100%;
     }
     

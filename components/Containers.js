@@ -6,7 +6,8 @@ export const Layout = styled.div`
     height: 100%;
     width: 100%;
     max-width: 900px;
-    margin: auto;
+    // margin: auto;
+    margin: 10% auto;
 
     min-height: 100vh;
 
@@ -60,5 +61,37 @@ export const Box = styled.div`
 export const CarouselContainer = styled.div`
 
     
+
+`
+
+export const TitleContainer = styled.div`
+
+    text-align: left;
+
+    color: ${({ theme }) => theme.colors.primary.purple};
+
+    h4 {
+        margin: 0;
+        font-weight: 400;
+        font-size: 0.75rem;
+        letter-spacing: 2px;
+    }
+    
+    h2 {
+        margin: 0 0 10px;
+        font-size: 2.2rem;
+    }
+    
+    h1 {
+        margin: 0 0 10px;
+        font-size: 2.2rem;
+    }
+    
+    p {
+        margin: 0;
+        color: ${({ theme }) => theme.colors.text.main};
+        font-weight: 400;
+        font-size: 0.8rem;
+    }
 
 `

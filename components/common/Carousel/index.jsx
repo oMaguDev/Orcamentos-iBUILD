@@ -61,7 +61,7 @@ const Carousel = ({ items }) => { //, stepper, stepperSubmit, autoPlay = true, i
 
     const carouselItems = items ? items : defaultItems
 
-    console.log(carouselItems)
+    // console.log(carouselItems)
 
     return (
         <Flex

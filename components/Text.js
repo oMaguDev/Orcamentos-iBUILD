@@ -35,3 +35,15 @@ font-weight: 400;
 ${(props) => props.fontSize ? `font-size: ${props.fontSize};` : ''}
 
 `
+
+export const ExplainingP = styled.p`
+
+    color: ${({ theme }) => theme.colors.text.main};
+    font-weight: 400;
+    font-size: 0.8rem;
+    
+
+    ${(props) => props.fontSize ? `font-size: ${props.fontSize};` : ''}
+    ${(props) => props.margin ? `margin: ${props.margin};` : ''}
+
+    `
