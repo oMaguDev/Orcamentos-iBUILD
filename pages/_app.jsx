@@ -40,6 +40,7 @@ const theme = {
             pink: '#fb1d47',
             lightGrey: '#ebeaf1',
             green: 'chartreuse',
+            lightGreen: '#BDE4A7',
         },
         text: {
             title: '#ff1b5f', // '#bd1245', // '#b93f64' // 

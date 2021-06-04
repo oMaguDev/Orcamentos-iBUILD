@@ -1,36 +1,40 @@
 // import { useState } from "react";
+import { Flex } from "../../Containers"
 import {
     Wrapper,
     Item,
     RadioButton,
-    RadioButtonLabel
+    RadioButtonLabel,
+    IconContainer,
+    OptionItem,
+    OptionsContainer
 } from "./styles"
 
 
-const RadioIconButtons = ({ options, select, onChange }) => {
+const RadioIconButtons = ({ Icon,options, active, setActive }) => {
 
     // const [select, setSelect] = useState(null);
     // const handleSelectChange = (event) => {
     //     const value = event.target.value;
     //     setSelect(value);
     // };
+    console.log('options: ', options)
 
     return (
-            <Wrapper>
-                { options && options.map((e, i) => (
-                    <Item key={e.label}>
-                        <RadioButton
-                            type="radio"
-                            name="radio"
-                            value={e.value}
-                            checked={select === e.value}
-                            onChange={(event) => onChange(event.target.value)}
-                        />
-                        <RadioButtonLabel />
-                        <div>{e.label}</div>
-                    </Item>
-                ))}
-            </Wrapper>
+        <OptionsContainer 
+        >
+            { options && options.map((e, i) => (
+                <OptionItem key={e.label}>
+                    <IconContainer
+                        onClick={() => setActive(e.value)}
+                        active={active === e.value}
+                    >
+                        <img src={e.iconSrc} alt="" />
+                    </IconContainer>
+                    <p>{e.label.toUpperCase()}</p>
+                </OptionItem>
+            ))}
+        </OptionsContainer>
     )
 }
 

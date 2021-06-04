@@ -3,6 +3,16 @@ import RadioIconButtons from '../components/common/RadioIconButtons'
 
 
 const Resource = () => {
+
+    const options = [
+        {
+            label: 'tenho todo o recurso para construir',
+            value: 'own_resource',
+            iconSrc: ''
+        }
+    ]
+
+
     return (
         <Layout>
             <Flex
@@ -28,7 +38,7 @@ const Resource = () => {
                             Escolha o tipo de recurso financeiro que você pretende usar para construir
                         </h1>
                     </TitleContainer>
-                    <RadioIconButtons />
+                    <RadioIconButtons options={options} />
                 </Flex>
                 <Box
                     width='100%'

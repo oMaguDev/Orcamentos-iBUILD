@@ -7,7 +7,8 @@ export const Layout = styled.div`
     width: 100%;
     // max-width: 900px;
     // margin: auto;
-    padding: max(50px, 10%);
+    // padding: max(50px, 10%);
+    padding: 50px;
 
     min-height: calc(100vh - 50px);
     min-width: calc(100vw - 50px);
