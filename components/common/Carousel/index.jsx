@@ -89,6 +89,7 @@ const Carousel = ({ items, fullScreen }) => { //, stepper, stepperSubmit, autoPl
                 <Flex
                     justifyContent='space-between'
                     width='100%'
+                    height='100%'
                     margin='20px 0 0'
                 >
                     <CarouselButtonContainer fullScreen>

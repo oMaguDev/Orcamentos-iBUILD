@@ -3,8 +3,8 @@ import styled from "styled-components";
 
 export const Layout = styled.div`
 
-    height: 100%;
-    width: 100%;
+    height: calc(100% - 100px);
+    width: calc(100% - 100px);
     // max-width: 900px;
     // margin: 50px;
     padding: min(50px, 10%);
