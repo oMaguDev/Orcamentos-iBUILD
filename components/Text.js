@@ -42,6 +42,7 @@ export const ExplainingP = styled.p`
     font-weight: 400;
     font-size: 0.8rem;
     line-height: 2;
+    text-align: left;
     
 
     ${(props) => props.fontSize ? `font-size: ${props.fontSize};` : ''}

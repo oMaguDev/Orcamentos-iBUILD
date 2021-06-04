@@ -7,10 +7,10 @@ export const Layout = styled.div`
     width: 100%;
     // max-width: 900px;
     // margin: auto;
-    padding: 50px;
+    padding: max(50px, 10%);
 
-    min-height: 100vh;
-    min-width: 100vw;
+    min-height: calc(100vh - 50px);
+    min-width: calc(100vw - 50px);
 
 `
 
@@ -31,6 +31,7 @@ export const Flex = styled.div`
     ${(props) => props.flex ? `flex: ${props.flex};` : ''}
     ${(props) => props.transform ? `transform: ${props.transform};` : ''}
     ${(props) => props.margin ? `margin: ${props.margin};` : ''}
+    ${(props) => props.padding ? `padding: ${props.padding};` : ''}
     ${(props) => props.width ? `width: ${props.width};` : ''}
     ${(props) => props.height ? `height: ${props.height};` : ''}
     ${(props) => props.maxWidth ? `max-width: ${props.maxWidth};` : ''}
@@ -100,6 +101,6 @@ export const TitleContainer = styled.div`
 export const LogoMedium = styled.img`
 
     height: 55%;
-    width: 100%;
+    // width: 100%;
 
 `

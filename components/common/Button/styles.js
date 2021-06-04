@@ -6,6 +6,7 @@ export const StyledButton = styled.button`
     ${(props) => props.fullWidth ? 'width: 100%;' : ''}
     ${(props) => props.width ? `width: ${props.width};` : ''}
     height: 48px;
+    padding: 15px;
     
     font: inherit;
     ${(props) => props.fontSize ? `font-size: ${props.fontSize};` : ''}
