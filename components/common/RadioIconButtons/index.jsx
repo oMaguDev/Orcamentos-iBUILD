@@ -21,8 +21,7 @@ const RadioIconButtons = ({ Icon,options, active, setActive }) => {
     console.log('options: ', options)
 
     return (
-        <OptionsContainer 
-        >
+        <OptionsContainer withBorderBottom>
             { options && options.map((e, i) => (
                 <OptionItem key={e.label}>
                     <IconContainer

@@ -38,8 +38,9 @@ export const OptionItem = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  text-align: center;
 
-  width: 200px;
+  // width: 200px;
 
   margin: 15px;
 
@@ -49,20 +50,23 @@ export const OptionItem = styled.div`
 
   p {
     margin: 0;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
   }
 `
 
 export const OptionsContainer = styled.div`
 
   margin:  20px 0;
-  padding-bottom: 20px;
 
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
 
-  border-bottom: solid 2px ${({ theme }) => theme.colors.text.neutral400 };
+  ${(props) => props.withBorderBottom ? `
+    padding: 0 0 20px;
+    border-bottom: solid 2px ${props.theme.colors.text.neutral400};
+  ` : ''}
+
 `
 
 

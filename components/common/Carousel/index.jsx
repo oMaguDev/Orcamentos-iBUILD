@@ -29,7 +29,7 @@ const DotsItem = ({ isActive }) => {
 
 // activeIndex, slidePrev, slideNext, activeIndex, setActiveIndex
 
-const Carousel = ({ items }) => { //, stepper, stepperSubmit, autoPlay = true, infinite
+const Carousel = ({ items, fullScreen }) => { //, stepper, stepperSubmit, autoPlay = true, infinite
 
     
     // const syncActiveIndex = ({ item }) => setActiveIndex(item);
@@ -63,41 +63,87 @@ const Carousel = ({ items }) => { //, stepper, stepperSubmit, autoPlay = true, i
 
     // console.log(carouselItems)
 
-    return (
-        <Flex
-            width='calc(100% - 250px)'
-            // height='100%'
-            style={{
-                alignSelf: 'normal'
-            }}
-        >
-            <AliceCarousel
-                // mouseTracking
-                items={carouselItems}
-                responsive={responsive}
-                disableButtonsControls
-                disableDotsControls //={disableDotsControls}
-                // autoPlay={autoPlay}
-                // autoPlayInterval={4000}
-                // infinite={infinite}
-                // touchMoveDefaultEvents={false}
-                activeIndex={activeIndex}
-                swipeDelta={2000}
-            />
-            <CarouselButtonContainer left>
-                <CarouselButton onClick={slidePrev}>
-                    <CaretLeft size={18} />
-                </CarouselButton>
-                        VOLTAR
+    if (fullScreen) {
+        return (
+            <Flex
+                column
+                // width='calc(100% - 250px)'
+                // height='100%'
+                // style={{
+                //     alignSelf: 'normal'
+                // }}
+            >
+                <AliceCarousel
+                    // mouseTracking
+                    items={carouselItems}
+                    responsive={responsive}
+                    disableButtonsControls
+                    disableDotsControls //={disableDotsControls}
+                    // autoPlay={autoPlay}
+                    // autoPlayInterval={4000}
+                    // infinite={infinite}
+                    // touchMoveDefaultEvents={false}
+                    activeIndex={activeIndex}
+                    swipeDelta={2000}
+                />
+                <Flex
+                    justifyContent='space-between'
+                    width='100%'
+                    margin='20px 0 0'
+                >
+                    <CarouselButtonContainer fullScreen>
+                        <CarouselButton onClick={slidePrev}>
+                            <CaretLeft size={18} />
+                        </CarouselButton>
+                                VOLTAR
+                            </CarouselButtonContainer>
+                    <CarouselButtonContainer fullScreen>
+                        AVANÇAR
+                        <CarouselButton onClick={slideNext}>
+                            <CaretRight size={18} />
+                        </CarouselButton>
                     </CarouselButtonContainer>
-            <CarouselButtonContainer right>
-                AVANÇAR
-                <CarouselButton onClick={slideNext}>
-                    <CaretRight size={18} />
-                </CarouselButton>
-            </CarouselButtonContainer>
-        </Flex>
-    )
+                </Flex>
+            </Flex>
+        )
+    } else {
+        return (
+            <Flex
+                width='calc(100% - 250px)'
+                // height='100%'
+                style={{
+                    alignSelf: 'normal'
+                }}
+            >
+                <AliceCarousel
+                    // mouseTracking
+                    items={carouselItems}
+                    responsive={responsive}
+                    disableButtonsControls
+                    disableDotsControls //={disableDotsControls}
+                    // autoPlay={autoPlay}
+                    // autoPlayInterval={4000}
+                    // infinite={infinite}
+                    // touchMoveDefaultEvents={false}
+                    activeIndex={activeIndex}
+                    swipeDelta={2000}
+                />
+                <CarouselButtonContainer left>
+                    <CarouselButton onClick={slidePrev}>
+                        <CaretLeft size={18} />
+                    </CarouselButton>
+                            VOLTAR
+                        </CarouselButtonContainer>
+                <CarouselButtonContainer right>
+                    AVANÇAR
+                    <CarouselButton onClick={slideNext}>
+                        <CaretRight size={18} />
+                    </CarouselButton>
+                </CarouselButtonContainer>
+            </Flex>
+        )
+    }
+
 }
 
 export default Carousel

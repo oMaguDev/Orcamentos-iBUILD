@@ -6,12 +6,13 @@ export const Layout = styled.div`
     height: 100%;
     width: 100%;
     // max-width: 900px;
-    // margin: auto;
-    // padding: max(50px, 10%);
-    padding: 50px;
+    // margin: 50px;
+    padding: min(50px, 10%);
+    padding-top: 50px;
+    // padding: 50px;
 
-    min-height: calc(100vh - 50px);
-    min-width: calc(100vw - 50px);
+    min-height: calc(100vh - 100px);
+    min-width: calc(100vw - 100px);
 
 `
 

@@ -29,15 +29,25 @@ export const CarouselButtonContainer = styled.div`
     display: flex;
     align-items: center;
     color: ${({ theme }) => theme.colors.primary.purple };
+    
+    ${(props) => !props.left ? '' : `
     position: absolute;
     z-index: 15;
     bottom: 30px;
-    ${(props) => !props.left ? '' : `
-        left: 300px;
+    left: 300px;
     `}
+    
     ${(props) => !props.right ? '' : `
+    position: absolute;
+    z-index: 15;
+    bottom: 30px;
         right: 40px;
     `}
+
+    ${(props) => !props.fullScreen ? '' : `
+        
+    `}
+
 `
 
 export const CarouselButton = styled.button`
