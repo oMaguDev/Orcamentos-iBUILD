@@ -29,7 +29,7 @@ const DotsItem = ({ isActive }) => {
 
 // activeIndex, slidePrev, slideNext, activeIndex, setActiveIndex
 
-const Carousel = ({ items, fullScreen }) => { //, stepper, stepperSubmit, autoPlay = true, infinite
+const Carousel = ({ items, fullScreen, lastSlideAction }) => { //, stepper, stepperSubmit, autoPlay = true, infinite
 
     
     // const syncActiveIndex = ({ item }) => setActiveIndex(item);
@@ -100,7 +100,9 @@ const Carousel = ({ items, fullScreen }) => { //, stepper, stepperSubmit, autoPl
                             </CarouselButtonContainer>
                     <CarouselButtonContainer fullScreen>
                         AVANÇAR
-                        <CarouselButton onClick={slideNext}>
+                        <CarouselButton onClick={activeIndex === carouselItems.length - 1 ? (
+                            lastSlideAction ?  lastSlideAction : slideNext
+                        ) : (slideNext)}>
                             <CaretRight size={18} />
                         </CarouselButton>
                     </CarouselButtonContainer>

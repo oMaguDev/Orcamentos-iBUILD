@@ -54,7 +54,7 @@ export const InputContainer = styled.div`
     height: 60px;
     padding: 19px;
 
-    border-radius: 8px;
+    // border-radius: 8px;
     border: 0.5px solid ${({ theme }) => theme.colors.primary.dark};
 
     font: inherit;

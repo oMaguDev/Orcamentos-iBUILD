@@ -5,10 +5,12 @@ export const StyledButton = styled.button`
     
     ${(props) => props.fullWidth ? 'width: 100%;' : ''}
     ${(props) => props.width ? `width: ${props.width};` : ''}
-    height: 48px;
-    padding: 15px;
+    // height: 48px;
+    padding: 8px 60px;
     
     font: inherit;
+    font-size: 1.2rem;
+    font-weight: 600;
     ${(props) => props.fontSize ? `font-size: ${props.fontSize};` : ''}
     ${(props) => props.fontWeight ? `font-weight: ${props.fontWeight};` : ''}
     
@@ -17,19 +19,19 @@ export const StyledButton = styled.button`
     
     cursor: pointer;
     
-    background: ${({ theme }) => theme.colors.primary.pink };
+    background: ${({ theme }) => theme.colors.primary.purple };
     color: ${({ theme }) => theme.colors.text.white };
     
     ${(props) => props.margin ? `margin: ${props.margin};` : ''}
     
     ${(props) => !props.secondary ? '' : `
-        border: 1px solid ${props.theme.colors.primary.pink};
-        color: ${props.theme.colors.primary.pink};
+        border: 1px solid ${props.theme.colors.primary.purple};
+        color: ${props.theme.colors.primary.purple};
         background: inherit;
     `}
 
     ${(props) => !props.tertiary ? '' : `
-        color: ${props.theme.colors.primary.pink};
+        color: ${props.theme.colors.primary.purple};
         background: inherit;
     `}
 

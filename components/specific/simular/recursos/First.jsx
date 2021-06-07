@@ -69,7 +69,8 @@ const First = () => {
                     <RadioIconButtons
                         options={iconOptions}
                         active={active}    
-                        setActive={setActive}    
+                        setActive={setActive}
+                        withBorderBottom
                     />
                     <ExplainingP>
                         Você já fez algum financiamento antes?
@@ -82,7 +83,7 @@ const First = () => {
                 </Flex>
                 <Box
                     width='100%'
-                    maxWidth='500px'
+                    maxWidth='700px'
                     height='100%'
                     // padding='20px'
                 >

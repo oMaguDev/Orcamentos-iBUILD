@@ -4,9 +4,18 @@ import { Flex, Layout } from "../components/Containers"
 import StepContent from '../components/common/StepContent'
 import Carousel from "../components/common/Carousel"
 import { useEffect, useState } from "react"
+import { useRouter } from 'next/router'
 
 
-const Simular = () => {
+const Levantamento = () => {
+
+    const router = useRouter()
+
+    const [startPage, setStartPage] = useState(true)
+
+    useEffect(() => {
+        console.log('startPage: ', startPage )
+    }, [startPage])
 
     const [area, setArea] = useState('')
     const [estilo, setEstilo] = useState('')
@@ -31,87 +40,95 @@ const Simular = () => {
     }, [area, lavabos, estilo, pavimentos])
 
     const stepsTitles = [
-        'Área Total',
-        'Estilo Arquitetônico',
-        'Qtde. Pavimentos',
-        'Paredes Externas',
-        'Telhas',
-        'Garagem',
-        'Sala de Estar/TV',
-        'Escritório',
-        'Quartos',
-        'Despensa',
-        'Banheiros',
-        'Cozinha',
-        'Área Gourmet',
-        'Lavabos',
-        'Área de Serviço',
-        'Int. Hid./Ele.',
-        'Conforto',
-        'Acabamentos'
+        'Informações pessoais',
+        'Recursos Financeiros',
+        'Resumo',
     ]
 
     const steps = [
         {
-            caption: 'Escolha o tamanho',
-            title: 'Área Total',
-            subtitle: 'Tudo bem se não for exatamente igual, a ideia aqui é nos ajudar a entender qual o estilo do seu projeto',
+            caption: 'Informações',
+            title: 'Pessoais',
+            imageSrc: '/images/Pessoas/Pessoas 7.svg',
             value: area,
             onChange: setArea,
             inputs: [
                 {
                     value: area,
                     onChange: setArea,
-                    label: 'Área Total',
+                    label: 'Renda Bruta Familiar (mensal comprovada)',
+                    placeholder: 'Insira a renda mensal em reais',
+                    type: 'number'
+                },
+                {
+                    value: area,
+                    onChange: setArea,
+                    label: 'Data de nascimento (proponente mais velho)',
+                    placeholder: 'DD/MM/AAAA',
+                    type: 'number'
+                },
+                {
+                    value: area,
+                    onChange: setArea,
+                    label: 'Estado Civil',
                     placeholder: 'Insira a área total',
                     type: 'number'
-                }
+                },
+                {
+                    value: area,
+                    onChange: setArea,
+                    label: 'Local de construção',
+                    placeholder: 'Insira a área total',
+                    type: 'number'
+                },
             ]
         },
         {
-            caption: 'Escolha o estilo',
-            title: 'Estilo Arquitetônico',
-            subtitle: 'Tudo bem se não for exatamente igual, a ideia aqui é nos ajudar a entender qual o estilo do seu projeto',
+            caption: 'Recursos',
+            title: 'Financeiros',
             value: estilo,
             onChange: setEstilo,
-            options: [
+            inputs: [
                 {
-                    label: 'Clássica',
-                    value: 'classica',
+                    value: area,
+                    onChange: setArea,
+                    label: 'Valor estimado para o terreno',
+                    placeholder: 'Insira o valor em reais',
+                    type: 'number'
                 },
                 {
-                    label: 'Neo-Clássica',
-                    value: 'neoClassica',
+                    value: area,
+                    onChange: setArea,
+                    label: 'Valor disponível para entrada',
+                    placeholder: 'Insira o valor da entrada em reais',
+                    type: 'number'
                 },
                 {
-                    label: 'Mediterrânea',
-                    value: 'mediterranea',
+                    value: area,
+                    onChange: setArea,
+                    label: 'Tem FGTS? Se sim, quanto?',
+                    placeholder: 'Insira o valor do FGTS',
+                    type: 'number'
                 },
                 {
-                    label: 'Brasileira',
-                    value: 'brasileira',
+                    value: area,
+                    onChange: setArea,
+                    label: 'Número do pis',
+                    placeholder: 'Insira o número do pis',
+                    type: 'number'
                 },
                 {
-                    label: 'Minimalista',
-                    value: 'minimalista',
-                },
-                {
-                    label: 'Contemporânea',
-                    value: 'contemporanea',
-                },
-                {
-                    label: 'Americana',
-                    value: 'americana',
-                },
-                {
-                    label: 'Europeia',
-                    value: 'europeia',
+                    value: area,
+                    onChange: setArea,
+                    label: 'Selecione a modalidade de financiamento',
+                    placeholder: 'Insira o número do pis',
+                    type: 'number'
                 },
             ]
         },
         {
-            caption: 'Escolha a quantidade',
-            title: 'Pavimentos e escadas',
+            caption: 'Resumo',
+            title: 'Recursos para construção',
             subtitle: 'Escolha quantos pavimentos e o estilo das escadas na sua nova casa. ',
             value: pavimentos,
             onChange: setPavimentos,
@@ -134,188 +151,32 @@ const Simular = () => {
                 },
             ]
         },
-        {
-            caption: 'Escolha o padrão',
-            title: 'Paredes externas',
-            subtitle: 'Escolha o padrão das paredes externas',
-            value: paredes,
-            onChange: setParedes,
-            options: [
-                {
-                    label: 'Standard',
-                    value: 'standard',
-                },
-                {
-                    label: 'Premium',
-                    value: 'premium',
-                },
-            ]
-        },
-        {
-            caption: 'Escolha o tipo',
-            title: 'Telhas',
-            subtitle: 'Escolha o tipo das telhas da casa',
-            value: telhas,
-            onChange: setTelhas,
-            options: [
-                {
-                    label: 'Standard',
-                    value: 'standard',
-                },
-                {
-                    label: 'Premium',
-                    value: 'premium',
-                },
-            ]
-        },
-        {
-            caption: 'Escolha o padrão',
-            title: 'Garagem',
-            subtitle: 'Escolha o padrão de acabamento da garagem',
-            value: garagem,
-            onChange: setGaragem,
-            options: [
-                {
-                    label: 'Standard',
-                    value: 'standard',
-                },
-                {
-                    label: 'Premium',
-                    value: 'premium',
-                },
-            ]
-        },
-        {
-            caption: 'Escolha o tamanho',
-            title: 'Sala de Estar/TV',
-            subtitle: 'Escolha o tamanho da sala de estar/TV',
-            value: sala,
-            onChange: setSala,
-            options: [
-                {
-                    label: '1 sala pequena (Aprox. 10 m²)',
-                    value: 'pequena',
-                },
-                {
-                    label: '1 sala média (Aprox. 25 m²)',
-                    value: 'media',
-                },
-                {
-                    label: '1 sala grande (Aprox. 40 m²)',
-                    value: 'grande',
-                },
-            ],
-            inputs: [
-                {
-                    label: 'Outro tamanho',
-                    value: sala,
-                    onChange: setSala,
-                    placeholder: 'Insira o tamanho em m2',
-                    type: 'number'
-                }
-            ]
-        },
-        {
-            caption: 'Escolha o tamanho',
-            title: 'Escritório',
-            subtitle: 'Escolha o tamanho da escritório',
-            value: escritorio,
-            onChange: setEscritorio,
-            options: [
-                {
-                    label: 'Escritório pequeno (Aprox. 10 m²)',
-                    value: 'pequena',
-                },
-                {
-                    label: 'Escritório médio (Aprox. 25 m²)',
-                    value: 'media',
-                },
-                {
-                    label: 'Escritório grande (Aprox. 40 m²)',
-                    value: 'grande',
-                },
-            ],
-        },
-        {
-            caption: 'Escolha a quantidade',
-            title: 'Quartos',
-            subtitle: 'Escolha a quantidade de quartos',
-            value: quartos,
-            onChange: setQuartos,
-            inputs: [
-                {
-                    label: 'Quarto pequeno',
-                    placeholder: '(Aprox. 10 m²)',
-                    value: quartos.small,
-                    onChange: setQuartos,
-                    type: 'number',
-                    width: '95%',
-                    
-                },
-                {
-                    label: 'Quarto grande',
-                    placeholder: '(Aprox. 40 m²)',
-                    value: quartos.big,
-                    onChange: setQuartos,
-                    type: 'number',
-                    width: '95%',
-                },
-                {
-                    label: 'Quarto médio',
-                    placeholder: '(Aprox. 25 m²)',
-                    value: quartos.medium,
-                    onChange: setQuartos,
-                    type: 'number',
-                    width: '95%',
-                },
-            ],
-        },
-        {
-            caption: 'ESCOLHA A QUANTIDADE',
-            title: 'LAVABOS',
-            subtitle: 'Lavabos que possuam apenas pias, ducha higiênica e vaso sanitário',
-            value: lavabos,
-            onChange: setLavabos,
-            options: [
-                {
-                    label: 'NÃO QUERO',
-                    value: 'none',
-                },
-                {
-                    label: '01 (UM)',
-                    value: 'UM',
-                },
-                {
-                    label: '02 (DOIS)',
-                    value: 'DOIS',
-                },
-                {
-                    label: '03 (TRÊS)',
-                    value: 'TRÊS',
-                },
-                {
-                    label: '04 (QUATRO)',
-                    value: 'QUATRO',
-                },
-            ]
-        },
-        
     ]
 
-    // const items = [
-    //     <StepContent key={steps[0]} />,
-    //     <StepContent key={steps[1]} />,
-    //     <StepContent key={steps[2]} />,
-    //     <StepContent key={steps[3]} />,
-    //     <StepContent key={steps[0]} />,
-    //     <StepContent key={steps[1]} />,
-    //     <StepContent key={steps[2]} />,
-    //     <StepContent key={steps[3]} />,
-    // ]
-
     const items = steps.map((e, i) => (
-        <StepContent key={e.title} data={e} />
+        <StepContent noStatusBox data={e} />
     ))
+
+    if (startPage) {
+        return (
+            <Flex
+                // alignItems='center'
+                justifyContent='flex-end'
+                height='100%'
+            >
+                <Navbar />
+                <Stepper
+                    pinkDisplay
+                    title='Vamos fazer o levantamento dos seus recursos?'
+                    parags={[
+                        'Se você ainda não possui o projeto arquitetônico, não tem problema, a seguir faremos um passo a passo onde você poderá montar a sua casa projetando os cômodos do seu jeito.',
+                        'Se você já possuir o projeto arquitetônico, preencha normalmente as próximas etapas conforme seu projeto e ao final saiba quanto sua casa vai custar.',
+                    ]}
+                    onStart={() => setStartPage(false)}
+                />
+            </Flex>
+        )
+    }
 
     return (
         <Flex
@@ -326,16 +187,17 @@ const Simular = () => {
             <Navbar />
             <Stepper
                 steps={stepsTitles}
-                title='Monte Sua Casa'    
+                title='levantamento de recursos'    
             />
             <Carousel
                 items={items}
+                lastSlideAction={() => router.push('/')}
             />
         </Flex>
     )
 }
 
-export default Simular
+export default Levantamento
 
 
 

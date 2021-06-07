@@ -88,7 +88,7 @@ const Main = () => {
                     >
                         <Button
                             fontWeight='600'
-                            onClick={() => router.push('/recurso')}
+                            onClick={() => router.push('/recursos')}
                         >
                             EU QUERO A MINHA CASA!
                         </Button>

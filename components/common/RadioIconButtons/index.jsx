@@ -11,17 +11,20 @@ import {
 } from "./styles"
 
 
-const RadioIconButtons = ({ Icon,options, active, setActive }) => {
+const RadioIconButtons = ({ Icon, options, active, setActive, withBorderBottom = false, title }) => {
 
     // const [select, setSelect] = useState(null);
     // const handleSelectChange = (event) => {
     //     const value = event.target.value;
     //     setSelect(value);
     // };
-    console.log('options: ', options)
+    // console.log('options: ', options)
 
     return (
-        <OptionsContainer withBorderBottom>
+        <OptionsContainer withBorderBottom={withBorderBottom}>
+            { title && (
+                <h2>{ title }</h2>
+            )}
             { options && options.map((e, i) => (
                 <OptionItem key={e.label}>
                     <IconContainer

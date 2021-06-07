@@ -81,7 +81,7 @@ const Input = ({
 
     return (
         <Box
-            // width={width}
+            width={width}
             height='100%'
             textAlign='left'
             margin={margin}
@@ -90,7 +90,7 @@ const Input = ({
                 margin='0 0 16px'
             >
                 <label htmlFor={id}>
-                    {label}
+                    {label.toUpperCase()}
                 </label>
             </Box>
             <InputContainer

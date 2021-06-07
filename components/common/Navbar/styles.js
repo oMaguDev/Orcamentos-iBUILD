@@ -23,13 +23,13 @@ export const StyledNav = styled.nav`
     
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-between;
     
 `
     
 export const NavItem = styled.div`
     
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     margin: 0 5px;
     color: ${({ theme }) => theme.colors.text.white };
     

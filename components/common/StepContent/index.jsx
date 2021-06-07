@@ -6,7 +6,7 @@ import { MiddleContainer, StepContentContainer, StepImageContainer } from "./sty
 import Input from '../../form/Input'
 
 
-const StepContent = ({ data }) => {
+const StepContent = ({ data, noStatusBox }) => {
     // <Flex
     //     column
     //     alignItems='flex-start'
@@ -17,13 +17,17 @@ const StepContent = ({ data }) => {
     //     // padding='20px'
     // >
     // </Flex>
+
+    // console.log('data: ', data)
+
     return (
         <Flex
             width='100%'
             justifyContent='space-evenly'
+            key={data.title}
         >
             <StepImageContainer>
-                <img style={{ width: '100%' }} src="/images/americana.jpg" alt="" />
+                <img style={{ width: '100%' }} src={data.imageSrc ? data.imageSrc : "/images/americana.jpg"} alt="" />
             </StepImageContainer>
             <StepContentContainer>
                 <TitleContainer>
@@ -31,6 +35,30 @@ const StepContent = ({ data }) => {
                     <h2>{data.title.toUpperCase()}</h2>
                     <p>{data.subtitle}</p>
                 </TitleContainer>
+                {noStatusBox ? (
+                    <>
+                        {data.options && (
+                            <RadioButtons
+                                options={data.options}
+                                onChange={data.onChange}
+                                select={data.value}
+                            />
+                        )}
+                        {data.inputs && data.inputs.map((e, i) => (
+                            <Input
+                                value={e.value}
+                                onChange={(event) => e.onChange(event.target.value)}
+                                label={e.label}
+                                placeholder={e.placeholder}
+                                type={e.type ? e.type : 'text'}
+                                margin='10px'
+                                width={e.width ? e.width : '100%'}
+                                small
+                                key={e.label}
+                            />
+                        ))}
+                    </>
+                ) : (
                 <MiddleContainer>
                     {data.options && (
                         <RadioButtons
@@ -54,7 +82,10 @@ const StepContent = ({ data }) => {
                     ))}
                     {/* <Select /> */}
                 </MiddleContainer>
-                <StatusBox />
+                )}
+                {!noStatusBox && (
+                    <StatusBox />
+                )}
             </StepContentContainer>
         </Flex>
     )

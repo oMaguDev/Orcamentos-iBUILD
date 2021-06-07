@@ -67,6 +67,11 @@ export const OptionsContainer = styled.div`
     border-bottom: solid 2px ${props.theme.colors.text.neutral400};
   ` : ''}
 
+  h2 {
+    font-size: 4rem;
+    font-weight: 200;
+    letter-spacing: 2px;
+  }
 `
 
 
