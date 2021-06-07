@@ -18,7 +18,7 @@ const RadioButtons = ({ options, select, onChange }) => {
     return (
             <Wrapper>
                 { options && options.map((e, i) => (
-                    <Item>
+                    <Item key={e.label}>
                         <RadioButton
                             type="radio"
                             name="radio"

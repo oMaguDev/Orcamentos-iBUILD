@@ -13,7 +13,7 @@ export const Background = styled.div`
     color: ${({ theme }) => theme.colors.text.white};
     
     overflow: visible;
-    z-index: 10;
+    z-index: 9;
     
     display: flex;
     flex-direction: column;
@@ -25,6 +25,14 @@ export const Background = styled.div`
     
     top: 50px;
     left: 0;
+    
+    ${(props) => props.pink ? `
+    top: 0;
+    left: 0;
+    width: 700px;
+    height: max(100vh, 650px);
+    background: ${props.theme.colors.primary.pink};
+    ` : ''}
     
     `
     
@@ -40,7 +48,14 @@ export const Background = styled.div`
     position: absolute;
     top: 50px;
     left: 250px;
-    z-index: 9;
+    z-index: 8;
+    
+    ${(props) => props.pink ? `
+    border-width: max(100vh, 650px) 200px 0 0;
+    top: 0;
+    left: 700px;
+    border-color: ${props.theme.colors.primary.pink} transparent transparent transparent;
+    ` : ''}
     `
 
 export const StepperContainer = styled.div`
@@ -54,6 +69,8 @@ margin-top: 10px;
     // text-align: left;
 
     // transform: translateX(24px);
+
+
 
 `
 

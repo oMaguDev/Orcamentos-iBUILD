@@ -5,22 +5,24 @@ const Navbar = () => {
     return (
         <NavContainer>
             <StyledNav>
+                <div>
                 <LogoIcon src="/images/icone_vermelho.svg" alt="" />
-                <NavItem>
-                    Seu Cadastro
-                </NavItem>
-                /
-                <NavItem>
-                    Recurso Construção
-                </NavItem>
-                /
-                <NavItem>
-                    Monte Sua Casa
-                </NavItem>
-                /
-                <NavItem>
-                    Resumo
-                </NavItem>
+                </div>
+                <Flex
+                    margin='0 10px 0 0'
+                >
+                    <NavItem>
+                        SEU CADASTRO
+                    </NavItem>
+                    /
+                    <NavItem>
+                        LEVANTAMENTO DE RECURSOS
+                    </NavItem>
+                    /
+                    <NavItem>
+                        MONTE SUA CASA
+                    </NavItem>
+                </Flex>
             </StyledNav>
             <Triangle />
         </NavContainer>

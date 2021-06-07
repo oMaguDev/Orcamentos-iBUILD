@@ -26,12 +26,32 @@ export const H3 = styled.h3`
     ${(props) => props.fontSize ? `font-size: ${props.fontSize};` : ''}
 `
 
+export const Title2 = styled.h2`
+${(props) => props.fontSize ? `font-size: ${props.fontSize};` : ''}
+${(props) => props.textColor ? `color: ${props.theme.colors.text[props.textColor]};` : ''}
+`
+
 export const Parag = styled.p`
 
 color: ${({ theme }) => theme.colors.text.neutral600 };
+${(props) => props.textColor ? `color: ${props.theme.colors.text[props.textColor]};` : ''}
 
 font-weight: 400;
 
 ${(props) => props.fontSize ? `font-size: ${props.fontSize};` : ''}
 
 `
+
+export const ExplainingP = styled.p`
+
+    color: ${({ theme }) => theme.colors.text.main};
+    font-weight: 400;
+    font-size: 0.8rem;
+    line-height: 2;
+    text-align: left;
+    
+
+    ${(props) => props.fontSize ? `font-size: ${props.fontSize};` : ''}
+    ${(props) => props.margin ? `margin: ${props.margin};` : ''}
+
+    `

@@ -14,7 +14,7 @@ const GlobalStyle = createGlobalStyle`
         padding: 0;
         background: #fff;
         color: #54596c;
-        font-family: 'Poppins', sans-serif;
+        font-family: urw-din, sans-serif;
         height: 100%;
     }
     
@@ -40,6 +40,7 @@ const theme = {
             pink: '#fb1d47',
             lightGrey: '#ebeaf1',
             green: 'chartreuse',
+            lightGreen: '#BDE4A7',
         },
         text: {
             title: '#ff1b5f', // '#bd1245', // '#b93f64' // 

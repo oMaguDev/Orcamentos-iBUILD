@@ -1,9 +1,59 @@
 import { Flex } from "../../Containers"
+import { H1, Parag, Title2 } from "../../Text"
+import Button from "../Button"
 import CustomStepper from "../CustomStepper"
 import { Background, StepDot, StepLine, StepperContainer, Triangle, StepDotsContainer, Label, MainTitle } from "./styles"
 
 
-const Stepper = ({ steps }) => {
+const Stepper = ({ steps, title, pinkDisplay, onStart, parags }) => {
+
+    if (pinkDisplay) {
+        return (
+            <>
+            <Background
+                pink
+            >
+                <StepperContainer>
+                    <Flex 
+                        column
+                        alignItems='flex-start'
+                        justifyContent='space-between'
+                        margin='40px 0 0 0'
+                        transform='translate(120px, 50px)'
+                        width='650px'
+                        textAlign='left'
+                        height='70vh'
+                    >
+                        <div>
+                            <Title2
+                                fontSize='4rem'
+                            >
+                                { title }
+                            </Title2>
+                            { parags && parags.map((e, i) => (
+                                <Parag
+                                    textColor='white'
+                                    key={i}
+                                >
+                                    { e }
+                                </Parag>
+                            ))}
+                        </div>
+                        <div>
+                            <Button
+                                onClick={() => onStart()}
+                            >
+                                COMEÇAR
+                            </Button>
+                        </div>
+                    </Flex>
+                </StepperContainer>
+            </Background>
+            <Triangle pink />
+            </>
+        )
+    }
+
     return (
         <>
         <Background>
@@ -12,80 +62,17 @@ const Stepper = ({ steps }) => {
                     column
                     alignItems='flex-start'
                     transform='translateX(120px)'
+                    width='250px'
+                    textAlign='left'
                     >
-                    <MainTitle>MONTE A SUA CASA</MainTitle>
+                    <MainTitle>{ title.toUpperCase() }</MainTitle>
                     <CustomStepper steps={steps} />
-                    {/* <Flex
-                        alignItems='flex-start'
-                        justifyContent='center'
-                        width='100%'
-                        textAlign='left'
-                        >
-                        <StepDotsContainer>
-                        <StepDot index={0} />
-                        <StepLine />
-                        <StepDot index={1} />
-                        <StepLine />
-                        <StepDot index={2} />
-                        <StepLine />
-                        <StepDot index={3} />
-                        <StepLine />
-                        <StepDot index={3} />
-                        <StepLine />
-                        <StepDot index={3} />
-                        <StepLine />
-                        <StepDot index={3} />
-                        <StepLine />
-                        <StepDot index={3} />
-                        <StepLine />
-                            <StepDot index={3} />
-                            </StepDotsContainer>
-                            <Flex
-                            column
-                            margin='0 0 0 10px'
-                            justifyContent='space-around'
-                            alignItems='right'
-                            >
-                            { steps.map((e, i) => (
-                                <Label first={i === 0}>
-                                { e }
-                                </Label>
-                                ))}
-                                <Label first>
-                                ESTILO
-                                </Label>
-                                <Label>
-                                ESTILO
-                                </Label>
-                                <Label>
-                                ESTILO
-                                </Label>
-                                <Label>
-                                ESTILO
-                                </Label>
-                                <Label>
-                                ESTILO
-                                </Label>
-                                <Label>
-                                ESTILO
-                                </Label>
-                                <Label>
-                                ESTILO
-                                </Label>
-                                <Label>
-                                ESTILO
-                                </Label>
-                                <Label>
-                                ESTILO
-                                </Label>
-                                </Flex>
-                            </Flex> */}
                 </Flex>
             </StepperContainer>
         </Background>
         <Triangle />
         </>
-        )
+    )
         // </Flex>
 }
 

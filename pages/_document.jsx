@@ -1,6 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
-import { ServerStyleSheets } from '@material-ui/core/styles';
 import React from "react"
 
 class MyDocument extends Document {
@@ -34,8 +33,7 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <link rel="preconnect" href="https://fonts.gstatic.com" />
-          <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+          <link rel="stylesheet" href="https://use.typekit.net/yiz4ljn.css"></link>
         </Head>
         <body>
           <Main />
@@ -47,23 +45,23 @@ class MyDocument extends Document {
 }
 
 
-MyDocument.getInitialProps = async (ctx) => {
+// MyDocument.getInitialProps = async (ctx) => {
 
-  // Render app and page and get the context of the page with collected side effects.
-  const sheets = new ServerStyleSheets();
-  const originalRenderPage = ctx.renderPage;
+//   // Render app and page and get the context of the page with collected side effects.
+//   const sheets = new ServerStyleSheets();
+//   const originalRenderPage = ctx.renderPage;
 
-  ctx.renderPage = () => originalRenderPage({
-    enhanceApp: (App) => (props) => sheets.collect(<App {...props} />),
-  });
+//   ctx.renderPage = () => originalRenderPage({
+//     enhanceApp: (App) => (props) => sheets.collect(<App {...props} />),
+//   });
 
-  const initialProps = await Document.getInitialProps(ctx);
+//   const initialProps = await Document.getInitialProps(ctx);
 
-  return {
-    ...initialProps,
-    // Styles fragment is rendered after the app and page rendering finish.
-    styles: [...React.Children.toArray(initialProps.styles), sheets.getStyleElement()],
-  };
-};
+//   return {
+//     ...initialProps,
+//     // Styles fragment is rendered after the app and page rendering finish.
+//     styles: [...React.Children.toArray(initialProps.styles), sheets.getStyleElement()],
+//   };
+// };
 
 export default MyDocument

@@ -1,5 +1,5 @@
 import { StepperDot, StepperLine, StepTitle } from "./styles"
-import { Flex } from '../../Containers'
+import { Box, Flex } from '../../Containers'
 import { useContext, useEffect } from "react"
 import { ActiveIndexContext } from "../../../contexts/activeIndex"
 
@@ -27,11 +27,10 @@ const CustomStepper = ({ steps }) => {
                 //     alignItems='flex-start'
                 //     justifyContent='flex-start'
                 // >
-                <>
+                <Box key={e}>
                     <Flex
                         // alignItems='center'
                         height='8px'
-                        key={e}
                     >
                         <StepperDot
                             stepCompleted={ i < activeIndex }
@@ -40,7 +39,7 @@ const CustomStepper = ({ steps }) => {
                         <StepTitle>{ e.toUpperCase() }</StepTitle>
                     </Flex>
                     <StepperLine />
-                </>
+                </Box>
                 // </Flex>
             ) : (
                 // <Flex

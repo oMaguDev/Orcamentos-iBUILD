@@ -314,7 +314,7 @@ const Simular = () => {
     // ]
 
     const items = steps.map((e, i) => (
-        <StepContent data={e} />
+        <StepContent key={e.title} data={e} />
     ))
 
     return (
@@ -324,7 +324,10 @@ const Simular = () => {
             height='100%'
         >
             <Navbar />
-            <Stepper steps={stepsTitles} />
+            <Stepper
+                steps={stepsTitles}
+                title='Monte Sua Casa'    
+            />
             <Carousel
                 items={items}
             />

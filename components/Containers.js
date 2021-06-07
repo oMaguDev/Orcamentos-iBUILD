@@ -3,12 +3,16 @@ import styled from "styled-components";
 
 export const Layout = styled.div`
 
-    height: 100%;
-    width: 100%;
-    max-width: 900px;
-    margin: auto;
+    height: calc(100% - 100px);
+    width: calc(100% - 100px);
+    // max-width: 900px;
+    // margin: 50px;
+    padding: min(50px, 10%);
+    padding-top: 50px;
+    // padding: 50px;
 
-    min-height: 100vh;
+    min-height: calc(100vh - 100px);
+    min-width: calc(100vw - 100px);
 
 `
 
@@ -29,6 +33,7 @@ export const Flex = styled.div`
     ${(props) => props.flex ? `flex: ${props.flex};` : ''}
     ${(props) => props.transform ? `transform: ${props.transform};` : ''}
     ${(props) => props.margin ? `margin: ${props.margin};` : ''}
+    ${(props) => props.padding ? `padding: ${props.padding};` : ''}
     ${(props) => props.width ? `width: ${props.width};` : ''}
     ${(props) => props.height ? `height: ${props.height};` : ''}
     ${(props) => props.maxWidth ? `max-width: ${props.maxWidth};` : ''}
@@ -60,5 +65,44 @@ export const Box = styled.div`
 export const CarouselContainer = styled.div`
 
     
+
+`
+
+export const TitleContainer = styled.div`
+
+    text-align: left;
+
+    color: ${({ theme }) => theme.colors.primary.purple};
+
+    h4 {
+        margin: 0;
+        font-weight: 400;
+        font-size: 0.75rem;
+        letter-spacing: 2px;
+    }
+    
+    h2 {
+        margin: 0 0 10px;
+        font-size: 2.2rem;
+    }
+    
+    h1 {
+        margin: 0 0 10px;
+        font-size: 2.2rem;
+    }
+    
+    p {
+        margin: 0;
+        color: ${({ theme }) => theme.colors.text.main};
+        font-weight: 400;
+        font-size: 0.8rem;
+    }
+
+`
+
+export const LogoMedium = styled.img`
+
+    height: 55%;
+    // width: 100%;
 
 `
