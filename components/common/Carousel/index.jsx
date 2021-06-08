@@ -67,8 +67,8 @@ const Carousel = ({ items, fullScreen, lastSlideAction }) => { //, stepper, step
         return (
             <Flex
                 column
-                // width='calc(100% - 250px)'
-                // height='100%'
+                width='calc(100% - 250px)'
+                // height='80vh'
                 // style={{
                 //     alignSelf: 'normal'
                 // }}
@@ -87,22 +87,23 @@ const Carousel = ({ items, fullScreen, lastSlideAction }) => { //, stepper, step
                     swipeDelta={2000}
                 />
                 <Flex
-                    justifyContent='space-between'
-                    width='100%'
-                    height='100%'
-                    margin='20px 0 0'
+                    // justifyContent='space-between'
+                    // width='100%'
+                    // height=''
+                    // margin='20px 0 0'
                 >
                     <CarouselButtonContainer fullScreen>
                         <CarouselButton onClick={slidePrev}>
                             <CaretLeft size={18} />
                         </CarouselButton>
                                 VOLTAR
-                            </CarouselButtonContainer>
+                    </CarouselButtonContainer>
                     <CarouselButtonContainer fullScreen>
                         AVANÇAR
                         <CarouselButton onClick={activeIndex === carouselItems.length - 1 ? (
                             lastSlideAction ?  lastSlideAction : slideNext
-                        ) : (slideNext)}>
+                            ) : (slideNext)}
+                        >
                             <CaretRight size={18} />
                         </CarouselButton>
                     </CarouselButtonContainer>
@@ -139,7 +140,10 @@ const Carousel = ({ items, fullScreen, lastSlideAction }) => { //, stepper, step
                         </CarouselButtonContainer>
                 <CarouselButtonContainer right>
                     AVANÇAR
-                    <CarouselButton onClick={slideNext}>
+                    <CarouselButton onClick={activeIndex === carouselItems.length - 1 ? (
+                        lastSlideAction ?  lastSlideAction : slideNext
+                        ) : (slideNext)}
+                    >
                         <CaretRight size={18} />
                     </CarouselButton>
                 </CarouselButtonContainer>

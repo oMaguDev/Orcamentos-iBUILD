@@ -10,8 +10,8 @@ export const IconContainer = styled.div`
   margin-bottom: 10px;  
 
   background: ${({ theme }) => theme.colors.primary.lightGrey };
-  height: 180px;
-  width: 180px;
+  height: 100px;
+  width: 100px;
 
   display: flex;
   align-items: center;
@@ -20,7 +20,7 @@ export const IconContainer = styled.div`
   img {
     width: 100%;
     height: 100%;
-    padding: 60px 25px;
+    padding: 0 15px;
   }
   
   &:hover {
@@ -68,7 +68,7 @@ export const OptionsContainer = styled.div`
   ` : ''}
 
   h2 {
-    font-size: 4rem;
+    font-size: 3rem;
     font-weight: 200;
     letter-spacing: 2px;
   }

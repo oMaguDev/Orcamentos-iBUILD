@@ -43,15 +43,15 @@ const First = () => {
     return (
             <Flex
                 // width='calc(100% - 100px)'
-                height='100%' //'calc(100% - 100px)'
+                // height='100%' //'calc(100% - 100px)'
                 justifyContent='space-evenly'
-                margin='0'
+                margin='20px 0 0 0'
                 >
                 <Flex
                     column
                     textAlign='left'
                     width='100%'
-                    height='100%' //'calc(100% - 100px)'
+                    // height='100%' //'calc(100% - 100px)'
                     // maxWidth='600px'
                     margin='0'
                     alignItems='flex-start'
@@ -84,7 +84,7 @@ const First = () => {
                 <Box
                     width='100%'
                     maxWidth='700px'
-                    height='100%'
+                    // height='100%'
                     // padding='20px'
                 >
                     <img src="/images/Pessoas/Pessoas 5.svg" width='100%' height='100%' alt="" />

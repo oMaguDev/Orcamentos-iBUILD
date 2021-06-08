@@ -1,6 +1,6 @@
 import Navbar from "../components/common/Navbar"
 import Stepper from "../components/common/StepperBackground"
-import { Flex, Layout } from "../components/Containers"
+import { Box, Flex, Layout } from "../components/Containers"
 import StepContent from '../components/common/StepContent'
 import Carousel from "../components/common/Carousel"
 import { useEffect, useState } from "react"
@@ -27,6 +27,14 @@ const Montar = () => {
                 ]}
                 onStart={() => router.push('/levantamento')}
             />
+            <Box
+                width='100%'
+                maxWidth='700px'
+                height='100%'
+                padding='20px'
+            >
+                <img src="/images/Pessoas/Pessoas 8.svg" width='100%' height='100%' alt="" />
+            </Box>
         </Flex>
     )
 }

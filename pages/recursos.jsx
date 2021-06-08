@@ -19,13 +19,13 @@ const Resources = () => {
     const router = useRouter()
 
     return (
-        <Layout>
+        <Flex>
             <Carousel
                 fullScreen
                 items={carouselItems}
                 lastSlideAction={() => router.push('/levantamento')}
             />
-        </Layout>
+        </Flex>
     )
 }
 
