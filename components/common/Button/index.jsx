@@ -1,7 +1,7 @@
 import { StyledButton } from "./styles"
 
 
-const Button = ({ children, secondary, tertiary, disabled, small, fontSize, fontWeight, fullWidth, onClick, margin }) => {
+const Button = ({ children, secondary, tertiary, disabled, small, fontSize, fontWeight, fullWidth, onClick, margin, pink }) => {
     return (
         <StyledButton
             secondary={secondary}
@@ -13,6 +13,7 @@ const Button = ({ children, secondary, tertiary, disabled, small, fontSize, font
             fullWidth={fullWidth}
             onClick={onClick}
             margin={margin}
+            pink={pink}
         >
             { children }
         </StyledButton>

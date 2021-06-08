@@ -9,7 +9,7 @@ const Main = () => {
     const router = useRouter()
 
     return (
-        <Layout>
+        // <Layout>
             <Flex
                 // width='calc(100% - 100px)'
                 height='100%' //'calc(100% - 100px)'
@@ -89,6 +89,7 @@ const Main = () => {
                         <Button
                             fontWeight='600'
                             onClick={() => router.push('/recursos')}
+                            pink
                         >
                             EU QUERO A MINHA CASA!
                         </Button>
@@ -96,7 +97,7 @@ const Main = () => {
                     </Flex>
                 </Flex>
             </Flex>
-        </Layout>
+        // </Layout>
     )
 }
 

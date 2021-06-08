@@ -45,7 +45,18 @@ export const CarouselButtonContainer = styled.div`
     `}
 
     ${(props) => !props.fullScreen ? '' : `
-        
+
+        position: absolute;
+        z-index: 15;
+        // bottom: 30px;
+
+        &:first-child {
+            left: 40px;
+        }
+
+        &:last-child {
+            right: 40px;
+        }
     `}
 
 `

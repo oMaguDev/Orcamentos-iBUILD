@@ -52,14 +52,14 @@ const Second = () => {
     return (
             <Flex
                 // width='calc(100% - 100px)'
-                height='100%' //'calc(100% - 100px)'
+                // height='calc(100% - 100px)' //'calc(100% - 100px)'
                 justifyContent='space-evenly'
-                margin='0'
+                margin='20px 0 0 0'
             >
                 <Box
                     width='100%'
                     // maxWidth='700px'
-                    height='100%'
+                    // height='100%'
                     // padding='20px'
                 >
                     <img src="/images/Pessoas/Pessoas 3.svg" width='100%' height='100%' alt="" />

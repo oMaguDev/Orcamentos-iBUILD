@@ -22,6 +22,10 @@ export const StyledButton = styled.button`
     background: ${({ theme }) => theme.colors.primary.purple };
     color: ${({ theme }) => theme.colors.text.white };
     
+    ${(props) => !props.pink ? '' : `
+        background: ${props.theme.colors.primary.pink};
+    `}
+
     ${(props) => props.margin ? `margin: ${props.margin};` : ''}
     
     ${(props) => !props.secondary ? '' : `

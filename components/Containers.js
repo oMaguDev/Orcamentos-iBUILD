@@ -11,6 +11,9 @@ export const Layout = styled.div`
     padding-top: 50px;
     // padding: 50px;
 
+    ${(props) => props.width ? `width: ${props.width};` : ''}
+    ${(props) => props.height ? `height: ${props.height};` : ''}
+
     min-height: calc(100vh - 100px);
     min-width: calc(100vw - 100px);
 
@@ -26,6 +29,7 @@ export const Flex = styled.div`
     ${(props) => props.column ? 'flex-direction: column;' : ''}
     ${(props) => props.fullHeight ? 'height: 100%;' : ''}
 
+    ${(props) => props.position ? `position: ${props.position};` : ''}
     ${(props) => props.top ? `top: ${props.top};` : ''}
     ${(props) => props.left ? `left: ${props.left};` : ''}
     ${(props) => props.bottom ? `bottom: ${props.bottom};` : ''}
