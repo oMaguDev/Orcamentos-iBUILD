@@ -65,7 +65,8 @@ margin-top: 10px;
     display: block;
     z-index: 5;
 
-    width: 350px;
+    // width: 350px;
+    height:100%;
     // text-align: left;
 
     // transform: translateX(24px);
@@ -129,4 +130,9 @@ export const StepDot = styled.div`
 export const MainTitle = styled.h2`
     margin: 10px 0 20px;
 
+`
+
+export const ParagsContainer = styled.div`
+
+    width: 80%;
 `

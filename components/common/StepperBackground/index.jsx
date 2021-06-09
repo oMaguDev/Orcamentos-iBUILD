@@ -2,7 +2,7 @@ import { Flex } from "../../Containers"
 import { H1, Parag, Title2 } from "../../Text"
 import Button from "../Button"
 import CustomStepper from "../CustomStepper"
-import { Background, StepDot, StepLine, StepperContainer, Triangle, StepDotsContainer, Label, MainTitle } from "./styles"
+import { Background, StepDot, StepLine, StepperContainer, Triangle, StepDotsContainer, Label, MainTitle, ParagsContainer } from "./styles"
 
 
 const Stepper = ({ steps, title, pinkDisplay, onStart, parags }) => {
@@ -22,22 +22,25 @@ const Stepper = ({ steps, title, pinkDisplay, onStart, parags }) => {
                         transform='translate(120px, 50px)'
                         width='650px'
                         textAlign='left'
-                        height='70vh'
+                        height='70%'
                     >
                         <div>
                             <Title2
                                 fontSize='4rem'
+                                margin='0'
                             >
                                 { title }
                             </Title2>
-                            { parags && parags.map((e, i) => (
-                                <Parag
-                                    textColor='white'
-                                    key={i}
-                                >
-                                    { e }
-                                </Parag>
-                            ))}
+                            <ParagsContainer>
+                                { parags && parags.map((e, i) => (
+                                    <Parag
+                                        textColor='white'
+                                        key={i}
+                                    >
+                                        { e }
+                                    </Parag>
+                                ))}
+                            </ParagsContainer>
                         </div>
                         <div>
                             <Button

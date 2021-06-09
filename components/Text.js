@@ -29,6 +29,7 @@ export const H3 = styled.h3`
 export const Title2 = styled.h2`
 ${(props) => props.fontSize ? `font-size: ${props.fontSize};` : ''}
 ${(props) => props.textColor ? `color: ${props.theme.colors.text[props.textColor]};` : ''}
+${(props) => props.margin ? `margin: ${props.margin};` : ''}
 `
 
 export const Parag = styled.p`
@@ -40,6 +41,7 @@ font-weight: 400;
 
 ${(props) => props.fontSize ? `font-size: ${props.fontSize};` : ''}
 
+${(props) => props.margin ? `margin: ${props.margin};` : ''}
 `
 
 export const ExplainingP = styled.p`
