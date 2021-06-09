@@ -14,36 +14,36 @@ const Second = () => {
 
     const iconOptionsLand = [
         {
-            label: 'tenho todo o recurso para construir',
-            value: 'own_resource',
+            label: 'Não tenho terreno',
+            value: 'no_land',
             iconSrc: '/images/Ícones/Ícones 5.svg'
         },
         {
-            label: 'quero financiar toda a obra',
-            value: 'full_morgage',
+            label: 'Tenho o terreno financiado',
+            value: 'morgaged_land',
             iconSrc: '/images/Ícones/Ícones 8.svg'
         },
         {
-            label: 'tenho parte do recurso e quero financiar o restante',
-            value: 'partial_morgage',
+            label: 'Tenho o terreno quitado',
+            value: 'own_land',
             iconSrc: '/images/Ícones/Ícones 7.svg'
         },
     ]
 
     const iconOptionsProject = [
         {
-            label: 'tenho todo o recurso para construir',
-            value: 'own_resource',
+            label: 'Não tenho o projeto',
+            value: 'no_project',
             iconSrc: '/images/Ícones/Ícones 5.svg'
         },
         {
-            label: 'quero financiar toda a obra',
-            value: 'full_morgage',
+            label: 'Estou fazendo o projeto',
+            value: 'developing_project',
             iconSrc: '/images/Ícones/Ícones 6.svg'
         },
         {
-            label: 'tenho parte do recurso e quero financiar o restante',
-            value: 'partial_morgage',
+            label: 'Tenho o projeto pronto',
+            value: 'project_ready',
             iconSrc: '/images/Ícones/Ícones 4.svg'
         },
     ]
