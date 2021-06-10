@@ -1,8 +1,8 @@
 import { useState } from "react"
-import RadioButtons from "../../../common/RadioButtons"
-import RadioIconButtons from "../../../common/RadioIconButtons"
-import { Box, Flex, Layout, TitleContainer } from "../../../Containers"
-import { ExplainingP } from "../../../Text"
+import RadioButtons from "../../common/RadioButtons"
+import RadioIconButtons from "../../common/RadioIconButtons"
+import { Box, Flex, Layout, TitleContainer } from "../../Containers"
+import { ExplainingP } from "../../Text"
 
 
 const Second = () => {

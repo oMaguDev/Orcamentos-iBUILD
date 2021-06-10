@@ -9,8 +9,14 @@ export const StepContentContainer = styled.div`
     justify-content: center;
     margin:  20px;
     width: 450px;
+    min-width: 450px;
 
     z-index: 0;
+
+    ${(props) => props.isCheckout ? `
+        width: 70%;
+        align-items: center;
+    ` : ''}
 
 `
 
