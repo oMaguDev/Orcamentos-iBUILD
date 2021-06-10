@@ -2,7 +2,7 @@ import { Flex } from "../../Containers"
 import { H1, Parag, Title2 } from "../../Text"
 import Button from "../Button"
 import CustomStepper from "../CustomStepper"
-import { Background, StepDot, StepLine, StepperContainer, Triangle, StepDotsContainer, Label, MainTitle, ParagsContainer } from "./styles"
+import { Background, StepDot, StepLine, StepperContainer, Triangle, StepDotsContainer, Label, MainTitle, ParagraphsContainer } from "./styles"
 
 
 const Stepper = ({ steps, title, pinkDisplay, onStart, parags }) => {
@@ -32,7 +32,7 @@ const Stepper = ({ steps, title, pinkDisplay, onStart, parags }) => {
                                 { title }
                             </Title2>
                             { parags && (
-                                <ParagsContainer>
+                                <ParagraphsContainer>
                                     { parags.map((e, i) => (
                                         <Parag
                                             textColor='white'
@@ -41,7 +41,7 @@ const Stepper = ({ steps, title, pinkDisplay, onStart, parags }) => {
                                             { e }
                                         </Parag>
                                     ))}
-                                </ParagsContainer>
+                                </ParagraphsContainer>
                             )}
                         </div>
                         <div>
