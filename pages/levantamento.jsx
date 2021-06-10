@@ -5,6 +5,7 @@ import StepContent from '../components/common/StepContent'
 import Carousel from "../components/common/Carousel"
 import { useEffect, useState } from "react"
 import { useRouter } from 'next/router'
+import ResourcesIndex from "../components/specific/levantamento/ResumoDosRecursos"
 
 
 const Levantamento = () => {
@@ -71,14 +72,14 @@ const Levantamento = () => {
                     value: area,
                     onChange: setArea,
                     label: 'Estado Civil',
-                    placeholder: 'Insira a área total',
+                    placeholder: 'Insira o seu estado civil',
                     type: 'number'
                 },
                 {
                     value: area,
                     onChange: setArea,
                     label: 'Local de construção',
-                    placeholder: 'Insira a área total',
+                    placeholder: 'Insira o estado e o municipio',
                     type: 'number'
                 },
             ]
@@ -121,41 +122,43 @@ const Levantamento = () => {
                     value: area,
                     onChange: setArea,
                     label: 'Selecione a modalidade de financiamento',
-                    placeholder: 'Insira o número do pis',
+                    placeholder: 'Insira a modalidade de financiamento',
                     type: 'number'
                 },
             ]
         },
-        {
-            caption: 'Resumo',
-            title: 'Recursos para construção',
-            subtitle: 'Escolha quantos pavimentos e o estilo das escadas na sua nova casa. ',
-            value: pavimentos,
-            onChange: setPavimentos,
-            options: [
-                {
-                    label: '1',
-                    value: '1',
-                },
-                {
-                    label: '2',
-                    value: '2',
-                },
-                {
-                    label: '3',
-                    value: '3',
-                },
-                {
-                    label: '4',
-                    value: '4',
-                },
-            ]
-        },
+        // {
+        //     caption: 'Resumo',
+        //     title: 'Recursos para construção',
+        //     subtitle: 'Escolha quantos pavimentos e o estilo das escadas na sua nova casa. ',
+        //     value: pavimentos,
+        //     onChange: setPavimentos,
+        //     options: [
+        //         {
+        //             label: '1',
+        //             value: '1',
+        //         },
+        //         {
+        //             label: '2',
+        //             value: '2',
+        //         },
+        //         {
+        //             label: '3',
+        //             value: '3',
+        //         },
+        //         {
+        //             label: '4',
+        //             value: '4',
+        //         },
+        //     ]
+        // },
     ]
 
     const items = steps.map((e, i) => (
-        <StepContent noStatusBox data={e} />
+        <StepContent isCheckout={i === steps.length - 1} noStatusBox data={e} />
     ))
+
+    items.push(<ResourcesIndex />)
 
     if (startPage) {
         return (

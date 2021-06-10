@@ -4,6 +4,7 @@ import { Box, Flex, Layout } from "../components/Containers"
 import StepContent from '../components/common/StepContent'
 import Carousel from "../components/common/Carousel"
 import { useEffect, useState } from "react"
+import EstiloCasa from "../components/specific/simular/EstiloCasa"
 
 
 const Simular = () => {
@@ -33,8 +34,8 @@ const Simular = () => {
     }, [area, lavabos, estilo, pavimentos])
 
     const stepsTitles = [
+        'Estilo da sua casa',
         'Área Total',
-        'Estilo Arquitetônico',
         'Qtde. Pavimentos',
         'Paredes Externas',
         'Telhas',
@@ -54,6 +55,47 @@ const Simular = () => {
     ]
 
     const steps = [
+        // {
+        //     caption: 'Escolha o',
+        //     title: 'Estilo da sua casa',
+        //     subtitle: 'Tudo bem se não for exatamente igual, a ideia aqui é nos ajudar a entender qual o estilo do seu projeto',
+        //     value: estilo,
+        //     onChange: setEstilo,
+        //     options: [
+        //         {
+        //             label: 'Clássica',
+        //             value: 'classica',
+        //         },
+        //         {
+        //             label: 'Neo-Clássica',
+        //             value: 'neoClassica',
+        //         },
+        //         {
+        //             label: 'Mediterrânea',
+        //             value: 'mediterranea',
+        //         },
+        //         {
+        //             label: 'Brasileira',
+        //             value: 'brasileira',
+        //         },
+        //         {
+        //             label: 'Minimalista',
+        //             value: 'minimalista',
+        //         },
+        //         {
+        //             label: 'Contemporânea',
+        //             value: 'contemporanea',
+        //         },
+        //         {
+        //             label: 'Americana',
+        //             value: 'americana',
+        //         },
+        //         {
+        //             label: 'Europeia',
+        //             value: 'europeia',
+        //         },
+        //     ]
+        // },
         {
             caption: 'Escolha o tamanho',
             title: 'Área Total',
@@ -69,47 +111,6 @@ const Simular = () => {
                     type: 'number',
                     width: '95%'
                 }
-            ]
-        },
-        {
-            caption: 'Escolha o estilo',
-            title: 'Estilo Arquitetônico',
-            subtitle: 'Tudo bem se não for exatamente igual, a ideia aqui é nos ajudar a entender qual o estilo do seu projeto',
-            value: estilo,
-            onChange: setEstilo,
-            options: [
-                {
-                    label: 'Clássica',
-                    value: 'classica',
-                },
-                {
-                    label: 'Neo-Clássica',
-                    value: 'neoClassica',
-                },
-                {
-                    label: 'Mediterrânea',
-                    value: 'mediterranea',
-                },
-                {
-                    label: 'Brasileira',
-                    value: 'brasileira',
-                },
-                {
-                    label: 'Minimalista',
-                    value: 'minimalista',
-                },
-                {
-                    label: 'Contemporânea',
-                    value: 'contemporanea',
-                },
-                {
-                    label: 'Americana',
-                    value: 'americana',
-                },
-                {
-                    label: 'Europeia',
-                    value: 'europeia',
-                },
             ]
         },
         {
@@ -320,6 +321,8 @@ const Simular = () => {
         <StepContent key={e.title} data={e} />
     ))
 
+    items.unshift(<EstiloCasa />)
+
     if (initial) {
         return (
             <Flex
@@ -343,7 +346,7 @@ const Simular = () => {
                     height='100%'
                     padding='20px'
                 >
-                    <img src="/images/Pessoas/Pessoas 8.svg" width='100%' height='100%' alt="" />
+                    <img src="/images/Pessoas/Pessoas 6.svg" width='100%' height='100%' alt="" />
                 </Box>
             </Flex>
         )

@@ -1,38 +1,75 @@
-import { Status, StatusBoxContainer, StatusNumbers, ValueBoxes } from "./styles"
+import { Flex } from "../../Containers"
+import { Status, StatusBoxContainer, StatusNumbers, StatusNumbersLabel, ValueBoxes } from "./styles"
 
 const StatusBox = () => {
     return (
         <StatusBoxContainer>
-            <StatusNumbers>
-                <ValueBoxes>
-                    <div className='valueTag'>
-                        Valor disponível
-                    </div>
-                    <div className='value'>
-                        R$1.000.000,00
-                    </div>
-                </ValueBoxes>
-                <ValueBoxes>
-                    <div className='valueTag'>
-                        Custo do Imóvel
-                    </div>
-                    <div className='value'>
-                        R$1.000.000,00
-                    </div>
-                </ValueBoxes>
-                <ValueBoxes last>
-                    <div className='valueTag'>
-                        Saldo
-                    </div>
-                    <div className='value'>
-                        R$1.000.000,00
-                    </div>
-                </ValueBoxes>
+            <Flex>
+                <StatusNumbersLabel>
+                    VALORES
+                </StatusNumbersLabel>
+                <StatusNumbers>
+                    <ValueBoxes>
+                        <div className='valueTag'>
+                            VALOR DISPONÍVEL
+                        </div>
+                        <div className='value'>
+                            R$1.000.000,00
+                        </div>
+                    </ValueBoxes>
+                    <ValueBoxes>
+                        <div className='valueTag'>
+                            CUSTO DO IMÓVEL
+                        </div>
+                        <div className='value'>
+                            R$1.000.000,00
+                        </div>
+                    </ValueBoxes>
+                    <ValueBoxes last green>
+                        <div className='valueTag'>
+                            VOCÊ AINDA PODE USAR
+                        </div>
+                        <div className='value'>
+                            R$1.000.000,00
+                        </div>
+                    </ValueBoxes>
+                </StatusNumbers>
+            </Flex>
+            <Flex>
+                <StatusNumbersLabel>
+                    METROS
+                </StatusNumbersLabel>
+                <StatusNumbers>
+                    <ValueBoxes>
+                        <div className='valueTag'>
+                            VALOR DISPONÍVEL
+                        </div>
+                        <div className='value'>
+                            R$1.000.000,00
+                        </div>
+                    </ValueBoxes>
+                    <ValueBoxes>
+                        <div className='valueTag'>
+                            CUSTO DO IMÓVEL
+                        </div>
+                        <div className='value'>
+                            R$1.000.000,00
+                        </div>
+                    </ValueBoxes>
+                    <ValueBoxes last pink>
+                        <div className='valueTag'>
+                            VOCÊ AINDA PODE USAR
+                        </div>
+                        <div className='value'>
+                            R$1.000.000,00
+                        </div>
+                    </ValueBoxes>
 
-            </StatusNumbers>
-            <Status>
+                </StatusNumbers>
+            </Flex>
+            {/* <Status>
                 SUA CASA ESTÁ DENTRO DO SEU CUSTO
-            </Status>
+            </Status> */}
         </StatusBoxContainer>
     )
 }

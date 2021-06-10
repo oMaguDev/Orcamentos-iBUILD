@@ -132,7 +132,7 @@ export const MainTitle = styled.h2`
 
 `
 
-export const ParagsContainer = styled.div`
+export const ParagraphsContainer = styled.div`
 
     width: 80%;
 `
