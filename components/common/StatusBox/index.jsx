@@ -5,9 +5,9 @@ const StatusBox = () => {
     return (
         <StatusBoxContainer>
             <Flex>
-                {/* <StatusNumbersLabel>
-                        top
-                </StatusNumbersLabel> */}
+                <StatusNumbersLabel>
+                    VALORES
+                </StatusNumbersLabel>
                 <StatusNumbers>
                     <ValueBoxes>
                         <div className='valueTag'>
@@ -25,7 +25,7 @@ const StatusBox = () => {
                             R$1.000.000,00
                         </div>
                     </ValueBoxes>
-                    <ValueBoxes last>
+                    <ValueBoxes last green>
                         <div className='valueTag'>
                             VOCÊ AINDA PODE USAR
                         </div>
@@ -35,33 +35,38 @@ const StatusBox = () => {
                     </ValueBoxes>
                 </StatusNumbers>
             </Flex>
-            <StatusNumbers>
-                <ValueBoxes>
-                    <div className='valueTag'>
-                        VALOR DISPONÍVEL
-                    </div>
-                    <div className='value'>
-                        R$1.000.000,00
-                    </div>
-                </ValueBoxes>
-                <ValueBoxes>
-                    <div className='valueTag'>
-                        CUSTO DO IMÓVEL
-                    </div>
-                    <div className='value'>
-                        R$1.000.000,00
-                    </div>
-                </ValueBoxes>
-                <ValueBoxes last>
-                    <div className='valueTag'>
-                        VOCÊ AINDA PODE USAR
-                    </div>
-                    <div className='value'>
-                        R$1.000.000,00
-                    </div>
-                </ValueBoxes>
+            <Flex>
+                <StatusNumbersLabel>
+                    METROS
+                </StatusNumbersLabel>
+                <StatusNumbers>
+                    <ValueBoxes>
+                        <div className='valueTag'>
+                            VALOR DISPONÍVEL
+                        </div>
+                        <div className='value'>
+                            R$1.000.000,00
+                        </div>
+                    </ValueBoxes>
+                    <ValueBoxes>
+                        <div className='valueTag'>
+                            CUSTO DO IMÓVEL
+                        </div>
+                        <div className='value'>
+                            R$1.000.000,00
+                        </div>
+                    </ValueBoxes>
+                    <ValueBoxes last pink>
+                        <div className='valueTag'>
+                            VOCÊ AINDA PODE USAR
+                        </div>
+                        <div className='value'>
+                            R$1.000.000,00
+                        </div>
+                    </ValueBoxes>
 
-            </StatusNumbers>
+                </StatusNumbers>
+            </Flex>
             {/* <Status>
                 SUA CASA ESTÁ DENTRO DO SEU CUSTO
             </Status> */}
