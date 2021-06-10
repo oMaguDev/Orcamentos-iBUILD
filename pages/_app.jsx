@@ -23,11 +23,11 @@ const GlobalStyle = createGlobalStyle`
     }
 
     .MuiStepIcon-root.MuiStepIcon-active {
-        color: chartreuse !important;
+        color: #7dd23a !important;
     }
 
     .MuiStepIcon-root.MuiStepIcon-completed {
-        color: chartreuse !important;
+        color: #7dd23a !important;
     }
 `
 
@@ -39,8 +39,10 @@ const theme = {
             purplePink: '#8b008b',
             pink: '#fb1d47',
             lightGrey: '#ebeaf1',
-            green: 'chartreuse',
+            green: '#7dd23a',
             lightGreen: '#BDE4A7',
+            fadedGreen: 'rgba(125, 210, 58, 0.5)',
+            fadedLightGreen: 'rgba(189, 228, 167, 0.4)',
         },
         text: {
             title: '#ff1b5f', // '#bd1245', // '#b93f64' // 

@@ -7,6 +7,11 @@
   align-items: center;
 }
 
+.topper {
+  color: rgba(125, 210, 58, 0.4);
+  color: rgba(189, 228, 167, 0.4);
+}
+
 .main {
   padding: 5rem 0;
   flex: 1;

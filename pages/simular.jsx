@@ -4,6 +4,7 @@ import { Box, Flex, Layout } from "../components/Containers"
 import StepContent from '../components/common/StepContent'
 import Carousel from "../components/common/Carousel"
 import { useEffect, useState } from "react"
+import EstiloCasa from "../components/specific/simular/EstiloCasa"
 
 
 const Simular = () => {
@@ -54,47 +55,47 @@ const Simular = () => {
     ]
 
     const steps = [
-        {
-            caption: 'Escolha o',
-            title: 'Estilo da sua casa',
-            subtitle: 'Tudo bem se não for exatamente igual, a ideia aqui é nos ajudar a entender qual o estilo do seu projeto',
-            value: estilo,
-            onChange: setEstilo,
-            options: [
-                {
-                    label: 'Clássica',
-                    value: 'classica',
-                },
-                {
-                    label: 'Neo-Clássica',
-                    value: 'neoClassica',
-                },
-                {
-                    label: 'Mediterrânea',
-                    value: 'mediterranea',
-                },
-                {
-                    label: 'Brasileira',
-                    value: 'brasileira',
-                },
-                {
-                    label: 'Minimalista',
-                    value: 'minimalista',
-                },
-                {
-                    label: 'Contemporânea',
-                    value: 'contemporanea',
-                },
-                {
-                    label: 'Americana',
-                    value: 'americana',
-                },
-                {
-                    label: 'Europeia',
-                    value: 'europeia',
-                },
-            ]
-        },
+        // {
+        //     caption: 'Escolha o',
+        //     title: 'Estilo da sua casa',
+        //     subtitle: 'Tudo bem se não for exatamente igual, a ideia aqui é nos ajudar a entender qual o estilo do seu projeto',
+        //     value: estilo,
+        //     onChange: setEstilo,
+        //     options: [
+        //         {
+        //             label: 'Clássica',
+        //             value: 'classica',
+        //         },
+        //         {
+        //             label: 'Neo-Clássica',
+        //             value: 'neoClassica',
+        //         },
+        //         {
+        //             label: 'Mediterrânea',
+        //             value: 'mediterranea',
+        //         },
+        //         {
+        //             label: 'Brasileira',
+        //             value: 'brasileira',
+        //         },
+        //         {
+        //             label: 'Minimalista',
+        //             value: 'minimalista',
+        //         },
+        //         {
+        //             label: 'Contemporânea',
+        //             value: 'contemporanea',
+        //         },
+        //         {
+        //             label: 'Americana',
+        //             value: 'americana',
+        //         },
+        //         {
+        //             label: 'Europeia',
+        //             value: 'europeia',
+        //         },
+        //     ]
+        // },
         {
             caption: 'Escolha o tamanho',
             title: 'Área Total',
@@ -319,6 +320,8 @@ const Simular = () => {
     const items = steps.map((e, i) => (
         <StepContent key={e.title} data={e} />
     ))
+
+    items.unshift(<EstiloCasa />)
 
     if (initial) {
         return (
