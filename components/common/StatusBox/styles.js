@@ -6,10 +6,10 @@ export const StatusBoxContainer = styled.div`
 z-index: 10;
 
     // background: #ccc;
-    background: ${({ theme }) => theme.colors.primary.lightGrey };
+    
     // width: 450px;
     width: 100%;
-    height: 100px;
+    // height: 100px;
 
     // position: fixed;
     // bottom: 50px;
@@ -32,7 +32,8 @@ export const Status = styled.div`
 
 export const StatusNumbers = styled.div`
     
-    background: inherit;
+    // background: inherit;
+    background: ${({ theme }) => theme.colors.primary.lightGrey };
     width: 100%;
     height: 55%;
 
@@ -41,7 +42,15 @@ export const StatusNumbers = styled.div`
     justify-content: center;
 
     padding: 5px;
+    margin: 5px 0;
 `
+
+export const StatusNumbersLabel = styled.div`
+
+    background: #dedede;
+    height: 47.8px;
+    `
+    // text-orientation: vertical;
 
 export const ValueBoxes = styled.div`
 

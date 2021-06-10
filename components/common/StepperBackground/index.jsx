@@ -31,16 +31,18 @@ const Stepper = ({ steps, title, pinkDisplay, onStart, parags }) => {
                             >
                                 { title }
                             </Title2>
-                            <ParagsContainer>
-                                { parags && parags.map((e, i) => (
-                                    <Parag
-                                        textColor='white'
-                                        key={i}
-                                    >
-                                        { e }
-                                    </Parag>
-                                ))}
-                            </ParagsContainer>
+                            { parags && (
+                                <ParagsContainer>
+                                    { parags.map((e, i) => (
+                                        <Parag
+                                            textColor='white'
+                                            key={i}
+                                        >
+                                            { e }
+                                        </Parag>
+                                    ))}
+                                </ParagsContainer>
+                            )}
                         </div>
                         <div>
                             <Button

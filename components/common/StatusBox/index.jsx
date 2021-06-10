@@ -1,12 +1,44 @@
-import { Status, StatusBoxContainer, StatusNumbers, ValueBoxes } from "./styles"
+import { Flex } from "../../Containers"
+import { Status, StatusBoxContainer, StatusNumbers, StatusNumbersLabel, ValueBoxes } from "./styles"
 
 const StatusBox = () => {
     return (
         <StatusBoxContainer>
+            <Flex>
+                {/* <StatusNumbersLabel>
+                        top
+                </StatusNumbersLabel> */}
+                <StatusNumbers>
+                    <ValueBoxes>
+                        <div className='valueTag'>
+                            VALOR DISPONÍVEL
+                        </div>
+                        <div className='value'>
+                            R$1.000.000,00
+                        </div>
+                    </ValueBoxes>
+                    <ValueBoxes>
+                        <div className='valueTag'>
+                            CUSTO DO IMÓVEL
+                        </div>
+                        <div className='value'>
+                            R$1.000.000,00
+                        </div>
+                    </ValueBoxes>
+                    <ValueBoxes last>
+                        <div className='valueTag'>
+                            VOCÊ AINDA PODE USAR
+                        </div>
+                        <div className='value'>
+                            R$1.000.000,00
+                        </div>
+                    </ValueBoxes>
+                </StatusNumbers>
+            </Flex>
             <StatusNumbers>
                 <ValueBoxes>
                     <div className='valueTag'>
-                        Valor disponível
+                        VALOR DISPONÍVEL
                     </div>
                     <div className='value'>
                         R$1.000.000,00
@@ -14,7 +46,7 @@ const StatusBox = () => {
                 </ValueBoxes>
                 <ValueBoxes>
                     <div className='valueTag'>
-                        Custo do Imóvel
+                        CUSTO DO IMÓVEL
                     </div>
                     <div className='value'>
                         R$1.000.000,00
@@ -22,7 +54,7 @@ const StatusBox = () => {
                 </ValueBoxes>
                 <ValueBoxes last>
                     <div className='valueTag'>
-                        Saldo
+                        VOCÊ AINDA PODE USAR
                     </div>
                     <div className='value'>
                         R$1.000.000,00
@@ -30,9 +62,9 @@ const StatusBox = () => {
                 </ValueBoxes>
 
             </StatusNumbers>
-            <Status>
+            {/* <Status>
                 SUA CASA ESTÁ DENTRO DO SEU CUSTO
-            </Status>
+            </Status> */}
         </StatusBoxContainer>
     )
 }

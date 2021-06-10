@@ -33,8 +33,8 @@ const Simular = () => {
     }, [area, lavabos, estilo, pavimentos])
 
     const stepsTitles = [
+        'Estilo da sua casa',
         'Área Total',
-        'Estilo Arquitetônico',
         'Qtde. Pavimentos',
         'Paredes Externas',
         'Telhas',
@@ -55,25 +55,8 @@ const Simular = () => {
 
     const steps = [
         {
-            caption: 'Escolha o tamanho',
-            title: 'Área Total',
-            subtitle: 'Tudo bem se não for exatamente igual, a ideia aqui é nos ajudar a entender qual o estilo do seu projeto',
-            value: area,
-            onChange: setArea,
-            inputs: [
-                {
-                    value: area,
-                    onChange: setArea,
-                    label: 'Área Total',
-                    placeholder: 'Insira a área total',
-                    type: 'number',
-                    width: '95%'
-                }
-            ]
-        },
-        {
-            caption: 'Escolha o estilo',
-            title: 'Estilo Arquitetônico',
+            caption: 'Escolha o',
+            title: 'Estilo da sua casa',
             subtitle: 'Tudo bem se não for exatamente igual, a ideia aqui é nos ajudar a entender qual o estilo do seu projeto',
             value: estilo,
             onChange: setEstilo,
@@ -110,6 +93,23 @@ const Simular = () => {
                     label: 'Europeia',
                     value: 'europeia',
                 },
+            ]
+        },
+        {
+            caption: 'Escolha o tamanho',
+            title: 'Área Total',
+            subtitle: 'Tudo bem se não for exatamente igual, a ideia aqui é nos ajudar a entender qual o estilo do seu projeto',
+            value: area,
+            onChange: setArea,
+            inputs: [
+                {
+                    value: area,
+                    onChange: setArea,
+                    label: 'Área Total',
+                    placeholder: 'Insira a área total',
+                    type: 'number',
+                    width: '95%'
+                }
             ]
         },
         {
@@ -343,7 +343,7 @@ const Simular = () => {
                     height='100%'
                     padding='20px'
                 >
-                    <img src="/images/Pessoas/Pessoas 8.svg" width='100%' height='100%' alt="" />
+                    <img src="/images/Pessoas/Pessoas 6.svg" width='100%' height='100%' alt="" />
                 </Box>
             </Flex>
         )
