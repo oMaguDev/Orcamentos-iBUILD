@@ -3,14 +3,17 @@ import Stepper from "../components/common/StepperBackground"
 import { Box, Flex, Layout } from "../components/Containers"
 import StepContent from '../components/common/StepContent'
 import Carousel from "../components/common/Carousel"
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { useRouter } from 'next/router'
 import ResourcesIndex from "../components/specific/levantamento/ResumoDosRecursos"
+import { ActiveIndexContext } from "../contexts/activeIndex"
 
 
 const Levantamento = () => {
 
     const router = useRouter()
+
+    const { setActiveIndex } = useContext(ActiveIndexContext)
 
     const [startPage, setStartPage] = useState(true)
 
@@ -201,7 +204,10 @@ const Levantamento = () => {
             />
             <Carousel
                 items={items}
-                lastSlideAction={() => router.push('/cadastro')}
+                lastSlideAction={() => {
+                    router.push('/cadastro')
+                    setActiveIndex(0)
+                }}
             />
         </Flex>
     )

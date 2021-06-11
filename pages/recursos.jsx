@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import RadioIconButtons from "../components/common/RadioIconButtons"
 import RadioButtons from "../components/common/RadioButtons"
 import { Box, Flex, Layout, TitleContainer } from "../components/Containers"
@@ -7,6 +7,7 @@ import Carousel from "../components/common/Carousel"
 import First from "../components/specific/recursos/First"
 import Second from "../components/specific/recursos/Second"
 import { useRouter } from 'next/router'
+import { ActiveIndexContext } from "../contexts/activeIndex"
 
 
 const Resources = () => {
@@ -18,12 +19,17 @@ const Resources = () => {
 
     const router = useRouter()
 
+    const { setActiveIndex } = useContext(ActiveIndexContext)
+
     return (
         <Flex>
             <Carousel
                 fullScreen
                 items={carouselItems}
-                lastSlideAction={() => router.push('/levantamento')}
+                lastSlideAction={() => {
+                    router.push('/levantamento')
+                    setActiveIndex(0)
+                }}
             />
         </Flex>
     )
