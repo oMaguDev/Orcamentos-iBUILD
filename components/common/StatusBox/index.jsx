@@ -42,18 +42,18 @@ const StatusBox = () => {
                 <StatusNumbers>
                     <ValueBoxes>
                         <div className='valueTag'>
-                            VALOR DISPONÍVEL
+                            TAMANHO DISPONÍVEL
                         </div>
                         <div className='value'>
-                            R$1.000.000,00
+                            450 m²
                         </div>
                     </ValueBoxes>
                     <ValueBoxes>
                         <div className='valueTag'>
-                            CUSTO DO IMÓVEL
+                            TOTAL ATÉ AGORA
                         </div>
                         <div className='value'>
-                            R$1.000.000,00
+                            450 m²
                         </div>
                     </ValueBoxes>
                     <ValueBoxes last pink>
@@ -61,7 +61,7 @@ const StatusBox = () => {
                             VOCÊ AINDA PODE USAR
                         </div>
                         <div className='value'>
-                            R$1.000.000,00
+                            0 m²
                         </div>
                     </ValueBoxes>
 
