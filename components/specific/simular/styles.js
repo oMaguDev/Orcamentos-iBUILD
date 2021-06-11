@@ -32,11 +32,15 @@ export const HomeStylePicContainer = styled.div`
     // flex-direction: column;
     // align-items: center;
 
+    P {
+        width: 100%;
+    }
+
     ${(props) => props.imageSrc ? `
     
         div {
-            width: 200px;
-            height: 170px;
+            width: ${(props) => props.width ? `${props.width}` : '200px'};
+            height: ${(props) => props.height ? `${props.height}` : '170px'};
             // border: solid 2px #fff;
             margin: 10px;
             background-image: url(${props.imageSrc});
@@ -53,8 +57,8 @@ export const HomeStylePicContainer = styled.div`
     div > div {
         cursor: pointer;
 
-        width: 200px;
-        height: 170px;
+        width: ${(props) => props.width ? `${props.width}` : '200px'};
+        height: ${(props) => props.height ? `${props.height}` : '200px'};
         margin: 0 0 10px;
         // transform: translateX(-10px);
         
@@ -81,8 +85,8 @@ export const HomeStylePicContainer = styled.div`
     }
 
     // img {
-    //     width: 200px;
-    //     height: 170px;
+    //     width: ${(props) => props.width ? `${props.width}` : '200px'};
+    //     height: ${(props) => props.height ? `${props.height}` : '200px'};
 
     //     border: solid 2px #fff;
     //     margin: 10px;
