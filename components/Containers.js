@@ -102,6 +102,8 @@ export const TitleContainer = styled.div`
         font-size: 0.8rem;
     }
 
+    ${(props) => props.margin ? `margin: ${props.margin};` : ''}
+
 `
 
 export const LogoMedium = styled.img`

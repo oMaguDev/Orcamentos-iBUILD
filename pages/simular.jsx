@@ -5,6 +5,7 @@ import StepContent from '../components/common/StepContent'
 import Carousel from "../components/common/Carousel"
 import { useEffect, useState } from "react"
 import EstiloCasa from "../components/specific/simular/EstiloCasa"
+import PavimentosEscadas from "../components/specific/simular/PavimentosEscadas"
 
 
 const Simular = () => {
@@ -35,8 +36,8 @@ const Simular = () => {
 
     const stepsTitles = [
         'Estilo da sua casa',
+        'Pavimentos e Escadas',
         'Área Total',
-        'Qtde. Pavimentos',
         'Paredes Externas',
         'Telhas',
         'Garagem',
@@ -96,6 +97,31 @@ const Simular = () => {
         //         },
         //     ]
         // },
+        // {
+        //     caption: 'Escolha a quantidade',
+        //     title: 'Pavimentos e escadas',
+        //     subtitle: 'Escolha quantos pavimentos e o estilo das escadas na sua nova casa. ',
+        //     value: pavimentos,
+        //     onChange: setPavimentos,
+        //     options: [
+        //         {
+        //             label: '1',
+        //             value: '1',
+        //         },
+        //         {
+        //             label: '2',
+        //             value: '2',
+        //         },
+        //         {
+        //             label: '3',
+        //             value: '3',
+        //         },
+        //         {
+        //             label: '4',
+        //             value: '4',
+        //         },
+        //     ]
+        // },
         {
             caption: 'Escolha o tamanho',
             title: 'Área Total',
@@ -111,31 +137,6 @@ const Simular = () => {
                     type: 'number',
                     width: '95%'
                 }
-            ]
-        },
-        {
-            caption: 'Escolha a quantidade',
-            title: 'Pavimentos e escadas',
-            subtitle: 'Escolha quantos pavimentos e o estilo das escadas na sua nova casa. ',
-            value: pavimentos,
-            onChange: setPavimentos,
-            options: [
-                {
-                    label: '1',
-                    value: '1',
-                },
-                {
-                    label: '2',
-                    value: '2',
-                },
-                {
-                    label: '3',
-                    value: '3',
-                },
-                {
-                    label: '4',
-                    value: '4',
-                },
             ]
         },
         {
@@ -321,6 +322,7 @@ const Simular = () => {
         <StepContent key={e.title} data={e} />
     ))
 
+    items.unshift(<PavimentosEscadas />)
     items.unshift(<EstiloCasa />)
 
     if (initial) {
