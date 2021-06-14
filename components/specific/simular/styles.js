@@ -100,3 +100,142 @@ export const HomeStylePicContainer = styled.div`
     // }
 
 `
+
+export const ExternalWallImg = styled.img`
+
+    width: 150px;
+
+    margin: 10px;
+`
+
+export const ExternalWallItem= styled.div`
+
+    cursor: pointer;
+
+    width: 300px;
+    min-height: 470px;
+
+    padding: 10px;
+    margin: 10px;
+
+    border: solid 3px #fff;
+    
+    &:hover {
+        border: solid 3px ${({ theme }) => theme.colors.primary.lightGreen };
+    }
+    
+    ${(props) => props.primaryColor ? `
+        color: ${props.theme.colors.primary[props.primaryColor]};
+        // border: solid 3px ${ props.theme.colors.primary[props.primaryColor] };
+        
+        ` : ''}
+        
+    h3 {
+        // color: ${({ theme }) => theme.colors.primary.pink };
+        font-weight: 300;
+    }
+        
+    ${(props) => props.selected ? `
+        border: solid 3px ${ props.theme.colors.primary.green };
+
+        &:hover {
+            border: solid 3px ${props.theme.colors.primary.green };
+        }
+    ` : ''}
+        
+`
+
+export const ColouredBox = styled.div`
+
+    background: ${(props) => props.primaryColor ? props.theme.colors.primary[props.primaryColor] : props.theme.colors.primary.pink };
+    color: #fff;
+    margin: 0 5px;
+    padding: 5px;
+
+    width: ${(props) => props.width ? `${props.width}` : '150px'};
+    height: ${(props) => props.height ? `${props.height}` : '50px'};
+
+
+    .label {
+        font-size: 0.7rem;
+        font-weight: 300;
+    }
+    
+    .value {
+        font-size: 1.1rem;
+        font-weight: 700;
+    }
+
+    
+`
+    
+export const WallTitle = styled.h3`
+    
+    color: ${({ theme }) => theme.colors.primary.pink };
+    font-weight: 300;
+
+`
+
+export const WallCompositionContainer = styled.div`
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    text-align: left;
+
+    color: ${({ theme }) => theme.colors.text.main };
+
+
+    h4 {
+        font-weight: 700;
+        font-size: 0.7rem;
+    }
+    
+    .compositionItem {
+        font-weight: 300;
+        font-size: 0.65rem;
+
+        
+    }
+
+`
+
+export const CompositionListItem = styled.div`
+
+    width: 100%;
+    padding: 0 0 0 5px;
+    text-align: left;
+`
+
+export const CompositionListItemTag = styled.div`
+
+    ${(props) => props.primaryColor ? `
+        color: ${props.theme.colors.primary[props.primaryColor]};
+    ` : ''}
+
+    font-weight: 700;
+    margin: 0 0 8px;
+`
+
+export const SelectedIconContainer = styled.div`
+
+
+    height: 40px;
+    width: 100%;
+
+    margin-top: 15px;
+
+    ${(props) => props.selected ? `
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    ` : 'display: none;'}
+
+
+    img {
+        height: 100%;
+    }
+
+`

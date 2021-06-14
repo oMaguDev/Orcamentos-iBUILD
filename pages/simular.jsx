@@ -6,6 +6,7 @@ import Carousel from "../components/common/Carousel"
 import { useEffect, useState } from "react"
 import EstiloCasa from "../components/specific/simular/EstiloCasa"
 import PavimentosEscadas from "../components/specific/simular/PavimentosEscadas"
+import ParedesExternas from "../components/specific/simular/ParedesExternas"
 
 
 const Simular = () => {
@@ -37,8 +38,8 @@ const Simular = () => {
     const stepsTitles = [
         'Estilo da sua casa',
         'Pavimentos e Escadas',
-        'Área Total',
         'Paredes Externas',
+        'Área Total',
         'Telhas',
         'Garagem',
         'Sala de Estar/TV',
@@ -322,6 +323,7 @@ const Simular = () => {
         <StepContent key={e.title} data={e} />
     ))
 
+    items.unshift(<ParedesExternas />)
     items.unshift(<PavimentosEscadas />)
     items.unshift(<EstiloCasa />)
 
