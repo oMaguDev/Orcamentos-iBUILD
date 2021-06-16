@@ -43,7 +43,11 @@ export const Wrapper = styled.div`
   margin: auto;
 
   display: flex;
-  flex-direction: column;
+  ${(props) => props.row ? `
+    align-items: center;
+    justify-content: flex-start;
+  ` : 'flex-direction: column;'}
+  
   flex-wrap: wrap;
 `;
 

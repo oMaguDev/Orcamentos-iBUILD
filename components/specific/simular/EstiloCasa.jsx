@@ -59,7 +59,7 @@ const EstiloCasa = () => {
             column
             // alignItems='flex-start'
             // transform='translateX(200px)'
-            margin='0 0 0 auto'
+            margin='0 0 0 100px'
         >
             <TitleContainer>
                 <h4>ESCOLHA O</h4>

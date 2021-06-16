@@ -4,9 +4,10 @@ import StatusBox from "../StatusBox"
 import Select from "./Select"
 import { MiddleContainer, StepContentContainer, StepImageContainer } from "./styles"
 import Input from '../../form/Input'
+import FinishingPattern from "../FinishingPattern"
 
 
-const StepContent = ({ data, noStatusBox, isCheckout }) => {
+const StepContent = ({ data, noStatusBox }) => {
     // <Flex
     //     column
     //     alignItems='flex-start'
@@ -156,7 +157,12 @@ const StepContent = ({ data, noStatusBox, isCheckout }) => {
                 </MiddleContainer>
                 )}
                 {!noStatusBox && (
-                    <StatusBox />
+                    <>
+                        { data.withFinishingPattern && (
+                            <FinishingPattern />
+                        )}
+                        <StatusBox />
+                    </>
                 )}
             </StepContentContainer>
         </Flex>

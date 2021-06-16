@@ -39,7 +39,7 @@ const Simular = () => {
         'Estilo da sua casa',
         'Pavimentos e Escadas',
         'Paredes Externas',
-        'Área Total',
+        // 'Área Total',
         'Telhas',
         'Garagem',
         'Sala de Estar/TV',
@@ -123,71 +123,86 @@ const Simular = () => {
         //         },
         //     ]
         // },
+        // {
+        //     caption: 'Escolha o padrão',
+        //     title: 'Paredes externas',
+        //     subtitle: 'Escolha o padrão das paredes externas',
+        //     value: paredes,
+        //     onChange: setParedes,
+        //     options: [
+        //         {
+        //             label: 'Standard',
+        //             value: 'standard',
+        //         },
+        //         {
+        //             label: 'Premium',
+        //             value: 'premium',
+        //         },
+        //     ]
+        // },
+        // {
+        //     caption: 'Escolha o tamanho',
+        //     title: 'Área Total',
+        //     subtitle: 'Tudo bem se não for exatamente igual, a ideia aqui é nos ajudar a entender qual o estilo do seu projeto',
+        //     value: area,
+        //     onChange: setArea,
+        //     inputs: [
+        //         {
+        //             value: area,
+        //             onChange: setArea,
+        //             label: 'Área Total',
+        //             placeholder: 'Insira a área total',
+        //             type: 'number',
+        //             width: '95%'
+        //         }
+        //     ]
+        // },
         {
-            caption: 'Escolha o tamanho',
-            title: 'Área Total',
-            subtitle: 'Tudo bem se não for exatamente igual, a ideia aqui é nos ajudar a entender qual o estilo do seu projeto',
-            value: area,
-            onChange: setArea,
-            inputs: [
-                {
-                    value: area,
-                    onChange: setArea,
-                    label: 'Área Total',
-                    placeholder: 'Insira a área total',
-                    type: 'number',
-                    width: '95%'
-                }
-            ]
-        },
-        {
-            caption: 'Escolha o padrão',
-            title: 'Paredes externas',
-            subtitle: 'Escolha o padrão das paredes externas',
-            value: paredes,
-            onChange: setParedes,
-            options: [
-                {
-                    label: 'Standard',
-                    value: 'standard',
-                },
-                {
-                    label: 'Premium',
-                    value: 'premium',
-                },
-            ]
-        },
-        {
-            caption: 'Escolha o tipo',
-            title: 'Telhas',
-            subtitle: 'Escolha o tipo das telhas da casa',
+            caption: 'Escolha o tipo de',
+            title: 'Telha',
+            // subtitle: 'Escolha o tipo das telhas da casa',
+            imageSrc: '/images/Ambientes/Ambientes15.svg',
             value: telhas,
             onChange: setTelhas,
             options: [
                 {
-                    label: 'Standard',
-                    value: 'standard',
+                    label: 'TERMOACÚSTICA',
+                    value: 'termoacustica',
                 },
                 {
-                    label: 'Premium',
-                    value: 'premium',
+                    label: 'FIBROCIMENTO',
+                    value: 'fibrocimento',
+                },
+                {
+                    label: 'CERÂMICA',
+                    value: 'ceramica',
                 },
             ]
         },
         {
-            caption: 'Escolha o padrão',
+            caption: 'Escolha o tamanho da',
             title: 'Garagem',
-            subtitle: 'Escolha o padrão de acabamento da garagem',
+            // subtitle: 'Escolha o padrão de acabamento da garagem',
+            imageSrc: '/images/Ambientes/Ambientes11.svg',
+            withFinishingPattern: true,
             value: garagem,
             onChange: setGaragem,
             options: [
                 {
-                    label: 'Standard',
-                    value: 'standard',
+                    label: 'NÃO QUERO',
+                    value: 'sem_garagem',
                 },
                 {
-                    label: 'Premium',
-                    value: 'premium',
+                    label: 'PEQUENA (1 CARRO - APROX. 20M2)',
+                    value: 'garagem_pq',
+                },
+                {
+                    label: 'MÉDIA (2 CARROS - APROX. 30M2)',
+                    value: 'garagem_md',
+                },
+                {
+                    label: 'GRANDE (ATÉ 4 CARROS - APROX. 50M2)',
+                    value: 'garagem_gd',
                 },
             ]
         },

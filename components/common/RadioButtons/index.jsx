@@ -7,7 +7,7 @@ import {
 } from "./styles"
 
 
-const RadioButtons = ({ options, select, onChange }) => {
+const RadioButtons = ({ options, select, onChange, row }) => {
 
     // const [select, setSelect] = useState(null);
     // const handleSelectChange = (event) => {
@@ -16,7 +16,7 @@ const RadioButtons = ({ options, select, onChange }) => {
     // };
 
     return (
-            <Wrapper>
+            <Wrapper row={row}>
                 { options && options.map((e, i) => (
                     <Item key={e.label}>
                         <RadioButton
@@ -25,9 +25,17 @@ const RadioButtons = ({ options, select, onChange }) => {
                             value={e.value}
                             checked={select === e.value}
                             onChange={(event) => onChange(event.target.value)}
-                        />
-                        <RadioButtonLabel />
-                        <div>{e.label}</div>
+                            key={`${e.value ? e.value : e.label }_radio_button`}
+                            />
+                        <RadioButtonLabel
+                            key={`${e.value ? e.value : e.label }_radio_button_label`}
+                            />
+                        <div
+                            style={row ? { marginRight: '20px' } : null }
+                            key={`${e.value ? e.value : e.label }_radio_label`}
+                        >
+                            {e.label}
+                        </div>
                     </Item>
                 ))}
                 {/* <Item>
