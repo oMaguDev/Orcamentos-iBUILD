@@ -31,8 +31,9 @@ export const StepImageContainer = styled.div`
 export const MiddleContainer = styled.div`
 
     width: 100%;
-    height: 300px;
-    // max-height: 300px;
+    // height: 300px;
+    min-height: 200px;
+    max-height: 300px;
 
     margin: 20px 0;
 

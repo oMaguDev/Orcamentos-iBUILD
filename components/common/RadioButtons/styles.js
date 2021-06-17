@@ -112,3 +112,27 @@ export const RadioButton = styled.input`
     }
   `}
 `;
+
+export const RadioButtonTest = styled.button`
+
+    cursor: pointer;
+
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+
+    background: none; 
+    border: solid 2px ${({ theme }) => theme.colors.text.main };
+
+
+    &:hover {
+      background: #eee;
+    }
+
+    ${(props) => props.selected ? `
+      background: ${props.theme.colors.primary.green};
+      &:hover {
+        background: ${props.theme.colors.primary.green};
+      }
+    ` : ``}
+`

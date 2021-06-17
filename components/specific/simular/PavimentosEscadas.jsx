@@ -2,8 +2,9 @@ import { Box, Flex, TitleContainer } from "../../Containers"
 import RadioButtons from "../../common/RadioButtons"
 // import Select from "./Select"
 import { MiddleContainer, StepContentContainer, StepImageContainer } from "../../common/StepContent/styles"
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { HomeStylePicContainer } from "./styles"
+import { SimulationDataContext } from "../../../contexts/SimulationData"
 // import Input from '../../form/Input'
 
 
@@ -14,15 +15,15 @@ const PavimentosEscadas = () => {
     const pavimentosOptions = [
         {
             label: '1 (Térrea)',
-            value: 1
+            value: 'um_pavimento'
         },
         {
             label: '2 (Sobrado ou mezanino)',
-            value: 2
+            value: 'dois_pavimentos'
         },
         {
             label: '3 (Sobrado ou mezanino)',
-            value: 3
+            value: 'tres_pavimentos'
         },
     ]
 
@@ -49,9 +50,13 @@ const PavimentosEscadas = () => {
         },
     ]
 
-    useEffect
+    // useEffect(() => {
+    //     console.log('pavimentos: ', pavimentos)
+    // }, [pavimentos])
 
-    const [pavimentos, setPavimentos] = useState(1)
+    // const [pavimentos, setPavimentos] = useState('')
+    const { simData, setSimData } = useContext(SimulationDataContext)
+    
 
     return (
         <Flex
@@ -63,18 +68,28 @@ const PavimentosEscadas = () => {
                 <img style={{ width: '100%' }} src="/images/Ambientes/Ambientes10.svg" alt="" />
             </StepImageContainer>
             <StepContentContainer>
-                <TitleContainer>
+                <TitleContainer
+                    key='pavimentos_title'
+                    >
                     <h4>ESCOLHA A QUANTIDADE DE</h4>
                     <h2>PAVIMENTOS</h2>
                     {/* <p>{data.subtitle}</p> */}
                 </TitleContainer>
                         <RadioButtons
                             options={pavimentosOptions}
-                            onChange={setPavimentos}
-                            select={pavimentos}
-                        />
+                            onChange={(newValue) => {
+                                console.log('newValue: ', newValue)
+                                setSimData({
+                                    ...simData,
+                                    pavimentos: newValue
+                                })
+                            }}
+                            select={simData.pavimentos}
+                            key='pavimentos_e_escadas_radio_buttons'
+                            />
                 <TitleContainer
                     margin='50px 0 0'
+                    key='escadas_title'
                 >
                     <h4>ESCOLHA O MODELO DA</h4>
                     <h2>Escada</h2>

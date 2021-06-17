@@ -16,11 +16,11 @@ const FinishingPattern = () => {
         },
         {
             label: 'standard',
-            color: 'green',
+            color: 'purple',
         },
         {
             label: 'premium',
-            color: 'pink',
+            color: 'darkPurple',
         },
     ]
 

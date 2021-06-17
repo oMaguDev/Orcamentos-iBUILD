@@ -3,37 +3,45 @@ import Stepper from "../components/common/StepperBackground"
 import { Box, Flex, Layout } from "../components/Containers"
 import StepContent from '../components/common/StepContent'
 import Carousel from "../components/common/Carousel"
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import EstiloCasa from "../components/specific/simular/EstiloCasa"
 import PavimentosEscadas from "../components/specific/simular/PavimentosEscadas"
 import ParedesExternas from "../components/specific/simular/ParedesExternas"
+import Telhas from "../components/specific/simular/Telhas"
+import { SimulationDataContext } from "../contexts/SimulationData"
 
 
 const Simular = () => {
 
     const [initial, setInitial] = useState(true)
 
-    const [area, setArea] = useState('')
-    const [estilo, setEstilo] = useState('')
-    const [pavimentos, setPavimentos] = useState('')
-    const [paredes, setParedes] = useState('')
-    const [telhas, setTelhas] = useState('')
-    const [garagem, setGaragem] = useState('')
-    const [sala, setSala] = useState('')
-    const [escritorio, setEscritorio] = useState('')
-    const [quartos, setQuartos] = useState({
-        small: '',
-        medium: '',
-        big: '',
-    })
-    const [lavabos, setLavabos] = useState('')
+    // const [area, setArea] = useState('')
+    // const [estilo, setEstilo] = useState('')
+    // const [pavimentos, setPavimentos] = useState('')
+    // const [paredes, setParedes] = useState('')
+    // const [telhas, setTelhas] = useState('')
+    // const [garagem, setGaragem] = useState('')
+    // const [sala, setSala] = useState('')
+    // const [escritorio, setEscritorio] = useState('')
+    // const [quartos, setQuartos] = useState({
+    //     small: '',
+    //     medium: '',
+    //     big: '',
+    // })
+    // const [lavabos, setLavabos] = useState('')
 
-    useEffect(() => {
-        console.log('area: ', area)
-        console.log('lavabos: ', lavabos)
-        console.log('estilo: ', estilo)
-        console.log('pavimentos: ', pavimentos)
-    }, [area, lavabos, estilo, pavimentos])
+    // useEffect(() => {
+    //     console.log('area: ', area)
+    //     console.log('lavabos: ', lavabos)
+    //     console.log('estilo: ', estilo)
+    //     console.log('pavimentos: ', pavimentos)
+    // }, [area, lavabos, estilo, pavimentos])
+
+
+    const {
+        simData,
+        setSimData
+    } = useContext(SimulationDataContext)
 
     const stepsTitles = [
         'Estilo da sua casa',
@@ -42,7 +50,7 @@ const Simular = () => {
         // 'Área Total',
         'Telhas',
         'Garagem',
-        'Sala de Estar/TV',
+        'Sala',
         'Escritório',
         'Quartos',
         'Despensa',
@@ -157,36 +165,42 @@ const Simular = () => {
         //         }
         //     ]
         // },
-        {
-            caption: 'Escolha o tipo de',
-            title: 'Telha',
-            // subtitle: 'Escolha o tipo das telhas da casa',
-            imageSrc: '/images/Ambientes/Ambientes15.svg',
-            value: telhas,
-            onChange: setTelhas,
-            options: [
-                {
-                    label: 'TERMOACÚSTICA',
-                    value: 'termoacustica',
-                },
-                {
-                    label: 'FIBROCIMENTO',
-                    value: 'fibrocimento',
-                },
-                {
-                    label: 'CERÂMICA',
-                    value: 'ceramica',
-                },
-            ]
-        },
+        // {
+        //     caption: 'Escolha o tipo de',
+        //     title: 'Telha',
+        //     // subtitle: 'Escolha o tipo das telhas da casa',
+        //     imageSrc: '/images/Ambientes/Ambientes15.svg',
+        //     value: simData.telhas,
+        //     onChange: (newValue) => setSimData({
+        //         ...simData,
+        //         telhas: newValue
+        //     }),
+        //     options: [
+        //         {
+        //             label: 'TERMOACÚSTICA',
+        //             value: 'termoacustica',
+        //         },
+        //         {
+        //             label: 'FIBROCIMENTO',
+        //             value: 'fibrocimento',
+        //         },
+        //         {
+        //             label: 'CERÂMICA',
+        //             value: 'ceramica',
+        //         },
+        //     ]
+        // },
         {
             caption: 'Escolha o tamanho da',
             title: 'Garagem',
             // subtitle: 'Escolha o padrão de acabamento da garagem',
             imageSrc: '/images/Ambientes/Ambientes11.svg',
             withFinishingPattern: true,
-            value: garagem,
-            onChange: setGaragem,
+            value: simData.garagem,
+            onChange:(newValue) => setSimData({
+                ...simData,
+                garagem: newValue
+            }),
             options: [
                 {
                     label: 'NÃO QUERO',
@@ -206,120 +220,120 @@ const Simular = () => {
                 },
             ]
         },
-        {
-            caption: 'Escolha o tamanho',
-            title: 'Sala de Estar/TV',
-            subtitle: 'Escolha o tamanho da sala de estar/TV',
-            value: sala,
-            onChange: setSala,
-            options: [
-                {
-                    label: '1 sala pequena (Aprox. 10 m²)',
-                    value: 'pequena',
-                },
-                {
-                    label: '1 sala média (Aprox. 25 m²)',
-                    value: 'media',
-                },
-                {
-                    label: '1 sala grande (Aprox. 40 m²)',
-                    value: 'grande',
-                },
-            ],
-            inputs: [
-                {
-                    label: 'Outro tamanho',
-                    value: sala,
-                    onChange: setSala,
-                    placeholder: 'Insira o tamanho em m2',
-                    type: 'number'
-                }
-            ]
-        },
-        {
-            caption: 'Escolha o tamanho',
-            title: 'Escritório',
-            subtitle: 'Escolha o tamanho da escritório',
-            value: escritorio,
-            onChange: setEscritorio,
-            options: [
-                {
-                    label: 'Escritório pequeno (Aprox. 10 m²)',
-                    value: 'pequena',
-                },
-                {
-                    label: 'Escritório médio (Aprox. 25 m²)',
-                    value: 'media',
-                },
-                {
-                    label: 'Escritório grande (Aprox. 40 m²)',
-                    value: 'grande',
-                },
-            ],
-        },
-        {
-            caption: 'Escolha a quantidade',
-            title: 'Quartos',
-            subtitle: 'Escolha a quantidade de quartos',
-            value: quartos,
-            onChange: setQuartos,
-            inputs: [
-                {
-                    label: 'Quarto pequeno',
-                    placeholder: '(Aprox. 10 m²)',
-                    value: quartos.small,
-                    onChange: setQuartos,
-                    type: 'number',
-                    width: '95%',
+        // {
+        //     caption: 'Escolha o tamanho da',
+        //     title: 'Sala',
+        //     // subtitle: 'Escolha o tamanho da sala',
+        //     value: sala,
+        //     onChange: setSala,
+        //     options: [
+        //         {
+        //             label: '1 sala pequena (Aprox. 10 m²)',
+        //             value: 'pequena',
+        //         },
+        //         {
+        //             label: '1 sala média (Aprox. 25 m²)',
+        //             value: 'media',
+        //         },
+        //         {
+        //             label: '1 sala grande (Aprox. 40 m²)',
+        //             value: 'grande',
+        //         },
+        //     ],
+        //     inputs: [
+        //         {
+        //             label: 'Outro tamanho',
+        //             value: sala,
+        //             onChange: setSala,
+        //             placeholder: 'Insira o tamanho em m2',
+        //             type: 'number'
+        //         }
+        //     ]
+        // },
+        // {
+        //     caption: 'Escolha o tamanho',
+        //     title: 'Escritório',
+        //     subtitle: 'Escolha o tamanho da escritório',
+        //     value: escritorio,
+        //     onChange: setEscritorio,
+        //     options: [
+        //         {
+        //             label: 'Escritório pequeno (Aprox. 10 m²)',
+        //             value: 'pequena',
+        //         },
+        //         {
+        //             label: 'Escritório médio (Aprox. 25 m²)',
+        //             value: 'media',
+        //         },
+        //         {
+        //             label: 'Escritório grande (Aprox. 40 m²)',
+        //             value: 'grande',
+        //         },
+        //     ],
+        // },
+        // {
+        //     caption: 'Escolha a quantidade',
+        //     title: 'Quartos',
+        //     subtitle: 'Escolha a quantidade de quartos',
+        //     value: quartos,
+        //     onChange: setQuartos,
+        //     inputs: [
+        //         {
+        //             label: 'Quarto pequeno',
+        //             placeholder: '(Aprox. 10 m²)',
+        //             value: quartos.small,
+        //             onChange: setQuartos,
+        //             type: 'number',
+        //             width: '95%',
                     
-                },
-                {
-                    label: 'Quarto grande',
-                    placeholder: '(Aprox. 40 m²)',
-                    value: quartos.big,
-                    onChange: setQuartos,
-                    type: 'number',
-                    width: '95%',
-                },
-                {
-                    label: 'Quarto médio',
-                    placeholder: '(Aprox. 25 m²)',
-                    value: quartos.medium,
-                    onChange: setQuartos,
-                    type: 'number',
-                    width: '95%',
-                },
-            ],
-        },
-        {
-            caption: 'ESCOLHA A QUANTIDADE',
-            title: 'LAVABOS',
-            subtitle: 'Lavabos que possuam apenas pias, ducha higiênica e vaso sanitário',
-            value: lavabos,
-            onChange: setLavabos,
-            options: [
-                {
-                    label: 'NÃO QUERO',
-                    value: 'none',
-                },
-                {
-                    label: '01 (UM)',
-                    value: 'UM',
-                },
-                {
-                    label: '02 (DOIS)',
-                    value: 'DOIS',
-                },
-                {
-                    label: '03 (TRÊS)',
-                    value: 'TRÊS',
-                },
-                {
-                    label: '04 (QUATRO)',
-                    value: 'QUATRO',
-                },
-            ]
-        },
+        //         },
+        //         {
+        //             label: 'Quarto grande',
+        //             placeholder: '(Aprox. 40 m²)',
+        //             value: quartos.big,
+        //             onChange: setQuartos,
+        //             type: 'number',
+        //             width: '95%',
+        //         },
+        //         {
+        //             label: 'Quarto médio',
+        //             placeholder: '(Aprox. 25 m²)',
+        //             value: quartos.medium,
+        //             onChange: setQuartos,
+        //             type: 'number',
+        //             width: '95%',
+        //         },
+        //     ],
+        // },
+        // {
+        //     caption: 'ESCOLHA A QUANTIDADE',
+        //     title: 'LAVABOS',
+        //     subtitle: 'Lavabos que possuam apenas pias, ducha higiênica e vaso sanitário',
+        //     value: lavabos,
+        //     onChange: setLavabos,
+        //     options: [
+        //         {
+        //             label: 'NÃO QUERO',
+        //             value: 'none',
+        //         },
+        //         {
+        //             label: '01 (UM)',
+        //             value: 'UM',
+        //         },
+        //         {
+        //             label: '02 (DOIS)',
+        //             value: 'DOIS',
+        //         },
+        //         {
+        //             label: '03 (TRÊS)',
+        //             value: 'TRÊS',
+        //         },
+        //         {
+        //             label: '04 (QUATRO)',
+        //             value: 'QUATRO',
+        //         },
+        //     ]
+        // },
         
     ]
 
@@ -334,13 +348,22 @@ const Simular = () => {
     //     <StepContent key={steps[3]} />,
     // ]
 
-    const items = steps.map((e, i) => (
-        <StepContent key={e.title} data={e} />
+    const items = steps.map((e, i) => e.customComponent ? e.customComponent : (
+        <StepContent key={`${e.title}_step_content_vai`} data={e} />
     ))
 
-    items.unshift(<ParedesExternas />)
-    items.unshift(<PavimentosEscadas />)
-    items.unshift(<EstiloCasa />)
+    items.unshift(<Telhas key='telhas_slide' />)
+    items.unshift(<ParedesExternas key='paredes_externas_slide' />)
+    items.unshift(<PavimentosEscadas key='pavimentos_e_escadas_slide' />)
+    items.unshift(<EstiloCasa key='estilo_casa_slide' />)
+    
+    
+    
+    // const items = []
+    // items.push(<EstiloCasa key='estilo_casa_slide' />)
+    // items.push(<PavimentosEscadas key='pavimentos_e_escadas_slide' />)
+    // items.push(<ParedesExternas key='paredes_externas_slide' />)
+    // items.push(<Telhas key='telhas_slide' />)
 
     if (initial) {
         return (

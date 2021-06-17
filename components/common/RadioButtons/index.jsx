@@ -1,15 +1,16 @@
-// import { useState } from "react";
+import { useState } from "react";
 import {
     Wrapper,
     Item,
     RadioButton,
-    RadioButtonLabel
+    RadioButtonLabel,
+    RadioButtonTest
 } from "./styles"
 
 
 const RadioButtons = ({ options, select, onChange, row }) => {
 
-    // const [select, setSelect] = useState(null);
+    const [active, setActive] = useState('');
     // const handleSelectChange = (event) => {
     //     const value = event.target.value;
     //     setSelect(value);
@@ -17,82 +18,44 @@ const RadioButtons = ({ options, select, onChange, row }) => {
 
     return (
             <Wrapper row={row}>
-                { options && options.map((e, i) => (
-                    <Item key={e.label}>
+                {/* { options && options.map((e, i) => (
+                    <Item key={e.value}>
                         <RadioButton
                             type="radio"
                             name="radio"
                             value={e.value}
-                            checked={select === e.value}
-                            onChange={(event) => onChange(event.target.value)}
-                            key={`${e.value ? e.value : e.label }_radio_button`}
+                            checked={select === e.value }
+                            onChange={(event) => {
+                                console.log('event.target.value: ', event.target.value)
+                                onChange(event.target.value)
+                            }}
+                            key={`${e.value}_radio_button`}
                             />
                         <RadioButtonLabel
-                            key={`${e.value ? e.value : e.label }_radio_button_label`}
+                            key={`${e.value}_radio_button_label`}
                             />
                         <div
                             style={row ? { marginRight: '20px' } : null }
-                            key={`${e.value ? e.value : e.label }_radio_label`}
+                            key={`${e.value}_radio_label`}
+                        >
+                            {e.label}
+                        </div>
+                    </Item>
+                ))} */}
+                { options && options.map((e, i) => (
+                    <Item key={`${e.value}_option_item`}>
+                        <RadioButtonTest
+                            selected={active === e.value}
+                            onClick={() => setActive(e.value)}
+                        />
+                        <div
+                            style={row ? { margin: '0 25px 0 15px' } : { marginLeft: '15px'} }
+                            key={`${e.value}_radio_label`}
                         >
                             {e.label}
                         </div>
                     </Item>
                 ))}
-                {/* <Item>
-                    <RadioButton
-                        type="radio"
-                        name="radio"
-                        value="none"
-                        checked={select === "none"}
-                        onChange={(event) => handleSelectChange(event)}
-                    />
-                    <RadioButtonLabel />
-                    <div>NÃO QUERO</div>
-                </Item>
-                <Item>
-                    <RadioButton
-                        type="radio"
-                        name="radio"
-                        value="UM"
-                        checked={select === "UM"}
-                        onChange={(event) => handleSelectChange(event)}
-                    />
-                    <RadioButtonLabel />
-                    <div>01 (UM)</div>
-                </Item>
-                <Item>
-                    <RadioButton
-                        type="radio"
-                        name="radio"
-                        value="DOIS"
-                        checked={select === "DOIS"}
-                        onChange={(event) => handleSelectChange(event)}
-                    />
-                    <RadioButtonLabel />
-                    <div>02 (DOIS)</div>
-                </Item>
-                <Item>
-                    <RadioButton
-                        type="radio"
-                        name="radio"
-                        value="TRES"
-                        checked={select === "TRES"}
-                        onChange={(event) => handleSelectChange(event)}
-                    />
-                    <RadioButtonLabel />
-                    <div>03 (TRÊS)</div>
-                </Item>
-                <Item>
-                    <RadioButton
-                        type="radio"
-                        name="radio"
-                        value="QUATRO"
-                        checked={select === "QUATRO"}
-                        onChange={(event) => handleSelectChange(event)}
-                    />
-                    <RadioButtonLabel />
-                    <div>04 (QUATRO)</div>
-                </Item> */}
             </Wrapper>
     )
 }
