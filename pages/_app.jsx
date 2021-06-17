@@ -2,6 +2,7 @@ import { createGlobalStyle, ThemeConsumer, ThemeProvider } from 'styled-componen
 import { ActiveIndexProvider } from '../contexts/activeIndex'
 // import '../styles/globals.css'
 import Head from 'next/head'
+import { SimulationDataContextProvider } from '../contexts/SimulationData'
 
 
 const GlobalStyle = createGlobalStyle`
@@ -67,11 +68,13 @@ function MyApp({ Component, pageProps }) {
                 <title>Orçamento Express | iBuild </title>
             </Head>
             <GlobalStyle />
-            <ActiveIndexProvider>
-                <ThemeProvider theme={theme}>
-                    <Component {...pageProps} />
-                </ThemeProvider>
-            </ActiveIndexProvider>
+            <SimulationDataContextProvider>
+                <ActiveIndexProvider>
+                    <ThemeProvider theme={theme}>
+                        <Component {...pageProps} />
+                    </ThemeProvider>
+                </ActiveIndexProvider>
+            </SimulationDataContextProvider>
         </>
     )
 }

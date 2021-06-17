@@ -42,6 +42,7 @@ font-weight: 400;
 ${(props) => props.fontSize ? `font-size: ${props.fontSize};` : ''}
 
 ${(props) => props.margin ? `margin: ${props.margin};` : ''}
+${(props) => props.width ? `width: ${props.width};` : ''}
 `
 
 export const ExplainingP = styled.p`

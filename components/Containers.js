@@ -42,6 +42,7 @@ export const Flex = styled.div`
     ${(props) => props.height ? `height: ${props.height};` : ''}
     ${(props) => props.maxWidth ? `max-width: ${props.maxWidth};` : ''}
     ${(props) => props.minHeight ? `min-height: ${props.minHeight};` : ''}
+    ${(props) => props.maxHeight ? `max-height: ${props.maxHeight};` : ''}
     ${(props) => props.textAlign ? `text-align: ${props.textAlign};` : ''}
     ${(props) => props.alignItems ? `align-items: ${props.alignItems};` : ''}
     ${(props) => props.justifyContent ? `justify-content: ${props.justifyContent};` : ''}
@@ -51,6 +52,7 @@ export const Flex = styled.div`
 export const Box = styled.div`
 
     ${(props) => props.width ? `width: ${props.width};` : ''}
+    ${(props) => props.height ? `height: ${props.height};` : ''}
 
     ${(props) => props.padding ? `padding: ${props.padding};` : ''}
     ${(props) => props.margin ? `margin: ${props.margin};` : ''}
