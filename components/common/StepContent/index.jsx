@@ -159,7 +159,7 @@ const StepContent = ({ data, noStatusBox }) => {
                         label={e.label}
                         placeholder={e.placeholder}
                         type={e.type ? e.type : 'text'}
-                        margin='10px'
+                        margin='10px 0'
                         width={e.width ? e.width : '100%'}
                         small
                         key={e.label}

@@ -35,8 +35,12 @@ const CustomStepper = ({ steps }) => {
                         <StepperDot
                             stepCompleted={ i < activeIndex }
                             currentStep={ i === activeIndex }
-                        />
-                        <StepTitle>{ e.toUpperCase() }</StepTitle>
+                            />
+                        <StepTitle
+                            currentStep={ i === activeIndex }
+                        >
+                            { e.toUpperCase() }
+                        </StepTitle>
                     </Flex>
                     <StepperLine />
                 </Box>
@@ -54,7 +58,11 @@ const CustomStepper = ({ steps }) => {
                             stepCompleted={ i < activeIndex }
                             currentStep={ i === activeIndex }
                         />
-                        <StepTitle>{ e.toUpperCase() }</StepTitle>
+                        <StepTitle
+                            currentStep={ i === activeIndex }
+                        >
+                            { e.toUpperCase() }
+                        </StepTitle>
                     </Flex>
                 // </Flex>
             ))}

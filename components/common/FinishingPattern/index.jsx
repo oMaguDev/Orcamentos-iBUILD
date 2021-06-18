@@ -1,6 +1,6 @@
 import { Parag } from "../../Text"
 import { Flex } from "../../Containers"
-import { StandardBox } from "./styles"
+import { FinishingPatternContainer, StandardBox } from "./styles"
 import RadioButtons from "../RadioButtons"
 import { useEffect, useState } from "react"
 
@@ -28,7 +28,7 @@ const FinishingPattern = () => {
         console.log('thermoacustic: ', thermoacustic)
     }, [thermoacustic])
     return (
-        <>
+        <FinishingPatternContainer>
             <Parag margin='0'>
                 Escolha o padrão do acabamento:
             </Parag>
@@ -75,7 +75,7 @@ const FinishingPattern = () => {
                     onChange={e => setThermoacustic(e)}
                 />
             </Flex>
-        </>
+        </FinishingPatternContainer>
     )
 }
 
