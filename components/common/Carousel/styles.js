@@ -65,6 +65,7 @@ export const CarouselButton = styled.button`
     cursor: pointer;
     background: none;
     border: 3px solid ${({ theme }) => theme.colors.primary.purple };
+    color: ${({ theme }) => theme.colors.primary.purple };
     height: 30px;
     width: 30px;
 

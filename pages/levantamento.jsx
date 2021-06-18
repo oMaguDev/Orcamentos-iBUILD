@@ -201,12 +201,13 @@ const Levantamento = () => {
             <Stepper
                 steps={stepsTitles}
                 title='levantamento de recursos'    
+                // page='levantamento'
             />
             <Carousel
                 items={items}
+                // page='levantamento'
                 lastSlideAction={() => {
                     router.push('/cadastro')
-                    setActiveIndex(0)
                 }}
             />
         </Flex>

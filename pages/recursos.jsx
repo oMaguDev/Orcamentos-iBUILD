@@ -26,9 +26,9 @@ const Resources = () => {
             <Carousel
                 fullScreen
                 items={carouselItems}
+                page='recursos'
                 lastSlideAction={() => {
                     router.push('/levantamento')
-                    setActiveIndex(0)
                 }}
             />
         </Flex>

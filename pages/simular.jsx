@@ -500,9 +500,11 @@ const Simular = () => {
             <Stepper
                 steps={stepsTitles}
                 title='Monte Sua Casa'    
+                page='simular'
             />
             <Carousel
                 items={items}
+                page='simular'
             />
         </Flex>
     )

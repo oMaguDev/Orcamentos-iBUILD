@@ -29,37 +29,85 @@ const DotsItem = ({ isActive }) => {
 
 // activeIndex, slidePrev, slideNext, activeIndex, setActiveIndex
 
-const Carousel = ({ items, fullScreen, lastSlideAction }) => { //, stepper, stepperSubmit, autoPlay = true, infinite
+const Carousel = ({
+    items,
+    fullScreen,
+    lastSlideAction,
+    page,
+    // activeIndex,
+    // setActiveIndex,
+}) => { //, stepper, stepperSubmit, autoPlay = true, infinite
 
-    
+
     // const syncActiveIndex = ({ item }) => setActiveIndex(item);
 
     // const [activeIndex, setActiveIndex] = useState(0);
     // const [items] = useState(createItems(5, [setActiveIndex]));
 
-    const { activeIndex, setActiveIndex } = useContext(ActiveIndexContext)
+    const {
+        activeIndex,
+        setActiveIndex,
+        // 
+        activeIndexRecursos,
+        setActiveIndexRecursos,
+        activeIndexLevantamento,
+        setActiveIndexLevantamento,
+        activeIndexSimular,
+        setActiveIndexSimular,
+    } = useContext(ActiveIndexContext)
+
+    const carouselItems = items ? items : defaultItems
 
     const slidePrev = () => {
         console.log('slidePrev')
-        if (activeIndex > 0) {
-            return setActiveIndex(activeIndex - 1);
-        }
-    }
-    const slideNext = () => {
-        console.log('slideNext')
-        if (items) {
-            if (activeIndex < items.length - 1) {
-                return setActiveIndex(activeIndex + 1);
+        if (currentPageIndex() > 0) {
+            if (page === 'levantamento') {
+                return setActiveIndexLevantamento(activeIndexLevantamento - 1);
+            } else if (page === 'recursos') {
+                return setActiveIndexRecursos(activeIndexRecursos - 1);
+            } else if (page === 'simular') {
+                return setActiveIndexSimular(activeIndexSimular - 1);
+            } else {
+                return setActiveIndex(activeIndex - 1);
             }
         }
-        else {
-            if (activeIndex < defaultItems.length - 1) {
+    }
+
+    const slideNext = () => {
+        console.log('slideNext')
+        if (activeIndex < carouselItems.length - 1) {
+            if (page === 'levantamento') {
+                return setActiveIndexLevantamento(activeIndexLevantamento + 1);
+            } else if (page === 'recursos') {
+                return setActiveIndexRecursos(activeIndexRecursos + 1);
+            } else if (page === 'simular') {
+                return setActiveIndexSimular(activeIndexSimular + 1);
+            } else {
                 return setActiveIndex(activeIndex + 1);
             }
         }
     }
 
-    const carouselItems = items ? items : defaultItems
+    const currentPageIndex = () => {
+        switch (page) {
+            case 'levantamento':
+                return activeIndexLevantamento
+                break;
+        
+            case 'recursos':
+                return activeIndexRecursos
+                break;
+        
+            case 'simular':
+                return activeIndexSimular
+                break;
+        
+            default:
+                return activeIndex
+                break;
+        }
+    }
+
 
     // console.log(carouselItems)
 
@@ -68,10 +116,10 @@ const Carousel = ({ items, fullScreen, lastSlideAction }) => { //, stepper, step
             <Flex
                 column
                 width='calc(100% - 250px)'
-                // height='80vh'
-                // style={{
-                //     alignSelf: 'normal'
-                // }}
+            // height='80vh'
+            // style={{
+            //     alignSelf: 'normal'
+            // }}
             >
                 <AliceCarousel
                     // mouseTracking
@@ -83,26 +131,26 @@ const Carousel = ({ items, fullScreen, lastSlideAction }) => { //, stepper, step
                     // autoPlayInterval={4000}
                     // infinite={infinite}
                     // touchMoveDefaultEvents={false}
-                    activeIndex={activeIndex}
+                    activeIndex={currentPageIndex()}
                     swipeDelta={2000}
                 />
                 <Flex
-                    // justifyContent='space-between'
-                    // width='100%'
-                    // height=''
-                    // margin='20px 0 0'
+                // justifyContent='space-between'
+                // width='100%'
+                // height=''
+                // margin='20px 0 0'
                 >
                     <CarouselButtonContainer fullScreen>
                         <CarouselButton onClick={slidePrev}>
                             <CaretLeft size={18} />
                         </CarouselButton>
-                                VOLTAR
+                        VOLTAR
                     </CarouselButtonContainer>
                     <CarouselButtonContainer fullScreen>
                         AVANÇAR
-                        <CarouselButton onClick={activeIndex === carouselItems.length - 1 ? (
-                            lastSlideAction ?  lastSlideAction : slideNext
-                            ) : (slideNext)}
+                        <CarouselButton onClick={currentPageIndex() === carouselItems.length - 1 ? (
+                            lastSlideAction ? lastSlideAction : slideNext
+                        ) : (slideNext)}
                         >
                             <CaretRight size={18} />
                         </CarouselButton>
@@ -129,20 +177,20 @@ const Carousel = ({ items, fullScreen, lastSlideAction }) => { //, stepper, step
                     // autoPlayInterval={4000}
                     // infinite={infinite}
                     // touchMoveDefaultEvents={false}
-                    activeIndex={activeIndex}
+                    activeIndex={currentPageIndex()}
                     swipeDelta={2000}
                 />
                 <CarouselButtonContainer left>
                     <CarouselButton onClick={slidePrev}>
                         <CaretLeft size={18} />
                     </CarouselButton>
-                            VOLTAR
-                        </CarouselButtonContainer>
+                    VOLTAR
+                </CarouselButtonContainer>
                 <CarouselButtonContainer right>
                     AVANÇAR
-                    <CarouselButton onClick={activeIndex === carouselItems.length - 1 ? (
-                        lastSlideAction ?  lastSlideAction : slideNext
-                        ) : (slideNext)}
+                    <CarouselButton onClick={currentPageIndex() === carouselItems.length - 1 ? (
+                        lastSlideAction ? lastSlideAction : slideNext
+                    ) : (slideNext)}
                     >
                         <CaretRight size={18} />
                     </CarouselButton>
