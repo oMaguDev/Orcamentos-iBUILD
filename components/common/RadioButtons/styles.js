@@ -55,70 +55,71 @@ export const Item = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  height: 48px;
+  // height: 48px;
+  margin: 10px 0;
   position: relative;
 
 `;
 
-export const RadioButtonLabel = styled.label`
-  position: absolute;0
-  top: 25%;
-  left: 4px;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-//   background: white;
-  border: 2px solid #bebebe;
+// export const RadioButtonLabel = styled.label`
+//   position: absolute;0
+//   top: 25%;
+//   left: 4px;
+//   width: 20px;
+//   height: 20px;
+//   border-radius: 50%;
+// //   background: white;
+//   border: 2px solid #bebebe;
   
-`;
-export const RadioButton = styled.input`
-  cursor: pointer;  
+// `;
+// export const RadioButton = styled.input`
+//   cursor: pointer;  
 
 
-  opacity: 0;
-  z-index: 1;
-  border-radius: 50%;
-  width: 24px;
-  height: 24px;
-  margin-right: 10px;
-  &:hover ~ ${RadioButtonLabel} {
-    background: #eee;
-    &::after {
-      content: "";
-      display: block;
-      border-radius: 50%;
-      width: 12px;
-      height: 12px;
-      margin: 6px;
-    //   background: #eeeeee;
-    }
-  }
-  ${(props) =>
-    props.checked &&
-    ` 
-    &:checked + ${RadioButtonLabel} {
-      background: ${props.theme.colors.primary.green};
-      border: 2px solid #bebebe;
-      &::after {
-        content: "";
-        display: block;
-        border-radius: 50%;
-        width: 12px;
-        height: 12px;
-        margin: 6px;
-        // box-shadow: 1px 3px 3px 1px rgba(0, 0, 0, 0.1);
-        // background: white;
-      }
-    }
-  `}
-`;
+//   opacity: 0;
+//   z-index: 1;
+//   border-radius: 50%;
+//   width: 24px;
+//   height: 24px;
+//   margin-right: 10px;
+//   &:hover ~ ${RadioButtonLabel} {
+//     background: #eee;
+//     &::after {
+//       content: "";
+//       display: block;
+//       border-radius: 50%;
+//       width: 12px;
+//       height: 12px;
+//       margin: 6px;
+//     //   background: #eeeeee;
+//     }
+//   }
+//   ${(props) =>
+//     props.checked &&
+//     ` 
+//     &:checked + ${RadioButtonLabel} {
+//       background: ${props.theme.colors.primary.green};
+//       border: 2px solid #bebebe;
+//       &::after {
+//         content: "";
+//         display: block;
+//         border-radius: 50%;
+//         width: 12px;
+//         height: 12px;
+//         margin: 6px;
+//         // box-shadow: 1px 3px 3px 1px rgba(0, 0, 0, 0.1);
+//         // background: white;
+//       }
+//     }
+//   `}
+// `;
 
-export const RadioButtonTest = styled.button`
+export const RadioButton = styled.button`
 
     cursor: pointer;
 
-    width: 24px;
-    height: 24px;
+    width: 18px;
+    height: 18px;
     border-radius: 50%;
 
     background: none; 
@@ -135,4 +136,11 @@ export const RadioButtonTest = styled.button`
         background: ${props.theme.colors.primary.green};
       }
     ` : ``}
+`
+
+export const RadioButtonLabel = styled.div`
+
+  ${(props) => props.row ? 'margin: 0 25px 0 15px;' : 'margin-left: 15px;'}
+
+  font-size: 0.9rem;
 `

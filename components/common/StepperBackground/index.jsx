@@ -5,7 +5,7 @@ import CustomStepper from "../CustomStepper"
 import { Background, StepDot, StepLine, StepperContainer, Triangle, StepDotsContainer, Label, MainTitle, ParagraphsContainer } from "./styles"
 
 
-const Stepper = ({ steps, title, pinkDisplay, onStart, parags }) => {
+const Stepper = ({ steps, title, pinkDisplay, onStart, parags, page }) => {
 
     if (pinkDisplay) {
         return (
@@ -71,7 +71,7 @@ const Stepper = ({ steps, title, pinkDisplay, onStart, parags }) => {
                     textAlign='left'
                     >
                     <MainTitle>{ title.toUpperCase() }</MainTitle>
-                    <CustomStepper steps={steps} />
+                    <CustomStepper steps={steps} page={page} />
                 </Flex>
             </StepperContainer>
         </Background>

@@ -51,103 +51,21 @@ const Simular = () => {
         'Telhas',
         'Garagem',
         'Sala',
-        'Escritório',
-        'Quartos',
-        'Despensa',
-        'Banheiros',
         'Cozinha',
         'Área Gourmet',
-        'Lavabos',
         'Área de Serviço',
+        'Despensa',
+        'Escritório',
+        'Quartos',
+        'Banheiros',
+        'Lavabos',
         'Int. Hid./Ele.',
         'Conforto',
         'Acabamentos'
     ]
 
     const steps = [
-        // {
-        //     caption: 'Escolha o',
-        //     title: 'Estilo da sua casa',
-        //     subtitle: 'Tudo bem se não for exatamente igual, a ideia aqui é nos ajudar a entender qual o estilo do seu projeto',
-        //     value: estilo,
-        //     onChange: setEstilo,
-        //     options: [
-        //         {
-        //             label: 'Clássica',
-        //             value: 'classica',
-        //         },
-        //         {
-        //             label: 'Neo-Clássica',
-        //             value: 'neoClassica',
-        //         },
-        //         {
-        //             label: 'Mediterrânea',
-        //             value: 'mediterranea',
-        //         },
-        //         {
-        //             label: 'Brasileira',
-        //             value: 'brasileira',
-        //         },
-        //         {
-        //             label: 'Minimalista',
-        //             value: 'minimalista',
-        //         },
-        //         {
-        //             label: 'Contemporânea',
-        //             value: 'contemporanea',
-        //         },
-        //         {
-        //             label: 'Americana',
-        //             value: 'americana',
-        //         },
-        //         {
-        //             label: 'Europeia',
-        //             value: 'europeia',
-        //         },
-        //     ]
-        // },
-        // {
-        //     caption: 'Escolha a quantidade',
-        //     title: 'Pavimentos e escadas',
-        //     subtitle: 'Escolha quantos pavimentos e o estilo das escadas na sua nova casa. ',
-        //     value: pavimentos,
-        //     onChange: setPavimentos,
-        //     options: [
-        //         {
-        //             label: '1',
-        //             value: '1',
-        //         },
-        //         {
-        //             label: '2',
-        //             value: '2',
-        //         },
-        //         {
-        //             label: '3',
-        //             value: '3',
-        //         },
-        //         {
-        //             label: '4',
-        //             value: '4',
-        //         },
-        //     ]
-        // },
-        // {
-        //     caption: 'Escolha o padrão',
-        //     title: 'Paredes externas',
-        //     subtitle: 'Escolha o padrão das paredes externas',
-        //     value: paredes,
-        //     onChange: setParedes,
-        //     options: [
-        //         {
-        //             label: 'Standard',
-        //             value: 'standard',
-        //         },
-        //         {
-        //             label: 'Premium',
-        //             value: 'premium',
-        //         },
-        //     ]
-        // },
+        
         // {
         //     caption: 'Escolha o tamanho',
         //     title: 'Área Total',
@@ -165,31 +83,7 @@ const Simular = () => {
         //         }
         //     ]
         // },
-        // {
-        //     caption: 'Escolha o tipo de',
-        //     title: 'Telha',
-        //     // subtitle: 'Escolha o tipo das telhas da casa',
-        //     imageSrc: '/images/Ambientes/Ambientes15.svg',
-        //     value: simData.telhas,
-        //     onChange: (newValue) => setSimData({
-        //         ...simData,
-        //         telhas: newValue
-        //     }),
-        //     options: [
-        //         {
-        //             label: 'TERMOACÚSTICA',
-        //             value: 'termoacustica',
-        //         },
-        //         {
-        //             label: 'FIBROCIMENTO',
-        //             value: 'fibrocimento',
-        //         },
-        //         {
-        //             label: 'CERÂMICA',
-        //             value: 'ceramica',
-        //         },
-        //     ]
-        // },
+    
         {
             caption: 'Escolha o tamanho da',
             title: 'Garagem',
@@ -207,49 +101,251 @@ const Simular = () => {
                     value: 'sem_garagem',
                 },
                 {
-                    label: 'PEQUENA (1 CARRO - APROX. 20M2)',
+                    label: 'PEQUENA (1 CARRO - APROX. 20M²)',
                     value: 'garagem_pq',
                 },
                 {
-                    label: 'MÉDIA (2 CARROS - APROX. 30M2)',
+                    label: 'MÉDIA (2 CARROS - APROX. 30M²)',
                     value: 'garagem_md',
                 },
                 {
-                    label: 'GRANDE (ATÉ 4 CARROS - APROX. 50M2)',
+                    label: 'GRANDE (ATÉ 4 CARROS - APROX. 50M²)',
                     value: 'garagem_gd',
                 },
             ]
         },
-        // {
-        //     caption: 'Escolha o tamanho da',
-        //     title: 'Sala',
-        //     // subtitle: 'Escolha o tamanho da sala',
-        //     value: sala,
-        //     onChange: setSala,
-        //     options: [
-        //         {
-        //             label: '1 sala pequena (Aprox. 10 m²)',
-        //             value: 'pequena',
-        //         },
-        //         {
-        //             label: '1 sala média (Aprox. 25 m²)',
-        //             value: 'media',
-        //         },
-        //         {
-        //             label: '1 sala grande (Aprox. 40 m²)',
-        //             value: 'grande',
-        //         },
-        //     ],
-        //     inputs: [
-        //         {
-        //             label: 'Outro tamanho',
-        //             value: sala,
-        //             onChange: setSala,
-        //             placeholder: 'Insira o tamanho em m2',
-        //             type: 'number'
-        //         }
-        //     ]
-        // },
+        {
+            caption: 'Escolha o tamanho da',
+            title: 'Sala',
+            // subtitle: 'Escolha o tamanho da sala',
+            imageSrc: '/images/Ambientes/Ambientes1.svg',
+            withFinishingPattern: true,
+            value: simData.sala,
+            onChange: newValue => setSimData({
+                ...simData,
+                sala: newValue
+            }),
+            options: [
+                {
+                    label: 'Pequena (Aprox. 10 m²)',
+                    value: 'pequena',
+                },
+                {
+                    label: 'Média (Aprox. 25 m²)',
+                    value: 'media',
+                },
+                {
+                    label: 'Grande (Aprox. 40 m²)',
+                    value: 'grande',
+                },
+            ],
+            inputs: [
+                {
+                    label: 'Outro tamanho',
+                    value: simData.sala,
+                    onChange: newValue => setSimData({
+                        ...simData,
+                        sala: newValue
+                    }),
+                    placeholder: 'Insira o tamanho em m²',
+                    type: 'number'
+                }
+            ]
+        },
+        {
+            caption: 'Escolha o tamanho da',
+            title: 'Cozinha',
+            // subtitle: 'Escolha o tamanho da sala',
+            imageSrc: '/images/Ambientes/Ambientes2.svg',
+            withFinishingPattern: true,
+            value: simData.cozinha,
+            onChange: newValue => setSimData({
+                ...simData,
+                cozinha: newValue
+            }),
+            options: [
+                {
+                    label: 'Pequena (Aprox. 10 m²)',
+                    value: 'pequena',
+                },
+                {
+                    label: 'Média (Aprox. 20 m²)',
+                    value: 'media',
+                },
+                {
+                    label: 'Grande (Aprox. 30 m²)',
+                    value: 'grande',
+                },
+            ],
+            inputs: [
+                {
+                    label: 'Outro tamanho',
+                    value: simData.cozinha,
+                    onChange: newValue => setSimData({
+                        ...simData,
+                        cozinha: newValue
+                    }),
+                    placeholder: 'Insira o tamanho em m²',
+                    type: 'number'
+                }
+            ]
+        },
+        {
+            caption: 'Escolha o tamanho da',
+            title: 'Área gourmet',
+            // subtitle: 'Escolha o tamanho da sala',
+            imageSrc: '/images/Ambientes/Ambientes3.svg',
+            withFinishingPattern: true,
+            value: simData.areaGourmet,
+            onChange: newValue => setSimData({
+                ...simData,
+                areaGourmet: newValue
+            }),
+            options: [
+                {
+                    label: 'Não quero',
+                    value: 'sem_areaGourmet',
+                },
+                {
+                    label: 'Pequena (Aprox. 10 m²)',
+                    value: 'pequena',
+                },
+                {
+                    label: 'Média (Aprox. 20 m²)',
+                    value: 'media',
+                },
+                {
+                    label: 'Grande (Aprox. 30 m²)',
+                    value: 'grande',
+                },
+            ],
+            inputs: [
+                {
+                    label: 'Outro tamanho',
+                    value: simData.areaGourmet,
+                    onChange: newValue => setSimData({
+                        ...simData,
+                        areaGourmet: newValue
+                    }),
+                    placeholder: 'Insira o tamanho em m²',
+                    type: 'number'
+                }
+            ]
+        },
+        {
+            caption: 'Escolha o tamanho da',
+            title: 'Área de serviço',
+            // subtitle: 'Escolha o tamanho da sala',
+            imageSrc: '/images/Ambientes/Ambientes4.svg',
+            withFinishingPattern: true,
+            value: simData.areaServico,
+            onChange: newValue => setSimData({
+                ...simData,
+                areaServico: newValue
+            }),
+            options: [
+                {
+                    label: 'Pequena (Aprox. 3,5 m²)',
+                    value: 'pequena',
+                },
+                {
+                    label: 'Média (Aprox. 6 m²)',
+                    value: 'media',
+                },
+                {
+                    label: 'Grande (Aprox. 9 m²)',
+                    value: 'grande',
+                },
+            ],
+            inputs: [
+                {
+                    label: 'Outro tamanho',
+                    value: simData.areaServico,
+                    onChange: newValue => setSimData({
+                        ...simData,
+                        areaServico: newValue
+                    }),
+                    placeholder: 'Insira o tamanho em m²',
+                    type: 'number'
+                }
+            ]
+        },
+        {
+            caption: 'Escolha o tamanho da',
+            title: 'Despensa',
+            // subtitle: 'Escolha o tamanho da sala',
+            imageSrc: '/images/Ambientes/Ambientes5.svg',
+            withFinishingPattern: true,
+            value: simData.despensa,
+            onChange: newValue => setSimData({
+                ...simData,
+                despensa: newValue
+            }),
+            options: [
+                {
+                    label: 'Pequena (Aprox. 3 m²)',
+                    value: 'pequena',
+                },
+                {
+                    label: 'Média (Aprox. 6 m²)',
+                    value: 'media',
+                },
+                {
+                    label: 'Grande (Aprox. 9 m²)',
+                    value: 'grande',
+                },
+            ],
+            inputs: [
+                {
+                    label: 'Outro tamanho',
+                    value: simData.despensa,
+                    onChange: newValue => setSimData({
+                        ...simData,
+                        despensa: newValue
+                    }),
+                    placeholder: 'Insira o tamanho em m²',
+                    type: 'number'
+                }
+            ]
+        },
+        {
+            caption: 'Escolha o tamanho do',
+            title: 'Escritório',
+            // subtitle: 'Escolha o tamanho da sala',
+            imageSrc: '/images/Ambientes/Ambientes6.svg',
+            withFinishingPattern: true,
+            value: simData.escritorio,
+            onChange: newValue => setSimData({
+                ...simData,
+                escritorio: newValue
+            }),
+            options: [
+                {
+                    label: 'Pequeno (Aprox. 8 m²)',
+                    value: 'pequena',
+                },
+                {
+                    label: 'Médio (Aprox. 12 m²)',
+                    value: 'media',
+                },
+                {
+                    label: 'Grande (Aprox. 20 m²)',
+                    value: 'grande',
+                },
+            ],
+            inputs: [
+                {
+                    label: 'Outro tamanho',
+                    value: simData.escritorio,
+                    onChange: newValue => setSimData({
+                        ...simData,
+                        escritorio: newValue
+                    }),
+                    placeholder: 'Insira o tamanho em m²',
+                    type: 'number'
+                }
+            ]
+        },
         // {
         //     caption: 'Escolha o tamanho',
         //     title: 'Escritório',
@@ -404,9 +500,11 @@ const Simular = () => {
             <Stepper
                 steps={stepsTitles}
                 title='Monte Sua Casa'    
+                page='simular'
             />
             <Carousel
                 items={items}
+                page='simular'
             />
         </Flex>
     )

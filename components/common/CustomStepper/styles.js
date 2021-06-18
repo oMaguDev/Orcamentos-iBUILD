@@ -42,4 +42,8 @@ export const StepTitle = styled.div`
 
     margin-left: 10px;
 
+    ${(props) => props.currentStep ? `
+        font-weight: 700;
+    ` : ''}
+
 `

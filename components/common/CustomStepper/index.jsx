@@ -4,14 +4,40 @@ import { useContext, useEffect } from "react"
 import { ActiveIndexContext } from "../../../contexts/activeIndex"
 
 
-const CustomStepper = ({ steps }) => {
+const CustomStepper = ({ steps, page }) => {
 
 
-    const { activeIndex } = useContext(ActiveIndexContext)
+    const {
+        activeIndex,
+        // 
+        activeIndexRecursos,
+        activeIndexLevantamento,
+        activeIndexSimular,
+    } = useContext(ActiveIndexContext)
 
-    useEffect(() => {
-        console.log('activeIndex: ', activeIndex)
-    }, [activeIndex])
+    // useEffect(() => {
+    //     console.log('activeIndex: ', currentPageIndex())
+    // }, [currentPageIndex()])
+
+    const currentPageIndex = () => {
+        switch (page) {
+            case 'levantamento':
+                return activeIndexLevantamento
+                break;
+        
+            case 'recursos':
+                return activeIndexRecursos
+                break;
+        
+            case 'simular':
+                return activeIndexSimular
+                break;
+        
+            default:
+                return activeIndex
+                break;
+        }
+    }
 
     return (
         <Flex
@@ -33,10 +59,14 @@ const CustomStepper = ({ steps }) => {
                         height='8px'
                     >
                         <StepperDot
-                            stepCompleted={ i < activeIndex }
-                            currentStep={ i === activeIndex }
-                        />
-                        <StepTitle>{ e.toUpperCase() }</StepTitle>
+                            stepCompleted={ i < currentPageIndex() }
+                            currentStep={ i === currentPageIndex() }
+                            />
+                        <StepTitle
+                            currentStep={ i === currentPageIndex() }
+                        >
+                            { e.toUpperCase() }
+                        </StepTitle>
                     </Flex>
                     <StepperLine />
                 </Box>
@@ -51,10 +81,14 @@ const CustomStepper = ({ steps }) => {
                         key={e}
                     >
                         <StepperDot
-                            stepCompleted={ i < activeIndex }
-                            currentStep={ i === activeIndex }
+                            stepCompleted={ i < currentPageIndex() }
+                            currentStep={ i === currentPageIndex() }
                         />
-                        <StepTitle>{ e.toUpperCase() }</StepTitle>
+                        <StepTitle
+                            currentStep={ i === currentPageIndex() }
+                        >
+                            { e.toUpperCase() }
+                        </StepTitle>
                     </Flex>
                 // </Flex>
             ))}

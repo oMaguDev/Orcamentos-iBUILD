@@ -38,3 +38,10 @@ export const StandardBox = styled.div`
         color: ${props.theme.colors.text.white };
     ` : ``}
 `
+
+export const FinishingPatternContainer = styled.div`
+    border-top: dashed 1px ${({ theme }) => theme.colors.text.neutral200 };
+    padding-top: 10px;
+
+    text-align: left;
+`

@@ -4,7 +4,6 @@ import {
     Item,
     RadioButton,
     RadioButtonLabel,
-    RadioButtonTest
 } from "./styles"
 
 
@@ -44,16 +43,16 @@ const RadioButtons = ({ options, select, onChange, row }) => {
                 ))} */}
                 { options && options.map((e, i) => (
                     <Item key={`${e.value}_option_item`}>
-                        <RadioButtonTest
+                        <RadioButton
                             selected={active === e.value}
                             onClick={() => setActive(e.value)}
                         />
-                        <div
-                            style={row ? { margin: '0 25px 0 15px' } : { marginLeft: '15px'} }
+                        <RadioButtonLabel
                             key={`${e.value}_radio_label`}
+                            row={row}
                         >
-                            {e.label}
-                        </div>
+                            {e.label.toUpperCase()}
+                        </RadioButtonLabel>
                     </Item>
                 ))}
             </Wrapper>
