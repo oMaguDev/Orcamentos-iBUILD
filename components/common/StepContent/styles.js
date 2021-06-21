@@ -42,8 +42,19 @@ export const MiddleContainer = styled.div`
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    flex-wrap: wrap;
+    // flex-wrap: wrap;
 
-    overflow: hidden;
+    overflow: auto;
+
+`
+
+export const SlideContainer = styled.div`
+
+    width: 100%;
+    max-height: calc(100vh - 200px);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
 
 `

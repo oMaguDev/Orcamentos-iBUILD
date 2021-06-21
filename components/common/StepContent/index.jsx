@@ -2,7 +2,7 @@ import { Box, Flex, TitleContainer } from "../../Containers"
 import RadioButtons from "../RadioButtons"
 import StatusBox from "../StatusBox"
 import Select from "./Select"
-import { MiddleContainer, StepContentContainer, StepImageContainer } from "./styles"
+import { MiddleContainer, StepContentContainer, StepImageContainer, SlideContainer } from "./styles"
 import Input from '../../form/Input'
 import FinishingPattern from "../FinishingPattern"
 
@@ -11,10 +11,10 @@ const StepContent = ({ data, noStatusBox }) => {
     return (
         <>
         <Box height='50px'></Box>
-        <Flex
-            width='100%'
-            maxHeight='calc(100vh - 200px)'
-            justifyContent='space-evenly'
+        <SlideContainer
+            // width='100%'
+            // maxHeight='calc(100vh - 200px)'
+            // justifyContent='space-evenly'
             key={data.title}
             >
             <StepImageContainer
@@ -92,7 +92,7 @@ const StepContent = ({ data, noStatusBox }) => {
                     </>
                 )}
             </StepContentContainer>
-        </Flex>
+        </SlideContainer>
                 </>
     )
 }
