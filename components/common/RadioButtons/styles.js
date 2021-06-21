@@ -49,6 +49,13 @@ export const Wrapper = styled.div`
   ` : 'flex-direction: column;'}
   
   flex-wrap: wrap;
+
+  ${(props) => props.small ? `
+    margin: 10px;
+    &:first-child, &:last-child {
+      margin: 0;
+    }
+  ` : ''}
 `;
 
 export const Item = styled.div`
@@ -58,6 +65,8 @@ export const Item = styled.div`
   // height: 48px;
   margin: 10px 0;
   position: relative;
+
+  text-align: left;
 
 `;
 
@@ -136,6 +145,12 @@ export const RadioButton = styled.button`
         background: ${props.theme.colors.primary.green};
       }
     ` : ``}
+
+    ${(props) => props.small ? `
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+    ` : ''}
 `
 
 export const RadioButtonLabel = styled.div`
@@ -143,4 +158,11 @@ export const RadioButtonLabel = styled.div`
   ${(props) => props.row ? 'margin: 0 25px 0 15px;' : 'margin-left: 15px;'}
 
   font-size: 0.9rem;
+
+  ${(props) => props.small ? `
+      font-size: 0.7rem;
+      margin-left: 10px;
+    ` : ''}
+
+
 `

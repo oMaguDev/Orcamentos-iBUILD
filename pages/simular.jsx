@@ -8,6 +8,7 @@ import EstiloCasa from "../components/specific/simular/EstiloCasa"
 import PavimentosEscadas from "../components/specific/simular/PavimentosEscadas"
 import ParedesExternas from "../components/specific/simular/ParedesExternas"
 import Telhas from "../components/specific/simular/Telhas"
+import QuartosESuitesSlide from "../components/specific/simular/QuartosESuites"
 import { SimulationDataContext } from "../contexts/SimulationData"
 
 
@@ -452,6 +453,8 @@ const Simular = () => {
     items.unshift(<ParedesExternas key='paredes_externas_slide' />)
     items.unshift(<PavimentosEscadas key='pavimentos_e_escadas_slide' />)
     items.unshift(<EstiloCasa key='estilo_casa_slide' />)
+
+    items.push(<QuartosESuitesSlide/>)
     
     
     
