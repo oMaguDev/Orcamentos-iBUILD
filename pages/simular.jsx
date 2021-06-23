@@ -59,8 +59,8 @@ const Simular = () => {
         'Despensa',
         'Escritório',
         'Quartos',
-        'Banheiros',
         'Lavabos',
+        'Banheiros Sociais',
         'Int. Hid./Ele.',
         'Conforto',
         'Acabamentos'
