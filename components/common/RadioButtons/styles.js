@@ -166,3 +166,32 @@ export const RadioButtonLabel = styled.div`
 
 
 `
+
+export const RadioButtonsTable = styled.table`
+
+  border-collapse: collapse;
+  
+  & th {
+    border-bottom: solid 1px ${({ theme }) => theme.colors.text.neutral400 };
+    padding: 8px;
+    &:nth-child(even) {
+      background: ${({ theme }) => theme.colors.primary.lightGrey };
+    }
+  }
+  
+  & td {
+    padding: 8px;
+    text-align: left;
+    &:nth-child(even) {
+      background: ${({ theme }) => theme.colors.primary.lightGrey };
+    }
+    &:first-child {
+      padding: 8px 16px 8px 0;
+    }
+  }
+  
+  & tr {
+  }
+  
+  // ${({ theme }) => theme.colors.text.neutral200 }
+`
