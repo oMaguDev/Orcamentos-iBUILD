@@ -46,6 +46,7 @@ export const Flex = styled.div`
     ${(props) => props.textAlign ? `text-align: ${props.textAlign};` : ''}
     ${(props) => props.alignItems ? `align-items: ${props.alignItems};` : ''}
     ${(props) => props.justifyContent ? `justify-content: ${props.justifyContent};` : ''}
+    ${(props) => props.overflow ? `overflow: ${props.overflow};` : ''}
 `
 
 

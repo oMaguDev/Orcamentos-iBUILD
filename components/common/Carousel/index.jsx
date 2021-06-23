@@ -75,7 +75,7 @@ const Carousel = ({
 
     const slideNext = () => {
         console.log('slideNext')
-        if (activeIndex < carouselItems.length - 1) {
+        if (currentPageIndex() < carouselItems.length - 1) {
             if (page === 'levantamento') {
                 return setActiveIndexLevantamento(activeIndexLevantamento + 1);
             } else if (page === 'recursos') {
@@ -93,15 +93,15 @@ const Carousel = ({
             case 'levantamento':
                 return activeIndexLevantamento
                 break;
-        
+
             case 'recursos':
                 return activeIndexRecursos
                 break;
-        
+
             case 'simular':
                 return activeIndexSimular
                 break;
-        
+
             default:
                 return activeIndex
                 break;
@@ -117,9 +117,9 @@ const Carousel = ({
                 column
                 width='calc(100% - 250px)'
             // height='80vh'
-            // style={{
-            //     alignSelf: 'normal'
-            // }}
+            style={{
+                alignSelf: 'normal'
+            }}
             >
                 <AliceCarousel
                     // mouseTracking
@@ -146,15 +146,41 @@ const Carousel = ({
                         </CarouselButton>
                         VOLTAR
                     </CarouselButtonContainer>
-                    <CarouselButtonContainer fullScreen>
-                        AVANÇAR
-                        <CarouselButton onClick={currentPageIndex() === carouselItems.length - 1 ? (
-                            lastSlideAction ? lastSlideAction : slideNext
-                        ) : (slideNext)}
-                        >
-                            <CaretRight size={18} />
-                        </CarouselButton>
-                    </CarouselButtonContainer>
+                    {currentPageIndex() === carouselItems.length - 1 ? (
+                        <CarouselButtonContainer fullScreen>
+                            AVANÇAR
+                            {lastSlideAction ? (
+                                <CarouselButton onClick={lastSlideAction}
+                                >
+                                    <CaretRight size={18} />
+                                </CarouselButton>
+                            ) : (
+                                <CarouselButton onClick={slideNext}
+                                >
+                                    <CaretRight size={18} />
+                                </CarouselButton>
+                            )}
+                        </CarouselButtonContainer>
+                    ) : (
+                        <CarouselButtonContainer fullScreen>
+                            AVANÇAR
+                            <CarouselButton onClick={slideNext}
+                            >
+                                <CaretRight size={18} />
+                            </CarouselButton>
+                        </CarouselButtonContainer>
+
+                    )}
+                        {/* <CarouselButtonContainer fullScreen>
+                            AVANÇAR
+                            <CarouselButton onClick={() => {
+                                console.log('fulklshcreen')
+                                slideNext()
+                            }}
+                            >
+                                <CaretRight size={18} />
+                            </CarouselButton>
+                        </CarouselButtonContainer> */}
                 </Flex>
             </Flex>
         )

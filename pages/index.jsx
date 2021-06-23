@@ -29,9 +29,11 @@ const Main = () => {
                     textAlign='left'
                     width='100%'
                     maxWidth='600px'
+                    // height='90%'
                     margin='0'
                     alignItems='flex-start'
                     padding='20px'
+                    overflow='auto'
                 >
                     <TitleContainer>
                         <h4>
