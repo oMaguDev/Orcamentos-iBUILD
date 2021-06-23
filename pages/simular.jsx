@@ -10,6 +10,7 @@ import ParedesExternas from "../components/specific/simular/ParedesExternas"
 import Telhas from "../components/specific/simular/Telhas"
 import QuartosESuitesSlide from "../components/specific/simular/QuartosESuites"
 import LavabosSlide from "../components/specific/simular/Lavabos"
+import BanheirosSociaisSlide from "../components/specific/simular/BanheirosSociais"
 import { SimulationDataContext } from "../contexts/SimulationData"
 
 
@@ -457,6 +458,7 @@ const Simular = () => {
 
     items.push(<QuartosESuitesSlide/>)
     items.push(<LavabosSlide />)
+    items.push(<BanheirosSociaisSlide />)
     
     
     

@@ -3,7 +3,7 @@ import { Flex } from "../../Containers"
 import { RadioButton, RadioButtonsTable } from "./styles"
 
 
-const RadioButtonsList = () => {
+const RadioButtonsList = ({ labels }) => {
 
     const [lavabos, setLavabos] = useState(new Array(4).fill(''))
 
@@ -14,12 +14,19 @@ const RadioButtonsList = () => {
         'large'
     ]
 
+    const defaultlabels = labels ? [...labels] : [
+        'NÃO QUERO',
+        'PEQUENO (APROX. 3,5 M2)',
+        'MÉDIO (APROX. 6 M2)',
+        'GRANDE (APROX. 8 M2)'
+    ]
+
     return (
         <RadioButtonsTable>
             <thead>
                 <tr>
                     <th>
-                        
+
                     </th>
                     <th>
                         1
@@ -38,7 +45,7 @@ const RadioButtonsList = () => {
             <tbody>
                 <tr>
                     <td>
-                    NÃO QUERO
+                        {defaultlabels[0]}
                     </td>
                     <td>
                         <RadioButton
@@ -83,7 +90,7 @@ const RadioButtonsList = () => {
                 </tr>
                 <tr>
                     <td>
-                    PEQUENO (APROX. 3,5 M2)
+                        {defaultlabels[1]}
                     </td>
                     <td>
                         <RadioButton
@@ -127,8 +134,8 @@ const RadioButtonsList = () => {
                     </td>
                 </tr>
                 <tr>
-                <td>
-                    MÉDIO (APROX. 6 M2)
+                    <td>
+                        {defaultlabels[2]}
                     </td>
                     <td>
                         <RadioButton
@@ -172,8 +179,8 @@ const RadioButtonsList = () => {
                     </td>
                 </tr>
                 <tr>
-                <td>
-                    GRANDE (APROX. 8 M2)
+                    <td>
+                        {defaultlabels[3]}
                     </td>
                     <td>
                         <RadioButton

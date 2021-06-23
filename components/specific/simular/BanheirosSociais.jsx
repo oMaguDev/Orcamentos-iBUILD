@@ -10,7 +10,7 @@ import Button from "../../common/Button"
 import RadioButtonsList from "../../common/RadioButtons/RadioButtonsList"
 
 
-const LavabosSlide = ({ data }) => {
+const BanheirosSociaisSlide = ({ data }) => {
 
     const [quartos, setQuartos] = useState([])
     // const [rows, setRows] = useState([1])
@@ -47,32 +47,39 @@ const LavabosSlide = ({ data }) => {
         <>
             <Box height='50px'></Box>
             <SlideContainer
-                key={'Lavabos'}
+                key={'Banheiros Sociais'}
             >
                 <StepImageContainer
-                    key={`${'Lavabos'}_step_image_container`}
+                    key={`${'Banheiros Sociais'}_step_image_container`}
                 >
-                    <img style={{ width: '100%' }} src='/images/Ambientes/Ambientes8.svg' alt="" />
+                    <img style={{ width: '100%' }} src='/images/Ambientes/Ambientes9.svg' alt="" />
                 </StepImageContainer>
                 <StepContentContainer
-                    key={`${'Lavabos'}_step_content_container`}
+                    key={`${'Banheiros Sociais'}_step_content_container`}
                 >
                     <TitleContainer
-                        key={`${'Lavabos'}_title_container`}
+                        key={`${'Banheiros Sociais'}_title_container`}
                     >
                         <h4>{'Escolha a quantidade e o tamanho dos'.toUpperCase()}</h4>
-                        <h2>{'Lavabos'.toUpperCase()}</h2>
+                        <h2>{'Banheiros Sociais'.toUpperCase()}</h2>
                     </TitleContainer>
 
                     <MiddleContainer
-                        key={`${'Lavabos'}_middle_container`}
+                        key={`${'Banheiros Sociais'}_middle_container`}
                     >
                         <Flex
                             width='100%'
                             margin='15px 0'
                             justifyContent='flex-start'
                         >
-                            <RadioButtonsList />
+                            <RadioButtonsList
+                                labels={[
+                                    'NÃO QUERO',
+                                    'PEQUENO (APROX. 8 M2)',
+                                    'MÉDIO (APROX. 12 M2)',
+                                    'GRANDE (APROX. 20 M2)'
+                                ]}
+                            />
                         </Flex>
                     </MiddleContainer>
                     <>
@@ -85,4 +92,4 @@ const LavabosSlide = ({ data }) => {
     )
 }
 
-export default LavabosSlide
+export default BanheirosSociaisSlide
