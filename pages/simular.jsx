@@ -11,7 +11,11 @@ import Telhas from "../components/specific/simular/Telhas"
 import QuartosESuitesSlide from "../components/specific/simular/QuartosESuites"
 import LavabosSlide from "../components/specific/simular/Lavabos"
 import BanheirosSociaisSlide from "../components/specific/simular/BanheirosSociais"
+import InstalacoesSlide from "../components/specific/simular/Instalacoes"
 import { SimulationDataContext } from "../contexts/SimulationData"
+import ConfortoSlide from "../components/specific/simular/Conforto"
+import ResumoImovelSlide from "../components/specific/simular/ResumoImovel"
+import AcabamentoSlide from "../components/specific/simular/Acabamento"
 
 
 const Simular = () => {
@@ -64,7 +68,8 @@ const Simular = () => {
         'Banheiros Sociais',
         'Int. Hid./Ele.',
         'Conforto',
-        'Acabamentos'
+        'Acabamentos',
+        'Resumo',
     ]
 
     const steps = [
@@ -459,7 +464,10 @@ const Simular = () => {
     items.push(<QuartosESuitesSlide/>)
     items.push(<LavabosSlide />)
     items.push(<BanheirosSociaisSlide />)
-    
+    items.push(<InstalacoesSlide />)
+    items.push(<ConfortoSlide />)
+    items.push(<AcabamentoSlide />)
+    items.push(<ResumoImovelSlide />)
     
     
     // const items = []
