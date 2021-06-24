@@ -46,7 +46,6 @@ const Final = () => {
                         <Button
                             fontWeight='600'
                             // onClick={() => router.push('/recursos')}
-                            pink
                         >
                             QUERO VER A PROPOSTA DETALHADA
                         </Button>
