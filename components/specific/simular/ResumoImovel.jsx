@@ -9,12 +9,14 @@ import { Parag } from "../../Text"
 import Button from "../../common/Button"
 import RadioButtonsList from "../../common/RadioButtons/RadioButtonsList"
 import { ExplainingP } from "../../Text"
+import { useRouter } from 'next/router'
 
 
 const ResumoImovelSlide = ({ data }) => {
 
     const [instalacoes, setInstalacoes] = useState('')
 
+    const router = useRouter()
 
     return (
         <>
@@ -37,6 +39,12 @@ const ResumoImovelSlide = ({ data }) => {
                         <h2>{'Resumo do Imóvel'.toUpperCase()}</h2>
                         <p>Descrever as escolhas do cliente</p>
                     </TitleContainer>
+                    <Button
+                        margin='20px 0'
+                        onClick={() => router.push('/final')}
+                    >
+                        Próximo passo
+                    </Button>
                 </StepContentContainer>
             </SlideContainer>
         </>
