@@ -42,6 +42,7 @@ export const StandardBox = styled.div`
 export const FinishingPatternContainer = styled.div`
     border-top: dashed 1px ${({ theme }) => theme.colors.text.neutral200 };
     padding-top: 10px;
+    // margin-top: 30px;
 
     text-align: left;
 `

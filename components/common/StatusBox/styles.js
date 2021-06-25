@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export const StatusBoxContainer = styled.div`
 
-z-index: 10;
+// z-index: 10;
 
     // background: #ccc;
     
@@ -25,7 +25,7 @@ export const Status = styled.div`
 
     background: ${({ theme }) => theme.colors.primary.green };
     width: 100%;
-    height: 45%;
+    // height: 45%;
 
     color: ${({ theme }) => theme.colors.primary.pink };
 `

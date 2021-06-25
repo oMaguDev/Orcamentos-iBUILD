@@ -71,7 +71,7 @@ const InstalacoesSlide = ({ data }) => {
                 <StepImageContainer
                     key={`${'Hidráulicas'}_step_image_container`}
                 >
-                    <img style={{ width: '100%' }} src='/images/Ambientes/Ambientes12.svg' alt="" />
+                    <img style={{ height: '100%' }} src='/images/Ambientes/Ambientes12.svg' alt="" />
                 </StepImageContainer>
                 <StepContentContainer
                     key={`${'Hidráulicas'}_step_content_container`}

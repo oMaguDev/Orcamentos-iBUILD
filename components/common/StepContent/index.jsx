@@ -20,12 +20,13 @@ const StepContent = ({ data, noStatusBox }) => {
             <StepImageContainer
                 key={`${data.title}_step_image_container`} 
                 >
-                <img style={{ width: '100%' }} src={data.imageSrc ? data.imageSrc : "/images/americana.jpg"} alt="" />
+                <img style={{ height: '100%' }} src={data.imageSrc ? data.imageSrc : "/images/americana.jpg"} alt="" />
             </StepImageContainer>
             <StepContentContainer
                 key={`${data.title}_step_content_container`} 
             >
                 <TitleContainer
+                // margin='50px 0 0'
                     key={`${data.title}_title_container`}
                     >
                     <h4>{data.caption.toUpperCase()}</h4>

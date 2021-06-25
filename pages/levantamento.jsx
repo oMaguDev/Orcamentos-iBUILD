@@ -179,14 +179,14 @@ const Levantamento = () => {
                     ]}
                     onStart={() => setStartPage(false)}
                 />
-                <Box
+                <Flex
                     width='100%'
                     maxWidth='700px'
                     height='100%'
                     padding='20px'
                     >
-                    <img src="/images/Pessoas/Pessoas 8.svg" width='100%' height='100%' alt="" />
-                </Box>
+                    <img src="/images/Pessoas/Pessoas 8.svg" width='80%' height='80%' alt="" />
+                </Flex>
             </Flex>
         )
     }

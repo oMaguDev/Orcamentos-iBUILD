@@ -52,7 +52,7 @@ const LavabosSlide = ({ data }) => {
                 <StepImageContainer
                     key={`${'Lavabos'}_step_image_container`}
                 >
-                    <img style={{ width: '100%' }} src='/images/Ambientes/Ambientes8.svg' alt="" />
+                    <img style={{ height: '100%' }} src='/images/Ambientes/Ambientes8.svg' alt="" />
                 </StepImageContainer>
                 <StepContentContainer
                     key={`${'Lavabos'}_step_content_container`}

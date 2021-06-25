@@ -6,12 +6,16 @@ export const StepContentContainer = styled.div`
     display: flex; 
     flex-direction: column;
     align-items: flex-start;
-    justify-content: center;
+    justify-content: flex-start;
     margin:  20px;
-    width: 450px;
-    min-width: 450px;
+    width: 500px;
+    padding: 15px;
 
-    z-index: 0;
+    height: 100%;
+    // max-height: calc(100vh - 200px);
+    overflow: auto;
+
+    // z-index: 0;
 
     ${(props) => props.isCheckout ? `
         width: 70%;
@@ -22,8 +26,9 @@ export const StepContentContainer = styled.div`
 
 export const StepImageContainer = styled.div`
 
-    height: 100%;
-    width: 400px;
+    // height: 100%;
+    height: calc(100vh - 200px);
+    // width: 500px;
 
 
 `
@@ -31,9 +36,6 @@ export const StepImageContainer = styled.div`
 export const MiddleContainer = styled.div`
 
     width: 100%;
-    // height: 300px;
-    min-height: 200px;
-    max-height: 300px;
 
     margin: 20px 0;
 
@@ -44,17 +46,20 @@ export const MiddleContainer = styled.div`
     justify-content: flex-start;
     // flex-wrap: wrap;
 
-    overflow: auto;
+    // overflow: auto;
 
 `
 
 export const SlideContainer = styled.div`
 
     width: 100%;
-    max-height: calc(100vh - 200px);
+    // max-height: calc(100vh - 200px);
+    height: calc(100vh - 200px);
+
+    // margin: 30px 0 0 0;
 
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
 
 `
