@@ -43,7 +43,7 @@ const First = () => {
     return (
             <Flex
                 // width='calc(100% - 100px)'
-                // height='100%' //'calc(100% - 100px)'
+                height='80%' //'calc(100% - 100px)'
                 justifyContent='space-evenly'
                 margin='20px 0 0 0'
                 >
@@ -83,11 +83,13 @@ const First = () => {
                 </Flex>
                 <Box
                     width='100%'
-                    maxWidth='700px'
-                    // height='100%'
-                    // padding='20px'
+                    // maxWidth='700px'
+                    height='100%'
+                    // maxHeight='600px'
+                    padding='20px'
+                    margin='auto'
                 >
-                    <img src="/images/Pessoas/Pessoas 5.svg" width='100%' height='100%' alt="" />
+                    <img src="/images/Pessoas/Pessoas 5.svg" height='80%' width='80%' alt="" />
                 </Box>
             </Flex>
     )

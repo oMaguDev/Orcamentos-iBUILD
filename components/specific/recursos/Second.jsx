@@ -59,10 +59,10 @@ const Second = () => {
                 <Box
                     width='100%'
                     // maxWidth='700px'
-                    // height='100%'
+                    height='100%'
                     // padding='20px'
                 >
-                    <img src="/images/Pessoas/Pessoas 4.svg" width='100%' height='100%' alt="" />
+                    <img src="/images/Pessoas/Pessoas 4.svg" width='80%' height='80%' alt="" />
                 </Box>
                 <Flex
                     column
