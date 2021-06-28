@@ -4,16 +4,19 @@ import StatusBox from "../../common/StatusBox"
 import { MiddleContainer, StepContentContainer, StepImageContainer, SlideContainer } from "../../common/StepContent/styles"
 import Input from '../../form/Input'
 import FinishingPattern from "../../common/FinishingPattern"
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { Parag } from "../../Text"
 import Button from "../../common/Button"
 import RadioButtonsList from "../../common/RadioButtons/RadioButtonsList"
+import { SimulationDataContext } from "../../../contexts/SimulationData"
 
 
 const BanheirosSociaisSlide = ({ data }) => {
 
     const [quartos, setQuartos] = useState([])
     // const [rows, setRows] = useState([1])
+
+    const { simData, setSimData } = useContext(SimulationDataContext)
 
     const quarto = {
         title: 'Quarto',
@@ -79,6 +82,11 @@ const BanheirosSociaisSlide = ({ data }) => {
                                     'MÉDIO (APROX. 12 M2)',
                                     'GRANDE (APROX. 20 M2)'
                                 ]}
+                                entity={simData.banheiros}
+                                setEntity={newValue => setSimData({
+                                    ...simData.banheiros,
+                                    banheiros: newValue
+                                })}
                             />
                         </Flex>
                     </MiddleContainer>

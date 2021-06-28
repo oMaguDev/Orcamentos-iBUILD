@@ -105,11 +105,14 @@ const PavimentosEscadas = () => {
                                 height='100px'
                                 imageSrc={e.imageSrc}
                                 key={e.id}
-                                active={active === i}
-                                onClick={() => setActive(i)}
+                                active={simData.escada === e.id}
+                                onClick={() => setSimData({
+                                    ...simData,
+                                    escada: e.id
+                                })}
                                 >
                                 <div>
-                                    <div>{ active === i ? <img src='/images/Ícones/Ícones 11.svg' /> : null}</div>
+                                    <div>{ simData.escada === e.id ? <img src='/images/Ícones/Ícones 11.svg' /> : null}</div>
                                 </div>
                                 <p>{ e.label }</p>
                             </HomeStylePicContainer>

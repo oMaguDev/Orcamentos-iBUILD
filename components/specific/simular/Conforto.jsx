@@ -41,21 +41,21 @@ const ConfortoSlide = ({ data }) => {
         <>
             <Box height='50px'></Box>
             <SlideContainer
-                key={'Hidráulicas'}
+                key={'Conforto'}
             >
                 <StepImageContainer
-                    key={`${'Hidráulicas'}_step_image_container`}
+                    key={`${'Conforto'}_step_image_container`}
                 >
                     <img style={{ height: '100%' }} src='/images/Ambientes/Ambientes13.svg' alt="" />
                 </StepImageContainer>
                 <StepContentContainer
-                    key={`${'Hidráulicas'}_step_content_container`}
+                    key={`${'Conforto'}_step_content_container`}
                 >
                     <TitleContainer
-                        key={`${'Hidráulicas'}_title_container`}
+                        key={`${'Conforto'}_title_container`}
                     >
                         <h4>{'Escolha o tipo de instalações'.toUpperCase()}</h4>
-                        <h2>{'Hidráulicas'.toUpperCase()}</h2>
+                        <h2>{'Conforto'.toUpperCase()}</h2>
                         <p>
                             Passe o mouse sobre cada um dos padrões e entenda melhor como funciona o conforto que você pode ter na sua casa
                         </p>

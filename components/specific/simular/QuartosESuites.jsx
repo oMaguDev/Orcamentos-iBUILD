@@ -4,9 +4,10 @@ import StatusBox from "../../common/StatusBox"
 import { MiddleContainer, StepContentContainer, StepImageContainer, SlideContainer } from "../../common/StepContent/styles"
 import Input from '../../form/Input'
 import FinishingPattern from "../../common/FinishingPattern"
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { Parag } from "../../Text"
 import Button from "../../common/Button"
+import { SimulationDataContext } from "../../../contexts/SimulationData"
 
 
 const QuartosESuitesSlide = ({ data }) => {
@@ -14,68 +15,69 @@ const QuartosESuitesSlide = ({ data }) => {
     const [quartos, setQuartos] = useState([])
     const [rows, setRows] = useState([1])
 
+    const { simData, setSimData } = useContext(SimulationDataContext)
 
     const rooms = [
-        'QUARTO',
-        'SUITE',
-        'CLOSET'
+        'quarto',
+        'suite',
+        'closet'
     ]
 
     const returnRoom = (index) => ({
         title: `Quarto ${index + 1}`,
-        value: quartos[index],
+        value: simData.quartos[index],
         onChange: newValue => {
-            const lastQuartos = [...quartos]
+            const lastQuartos = [...simData.quartos]
             lastQuartos[index] = newValue
             return setQuartos(newValue)
         },
         options: [
             {
-                value: 'sem_quarto',
+                value: 'none',
                 label: 'NÃO QUERO',
             },
             {
-                value: 'quarto_pq',
+                value: '_pq',
                 label: 'PEQUENO (APROX. 12 M2)',
             },
             {
-                value: 'quarto_md',
+                value: '_md',
                 label: 'MÉDIO (APROX. 24 M2)',
             },
             {
-                value: 'quarto_gd',
+                value: '_gd',
                 label: 'GRANDE (APROX. 12 M2)',
             },
         ]
     })
 
-    const quarto = {
-        title: 'Quarto',
-        value: quartos[0],
-        onChange: newValue => {
-            const lastQuartos = [...quartos]
-            lastQuartos[0] = newValue
-            return setQuartos(newValue)
-        },
-        options: [
-            {
-                value: 'sem_quarto',
-                label: 'NÃO QUERO',
-            },
-            {
-                value: 'quarto_pq',
-                label: 'PEQUENO (APROX. 12 M2)',
-            },
-            {
-                value: 'quarto_md',
-                label: 'MÉDIO (APROX. 24 M2)',
-            },
-            {
-                value: 'quarto_gd',
-                label: 'GRANDE (APROX. 12 M2)',
-            },
-        ]
-    }
+    // const quarto = {
+    //     title: 'Quarto',
+    //     value: quartos[0],
+    //     onChange: newValue => {
+    //         const lastQuartos = [...quartos]
+    //         lastQuartos[0] = newValue
+    //         return setQuartos(newValue)
+    //     },
+    //     options: [
+    //         {
+    //             value: 'sem_quarto',
+    //             label: 'NÃO QUERO',
+    //         },
+    //         {
+    //             value: 'quarto_pq',
+    //             label: 'PEQUENO (APROX. 12 M2)',
+    //         },
+    //         {
+    //             value: 'quarto_md',
+    //             label: 'MÉDIO (APROX. 24 M2)',
+    //         },
+    //         {
+    //             value: 'quarto_gd',
+    //             label: 'GRANDE (APROX. 12 M2)',
+    //         },
+    //     ]
+    // }
 
     useEffect(() => {
         console.log('rows: ', rows)
@@ -127,15 +129,24 @@ const QuartosESuitesSlide = ({ data }) => {
                                             margin='0 0 10px'
                                         >
                                             <strong>
-                                                {`${e} ${idx + 1}`}
+                                                {`${e.toUpperCase()} ${idx + 1}`}
                                             </strong>
                                         </Parag>
                                         <RadioButtons
                                             small
-                                            options={quarto.options}
-                                            onChange={quarto.onChange}
-                                            select={quarto.value}
-                                            key={`${'Quartos/Suítes'}_radio_buttons`}
+                                            options={returnRoom(idx).options}
+                                            onChange={(newValue) => {
+                                                const previousQuartos = [...simData.quartos]
+                                                const previousQuartosRow = { ...previousQuartos[idx] }
+                                                previousQuartosRow[e] = newValue
+                                                previousQuartos[idx] = { ...previousQuartosRow }
+                                                setSimData({
+                                                    ...simData,
+                                                    quartos: previousQuartos
+                                                }) 
+                                            }} //onChange(returnRoom(idx).value)
+                                            select={simData?.quartos[idx][e]}
+                                            key={`${'Quartos/Suítes'}_${idx}_radio_buttons`}
                                         />
                                     </Flex>
                                 ))}
@@ -148,6 +159,16 @@ const QuartosESuitesSlide = ({ data }) => {
                             onClick={() => {
                                 const currentRows = rows.length
                                 setRows(new Array(currentRows + 1).fill(1))
+                                const oneMoreRow = [ ...simData.quartos ]
+                                oneMoreRow.push({
+                                    quarto: '',
+                                    suite: '',
+                                    closet: ''
+                                },)
+                                setSimData({
+                                    ...simData,
+                                    quartos: oneMoreRow
+                                })
                             }}
                         >
                             [+] ADICIONAR MAIS QUARTOS

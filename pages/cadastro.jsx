@@ -44,6 +44,7 @@ const Cadastro = () => {
                 margin='0'
                 alignItems='flex-start'
                 padding='20px'
+                justifyContent='flex-start'
             >
                 <TitleContainer>
                     <h4>

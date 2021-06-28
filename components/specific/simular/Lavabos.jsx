@@ -4,16 +4,19 @@ import StatusBox from "../../common/StatusBox"
 import { MiddleContainer, StepContentContainer, StepImageContainer, SlideContainer } from "../../common/StepContent/styles"
 import Input from '../../form/Input'
 import FinishingPattern from "../../common/FinishingPattern"
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { Parag } from "../../Text"
 import Button from "../../common/Button"
 import RadioButtonsList from "../../common/RadioButtons/RadioButtonsList"
+import { SimulationDataContext } from "../../../contexts/SimulationData"
 
 
 const LavabosSlide = ({ data }) => {
 
     const [quartos, setQuartos] = useState([])
     // const [rows, setRows] = useState([1])
+
+    const { simData, setSimData } = useContext(SimulationDataContext)
 
     const quarto = {
         title: 'Quarto',
@@ -25,19 +28,19 @@ const LavabosSlide = ({ data }) => {
         },
         options: [
             {
-                value: 'sem_quarto',
+                value: 'none',
                 label: 'NÃO QUERO',
             },
             {
-                value: 'quarto_pq',
+                value: '_pq',
                 label: 'PEQUENO (APROX. 12 M2)',
             },
             {
-                value: 'quarto_md',
+                value: '_md',
                 label: 'MÉDIO (APROX. 24 M2)',
             },
             {
-                value: 'quarto_gd',
+                value: '_gd',
                 label: 'GRANDE (APROX. 12 M2)',
             },
         ]
@@ -72,7 +75,13 @@ const LavabosSlide = ({ data }) => {
                             margin='15px 0'
                             justifyContent='flex-start'
                         >
-                            <RadioButtonsList />
+                            <RadioButtonsList
+                                entity={simData.lavabos}
+                                setEntity={newValue => setSimData({
+                                    ...simData.lavabos,
+                                    lavabos: newValue
+                                })}
+                            />
                         </Flex>
                     </MiddleContainer>
                     <>

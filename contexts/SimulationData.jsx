@@ -18,9 +18,15 @@ export const SimulationDataContextProvider = ({ children }) => {
         areaServico: '',
         despensa: '',
         escritorio: '',
-        quartos: '',
-        lavabos: '',
-        banheiros: '',
+        quartos: [
+            {
+                quarto: '',
+                suite: '',
+                closet: ''
+            },
+        ],
+        lavabos: new Array(4).fill(''),
+        banheiros: new Array(4).fill(''),
         instalacoes: '',
         confortos: '',
         acabamento: '',
