@@ -78,7 +78,7 @@ export const CarouselContainer = styled.div`
 export const TitleContainer = styled.div`
 
     text-align: left;
-    height: 100px;
+    // height: 100px;
 
     color: ${({ theme }) => theme.colors.primary.purple};
 

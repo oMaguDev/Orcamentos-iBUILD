@@ -33,7 +33,7 @@ const Main = () => {
                     margin='0'
                     alignItems='flex-start'
                     padding='20px'
-                    overflow='auto'
+                    // overflow='auto'
                 >
                     <TitleContainer>
                         <h4>
