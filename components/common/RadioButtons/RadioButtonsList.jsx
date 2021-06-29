@@ -7,7 +7,7 @@ const RadioButtonsList = ({ labels, entity, setEntity }) => {
 
     // const [lavabos, setEntity] = useState(new Array(4).fill(''))
 
-    console.log('entity: ', entity)
+    // console.log('entity: ', entity)
 
     const optionsValues = [
         'none',
@@ -51,7 +51,7 @@ const RadioButtonsList = ({ labels, entity, setEntity }) => {
                     </td>
                     <td>
                         <RadioButton
-                            selected={optionsValues[0] === entity[0]}
+                            selected={entity ? optionsValues[0] === entity[0] : ''}
                             onClick={() => {
                                 const newEntity = [...entity]
                                 newEntity[0] = optionsValues[0]
@@ -62,7 +62,7 @@ const RadioButtonsList = ({ labels, entity, setEntity }) => {
                     </td>
                     <td>
                         <RadioButton
-                            selected={optionsValues[0] === entity[1]}
+                            selected={entity ? optionsValues[0] === entity[1] : ''}
                             onClick={() => {
                                 const newEntity = [...entity]
                                 newEntity[1] = optionsValues[0]
@@ -73,7 +73,7 @@ const RadioButtonsList = ({ labels, entity, setEntity }) => {
                     </td>
                     <td>
                         <RadioButton
-                            selected={optionsValues[0] === entity[2]}
+                            selected={entity ? optionsValues[0] === entity[2] : ''}
                             onClick={() => {
                                 const newEntity = [...entity]
                                 newEntity[2] = optionsValues[0]
@@ -84,7 +84,7 @@ const RadioButtonsList = ({ labels, entity, setEntity }) => {
                     </td>
                     <td>
                         <RadioButton
-                            selected={optionsValues[0] === entity[3]}
+                            selected={entity ? optionsValues[0] === entity[3] : ''}
                             onClick={() => {
                                 const newEntity = [...entity]
                                 newEntity[3] = optionsValues[0]
@@ -100,7 +100,7 @@ const RadioButtonsList = ({ labels, entity, setEntity }) => {
                     </td>
                     <td>
                         <RadioButton
-                            selected={optionsValues[1] === entity[0]}
+                            selected={entity ? optionsValues[1] === entity[0] : ''}
                             onClick={() => {
                                 const newEntity = [...entity]
                                 newEntity[0] = optionsValues[1]
@@ -111,7 +111,7 @@ const RadioButtonsList = ({ labels, entity, setEntity }) => {
                     </td>
                     <td>
                         <RadioButton
-                            selected={optionsValues[1] === entity[1]}
+                            selected={entity ? optionsValues[1] === entity[1] : ''}
                             onClick={() => {
                                 const newEntity = [...entity]
                                 newEntity[1] = optionsValues[1]
@@ -122,7 +122,7 @@ const RadioButtonsList = ({ labels, entity, setEntity }) => {
                     </td>
                     <td>
                         <RadioButton
-                            selected={optionsValues[1] === entity[2]}
+                            selected={entity ? optionsValues[1] === entity[2] : ''}
                             onClick={() => {
                                 const newEntity = [...entity]
                                 newEntity[2] = optionsValues[1]
@@ -133,7 +133,7 @@ const RadioButtonsList = ({ labels, entity, setEntity }) => {
                     </td>
                     <td>
                         <RadioButton
-                            selected={optionsValues[1] === entity[3]}
+                            selected={entity ? optionsValues[1] === entity[3] : ''}
                             onClick={() => {
                                 const newEntity = [...entity]
                                 newEntity[3] = optionsValues[1]
@@ -149,7 +149,7 @@ const RadioButtonsList = ({ labels, entity, setEntity }) => {
                     </td>
                     <td>
                         <RadioButton
-                            selected={optionsValues[2] === entity[0]}
+                            selected={entity ? optionsValues[2] === entity[0] : ''}
                             onClick={() => {
                                 const newEntity = [...entity]
                                 newEntity[0] = optionsValues[2]
@@ -160,7 +160,7 @@ const RadioButtonsList = ({ labels, entity, setEntity }) => {
                     </td>
                     <td>
                         <RadioButton
-                            selected={optionsValues[2] === entity[1]}
+                            selected={entity ? optionsValues[2] === entity[1] : ''}
                             onClick={() => {
                                 const newEntity = [...entity]
                                 newEntity[1] = optionsValues[2]
@@ -171,7 +171,7 @@ const RadioButtonsList = ({ labels, entity, setEntity }) => {
                     </td>
                     <td>
                         <RadioButton
-                            selected={optionsValues[2] === entity[2]}
+                            selected={entity ? optionsValues[2] === entity[2] : ''}
                             onClick={() => {
                                 const newEntity = [...entity]
                                 newEntity[2] = optionsValues[2]
@@ -182,7 +182,7 @@ const RadioButtonsList = ({ labels, entity, setEntity }) => {
                     </td>
                     <td>
                         <RadioButton
-                            selected={optionsValues[2] === entity[3]}
+                            selected={entity ? optionsValues[2] === entity[3] : ''}
                             onClick={() => {
                                 const newEntity = [...entity]
                                 newEntity[3] = optionsValues[2]
@@ -198,7 +198,7 @@ const RadioButtonsList = ({ labels, entity, setEntity }) => {
                     </td>
                     <td>
                         <RadioButton
-                            selected={optionsValues[3] === entity[0]}
+                            selected={entity ? optionsValues[3] === entity[0] : ''}
                             onClick={() => {
                                 const newEntity = [...entity]
                                 newEntity[0] = optionsValues[3]
@@ -209,7 +209,7 @@ const RadioButtonsList = ({ labels, entity, setEntity }) => {
                     </td>
                     <td>
                         <RadioButton
-                            selected={optionsValues[3] === entity[1]}
+                            selected={entity ? optionsValues[3] === entity[1] : ''}
                             onClick={() => {
                                 const newEntity = [...entity]
                                 newEntity[1] = optionsValues[3]
@@ -220,7 +220,7 @@ const RadioButtonsList = ({ labels, entity, setEntity }) => {
                     </td>
                     <td>
                         <RadioButton
-                            selected={optionsValues[3] === entity[2]}
+                            selected={entity ? optionsValues[3] === entity[2] : ''}
                             onClick={() => {
                                 const newEntity = [...entity]
                                 newEntity[2] = optionsValues[3]
@@ -231,7 +231,7 @@ const RadioButtonsList = ({ labels, entity, setEntity }) => {
                     </td>
                     <td>
                         <RadioButton
-                            selected={optionsValues[3] === entity[3]}
+                            selected={entity ? optionsValues[3] === entity[3] : ''}
                             onClick={() => {
                                 const newEntity = [...entity]
                                 newEntity[3] = optionsValues[3]

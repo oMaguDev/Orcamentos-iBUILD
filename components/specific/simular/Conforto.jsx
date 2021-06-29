@@ -4,11 +4,12 @@ import StatusBox from "../../common/StatusBox"
 import { MiddleContainer, StepContentContainer, StepImageContainer, SlideContainer } from "../../common/StepContent/styles"
 import Input from '../../form/Input'
 import FinishingPattern from "../../common/FinishingPattern"
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { Parag } from "../../Text"
 import Button from "../../common/Button"
 import RadioButtonsList from "../../common/RadioButtons/RadioButtonsList"
 import { ExplainingP } from "../../Text"
+import { SimulationDataContext } from "../../../contexts/SimulationData"
 
 
 const ConfortoSlide = ({ data }) => {
@@ -16,22 +17,27 @@ const ConfortoSlide = ({ data }) => {
     const [conforto, setConforto] = useState('')
     // const [rows, setRows] = useState([1])
 
+    const { simData, setSimData } = useContext(SimulationDataContext)
+
     const confortos = {
         title: 'Quarto',
-        value: conforto,
-        onChange: setConforto,
+        value: simData.conforto,
+        onChange: newValue => setSimData({
+            ...simData,
+            conforto: newValue
+        }),
         options: [
             {
-                value: 'so_agua_fria',
+                value: 'conforto_economy',
                 label: 'ECONOMY',
                 // description: 'Chuveiro elétrico, sem quecimento nas torneiras'
             },
             {
-                value: 'agua_fria_e_quente',
+                value: 'conforto_standard',
                 label: 'STANDARD',
             },
             {
-                value: 'agua_fria_e_quente',
+                value: 'conforto_premium',
                 label: 'PREMIUM',
             },
         ]

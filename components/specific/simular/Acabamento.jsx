@@ -4,13 +4,14 @@ import StatusBox from "../../common/StatusBox"
 import { MiddleContainer, StepContentContainer, StepImageContainer, SlideContainer } from "../../common/StepContent/styles"
 import Input from '../../form/Input'
 import FinishingPattern from "../../common/FinishingPattern"
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { Parag } from "../../Text"
 import Button from "../../common/Button"
 import RadioButtonsList from "../../common/RadioButtons/RadioButtonsList"
 import { ExplainingP } from "../../Text"
 import { StandardBox, CooktopContainer } from "./styles"
 import RadioIconButtons from '../../common/RadioIconButtons'
+import { SimulationDataContext } from "../../../contexts/SimulationData"
 
 
 const AcabamentoSlide = ({ data }) => {
@@ -18,10 +19,15 @@ const AcabamentoSlide = ({ data }) => {
     const [marmore, setMarmore] = useState('')
     // const [rows, setRows] = useState([1])
 
+    const { simData, setSimData } = useContext(SimulationDataContext)
+
     const marmores = {
         title: 'Quarto',
-        value: marmore,
-        onChange: setMarmore,
+        value: simData.acabamento,
+        onChange: newValue => setSimData({
+            ...simData,
+            acabamento: newValue
+        }),
         options: [
             {
                 value: 'placa_granito_1',

@@ -84,7 +84,7 @@ const BanheirosSociaisSlide = ({ data }) => {
                                 ]}
                                 entity={simData.banheiros}
                                 setEntity={newValue => setSimData({
-                                    ...simData.banheiros,
+                                    ...simData,
                                     banheiros: newValue
                                 })}
                             />

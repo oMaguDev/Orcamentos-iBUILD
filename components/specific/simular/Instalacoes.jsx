@@ -4,11 +4,12 @@ import StatusBox from "../../common/StatusBox"
 import { MiddleContainer, StepContentContainer, StepImageContainer, SlideContainer } from "../../common/StepContent/styles"
 import Input from '../../form/Input'
 import FinishingPattern from "../../common/FinishingPattern"
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { Parag } from "../../Text"
 import Button from "../../common/Button"
 import RadioButtonsList from "../../common/RadioButtons/RadioButtonsList"
 import { ExplainingP } from "../../Text"
+import { SimulationDataContext } from "../../../contexts/SimulationData"
 
 
 const InstalacoesSlide = ({ data }) => {
@@ -19,21 +20,26 @@ const InstalacoesSlide = ({ data }) => {
     })
     // const [rows, setRows] = useState([1])
 
+    const { simData, setSimData } = useContext(SimulationDataContext)
+
     const hidraulica = {
         title: 'Quarto',
-        value: instalacoes.hidraulica,
-        onChange: newValue => setInstalacoes({
-            ...instalacoes,
-            hidraulica: newValue
+        value: simData.instalacoes.hidraulica,
+        onChange: newValue => setSimData({
+            ...simData,
+            instalacoes: {
+                ...simData.instalacoes,
+                hidraulica: newValue
+            }
         }),
         options: [
             {
-                value: 'so_agua_fria',
+                value: 'so_agua_fria_option',
                 label: 'APENAS ÁGUA FRIA',
                 // description: 'Chuveiro elétrico, sem quecimento nas torneiras'
             },
             {
-                value: 'agua_fria_e_quente',
+                value: 'agua_fria_e_quente_option',
                 label: 'ÁGUA FRIA E QUENTE*',
             },
         ]
@@ -41,10 +47,13 @@ const InstalacoesSlide = ({ data }) => {
 
     const eletrica = {
         title: 'Quarto',
-        value: instalacoes.eletrica,
-        onChange: newValue => setInstalacoes({
-            ...instalacoes,
-            eletrica: newValue
+        value: simData.instalacoes.eletrica,
+        onChange: newValue => setSimData({
+            ...simData,
+            instalacoes: {
+                ...simData.instalacoes,
+                eletrica: newValue
+            }
         }),
         options: [
             {
@@ -88,7 +97,7 @@ const InstalacoesSlide = ({ data }) => {
                         select={hidraulica.value}
                     />
                     <TitleContainer
-                        key={`${'Hidráulicas'}_title_container`}
+                        key={`${'Elétrica'}_title_container`}
                         margin='20px 0 0'
                     >
                         <h4>{'Escolha qual será a voltagem'.toUpperCase()}</h4>

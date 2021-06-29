@@ -27,7 +27,10 @@ export const SimulationDataContextProvider = ({ children }) => {
         ],
         lavabos: new Array(4).fill(''),
         banheiros: new Array(4).fill(''),
-        instalacoes: '',
+        instalacoes: {
+            hidraulica: '',
+            eletrica: '',
+        },
         confortos: '',
         acabamento: '',
     })

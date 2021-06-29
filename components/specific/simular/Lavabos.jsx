@@ -13,38 +13,38 @@ import { SimulationDataContext } from "../../../contexts/SimulationData"
 
 const LavabosSlide = ({ data }) => {
 
-    const [quartos, setQuartos] = useState([])
+    // const [quartos, setQuartos] = useState([])
     // const [rows, setRows] = useState([1])
 
     const { simData, setSimData } = useContext(SimulationDataContext)
 
-    const quarto = {
-        title: 'Quarto',
-        value: quartos[0],
-        onChange: newValue => {
-            const lastQuartos = [...quartos]
-            lastQuartos[0] = newValue
-            return setQuartos(newValue)
-        },
-        options: [
-            {
-                value: 'none',
-                label: 'NÃO QUERO',
-            },
-            {
-                value: '_pq',
-                label: 'PEQUENO (APROX. 12 M2)',
-            },
-            {
-                value: '_md',
-                label: 'MÉDIO (APROX. 24 M2)',
-            },
-            {
-                value: '_gd',
-                label: 'GRANDE (APROX. 12 M2)',
-            },
-        ]
-    }
+    // const quarto = {
+    //     title: 'Quarto',
+    //     value: quartos[0],
+    //     onChange: newValue => {
+    //         const lastQuartos = [...quartos]
+    //         lastQuartos[0] = newValue
+    //         return setQuartos(newValue)
+    //     },
+    //     options: [
+    //         {
+    //             value: 'none',
+    //             label: 'NÃO QUERO',
+    //         },
+    //         {
+    //             value: '_pq',
+    //             label: 'PEQUENO (APROX. 12 M2)',
+    //         },
+    //         {
+    //             value: '_md',
+    //             label: 'MÉDIO (APROX. 24 M2)',
+    //         },
+    //         {
+    //             value: '_gd',
+    //             label: 'GRANDE (APROX. 12 M2)',
+    //         },
+    //     ]
+    // }
 
     return (
         <>
@@ -78,7 +78,7 @@ const LavabosSlide = ({ data }) => {
                             <RadioButtonsList
                                 entity={simData.lavabos}
                                 setEntity={newValue => setSimData({
-                                    ...simData.lavabos,
+                                    ...simData,
                                     lavabos: newValue
                                 })}
                             />

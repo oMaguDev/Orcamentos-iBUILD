@@ -25,9 +25,9 @@ const QuartosESuitesSlide = ({ data }) => {
 
     const returnRoom = (index) => ({
         title: `Quarto ${index + 1}`,
-        value: simData.quartos[index],
+        value: simData?.quartos[index],
         onChange: newValue => {
-            const lastQuartos = [...simData.quartos]
+            const lastQuartos = [...simData?.quartos]
             lastQuartos[index] = newValue
             return setQuartos(newValue)
         },
@@ -50,6 +50,25 @@ const QuartosESuitesSlide = ({ data }) => {
             },
         ]
     })
+
+    const roomOptions = [
+        {
+            value: 'none',
+            label: 'NÃO QUERO',
+        },
+        {
+            value: '_pq',
+            label: 'PEQUENO (APROX. 12 M2)',
+        },
+        {
+            value: '_md',
+            label: 'MÉDIO (APROX. 24 M2)',
+        },
+        {
+            value: '_gd',
+            label: 'GRANDE (APROX. 12 M2)',
+        },
+    ]
 
     // const quarto = {
     //     title: 'Quarto',
@@ -132,20 +151,23 @@ const QuartosESuitesSlide = ({ data }) => {
                                                 {`${e.toUpperCase()} ${idx + 1}`}
                                             </strong>
                                         </Parag>
+                                        {/* { console.log(returnRoom(idx))} */}
                                         <RadioButtons
                                             small
-                                            options={returnRoom(idx).options}
+                                            options={roomOptions}
                                             onChange={(newValue) => {
                                                 const previousQuartos = [...simData.quartos]
+                                                console.log('previousQuartos: ', previousQuartos)
                                                 const previousQuartosRow = { ...previousQuartos[idx] }
                                                 previousQuartosRow[e] = newValue
                                                 previousQuartos[idx] = { ...previousQuartosRow }
-                                                setSimData({
+                                                console.log('previousQuartos: ', previousQuartos)
+                                                return setSimData({
                                                     ...simData,
                                                     quartos: previousQuartos
                                                 }) 
                                             }} //onChange(returnRoom(idx).value)
-                                            select={simData?.quartos[idx][e]}
+                                            select={simData && simData.quartos && simData.quartos[idx][e]}
                                             key={`${'Quartos/Suítes'}_${idx}_radio_buttons`}
                                         />
                                     </Flex>
