@@ -1,4 +1,5 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
+import { SimulationDataContext } from "../../../contexts/SimulationData"
 import RadioButtons from "../../common/RadioButtons"
 import RadioIconButtons from "../../common/RadioIconButtons"
 import { Box, Flex, Layout, TitleContainer } from "../../Containers"
@@ -6,8 +7,10 @@ import { ExplainingP } from "../../Text"
 
 
 const First = () => {
-    const [active, setActive] = useState(null)
-    const [hasSimulated, setHasSimulated] = useState('')
+    // const [active, setActive] = useState(null)
+    // const [hasSimulated, setHasSimulated] = useState('')
+
+    const { resources, setResources } = useContext(SimulationDataContext)
 
 
     const iconOptions = [
@@ -68,8 +71,11 @@ const First = () => {
                     </TitleContainer>
                     <RadioIconButtons
                         options={iconOptions}
-                        active={active}    
-                        setActive={setActive}
+                        active={resources.resourcesSelect}    
+                        setActive={(newValue) => setResources({
+                            ...resources,
+                            resourcesSelect: newValue
+                        })}
                         withBorderBottom
                     />
                     <ExplainingP>
@@ -77,8 +83,11 @@ const First = () => {
                     </ExplainingP>
                     <RadioButtons
                         options={simpleOptions}
-                        select={hasSimulated}
-                        onChange={setHasSimulated}
+                        select={resources.financed_before}
+                        onChange={(newValue) => setResources({
+                            ...resources,
+                            financed_before: newValue
+                        })}
                         />
                 </Flex>
                 <Box

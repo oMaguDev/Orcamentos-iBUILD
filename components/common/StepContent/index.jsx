@@ -53,6 +53,7 @@ const StepContent = ({ data, noStatusBox }) => {
                             width={e.width ? e.width : '100%'}
                             small
                             key={e.label}
+                            mask={e.mask}
                             />
                             ))}
                     </>

@@ -7,6 +7,7 @@ import { useContext, useEffect, useState } from "react"
 import { useRouter } from 'next/router'
 import ResourcesIndex from "../components/specific/levantamento/ResumoDosRecursos"
 import { ActiveIndexContext } from "../contexts/activeIndex"
+import { SimulationDataContext } from "../contexts/SimulationData"
 
 
 const Levantamento = () => {
@@ -43,6 +44,8 @@ const Levantamento = () => {
         console.log('pavimentos: ', pavimentos)
     }, [area, lavabos, estilo, pavimentos])
 
+    const { resources, setResources } = useContext(SimulationDataContext)
+
     const stepsTitles = [
         'Informações pessoais',
         'Recursos Financeiros',
@@ -54,33 +57,49 @@ const Levantamento = () => {
             caption: 'Informações',
             title: 'Pessoais',
             imageSrc: '/images/Ambientes/Ambientes1.svg',
-            value: area,
-            onChange: setArea,
+            value: resources.renda,
+            onChange: newValue => setResources({
+                ...resources,
+                renda: newValue
+            }),
             inputs: [
                 {
-                    value: area,
-                    onChange: setArea,
+                    value: resources.renda,
+                    onChange: newValue => setResources({
+                        ...resources,
+                        renda: newValue
+                    }),
                     label: 'Renda Bruta Familiar (mensal comprovada)',
                     placeholder: 'Insira a renda mensal em reais',
                     type: 'number'
                 },
                 {
-                    value: area,
-                    onChange: setArea,
+                    value: resources.dob,
+                    onChange: newValue => setResources({
+                        ...resources,
+                        dob: newValue
+                    }),
                     label: 'Data de nascimento (proponente mais velho)',
                     placeholder: 'DD/MM/AAAA',
-                    type: 'number'
+                    // type: 'number',
+                    mask: 'date'
                 },
                 {
-                    value: area,
-                    onChange: setArea,
+                    value: resources.estado_civil,
+                    onChange: newValue => setResources({
+                        ...resources,
+                        estado_civil: newValue
+                    }),
                     label: 'Estado Civil',
                     placeholder: 'Insira o seu estado civil',
                     type: 'number'
                 },
                 {
-                    value: area,
-                    onChange: setArea,
+                    value: resources.local_construcao,
+                    onChange: newValue => setResources({
+                        ...resources,
+                        local_construcao: newValue
+                    }),
                     label: 'Local de construção',
                     placeholder: 'Insira o estado e o municipio',
                     type: 'number'
@@ -90,40 +109,58 @@ const Levantamento = () => {
         {
             caption: 'Recursos',
             title: 'Financeiros',
-            value: estilo,
-            onChange: setEstilo,
+            value: resources.valor_terreno,
+            onChange: newValue => setResources({
+                ...resources,
+                valor_terreno: newValue
+            }),
             inputs: [
                 {
-                    value: area,
-                    onChange: setArea,
+                    value: resources.valor_terreno,
+                    onChange: newValue => setResources({
+                        ...resources,
+                        valor_terreno: newValue
+                    }),
                     label: 'Valor estimado para o terreno',
                     placeholder: 'Insira o valor em reais',
                     type: 'number'
                 },
                 {
-                    value: area,
-                    onChange: setArea,
+                    value: resources.valor_entrada,
+                    onChange: newValue => setResources({
+                        ...resources,
+                        valor_entrada: newValue
+                    }),
                     label: 'Valor disponível para entrada',
                     placeholder: 'Insira o valor da entrada em reais',
                     type: 'number'
                 },
                 {
-                    value: area,
-                    onChange: setArea,
+                    value: resources.valor_fgts,
+                    onChange: newValue => setResources({
+                        ...resources,
+                        valor_fgts: newValue
+                    }),
                     label: 'Tem FGTS? Se sim, quanto?',
                     placeholder: 'Insira o valor do FGTS',
                     type: 'number'
                 },
                 {
-                    value: area,
-                    onChange: setArea,
+                    value: resources.num_pis,
+                    onChange: newValue => setResources({
+                        ...resources,
+                        num_pis: newValue
+                    }),
                     label: 'Número do pis',
                     placeholder: 'Insira o número do pis',
                     type: 'number'
                 },
                 {
-                    value: area,
-                    onChange: setArea,
+                    value: resources.mod_financiamento,
+                    onChange: newValue => setResources({
+                        ...resources,
+                        mod_financiamento: newValue
+                    }),
                     label: 'Selecione a modalidade de financiamento',
                     placeholder: 'Insira a modalidade de financiamento',
                     type: 'number'

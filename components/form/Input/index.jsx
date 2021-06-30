@@ -24,11 +24,12 @@ const Input = ({
 
     // console.log('error: ', error, id)
 
-    const phoneMask = ['(', /[0-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
-    
-    const cnpjMask = [ /[0-9]/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/]
-    
-    const cpfMask = [ /[0-9]/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/]
+    const masks = {
+        phone: ['(', /[0-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/],
+        cpf: [ /[0-9]/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/],
+        cnpj: [ /[0-9]/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/],
+        date: [ /[0-9]/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/],
+    }
 
     if (mask) {
         return (
@@ -51,7 +52,7 @@ const Input = ({
                     small={small}
                 >
                     <MaskedInput
-                        mask={mask === 'phone' ? phoneMask : cpfMask}
+                        mask={mask ? masks[mask] : null}
                         // placeholder="Enter a phone number"
                         id={id}
                         name={id}

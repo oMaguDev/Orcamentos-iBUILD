@@ -8,9 +8,11 @@ import First from "../components/specific/recursos/First"
 import Second from "../components/specific/recursos/Second"
 import { useRouter } from 'next/router'
 import { ActiveIndexContext } from "../contexts/activeIndex"
+import { SimulationDataContext } from "../contexts/SimulationData"
 
 
 const Resources = () => {
+
 
     const carouselItems = [
         <First key='resources_slide_1' />,
