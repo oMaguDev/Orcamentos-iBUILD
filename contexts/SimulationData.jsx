@@ -55,13 +55,17 @@ export const SimulationDataContextProvider = ({ children }) => {
         mod_financiamento: '',
     })
 
-    const [userData, setUserData] = useState({
-        name: '',
-        email: '',
-        cpf: '',
-        phone: '',
-        uf: 'placeholder',
-        city: 'placeholder'
+    const [simStatus, setSimStatus] = useState({
+        funds: {
+            total: 1000000,
+            current: 1000000,
+            available: 1000000,
+        },
+        size: {
+            total: '',
+            current: '',
+            available: ''
+        }
     })
 
     useEffect(() => {
@@ -79,8 +83,8 @@ export const SimulationDataContextProvider = ({ children }) => {
             setSimData,
             resources,
             setResources,
-            userData,
-            setUserData,
+            simStatus,
+            setSimStatus
         }}>
             { children }
         </SimulationDataContext.Provider>

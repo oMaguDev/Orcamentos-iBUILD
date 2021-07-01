@@ -6,7 +6,7 @@ import Input from "../components/form/Input"
 import Select from "../components/form/Select"
 import { ExplainingP } from "../components/Text"
 import { useRouter } from 'next/router'
-import { SimulationDataContext } from "../contexts/SimulationData"
+import { UserContext } from '../contexts/UserContext'
 
 const Cadastro = () => {
 
@@ -19,7 +19,7 @@ const Cadastro = () => {
     // const [state, setState] = useState('')
     // const [city, setCity] = useState('')
 
-    const { userData, setUserData } = useContext(SimulationDataContext)
+    const { user, setUser } = useContext(UserContext)
 
     return (
         <Flex
@@ -65,9 +65,9 @@ const Cadastro = () => {
                     <Input
                         label='NOME COMPLETO'
                         placeholder='Insira o seu nome completo'
-                        value={userData.name}
-                        onChange={newValue => setUserData({
-                            ...userData,
+                        value={user.name}
+                        onChange={newValue => setUser({
+                            ...user,
                             name: newValue.target.value
                         })}
                         key='nome_completo'
@@ -77,9 +77,9 @@ const Cadastro = () => {
                     <Input
                         label='E-MAIL'
                         placeholder='Insira o seu email'
-                        value={userData.email}
-                        onChange={newValue => setUserData({
-                            ...userData,
+                        value={user.email}
+                        onChange={newValue => setUser({
+                            ...user,
                             email: newValue.target.value
                         })}
                         key='email_input'
@@ -93,9 +93,9 @@ const Cadastro = () => {
                         <Input
                             label='CPF'
                             placeholder='Insira o seu cpf'
-                            value={userData.cpf}
-                            onChange={newValue => setUserData({
-                                ...userData,
+                            value={user.cpf}
+                            onChange={newValue => setUser({
+                                ...user,
                                 cpf: newValue.target.value
                             })}
                             key='cpf_input'
@@ -106,9 +106,9 @@ const Cadastro = () => {
                         <Input
                             label='TELEFONE'
                             placeholder='Insira o telefone com DDD'
-                            value={userData.phone}
-                            onChange={newValue => setUserData({
-                                ...userData,
+                            value={user.phone}
+                            onChange={newValue => setUser({
+                                ...user,
                                 phone: newValue.target.value
                             })}
                             key='phone_input'
@@ -124,9 +124,9 @@ const Cadastro = () => {
                         <Select
                             label='UF'
                             placeholder='Insira o seu telefone com DDD'
-                            value={userData.uf}
-                            onChange={newValue => setUserData({
-                                ...userData,
+                            value={user.uf}
+                            onChange={newValue => setUser({
+                                ...user,
                                 uf: newValue.target.value
                             })}
                             key='uf_input'
@@ -137,9 +137,9 @@ const Cadastro = () => {
                         <Select
                             label='CIDADE'
                             placeholder='Insira o telefone com DDD'
-                            value={userData.city}
-                            onChange={newValue => setUserData({
-                                ...userData,
+                            value={user.city}
+                            onChange={newValue => setUser({
+                                ...user,
                                 city: newValue.target.value
                             })}
                             key='city_input'

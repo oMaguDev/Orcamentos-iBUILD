@@ -22,27 +22,12 @@ const Levantamento = () => {
         console.log('startPage: ', startPage )
     }, [startPage])
 
-    const [area, setArea] = useState('')
-    const [estilo, setEstilo] = useState('')
-    const [pavimentos, setPavimentos] = useState('')
-    const [paredes, setParedes] = useState('')
-    const [telhas, setTelhas] = useState('')
-    const [garagem, setGaragem] = useState('')
-    const [sala, setSala] = useState('')
-    const [escritorio, setEscritorio] = useState('')
-    const [quartos, setQuartos] = useState({
-        small: '',
-        medium: '',
-        big: '',
-    })
-    const [lavabos, setLavabos] = useState('')
-
-    useEffect(() => {
-        console.log('area: ', area)
-        console.log('lavabos: ', lavabos)
-        console.log('estilo: ', estilo)
-        console.log('pavimentos: ', pavimentos)
-    }, [area, lavabos, estilo, pavimentos])
+    // useEffect(() => {
+    //     console.log('area: ', area)
+    //     console.log('lavabos: ', lavabos)
+    //     console.log('estilo: ', estilo)
+    //     console.log('pavimentos: ', pavimentos)
+    // }, [area, lavabos, estilo, pavimentos])
 
     const { resources, setResources } = useContext(SimulationDataContext)
 
