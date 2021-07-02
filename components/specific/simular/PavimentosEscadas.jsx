@@ -63,7 +63,7 @@ const PavimentosEscadas = () => {
             width='100%'
             justifyContent='space-evenly'
             key='pavimentos_escadas'
-            margin='50px 0 0'
+            // margin='50px 0 0'
         >
             <StepImageContainer>
                 <img style={{ height: '100%' }} src="/images/Ambientes/Ambientes10.svg" alt="" />

@@ -48,7 +48,7 @@ export const Wrapper = styled.div`
     justify-content: flex-start;
   ` : 'flex-direction: column;'}
   
-  flex-wrap: wrap;
+  // flex-wrap: wrap;
 
   ${(props) => props.small ? `
     margin: 10px;

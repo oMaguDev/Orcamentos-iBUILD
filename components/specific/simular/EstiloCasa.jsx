@@ -89,7 +89,7 @@ const EstiloCasa = () => {
                             })}
                             >
                             <div>
-                                <div>{ active === i ? <img src='/images/Ícones/Ícones 11.svg' /> : null}</div>
+                                <div>{ simData.estilo === e.id ? <img src='/images/Ícones/Ícones 11.svg' /> : null}</div>
                             </div>
                             <p>{ e.label }</p>
                         </HomeStylePicContainer>
@@ -109,7 +109,7 @@ const EstiloCasa = () => {
                             })}
                             >
                             <div>
-                                <div>{ active === i ? <img src='/images/Ícones/Ícones 11.svg' /> : null}</div>
+                                <div>{ simData.estilo === e.id ? <img src='/images/Ícones/Ícones 11.svg' /> : null}</div>
                             </div>
                             <p>{ e.label }</p>
                         </HomeStylePicContainer>
