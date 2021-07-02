@@ -35,6 +35,7 @@ export const Flex = styled.div`
     ${(props) => props.bottom ? `bottom: ${props.bottom};` : ''}
     ${(props) => props.right ? `right: ${props.right};` : ''}
     ${(props) => props.flex ? `flex: ${props.flex};` : ''}
+    ${(props) => props.wrap ? `flex-wrap: ${props.wrap};` : ''}
     ${(props) => props.transform ? `transform: ${props.transform};` : ''}
     ${(props) => props.margin ? `margin: ${props.margin};` : ''}
     ${(props) => props.padding ? `padding: ${props.padding};` : ''}
@@ -78,6 +79,7 @@ export const CarouselContainer = styled.div`
 export const TitleContainer = styled.div`
 
     text-align: left;
+    // height: 100px;
 
     color: ${({ theme }) => theme.colors.primary.purple};
 

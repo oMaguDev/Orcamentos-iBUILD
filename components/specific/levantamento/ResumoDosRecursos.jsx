@@ -30,7 +30,6 @@ const ResourcesIndex = () => {
                             label='Valor limite da parcela'
                             value='R$ 3.000,00'
                         />
-
                     </Box>
                     <Box
                         margin='0 0 20px 0'

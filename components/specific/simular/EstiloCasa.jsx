@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
+import { SimulationDataContext } from "../../../contexts/SimulationData"
 import { Box, Flex, TitleContainer } from "../../Containers"
 import { HomeStylePic, HomeStylePicContainer } from "./styles"
 
@@ -7,9 +8,11 @@ const EstiloCasa = () => {
 
     const [active, setActive] = useState(null)
 
-    useEffect(() => {
-        console.log('active: ', active)
-    }, [active])
+    const { simData, setSimData } = useContext(SimulationDataContext)
+
+    // useEffect(() => {
+    //     console.log('active: ', active)
+    // }, [active])
 
     const estilos = [
         {
@@ -79,11 +82,14 @@ const EstiloCasa = () => {
                         <HomeStylePicContainer
                             imageSrc={e.imageSrc}
                             key={e.id}
-                            active={active === i}
-                            onClick={() => setActive(i)}
+                            active={simData.estilo === e.id}
+                            onClick={() => setSimData({
+                                ...simData,
+                                estilo: e.id
+                            })}
                             >
                             <div>
-                                <div>{ active === i ? <img src='/images/Ícones/Ícones 11.svg' /> : null}</div>
+                                <div>{ simData.estilo === e.id ? <img src='/images/Ícones/Ícones 11.svg' /> : null}</div>
                             </div>
                             <p>{ e.label }</p>
                         </HomeStylePicContainer>
@@ -96,11 +102,14 @@ const EstiloCasa = () => {
                         <HomeStylePicContainer
                             imageSrc={e.imageSrc}
                             key={e.id}
-                            active={active === i}
-                            onClick={() => setActive(i)}
+                            active={simData.estilo === e.id}
+                            onClick={() => setSimData({
+                                ...simData,
+                                estilo: e.id
+                            })}
                             >
                             <div>
-                                <div>{ active === i ? <img src='/images/Ícones/Ícones 11.svg' /> : null}</div>
+                                <div>{ simData.estilo === e.id ? <img src='/images/Ícones/Ícones 11.svg' /> : null}</div>
                             </div>
                             <p>{ e.label }</p>
                         </HomeStylePicContainer>

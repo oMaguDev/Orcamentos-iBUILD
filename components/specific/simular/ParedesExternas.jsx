@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { Box, Flex, TitleContainer } from "../../Containers"
 import {
     ColouredBox,
@@ -9,20 +9,23 @@ import {
     CompositionListItemTag,
     SelectedIconContainer,
 } from "./styles"
-import { List } from 'phosphor-react'
+import { Circle, List, SketchLogo } from 'phosphor-react'
+import { SimulationDataContext } from "../../../contexts/SimulationData"
 
 
 const ParedesExternas = () => {
 
-    const [active, setActive] = useState(null)
+    // const [active, setActive] = useState(null)
 
-    useEffect(() => {
-        console.log('active: ', active)
-    }, [active])
+    // useEffect(() => {
+    //     console.log('active: ', active)
+    // }, [active])
+
+    const { simData, setSimData } = useContext(SimulationDataContext)
 
     const paredes = [
         {
-            label: 'economy',
+            label: 'PAREDE ECONOMY',
             boxes: [
                 {
                     label: 'Conforto térmico',
@@ -41,10 +44,10 @@ const ParedesExternas = () => {
                 'ACABAMENTO',
             ],
             color: 'pink',
-            imageSrc: "/images/paredes/Parede - Economy.png"
+            imageSrc: "/images/paredes/Parede-Economy.png"
         },
         {
-            label: 'STANDARD',
+            label: 'PAREDE STANDARD',
             boxes: [
                 {
                     label: 'Conforto térmico',
@@ -64,10 +67,10 @@ const ParedesExternas = () => {
                 'ACABAMENTO',
             ],
             color: 'purple',
-            imageSrc: "/images/paredes/Parede - Standard.png"
+            imageSrc: "/images/paredes/Parede-Standard.png"
         },
         {
-            label: 'PREMIUM',
+            label: 'PAREDE PREMIUM',
             boxes: [
                 {
                     label: 'Conforto térmico',
@@ -87,7 +90,7 @@ const ParedesExternas = () => {
                 'ACABAMENTO',
             ],
             color: 'darkPurple',
-            imageSrc: "/images/paredes/Parede - Premium.png"
+            imageSrc: "/images/paredes/Parede-Premium.png"
         },
     ]
 
@@ -96,7 +99,7 @@ const ParedesExternas = () => {
             column
             // alignItems='flex-start'
             // transform='translateX(200px)'
-            margin='0 0 0 100px'
+            margin='20px 0 0 100px'
         >
             <TitleContainer>
                 <h4>ESCOLHA O PADRÃO DAS</h4>
@@ -106,68 +109,82 @@ const ParedesExternas = () => {
                 // column
                 // width='100%'
                 // maxWidth='1050px'
-                margin='30px 0'
+                // margin='30px 0'
 
             >
-                { paredes && paredes.map((e, i) => (
+                {paredes && paredes.map((e, i) => (
                     <ExternalWallItem
                         primaryColor={e.color}
-                        selected={i === active}
-                        onClick={() => setActive(i)}
+                        selected={simData.paredes === e.label}
+                        onClick={() => setSimData({
+                            ...simData,
+                            paredes: e.label
+                        })}
                     >
-                        <Flex>
-                            <List size={24} />
-                            <h3>
-                                { e.label.toUpperCase() }
-                            </h3>
-                        </Flex>
                         <Flex
                             width='100%'
+                            column
                         >
-                            { e.boxes.map((el, index) => (
-                                <ColouredBox
-                                    primaryColor={e.color}
-                                >
-                                    <div className="label">
-                                        { el.label.toUpperCase() }
-                                    </div>
-                                    <div className="value">
-                                        { el.value.toUpperCase() }
-                                    </div>
-                                </ColouredBox>
-                            ))}
-                        </Flex>
-                        <Flex
-                            width='100%'
-                            alignItems='flex-start'
-                        >
-                            <ExternalWallImg src={e.imageSrc} alt="" />
-                            <WallCompositionContainer>
-                                <h4>
-                                    COMPOSIÇÃO DA PAREDE:
-                                </h4>
-                                { e.composition.map((elem, ind) => (
-                                    <Flex
-                                        className='compositionItem'
-                                        justifyContent='space-between'
-                                        alignItems='flex-start'
-                                        key={elem}
-                                        width='100%'
-                                    >
-                                        <CompositionListItemTag
-                                            primaryColor={e.color}
-                                        >
-                                            [{ ind + 1 }]
-                                        </CompositionListItemTag>
-                                        <CompositionListItem>
-                                            { elem }
-                                        </CompositionListItem>
-                                    </Flex>
+                            <Flex>
+                                {i === 0 ? (
+                                    <List size={24} />
+                                ) : (i === 1 ? (
+                                    <Circle size={24} />
+                                ) : (
+                                    <SketchLogo size={24} />
                                 ))}
-                            </WallCompositionContainer>
+                                <h3>
+                                    {e.label.toUpperCase()}
+                                </h3>
+                            </Flex>
+                            <Flex
+                                width='100%'
+                            >
+                                {e.boxes.map((el, index) => (
+                                    <ColouredBox
+                                        primaryColor={e.color}
+                                    >
+                                        <div className="label">
+                                            {el.label.toUpperCase()}
+                                        </div>
+                                        <div className="value">
+                                            {el.value.toUpperCase()}
+                                        </div>
+                                    </ColouredBox>
+                                ))}
+                            </Flex>
+                            <Flex
+                                width='100%'
+                                alignItems='flex-start'
+                            >
+                                <ExternalWallImg src={e.imageSrc} alt="" />
+                                <WallCompositionContainer>
+                                    <h4>
+                                        COMPOSIÇÃO DA PAREDE:
+                                    </h4>
+                                    {e.composition.map((elem, ind) => (
+                                        <Flex
+                                            className='compositionItem'
+                                            justifyContent='space-between'
+                                            alignItems='flex-start'
+                                            key={elem}
+                                            width='100%'
+                                        >
+                                            <CompositionListItemTag
+                                                primaryColor={e.color}
+                                            >
+                                                [{ind + 1}]
+                                            </CompositionListItemTag>
+                                            <CompositionListItem>
+                                                {elem}
+                                            </CompositionListItem>
+                                        </Flex>
+                                    ))}
+                                </WallCompositionContainer>
+                            </Flex>
                         </Flex>
                         <SelectedIconContainer
-                            selected={i === active}
+                            selected={simData.paredes === e.label}
                         >
                             <img src="/images/Ícones/Ícones 11.svg" alt="" />
                         </SelectedIconContainer>

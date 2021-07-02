@@ -1,4 +1,5 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
+import { SimulationDataContext } from "../../../contexts/SimulationData"
 import RadioButtons from "../../common/RadioButtons"
 import RadioIconButtons from "../../common/RadioIconButtons"
 import { Box, Flex, Layout, TitleContainer } from "../../Containers"
@@ -6,8 +7,10 @@ import { ExplainingP } from "../../Text"
 
 
 const First = () => {
-    const [active, setActive] = useState(null)
-    const [hasSimulated, setHasSimulated] = useState('')
+    // const [active, setActive] = useState(null)
+    // const [hasSimulated, setHasSimulated] = useState('')
+
+    const { resources, setResources } = useContext(SimulationDataContext)
 
 
     const iconOptions = [
@@ -43,7 +46,7 @@ const First = () => {
     return (
             <Flex
                 // width='calc(100% - 100px)'
-                // height='100%' //'calc(100% - 100px)'
+                height='80%' //'calc(100% - 100px)'
                 justifyContent='space-evenly'
                 margin='20px 0 0 0'
                 >
@@ -68,8 +71,11 @@ const First = () => {
                     </TitleContainer>
                     <RadioIconButtons
                         options={iconOptions}
-                        active={active}    
-                        setActive={setActive}
+                        active={resources.resourcesSelect}    
+                        setActive={(newValue) => setResources({
+                            ...resources,
+                            resourcesSelect: newValue
+                        })}
                         withBorderBottom
                     />
                     <ExplainingP>
@@ -77,17 +83,22 @@ const First = () => {
                     </ExplainingP>
                     <RadioButtons
                         options={simpleOptions}
-                        select={hasSimulated}
-                        onChange={setHasSimulated}
+                        select={resources.financed_before}
+                        onChange={(newValue) => setResources({
+                            ...resources,
+                            financed_before: newValue
+                        })}
                         />
                 </Flex>
                 <Box
                     width='100%'
-                    maxWidth='700px'
-                    // height='100%'
-                    // padding='20px'
+                    // maxWidth='700px'
+                    height='100%'
+                    // maxHeight='600px'
+                    padding='20px'
+                    margin='auto'
                 >
-                    <img src="/images/Pessoas/Pessoas 5.svg" width='100%' height='100%' alt="" />
+                    <img src="/images/Pessoas/Pessoas 5.svg" height='80%' width='80%' alt="" />
                 </Box>
             </Flex>
     )

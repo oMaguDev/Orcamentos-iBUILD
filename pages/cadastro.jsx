@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import Button from "../components/common/Button"
 import Navbar from "../components/common/Navbar"
 import { Box, Flex, LogoMedium, TitleContainer } from "../components/Containers"
@@ -6,17 +6,20 @@ import Input from "../components/form/Input"
 import Select from "../components/form/Select"
 import { ExplainingP } from "../components/Text"
 import { useRouter } from 'next/router'
+import { UserContext } from '../contexts/UserContext'
 
 const Cadastro = () => {
 
     const router = useRouter()
 
-    const [name, setName] = useState('')
-    const [email, setEmail] = useState('')
-    const [cpf, setCpf] = useState('')
-    const [phone, setPhone] = useState('')
-    const [state, setState] = useState('')
-    const [city, setCity] = useState('')
+    // const [name, setName] = useState('')
+    // const [email, setEmail] = useState('')
+    // const [cpf, setCpf] = useState('')
+    // const [phone, setPhone] = useState('')
+    // const [state, setState] = useState('')
+    // const [city, setCity] = useState('')
+
+    const { user, setUser } = useContext(UserContext)
 
     return (
         <Flex
@@ -44,6 +47,7 @@ const Cadastro = () => {
                 margin='0'
                 alignItems='flex-start'
                 padding='20px'
+                justifyContent='flex-start'
             >
                 <TitleContainer>
                     <h4>
@@ -61,8 +65,11 @@ const Cadastro = () => {
                     <Input
                         label='NOME COMPLETO'
                         placeholder='Insira o seu nome completo'
-                        value={name}
-                        onChange={e => setName(e.target.value)}
+                        value={user.name}
+                        onChange={newValue => setUser({
+                            ...user,
+                            name: newValue.target.value
+                        })}
                         key='nome_completo'
                         small
                         margin='10px 0'
@@ -70,8 +77,11 @@ const Cadastro = () => {
                     <Input
                         label='E-MAIL'
                         placeholder='Insira o seu email'
-                        value={email}
-                        onChange={e => setEmail(e.target.value)}
+                        value={user.email}
+                        onChange={newValue => setUser({
+                            ...user,
+                            email: newValue.target.value
+                        })}
                         key='email_input'
                         small
                         margin='10px 0'
@@ -83,8 +93,11 @@ const Cadastro = () => {
                         <Input
                             label='CPF'
                             placeholder='Insira o seu cpf'
-                            value={cpf}
-                            onChange={e => setCpf(e.target.value)}
+                            value={user.cpf}
+                            onChange={newValue => setUser({
+                                ...user,
+                                cpf: newValue.target.value
+                            })}
                             key='cpf_input'
                             small
                             margin='10px 10px 10px 0'
@@ -92,9 +105,12 @@ const Cadastro = () => {
                         />
                         <Input
                             label='TELEFONE'
-                            placeholder='Insira o seu telefone com DDD'
-                            value={phone}
-                            onChange={e => setPhone(e.target.value)}
+                            placeholder='Insira o telefone com DDD'
+                            value={user.phone}
+                            onChange={newValue => setUser({
+                                ...user,
+                                phone: newValue.target.value
+                            })}
                             key='phone_input'
                             small
                             margin='10px 0 10px 10px'
@@ -108,8 +124,11 @@ const Cadastro = () => {
                         <Select
                             label='UF'
                             placeholder='Insira o seu telefone com DDD'
-                            value={phone}
-                            onChange={e => setPhone(e.target.value)}
+                            value={user.uf}
+                            onChange={newValue => setUser({
+                                ...user,
+                                uf: newValue.target.value
+                            })}
                             key='uf_input'
                             small
                             margin='10px 10px 10px 0'
@@ -117,9 +136,12 @@ const Cadastro = () => {
                         />
                         <Select
                             label='CIDADE'
-                            placeholder='Insira o seu telefone com DDD'
-                            value={phone}
-                            onChange={e => setPhone(e.target.value)}
+                            placeholder='Insira o telefone com DDD'
+                            value={user.city}
+                            onChange={newValue => setUser({
+                                ...user,
+                                city: newValue.target.value
+                            })}
                             key='city_input'
                             small
                             margin='10px 0 10px 10px'

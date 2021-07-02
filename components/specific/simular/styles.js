@@ -110,10 +110,15 @@ export const ExternalWallImg = styled.img`
 
 export const ExternalWallItem= styled.div`
 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
     cursor: pointer;
 
     width: 300px;
-    min-height: 470px;
+    min-height: 460px;
 
     padding: 10px;
     margin: 10px;
@@ -133,6 +138,7 @@ export const ExternalWallItem= styled.div`
     h3 {
         // color: ${({ theme }) => theme.colors.primary.pink };
         font-weight: 300;
+        margin-left: 5px;
     }
         
     ${(props) => props.selected ? `
@@ -221,11 +227,11 @@ export const CompositionListItemTag = styled.div`
 
 export const SelectedIconContainer = styled.div`
 
-
+    bottom: 0;
     height: 40px;
     width: 100%;
 
-    margin-top: 15px;
+    // margin-top: 15px;
 
     ${(props) => props.selected ? `
         display: flex;

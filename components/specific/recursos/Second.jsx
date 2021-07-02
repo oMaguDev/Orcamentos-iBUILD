@@ -1,4 +1,5 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
+import { SimulationDataContext } from "../../../contexts/SimulationData"
 import RadioButtons from "../../common/RadioButtons"
 import RadioIconButtons from "../../common/RadioIconButtons"
 import { Box, Flex, Layout, TitleContainer } from "../../Containers"
@@ -9,7 +10,9 @@ const Second = () => {
 
     const [activeLand, setActiveLand] = useState(null)
     const [activeProject, setActiveProject] = useState(null)
-    const [hasSimulated, setHasSimulated] = useState('')
+    // const [hasSimulated, setHasSimulated] = useState('')
+
+    const { resources, setResources } = useContext(SimulationDataContext)
 
 
     const iconOptionsLand = [
@@ -59,10 +62,10 @@ const Second = () => {
                 <Box
                     width='100%'
                     // maxWidth='700px'
-                    // height='100%'
+                    height='100%'
                     // padding='20px'
                 >
-                    <img src="/images/Pessoas/Pessoas 4.svg" width='100%' height='100%' alt="" />
+                    <img src="/images/Pessoas/Pessoas 4.svg" width='80%' height='80%' alt="" />
                 </Box>
                 <Flex
                     column
@@ -85,15 +88,21 @@ const Second = () => {
                     </TitleContainer>
                     <RadioIconButtons
                         options={iconOptionsLand}
-                        active={activeLand}    
-                        setActive={setActiveLand}
+                        active={resources.land_status}    
+                        setActive={(newValue) => setResources({
+                            ...resources,
+                            land_status: newValue
+                        })}
                         withBorderBottom
                         title='TERRENO'
                         />
                     <RadioIconButtons
                         options={iconOptionsProject}
-                        active={activeProject}    
-                        setActive={setActiveProject}    
+                        active={resources.project_status}    
+                        setActive={(newValue) => setResources({
+                            ...resources,
+                            project_status: newValue
+                        })}   
                         title='PROJETO'
                         />
                 </Flex>

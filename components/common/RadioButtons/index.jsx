@@ -28,8 +28,8 @@ const RadioButtons = ({ options, select, onChange, row, small }) => {
                         <>
                         <RadioButton
                             small={small}
-                            selected={active === e.value}
-                            onClick={() => setActive(e.value)}
+                            selected={select === e.value}
+                            onClick={() => onChange(e.value)}
                         />
                             <RadioButtonLabel
                                 key={`${e.value}_radio_label`}
@@ -55,8 +55,8 @@ const RadioButtons = ({ options, select, onChange, row, small }) => {
                         <>
                             <RadioButton
                                 small={small}
-                                selected={active === e.value}
-                                onClick={() => setActive(e.value)}
+                                selected={select === e.value}
+                                onClick={() => onChange(e.value)}
                             />
                             <RadioButtonLabel
                                 key={`${e.value}_radio_label`}

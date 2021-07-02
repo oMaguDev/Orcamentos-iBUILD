@@ -1,7 +1,18 @@
+import { useContext, useEffect } from "react"
+import { SimulationDataContext } from "../../../contexts/SimulationData"
+import { formatMoney } from "../../../utils/format"
 import { Flex } from "../../Containers"
 import { Status, StatusBoxContainer, StatusNumbers, StatusNumbersLabel, ValueBoxes } from "./styles"
 
 const StatusBox = () => {
+
+    const { simStatus, setSimStatus } = useContext(SimulationDataContext)
+
+    useEffect(() => {
+        const formattedNumber = formatMoney(24500)
+        console.log('formattedNumber: ', formattedNumber)
+    }, [])
+
     return (
         <StatusBoxContainer>
             <Flex>
@@ -14,7 +25,7 @@ const StatusBox = () => {
                             VALOR DISPONÍVEL
                         </div>
                         <div className='value'>
-                            R$1.000.000,00
+                            {formatMoney(simStatus.funds.total)}
                         </div>
                     </ValueBoxes>
                     <ValueBoxes>
@@ -22,7 +33,7 @@ const StatusBox = () => {
                             CUSTO DO IMÓVEL
                         </div>
                         <div className='value'>
-                            R$1.000.000,00
+                            {formatMoney(simStatus.funds.current)}
                         </div>
                     </ValueBoxes>
                     <ValueBoxes last green>
@@ -30,7 +41,7 @@ const StatusBox = () => {
                             VOCÊ AINDA PODE USAR
                         </div>
                         <div className='value'>
-                            R$1.000.000,00
+                            {formatMoney(simStatus.funds.available)}
                         </div>
                     </ValueBoxes>
                 </StatusNumbers>

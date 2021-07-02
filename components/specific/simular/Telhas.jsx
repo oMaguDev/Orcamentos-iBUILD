@@ -65,7 +65,7 @@ const Telhas = () => {
         //     key={('Telha')}
         // >
         //     <StepImageContainer>
-        //         <img style={{ width: '100%' }} src='/images/Ambientes/Ambientes15.svg' alt="" />
+        //         <img style={{ height: '100%' }} src='/images/Ambientes/Ambientes15.svg' alt="" />
         //     </StepImageContainer>
         //     <StepContentContainer>
         //         <TitleContainer

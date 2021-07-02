@@ -4,44 +4,47 @@ import StatusBox from "../../common/StatusBox"
 import { MiddleContainer, StepContentContainer, StepImageContainer, SlideContainer } from "../../common/StepContent/styles"
 import Input from '../../form/Input'
 import FinishingPattern from "../../common/FinishingPattern"
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { Parag } from "../../Text"
 import Button from "../../common/Button"
 import RadioButtonsList from "../../common/RadioButtons/RadioButtonsList"
+import { SimulationDataContext } from "../../../contexts/SimulationData"
 
 
 const LavabosSlide = ({ data }) => {
 
-    const [quartos, setQuartos] = useState([])
+    // const [quartos, setQuartos] = useState([])
     // const [rows, setRows] = useState([1])
 
-    const quarto = {
-        title: 'Quarto',
-        value: quartos[0],
-        onChange: newValue => {
-            const lastQuartos = [...quartos]
-            lastQuartos[0] = newValue
-            return setQuartos(newValue)
-        },
-        options: [
-            {
-                value: 'sem_quarto',
-                label: 'NÃO QUERO',
-            },
-            {
-                value: 'quarto_pq',
-                label: 'PEQUENO (APROX. 12 M2)',
-            },
-            {
-                value: 'quarto_md',
-                label: 'MÉDIO (APROX. 24 M2)',
-            },
-            {
-                value: 'quarto_gd',
-                label: 'GRANDE (APROX. 12 M2)',
-            },
-        ]
-    }
+    const { simData, setSimData } = useContext(SimulationDataContext)
+
+    // const quarto = {
+    //     title: 'Quarto',
+    //     value: quartos[0],
+    //     onChange: newValue => {
+    //         const lastQuartos = [...quartos]
+    //         lastQuartos[0] = newValue
+    //         return setQuartos(newValue)
+    //     },
+    //     options: [
+    //         {
+    //             value: 'none',
+    //             label: 'NÃO QUERO',
+    //         },
+    //         {
+    //             value: '_pq',
+    //             label: 'PEQUENO (APROX. 12 M2)',
+    //         },
+    //         {
+    //             value: '_md',
+    //             label: 'MÉDIO (APROX. 24 M2)',
+    //         },
+    //         {
+    //             value: '_gd',
+    //             label: 'GRANDE (APROX. 12 M2)',
+    //         },
+    //     ]
+    // }
 
     return (
         <>
@@ -52,7 +55,7 @@ const LavabosSlide = ({ data }) => {
                 <StepImageContainer
                     key={`${'Lavabos'}_step_image_container`}
                 >
-                    <img style={{ width: '100%' }} src='/images/Ambientes/Ambientes8.svg' alt="" />
+                    <img style={{ height: '100%' }} src='/images/Ambientes/Ambientes8.svg' alt="" />
                 </StepImageContainer>
                 <StepContentContainer
                     key={`${'Lavabos'}_step_content_container`}
@@ -72,7 +75,13 @@ const LavabosSlide = ({ data }) => {
                             margin='15px 0'
                             justifyContent='flex-start'
                         >
-                            <RadioButtonsList />
+                            <RadioButtonsList
+                                entity={simData.lavabos}
+                                setEntity={newValue => setSimData({
+                                    ...simData,
+                                    lavabos: newValue
+                                })}
+                            />
                         </Flex>
                     </MiddleContainer>
                     <>

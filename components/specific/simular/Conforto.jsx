@@ -4,11 +4,12 @@ import StatusBox from "../../common/StatusBox"
 import { MiddleContainer, StepContentContainer, StepImageContainer, SlideContainer } from "../../common/StepContent/styles"
 import Input from '../../form/Input'
 import FinishingPattern from "../../common/FinishingPattern"
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { Parag } from "../../Text"
 import Button from "../../common/Button"
 import RadioButtonsList from "../../common/RadioButtons/RadioButtonsList"
 import { ExplainingP } from "../../Text"
+import { SimulationDataContext } from "../../../contexts/SimulationData"
 
 
 const ConfortoSlide = ({ data }) => {
@@ -16,22 +17,27 @@ const ConfortoSlide = ({ data }) => {
     const [conforto, setConforto] = useState('')
     // const [rows, setRows] = useState([1])
 
+    const { simData, setSimData } = useContext(SimulationDataContext)
+
     const confortos = {
         title: 'Quarto',
-        value: conforto,
-        onChange: setConforto,
+        value: simData.conforto,
+        onChange: newValue => setSimData({
+            ...simData,
+            conforto: newValue
+        }),
         options: [
             {
-                value: 'so_agua_fria',
+                value: 'conforto_economy',
                 label: 'ECONOMY',
                 // description: 'Chuveiro elétrico, sem quecimento nas torneiras'
             },
             {
-                value: 'agua_fria_e_quente',
+                value: 'conforto_standard',
                 label: 'STANDARD',
             },
             {
-                value: 'agua_fria_e_quente',
+                value: 'conforto_premium',
                 label: 'PREMIUM',
             },
         ]
@@ -41,21 +47,21 @@ const ConfortoSlide = ({ data }) => {
         <>
             <Box height='50px'></Box>
             <SlideContainer
-                key={'Hidráulicas'}
+                key={'Conforto'}
             >
                 <StepImageContainer
-                    key={`${'Hidráulicas'}_step_image_container`}
+                    key={`${'Conforto'}_step_image_container`}
                 >
-                    <img style={{ width: '100%' }} src='/images/Ambientes/Ambientes13.svg' alt="" />
+                    <img style={{ height: '100%' }} src='/images/Ambientes/Ambientes13.svg' alt="" />
                 </StepImageContainer>
                 <StepContentContainer
-                    key={`${'Hidráulicas'}_step_content_container`}
+                    key={`${'Conforto'}_step_content_container`}
                 >
                     <TitleContainer
-                        key={`${'Hidráulicas'}_title_container`}
+                        key={`${'Conforto'}_title_container`}
                     >
                         <h4>{'Escolha o tipo de instalações'.toUpperCase()}</h4>
-                        <h2>{'Hidráulicas'.toUpperCase()}</h2>
+                        <h2>{'Conforto'.toUpperCase()}</h2>
                         <p>
                             Passe o mouse sobre cada um dos padrões e entenda melhor como funciona o conforto que você pode ter na sua casa
                         </p>
