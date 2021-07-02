@@ -3,6 +3,7 @@ import { Flex } from "../../Containers"
 import { FinishingPatternContainer, StandardBox } from "./styles"
 import RadioButtons from "../RadioButtons"
 import { useEffect, useState } from "react"
+import { Circle, List, SketchLogo } from "phosphor-react"
 
 const FinishingPattern = () => {
 
@@ -13,14 +14,17 @@ const FinishingPattern = () => {
         {
             label: 'economy',
             color: 'pink',
+            icon: <List size={18} style={{ margin: '1px 5px 0 0'}} />
         },
         {
             label: 'standard',
             color: 'purple',
+            icon: <Circle size={18} style={{ margin: '1px 5px 0 0'}} />
         },
         {
             label: 'premium',
             color: 'darkPurple',
+            icon: <SketchLogo size={18} style={{ margin: '1px 5px 0 0'}} />
         },
     ]
 
@@ -43,7 +47,10 @@ const FinishingPattern = () => {
                         active={pattern === e.label}
                         onClick={() => setPattern(e.label)}
                     >
-                        { e.label.toUpperCase() }
+                        <Flex>
+                            { e.icon }
+                            { e.label.toUpperCase() }
+                        </Flex>
                     </StandardBox>
                 ))}
             </Flex>

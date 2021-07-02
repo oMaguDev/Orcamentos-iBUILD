@@ -58,7 +58,7 @@ export const SimulationDataContextProvider = ({ children }) => {
     const [simStatus, setSimStatus] = useState({
         funds: {
             total: 1000000,
-            current: 1000000,
+            current: 15020,
             available: 1000000,
         },
         size: {
