@@ -156,7 +156,7 @@ const QuartosESuitesSlide = ({ data }) => {
                                             small
                                             options={roomOptions}
                                             onChange={(newValue) => {
-                                                const previousQuartos = [...simData.quartos]
+                                                const previousQuartos = [...simData.quartos.value]
                                                 console.log('previousQuartos: ', previousQuartos)
                                                 const previousQuartosRow = { ...previousQuartos[idx] }
                                                 previousQuartosRow[e] = newValue
@@ -164,10 +164,13 @@ const QuartosESuitesSlide = ({ data }) => {
                                                 console.log('previousQuartos: ', previousQuartos)
                                                 return setSimData({
                                                     ...simData,
-                                                    quartos: previousQuartos
+                                                    quartos: {
+                                                        ...simData.quartos,
+                                                        value: previousQuartos
+                                                    }
                                                 }) 
                                             }} //onChange(returnRoom(idx).value)
-                                            select={simData && simData.quartos && simData.quartos[idx][e]}
+                                            select={simData && simData.quartos && simData.quartos.value && simData.quartos.value[idx][e]}
                                             key={`${'Quartos/Suítes'}_${idx}_radio_buttons`}
                                         />
                                     </Flex>
@@ -181,7 +184,7 @@ const QuartosESuitesSlide = ({ data }) => {
                             onClick={() => {
                                 const currentRows = rows.length
                                 setRows(new Array(currentRows + 1).fill(1))
-                                const oneMoreRow = [ ...simData.quartos ]
+                                const oneMoreRow = [ ...simData.quartos.value ]
                                 oneMoreRow.push({
                                     quarto: '',
                                     suite: '',
@@ -189,7 +192,10 @@ const QuartosESuitesSlide = ({ data }) => {
                                 },)
                                 setSimData({
                                     ...simData,
-                                    quartos: oneMoreRow
+                                    quartos: {
+                                        ...simData.quartos,
+                                        value: oneMoreRow
+                                    }
                                 })
                             }}
                         >
@@ -197,7 +203,24 @@ const QuartosESuitesSlide = ({ data }) => {
                         </Button>
                     </MiddleContainer>
                     <>
-                        <FinishingPattern />
+                        <FinishingPattern
+                            confort={simData.quartos.confort}
+                            setConfort={newValue => setSimData({
+                                ...simData,
+                                quartos: {
+                                    ...simData.quartos,
+                                    confort: newValue
+                                }
+                            })}
+                            pattern={simData.quartos.pattern}
+                            setPattern={newValue => setSimData({
+                                ...simData,
+                                quartos: {
+                                    ...simData.quartos,
+                                    pattern: newValue
+                                }
+                            })}
+                        />
                         <StatusBox />
                     </>
                 </StepContentContainer>

@@ -38,15 +38,15 @@ const ResumoImovelSlide = ({ data }) => {
         },
         {
             label: 'Garagem',
-            value: simData.garagem
+            value: simData.garagem.value
         },
         {
             label: 'Sala',
-            value: simData.sala
+            value: simData.sala.value
         },
         {
             label: 'Cozinha',
-            value: simData.cozinha
+            value: simData.cozinha.value
         },
 
     ]

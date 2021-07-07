@@ -5,10 +5,15 @@ import RadioButtons from "../RadioButtons"
 import { useEffect, useState } from "react"
 import { Circle, List, SketchLogo } from "phosphor-react"
 
-const FinishingPattern = () => {
+const FinishingPattern = ({
+    pattern,
+    setPattern,
+    confort,
+    setConfort,
+}) => {
 
-    const [thermoacustic, setThermoacustic] = useState('')
-    const [pattern, setPattern] = useState('')
+    // const [confort, setConfort] = useState('')
+    // const [pattern, setPattern] = useState('')
 
     const patterns = [
         {
@@ -29,8 +34,8 @@ const FinishingPattern = () => {
     ]
 
     useEffect(() => {
-        console.log('thermoacustic: ', thermoacustic)
-    }, [thermoacustic])
+        console.log('confort: ', confort)
+    }, [confort])
     return (
         <FinishingPatternContainer>
             <Parag margin='0'>
@@ -78,8 +83,8 @@ const FinishingPattern = () => {
                         },
                     ]}
                 
-                    select={thermoacustic}
-                    onChange={e => setThermoacustic(e)}
+                    select={confort}
+                    onChange={e => setConfort(e)}
                 />
             </Flex>
         </FinishingPatternContainer>

@@ -82,16 +82,36 @@ const BanheirosSociaisSlide = ({ data }) => {
                                     'MÉDIO (APROX. 12 M2)',
                                     'GRANDE (APROX. 20 M2)'
                                 ]}
-                                entity={simData.banheiros}
+                                entity={simData.banheiros.value}
                                 setEntity={newValue => setSimData({
                                     ...simData,
-                                    banheiros: newValue
+                                    banheiros: {
+                                        ...simData.banheiros,
+                                        value: newValue
+                                    }
                                 })}
                             />
                         </Flex>
                     </MiddleContainer>
                     <>
-                        <FinishingPattern />
+                        <FinishingPattern
+                            confort={simData.banheiros.confort}
+                            setConfort={newValue => setSimData({
+                                ...simData,
+                                banheiros: {
+                                    ...simData.banheiros,
+                                    confort: newValue
+                                }
+                            })}
+                            pattern={simData.banheiros.pattern}
+                            setPattern={newValue => setSimData({
+                                ...simData,
+                                banheiros: {
+                                    ...simData.banheiros,
+                                    pattern: newValue
+                                }
+                            })}
+                        />
                         <StatusBox />
                     </>
                 </StepContentContainer>
