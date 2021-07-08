@@ -3,6 +3,7 @@ import { ActiveIndexProvider } from '../contexts/activeIndex'
 // import '../styles/globals.css'
 import Head from 'next/head'
 import { SimulationDataContextProvider } from '../contexts/SimulationData'
+import { SimulationStatusContextProvider } from '../contexts/SimulationStatus'
 import { UserContextProvider } from '../contexts/UserContext'
 
 
@@ -71,11 +72,13 @@ function MyApp({ Component, pageProps }) {
             <GlobalStyle />
             <UserContextProvider>
                 <SimulationDataContextProvider>
-                    <ActiveIndexProvider>
-                        <ThemeProvider theme={theme}>
-                            <Component {...pageProps} />
-                        </ThemeProvider>
-                    </ActiveIndexProvider>
+                    <SimulationStatusContextProvider>
+                        <ActiveIndexProvider>
+                            <ThemeProvider theme={theme}>
+                                <Component {...pageProps} />
+                            </ThemeProvider>
+                        </ActiveIndexProvider>
+                    </SimulationStatusContextProvider>
                 </SimulationDataContextProvider>
             </UserContextProvider>
         </>

@@ -1,17 +1,14 @@
 import { useContext, useEffect } from "react"
 import { SimulationDataContext } from "../../../contexts/SimulationData"
+import { SimulationStatusContext } from "../../../contexts/SimulationStatus"
 import { formatMoney } from "../../../utils/format"
 import { Flex } from "../../Containers"
 import { Status, StatusBoxContainer, StatusNumbers, StatusNumbersLabel, ValueBoxes } from "./styles"
 
 const StatusBox = () => {
 
-    const { simStatus, setSimStatus } = useContext(SimulationDataContext)
+    const { simStatus, setSimStatus } = useContext(SimulationStatusContext)
 
-    useEffect(() => {
-        const formattedNumber = formatMoney(24500)
-        console.log('formattedNumber: ', formattedNumber)
-    }, [])
 
     return (
         <StatusBoxContainer>

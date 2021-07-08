@@ -15,15 +15,15 @@ const PavimentosEscadas = () => {
     const pavimentosOptions = [
         {
             label: '1 (Térrea)',
-            value: 'um_pavimento'
+            value: 1
         },
         {
             label: '2 (Sobrado ou mezanino)',
-            value: 'dois_pavimentos'
+            value: 2
         },
         {
             label: '3 (Sobrado ou mezanino)',
-            value: 'tres_pavimentos'
+            value: 3
         },
     ]
 
