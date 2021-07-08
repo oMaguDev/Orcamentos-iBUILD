@@ -16,39 +16,71 @@ import { SimulationDataContext } from "../contexts/SimulationData"
 import ConfortoSlide from "../components/specific/simular/Conforto"
 import ResumoImovelSlide from "../components/specific/simular/ResumoImovel"
 import AcabamentoSlide from "../components/specific/simular/Acabamento"
+import { baseObraBranca } from "../utils/base_obra_branca"
+import { baseAcabamentos } from "../utils/base_acabamentos"
+import useSetHomeValue from "../hooks/useSetCurrentHomeValue"
+import { SimulationStatusContext } from "../contexts/SimulationStatus"
 
 
 const Simular = () => {
 
     const [initial, setInitial] = useState(true)
+    const [previousHouseValue, setpreviousHouseValue] = useState(0)
+    const [counter, setCounter] = useState({
+        estilo: 0,
+        pavimentos: 0,
+        escada: 0,
+        paredes: 0,
+        telhas: 0,
+        garagem: 0,
+        sala: 0,
+        cozinha: 0,
+        areaGourmet: 0,
+        areaServico: 0,
+        despensa: 0,
+        escritorio: 0,
+        // quartos: {
+        //     value: [
+        //         {
+        //             quarto: 0,
+        //             suite: 0,
+        //             closet: ''
+        //         },
+        //     ],
+        //     pattern: 0,
+        //     confort: 0,
+        // },
+        // lavabos: {
+        //     value: new Array(4).fill(''),
+        //     pattern: 0,
+        //     confort: 0,
+        // },
+        // banheiros: {
+        //     value: new Array(4).fill(''),
+        //     pattern: 0,
+        //     confort: 0,
+        // },
+        // instalacoes: {
+        //     hidraulica: 0,
+        //     eletrica: 0,
+        // },
+    })
 
-    // const [area, setArea] = useState('')
-    // const [estilo, setEstilo] = useState('')
-    // const [pavimentos, setPavimentos] = useState('')
-    // const [paredes, setParedes] = useState('')
-    // const [telhas, setTelhas] = useState('')
-    // const [garagem, setGaragem] = useState('')
-    // const [sala, setSala] = useState('')
-    // const [escritorio, setEscritorio] = useState('')
-    // const [quartos, setQuartos] = useState({
-    //     small: '',
-    //     medium: '',
-    //     big: '',
-    // })
-    // const [lavabos, setLavabos] = useState('')
-
-    // useEffect(() => {
-    //     console.log('area: ', area)
-    //     console.log('lavabos: ', lavabos)
-    //     console.log('estilo: ', estilo)
-    //     console.log('pavimentos: ', pavimentos)
-    // }, [area, lavabos, estilo, pavimentos])
-
+    const { simStatus, setSimStatus } = useContext(SimulationStatusContext)
 
     const {
         simData,
-        setSimData
+        setSimData,
+        // resources,
+        // setResources,
+        // simStatus,
+        // setSimStatus,
+        baseSqMtr,
+        // setBaseSqMtr,
+        // baseSqrMtrValueCalculator,
     } = useContext(SimulationDataContext)
+
+    const { setCurrentValue, setPreviousValue } = useSetHomeValue()
 
     const stepsTitles = [
         'Estilo da sua casa',
@@ -126,19 +158,19 @@ const Simular = () => {
             options: [
                 {
                     label: 'NÃO QUERO',
-                    value: 'sem_garagem',
+                    value: 0,
                 },
                 {
                     label: 'PEQUENA (1 CARRO - APROX. 20M²)',
-                    value: 'garagem_pq',
+                    value: 20,
                 },
                 {
                     label: 'MÉDIA (2 CARROS - APROX. 30M²)',
-                    value: 'garagem_md',
+                    value: 30,
                 },
                 {
                     label: 'GRANDE (ATÉ 4 CARROS - APROX. 50M²)',
-                    value: 'garagem_gd',
+                    value: 50,
                 },
             ]
         },
@@ -599,16 +631,6 @@ const Simular = () => {
 
     ]
 
-    // const items = [
-    //     <StepContent key={steps[0]} />,
-    //     <StepContent key={steps[1]} />,
-    //     <StepContent key={steps[2]} />,
-    //     <StepContent key={steps[3]} />,
-    //     <StepContent key={steps[0]} />,
-    //     <StepContent key={steps[1]} />,
-    //     <StepContent key={steps[2]} />,
-    //     <StepContent key={steps[3]} />,
-    // ]
 
     const items = steps.map((e, i) => e.customComponent ? e.customComponent : (
         <StepContent key={`${e.title}_step_content_vai`} data={e} />
@@ -623,8 +645,8 @@ const Simular = () => {
     items.push(<LavabosSlide />)
     items.push(<BanheirosSociaisSlide />)
     items.push(<InstalacoesSlide />)
-    items.push(<ConfortoSlide />)
-    items.push(<AcabamentoSlide />)
+    // items.push(<ConfortoSlide />)
+    // items.push(<AcabamentoSlide />)
     items.push(<ResumoImovelSlide />)
 
 
@@ -633,6 +655,38 @@ const Simular = () => {
     // items.push(<PavimentosEscadas key='pavimentos_e_escadas_slide' />)
     // items.push(<ParedesExternas key='paredes_externas_slide' />)
     // items.push(<Telhas key='telhas_slide' />)
+
+    useEffect(() => {
+        updateValues('garagem')
+    }, [simData.garagem])
+
+    const updateValues = (slide) => {
+        // console.log('simData[slide].value', simData[slide].value)
+        // console.log('simData[slide].pattern', simData[slide].pattern)
+        if (simData[slide].value !== '' && simData[slide].pattern !== '') {
+            
+            const area = simData[slide].value
+            const areaPiso = area * 1.1
+            const areaParede = area * 2.33
+            const valorGaragem = (baseSqMtr.value * area) + (areaParede * baseObraBranca.fechamento_interno.paredes) + 
+                (baseAcabamentos[slide][simData[slide].pattern].piso * areaPiso) + (baseAcabamentos[slide][simData[slide].pattern].pintura * areaParede) + 
+                (baseAcabamentos[slide][simData[slide].pattern].forro * areaParede)
+            
+            if (counter[slide] === 0) {
+                const valorCasa = simStatus.funds.current
+                console.log('valorCasa: ', valorCasa)
+                setPreviousValue(valorCasa)
+                setCurrentValue(valorCasa + valorGaragem)
+            } else {
+                const valorCasa = simStatus.funds.previous
+                setCurrentValue(valorCasa + valorGaragem)
+            }
+            setCounter({
+                ...counter,
+                garagem: counter[slide] + 1
+            })
+        }
+    }
 
     if (initial) {
         return (

@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react"
+import { baseObraBranca } from "../utils/base_obra_branca"
 
 
 export const SimulationDataContext = createContext()
@@ -7,7 +8,7 @@ export const SimulationDataContextProvider = ({ children }) => {
 
     const [simData, setSimData] = useState({
         estilo: '',
-        pavimentos: '',
+        pavimentos: 0,
         escada: '',
         paredes: '',
         telhas: '',
@@ -71,8 +72,8 @@ export const SimulationDataContextProvider = ({ children }) => {
             hidraulica: '',
             eletrica: '',
         },
-        confortos: '',
-        acabamento: '',
+        // confortos: '',
+        // acabamento: '',
     })
 
     const [resources, setResources] = useState({
@@ -95,27 +96,75 @@ export const SimulationDataContextProvider = ({ children }) => {
         mod_financiamento: '',
     })
 
-    const [simStatus, setSimStatus] = useState({
-        funds: {
-            total: 1000000,
-            current: 15020,
-            available: 1000000,
-        },
-        size: {
-            total: '',
-            current: '',
-            available: ''
-        }
+    const [baseSqMtr, setBaseSqMtr] = useState({
+        value: 0,
+        category: ''
     })
 
+    const baseSqrMtrValueCalculator = (category) => {
+        console.log('category: ', category)
+        if (simData.pavimentos === 1) {
+            return baseObraBranca[category].one_pavement_meter
+        }
+        if (simData.pavimentos > 1) {
+            const currentBase = baseObraBranca[category]
+            const sqrMeterValue = (currentBase.initial_services + currentBase.foundation + (currentBase.structure * 1.08) + currentBase.slab + currentBase.walls) / 100
+            return sqrMeterValue
+        }
+        return 0
+    }
+
     useEffect(() => {
-        console.log('simData: ', simData)
-        console.log('resources: ', resources)
-    }, [simData, resources])
+        console.log('simData.paredes: ', simData.paredes)
+        switch (simData.paredes) {
+            case 'PAREDE ECONOMY':
+                setBaseSqMtr({
+                    ...baseSqMtr,
+                    category: 'economy'
+                })
+                break;
+        
+            case 'PAREDE STANDARD':
+                setBaseSqMtr({
+                    ...baseSqMtr,
+                    category: 'standard'
+                })
+                break;
+        
+            case 'PAREDE PREMIUM':
+                setBaseSqMtr({
+                    ...baseSqMtr,
+                    category: 'premium'
+                })
+                break;
+
+            default:
+                break;
+        }
+    }, [simData.paredes])
+
+    useEffect(() => {
+        if (baseSqMtr.category !== '') {
+            setBaseSqMtr({
+                ...baseSqMtr,
+                value: baseSqrMtrValueCalculator(baseSqMtr.category)
+            })
+        }
+    }, [baseSqMtr.category, simData.pavimentos])
+
     
+
     useEffect(() => {
-        console.log('resources: ', resources)
-    }, [])
+        console.log('baseSqMtr: ', baseSqMtr)
+    }, [baseSqMtr])
+
+    // useEffect(() => {
+    //     console.log('simData: ', simData)
+    // }, [simData])
+    
+    // useEffect(() => {
+    //     console.log('resources: ', resources)
+    // }, [resources])
 
     return (
         <SimulationDataContext.Provider value={{
@@ -123,8 +172,9 @@ export const SimulationDataContextProvider = ({ children }) => {
             setSimData,
             resources,
             setResources,
-            simStatus,
-            setSimStatus
+            baseSqMtr,
+            setBaseSqMtr,
+            baseSqrMtrValueCalculator,
         }}>
             { children }
         </SimulationDataContext.Provider>

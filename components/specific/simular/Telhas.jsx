@@ -1,4 +1,4 @@
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { Flex, TitleContainer } from "../../Containers"
 import RadioButtons from "../../common/RadioButtons"
 import StatusBox from "../../common/StatusBox"
@@ -8,13 +8,23 @@ import Input from '../../form/Input'
 import FinishingPattern from "../../common/FinishingPattern"
 import StepContent from "../../common/StepContent"
 import { SimulationDataContext } from "../../../contexts/SimulationData"
+import { baseObraBranca } from "../../../utils/base_obra_branca"
 
 
 const Telhas = () => {
 
     // const [telhas, setTelhas] = useState('')
+    const [counter, setCounter] = useState(0)
 
-    const { simData, setSimData } = useContext(SimulationDataContext)
+    const {
+        simData,
+        setSimData,
+        // simStatus,
+        // setSimStatus,
+        baseSqMtr,
+        setBaseSqMtr,
+        baseSqrMtrValueCalculator,
+    } = useContext(SimulationDataContext)
 
     const options = [
         {
@@ -30,6 +40,26 @@ const Telhas = () => {
             value: 'ceramica',
         },
     ]
+
+    useEffect(() => {
+        if (simData.telhas !== '') {
+            if (counter === 0) {
+                const baseSqMtrWithRoof = baseSqMtr.value + baseObraBranca.cobertura[simData.telhas] + baseObraBranca.cobertura.calhas
+                setBaseSqMtr({
+                    ...baseSqMtr,
+                    value: baseSqMtrWithRoof
+                })
+            } else {
+                const restartedBaseSqrMtrValue = baseSqrMtrValueCalculator(baseSqMtr.category)
+                const baseSqMtrWithRoof = restartedBaseSqrMtrValue + baseObraBranca.cobertura[simData.telhas] + baseObraBranca.cobertura.calhas
+                setBaseSqMtr({
+                    ...baseSqMtr,
+                    value: baseSqMtrWithRoof
+                })
+            }
+        }    
+        setCounter(counter + 1)
+    }, [simData.telhas])
 
     const inputs = null
     return (
