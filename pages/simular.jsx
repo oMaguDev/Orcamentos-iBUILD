@@ -73,7 +73,7 @@ const Simular = () => {
     ]
 
     const steps = [
-        
+
         // {
         //     caption: 'Escolha o tamanho',
         //     title: 'Área Total',
@@ -91,17 +91,37 @@ const Simular = () => {
         //         }
         //     ]
         // },
-    
+
         {
             caption: 'Escolha o tamanho da',
             title: 'Garagem',
             // subtitle: 'Escolha o padrão de acabamento da garagem',
             imageSrc: '/images/Ambientes/Ambientes11.svg',
-            withFinishingPattern: true,
-            value: simData.garagem,
-            onChange:(newValue) => setSimData({
+            withFinishingPattern: {
+                pattern: simData.garagem.pattern,
+                setPattern: (newValue) => setSimData({
+                    ...simData,
+                    garagem: {
+                        ...simData.garagem,
+                        pattern: newValue
+                    }
+                }),
+                confort: simData.garagem.confort,
+                setConfort: (newValue) => setSimData({
+                    ...simData,
+                    garagem: {
+                        ...simData.garagem,
+                        confort: newValue
+                    }
+                }),
+            },
+            value: simData.garagem.value,
+            onChange: (newValue) => setSimData({
                 ...simData,
-                garagem: newValue
+                garagem: {
+                    ...simData.garagem,
+                    value: newValue
+                }
             }),
             options: [
                 {
@@ -127,11 +147,31 @@ const Simular = () => {
             title: 'Sala',
             // subtitle: 'Escolha o tamanho da sala',
             imageSrc: '/images/Ambientes/Ambientes1.svg',
-            withFinishingPattern: true,
-            value: simData.sala,
+            withFinishingPattern: {
+                pattern: simData.sala.pattern,
+                setPattern: (newValue) => setSimData({
+                    ...simData,
+                    sala: {
+                        ...simData.sala,
+                        pattern: newValue
+                    }
+                }),
+                confort: simData.sala.confort,
+                setConfort: (newValue) => setSimData({
+                    ...simData,
+                    sala: {
+                        ...simData.sala,
+                        confort: newValue
+                    }
+                }),
+            },
+            value: simData.sala.value,
             onChange: newValue => setSimData({
                 ...simData,
-                sala: newValue
+                sala: {
+                    ...simData.sala,
+                    value: newValue,
+                },
             }),
             options: [
                 {
@@ -150,10 +190,13 @@ const Simular = () => {
             inputs: [
                 {
                     label: 'Outro tamanho',
-                    value: simData.sala,
+                    value: simData.sala.value,
                     onChange: newValue => setSimData({
                         ...simData,
-                        sala: newValue
+                        sala: {
+                            ...simData.sala,
+                            value: newValue,
+                        },
                     }),
                     placeholder: 'Insira o tamanho em m²',
                     type: 'number'
@@ -165,11 +208,31 @@ const Simular = () => {
             title: 'Cozinha',
             // subtitle: 'Escolha o tamanho da sala',
             imageSrc: '/images/Ambientes/Ambientes2.svg',
-            withFinishingPattern: true,
-            value: simData.cozinha,
+            withFinishingPattern: {
+                pattern: simData.cozinha.pattern,
+                setPattern: (newValue) => setSimData({
+                    ...simData,
+                    cozinha: {
+                        ...simData.cozinha,
+                        pattern: newValue
+                    }
+                }),
+                confort: simData.cozinha.confort,
+                setConfort: (newValue) => setSimData({
+                    ...simData,
+                    cozinha: {
+                        ...simData.cozinha,
+                        confort: newValue
+                    }
+                }),
+            },
+            value: simData.cozinha.value,
             onChange: newValue => setSimData({
                 ...simData,
-                cozinha: newValue
+                cozinha: {
+                    ...simData.cozinha,
+                    value: newValue
+                }
             }),
             options: [
                 {
@@ -188,10 +251,13 @@ const Simular = () => {
             inputs: [
                 {
                     label: 'Outro tamanho',
-                    value: simData.cozinha,
+                    value: simData.cozinha.value,
                     onChange: newValue => setSimData({
                         ...simData,
-                        cozinha: newValue
+                        cozinha: {
+                            ...simData.cozinha,
+                            value: newValue
+                        }
                     }),
                     placeholder: 'Insira o tamanho em m²',
                     type: 'number'
@@ -203,11 +269,31 @@ const Simular = () => {
             title: 'Área gourmet',
             // subtitle: 'Escolha o tamanho da sala',
             imageSrc: '/images/Ambientes/Ambientes3.svg',
-            withFinishingPattern: true,
-            value: simData.areaGourmet,
+            withFinishingPattern: {
+                pattern: simData.areaGourmet.pattern,
+                setPattern: (newValue) => setSimData({
+                    ...simData,
+                    areaGourmet: {
+                        ...simData.areaGourmet,
+                        pattern: newValue
+                    }
+                }),
+                confort: simData.areaGourmet.confort,
+                setConfort: (newValue) => setSimData({
+                    ...simData,
+                    areaGourmet: {
+                        ...simData.areaGourmet,
+                        confort: newValue
+                    }
+                }),
+            },
+            value: simData.areaGourmet.value,
             onChange: newValue => setSimData({
                 ...simData,
-                areaGourmet: newValue
+                areaGourmet: {
+                    ...simData.areaGourmet,
+                    value: newValue
+                },
             }),
             options: [
                 {
@@ -230,10 +316,13 @@ const Simular = () => {
             inputs: [
                 {
                     label: 'Outro tamanho',
-                    value: simData.areaGourmet,
+                    value: simData.areaGourmet.value,
                     onChange: newValue => setSimData({
                         ...simData,
-                        areaGourmet: newValue
+                        areaGourmet: {
+                            ...simData.areaGourmet,
+                            value: newValue
+                        },
                     }),
                     placeholder: 'Insira o tamanho em m²',
                     type: 'number'
@@ -245,11 +334,31 @@ const Simular = () => {
             title: 'Área de serviço',
             // subtitle: 'Escolha o tamanho da sala',
             imageSrc: '/images/Ambientes/Ambientes4.svg',
-            withFinishingPattern: true,
-            value: simData.areaServico,
+            withFinishingPattern: {
+                pattern: simData.areaServico.pattern,
+                setPattern: (newValue) => setSimData({
+                    ...simData,
+                    areaServico: {
+                        ...simData.areaServico,
+                        pattern: newValue
+                    }
+                }),
+                confort: simData.areaServico.confort,
+                setConfort: (newValue) => setSimData({
+                    ...simData,
+                    areaServico: {
+                        ...simData.areaServico,
+                        confort: newValue
+                    }
+                }),
+            },
+            value: simData.areaServico.value,
             onChange: newValue => setSimData({
                 ...simData,
-                areaServico: newValue
+                areaServico: {
+                    ...simData.areaServico,
+                    value: newValue
+                }
             }),
             options: [
                 {
@@ -268,10 +377,13 @@ const Simular = () => {
             inputs: [
                 {
                     label: 'Outro tamanho',
-                    value: simData.areaServico,
+                    value: simData.areaServico.value,
                     onChange: newValue => setSimData({
                         ...simData,
-                        areaServico: newValue
+                        areaServico: {
+                            ...simData.areaServico,
+                            value: newValue
+                        }
                     }),
                     placeholder: 'Insira o tamanho em m²',
                     type: 'number'
@@ -283,11 +395,31 @@ const Simular = () => {
             title: 'Despensa',
             // subtitle: 'Escolha o tamanho da sala',
             imageSrc: '/images/Ambientes/Ambientes5.svg',
-            withFinishingPattern: true,
-            value: simData.despensa,
+            withFinishingPattern: {
+                pattern: simData.despensa.pattern,
+                setPattern: (newValue) => setSimData({
+                    ...simData,
+                    despensa: {
+                        ...simData.despensa,
+                        pattern: newValue
+                    }
+                }),
+                confort: simData.despensa.confort,
+                setConfort: (newValue) => setSimData({
+                    ...simData,
+                    despensa: {
+                        ...simData.despensa,
+                        confort: newValue
+                    }
+                }),
+            },
+            value: simData.despensa.value,
             onChange: newValue => setSimData({
                 ...simData,
-                despensa: newValue
+                despensa: {
+                    ...simData.despensa,
+                    value: newValue
+                }
             }),
             options: [
                 {
@@ -306,10 +438,13 @@ const Simular = () => {
             inputs: [
                 {
                     label: 'Outro tamanho',
-                    value: simData.despensa,
+                    value: simData.despensa.value,
                     onChange: newValue => setSimData({
                         ...simData,
-                        despensa: newValue
+                        despensa: {
+                            ...simData.despensa,
+                            value: newValue
+                        }
                     }),
                     placeholder: 'Insira o tamanho em m²',
                     type: 'number'
@@ -321,11 +456,31 @@ const Simular = () => {
             title: 'Escritório',
             // subtitle: 'Escolha o tamanho da sala',
             imageSrc: '/images/Ambientes/Ambientes6.svg',
-            withFinishingPattern: true,
-            value: simData.escritorio,
+            withFinishingPattern: {
+                pattern: simData.escritorio.pattern,
+                setPattern: (newValue) => setSimData({
+                    ...simData,
+                    escritorio: {
+                        ...simData.escritorio,
+                        pattern: newValue
+                    }
+                }),
+                confort: simData.escritorio.confort,
+                setConfort: (newValue) => setSimData({
+                    ...simData,
+                    escritorio: {
+                        ...simData.escritorio,
+                        confort: newValue
+                    }
+                }),
+            },
+            value: simData.escritorio.value,
             onChange: newValue => setSimData({
                 ...simData,
-                escritorio: newValue
+                escritorio: {
+                    ...simData.escritorio,
+                    value: newValue
+                }
             }),
             options: [
                 {
@@ -344,10 +499,13 @@ const Simular = () => {
             inputs: [
                 {
                     label: 'Outro tamanho',
-                    value: simData.escritorio,
+                    value: simData.escritorio.value,
                     onChange: newValue => setSimData({
                         ...simData,
-                        escritorio: newValue
+                        escritorio: {
+                            ...simData.escritorio,
+                            value: newValue
+                        }
                     }),
                     placeholder: 'Insira o tamanho em m²',
                     type: 'number'
@@ -389,7 +547,7 @@ const Simular = () => {
         //             onChange: setQuartos,
         //             type: 'number',
         //             width: '95%',
-                    
+
         //         },
         //         {
         //             label: 'Quarto grande',
@@ -438,7 +596,7 @@ const Simular = () => {
         //         },
         //     ]
         // },
-        
+
     ]
 
     // const items = [
@@ -461,15 +619,15 @@ const Simular = () => {
     items.unshift(<PavimentosEscadas key='pavimentos_e_escadas_slide' />)
     items.unshift(<EstiloCasa key='estilo_casa_slide' />)
 
-    items.push(<QuartosESuitesSlide/>)
+    items.push(<QuartosESuitesSlide />)
     items.push(<LavabosSlide />)
     items.push(<BanheirosSociaisSlide />)
     items.push(<InstalacoesSlide />)
     items.push(<ConfortoSlide />)
     items.push(<AcabamentoSlide />)
     items.push(<ResumoImovelSlide />)
-    
-    
+
+
     // const items = []
     // items.push(<EstiloCasa key='estilo_casa_slide' />)
     // items.push(<PavimentosEscadas key='pavimentos_e_escadas_slide' />)
@@ -514,7 +672,7 @@ const Simular = () => {
             <Navbar />
             <Stepper
                 steps={stepsTitles}
-                title='Monte Sua Casa'    
+                title='Monte Sua Casa'
                 page='simular'
             />
             <Carousel

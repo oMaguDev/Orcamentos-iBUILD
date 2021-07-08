@@ -76,16 +76,36 @@ const LavabosSlide = ({ data }) => {
                             justifyContent='flex-start'
                         >
                             <RadioButtonsList
-                                entity={simData.lavabos}
+                                entity={simData.lavabos.value}
                                 setEntity={newValue => setSimData({
                                     ...simData,
-                                    lavabos: newValue
+                                    lavabos: {
+                                        ...simData.lavabos,
+                                        value: newValue
+                                    }
                                 })}
                             />
                         </Flex>
                     </MiddleContainer>
                     <>
-                        <FinishingPattern />
+                        <FinishingPattern
+                            confort={simData.lavabos.confort}
+                            setConfort={newValue => setSimData({
+                                ...simData,
+                                lavabos: {
+                                    ...simData.lavabos,
+                                    confort: newValue
+                                }
+                            })}
+                            pattern={simData.lavabos.pattern}
+                            setPattern={newValue => setSimData({
+                                ...simData,
+                                lavabos: {
+                                    ...simData.lavabos,
+                                    pattern: newValue
+                                }
+                            })}
+                        />
                         <StatusBox />
                     </>
                 </StepContentContainer>

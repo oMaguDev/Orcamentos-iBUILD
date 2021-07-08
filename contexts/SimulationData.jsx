@@ -11,22 +11,62 @@ export const SimulationDataContextProvider = ({ children }) => {
         escada: '',
         paredes: '',
         telhas: '',
-        garagem: '',
-        sala: '',
-        cozinha: '',
-        areaGourmet: '',
-        areaServico: '',
-        despensa: '',
-        escritorio: '',
-        quartos: [
-            {
-                quarto: '',
-                suite: '',
-                closet: ''
-            },
-        ],
-        lavabos: new Array(4).fill(''),
-        banheiros: new Array(4).fill(''),
+        garagem: {
+            value: '',
+            pattern: '',
+            confort: '',
+        },
+        sala: {
+            value: '',
+            pattern: '',
+            confort: '',
+        },
+        cozinha: {
+            value: '',
+            pattern: '',
+            confort: '',
+        },
+        areaGourmet: {
+            value: '',
+            pattern: '',
+            confort: '',
+        },
+        areaServico: {
+            value: '',
+            pattern: '',
+            confort: '',
+        },
+        despensa: {
+            value: '',
+            pattern: '',
+            confort: '',
+        },
+        escritorio: {
+            value: '',
+            pattern: '',
+            confort: '',
+        },
+        quartos: {
+            value: [
+                {
+                    quarto: '',
+                    suite: '',
+                    closet: ''
+                },
+            ],
+            pattern: '',
+            confort: '',
+        },
+        lavabos: {
+            value: new Array(4).fill(''),
+            pattern: '',
+            confort: '',
+        },
+        banheiros: {
+            value: new Array(4).fill(''),
+            pattern: '',
+            confort: '',
+        },
         instalacoes: {
             hidraulica: '',
             eletrica: '',
