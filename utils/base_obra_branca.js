@@ -34,4 +34,5 @@ export const baseObraBranca = {
     fechamento_interno: {
         paredes: 34.23,
     },
+    conforto_interno: 49.49,
 }
