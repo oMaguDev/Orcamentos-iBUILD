@@ -1,4 +1,5 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+import { RoomValuesContext } from "./RoomValues";
 
 
 export const SimulationStatusContext = createContext()
@@ -19,16 +20,33 @@ export const SimulationStatusContextProvider = ({ children }) => {
         }
     })
 
+    const { rooms, setRooms} = useContext(RoomValuesContext)
+
+    // useEffect(() => {
+    //     setSimStatus({
+    //         ...simStatus,
+    //         funds: {
+    //             ...simStatus.funds,
+    //             available: updatedAvailableFunds
+    //         }
+    //     })
+    // }, [simStatus.funds.current])
+    
     useEffect(() => {
-        const updatedAvailableFunds = simStatus.funds.total - simStatus.funds.current
+        let sumRoomValues = 0
+        for (let prop in rooms) {
+            sumRoomValues += rooms[prop]
+        }
+        const updatedAvailableFunds = simStatus.funds.total - sumRoomValues
         setSimStatus({
             ...simStatus,
             funds: {
                 ...simStatus.funds,
-                available: updatedAvailableFunds
+                current: sumRoomValues,
+                available: updatedAvailableFunds,
             }
         })
-    }, [simStatus.funds.current])
+    }, [rooms])
 
     return (
         <SimulationStatusContext.Provider value={{

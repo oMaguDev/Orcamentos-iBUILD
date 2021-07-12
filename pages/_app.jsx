@@ -5,6 +5,7 @@ import Head from 'next/head'
 import { SimulationDataContextProvider } from '../contexts/SimulationData'
 import { SimulationStatusContextProvider } from '../contexts/SimulationStatus'
 import { UserContextProvider } from '../contexts/UserContext'
+import { RoomValuesContextProvider } from '../contexts/RoomValues'
 
 
 const GlobalStyle = createGlobalStyle`
@@ -72,13 +73,15 @@ function MyApp({ Component, pageProps }) {
             <GlobalStyle />
             <UserContextProvider>
                 <SimulationDataContextProvider>
-                    <SimulationStatusContextProvider>
-                        <ActiveIndexProvider>
-                            <ThemeProvider theme={theme}>
-                                <Component {...pageProps} />
-                            </ThemeProvider>
-                        </ActiveIndexProvider>
-                    </SimulationStatusContextProvider>
+                    <RoomValuesContextProvider>
+                        <SimulationStatusContextProvider>
+                            <ActiveIndexProvider>
+                                <ThemeProvider theme={theme}>
+                                    <Component {...pageProps} />
+                                </ThemeProvider>
+                            </ActiveIndexProvider>
+                        </SimulationStatusContextProvider>
+                    </RoomValuesContextProvider>
                 </SimulationDataContextProvider>
             </UserContextProvider>
         </>
