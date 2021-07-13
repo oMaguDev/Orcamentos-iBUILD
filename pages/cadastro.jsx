@@ -31,14 +31,24 @@ const Cadastro = () => {
     const { user, setUser } = useContext(UserContext)
 
     const handleCreateLead = () => {
-        console.log('user: ', user)
-        if (user && user.email) {
+        if (user) {
             const lead = {
-                login: user.email,
-                password: 'ibuild_test_password',
-                title: 'Lead iBuild'
+                LOGIN: 'bitrix_user@gmail.com',
+                PASSWORD: 'ibuild_test_password',
+                TITLE: 'Lead iBuild',
+                NAME: user.name,
+                PHONE_WORK: user.phone,
+                EMAIL_WORK: user.email,
+                
+
             }
             createLead(lead)
+                .then(res => {
+                    router.push('/simular')
+                })
+                .catch(err => {
+                    router.push('/simular')
+                })
         }
     }
 

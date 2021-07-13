@@ -95,6 +95,7 @@ const Levantamento = () => {
             caption: 'Recursos',
             title: 'Financeiros',
             value: resources.valor_terreno,
+            imageSrc: '/images/Ícones/Ícones 2.svg',
             onChange: newValue => setResources({
                 ...resources,
                 valor_terreno: newValue
@@ -223,7 +224,7 @@ const Levantamento = () => {
             <Stepper
                 steps={stepsTitles}
                 title='levantamento de recursos'    
-                // page='levantamento'
+                page='levantamento'
             />
             <Carousel
                 items={items}
