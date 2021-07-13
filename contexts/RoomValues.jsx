@@ -21,8 +21,9 @@ export const RoomValuesContextProvider = ({ children }) => {
         quartos: 0,
         lavabos: 0,
         banheiros: 0,
-        // instalacoes: ,
     })
+
+    const [instalations, setInstalations] = useState(0)
 
     useEffect(() => {
         console.log('rooms: ', rooms)
@@ -31,7 +32,9 @@ export const RoomValuesContextProvider = ({ children }) => {
     return (
         <RoomValuesContext.Provider value={{
             rooms: rooms,
-            setRooms
+            setRooms,
+            instalations,
+            setInstalations
         }}>
             { children }
         </RoomValuesContext.Provider>
