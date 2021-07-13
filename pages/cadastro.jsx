@@ -49,7 +49,7 @@ const Cadastro = () => {
                 if (res && res.data) {
                     const data = [...res.data]
                     const newOptions = data.map((e, i) => ({
-                        label: e.nome,
+                        label: e.sigla,
                         value: e.sigla
                     }))
                     newOptions.unshift({
