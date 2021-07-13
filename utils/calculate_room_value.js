@@ -306,6 +306,18 @@ export const calculateBanheiros = (banheiros, baseSqMtr) => {
     return valorAmbiente
 }
 
+export const calculateInstalacoesPercentagem = (instalacoes, houseValue) => {
+    let housePercentage = 0
+    for (let prop in instalacoes) {
+        housePercentage += instalacoes[prop]
+    }
+
+    // let valorAmbiente = houseValue * (housePercentage / 100)
+
+    // return valorAmbiente
+    return housePercentage
+}
+
 
 
 

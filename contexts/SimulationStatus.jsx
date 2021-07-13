@@ -20,7 +20,10 @@ export const SimulationStatusContextProvider = ({ children }) => {
         }
     })
 
-    const { rooms, setRooms} = useContext(RoomValuesContext)
+    const { rooms, setRooms, instalations } = useContext(RoomValuesContext)
+
+    const [sumRoomValues, setSumRoomValues] = useState(0)
+    const [instalationValues, setInstalationValues] = useState(0)
 
     // useEffect(() => {
     //     setSimStatus({
@@ -33,20 +36,34 @@ export const SimulationStatusContextProvider = ({ children }) => {
     // }, [simStatus.funds.current])
     
     useEffect(() => {
-        let sumRoomValues = 0
+        let allRoomValues = 0
         for (let prop in rooms) {
-            sumRoomValues += rooms[prop]
+            allRoomValues += rooms[prop]
         }
-        const updatedAvailableFunds = simStatus.funds.total - sumRoomValues
+        setSumRoomValues(allRoomValues)
+    }, [rooms])
+
+    useEffect(() => {
+        const newInstalationValues = instalations * sumRoomValues / 100
+        // console.log('%: ', instalations / 100)
+        setInstalationValues(newInstalationValues)
+    }, [instalations, sumRoomValues])
+
+    useEffect(() => {
+
+        const currentFunds = sumRoomValues + instalationValues
+        const availableFunds = simStatus.funds.total - currentFunds
+
         setSimStatus({
             ...simStatus,
             funds: {
                 ...simStatus.funds,
-                current: sumRoomValues,
-                available: updatedAvailableFunds,
+                current: currentFunds,
+                available: availableFunds,
             }
         })
-    }, [rooms])
+
+    }, [sumRoomValues, instalationValues])
 
     return (
         <SimulationStatusContext.Provider value={{
