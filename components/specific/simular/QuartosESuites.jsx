@@ -8,6 +8,8 @@ import { useContext, useEffect, useState } from "react"
 import { Parag } from "../../Text"
 import Button from "../../common/Button"
 import { SimulationDataContext } from "../../../contexts/SimulationData"
+import { RoomValuesContext } from "../../../contexts/RoomValues"
+import { calculateQuartos } from "../../../utils/calculate_room_value"
 
 
 const QuartosESuitesSlide = ({ data }) => {
@@ -15,92 +17,83 @@ const QuartosESuitesSlide = ({ data }) => {
     const [quartos, setQuartos] = useState([])
     const [rows, setRows] = useState([1])
 
-    const { simData, setSimData } = useContext(SimulationDataContext)
+    const { simData, setSimData, baseSqMtr } = useContext(SimulationDataContext)
+    const { rooms, setRooms } = useContext(RoomValuesContext)
 
-    const rooms = [
+    const room = [
         'quarto',
         'suite',
         'closet'
     ]
 
-    const returnRoom = (index) => ({
-        title: `Quarto ${index + 1}`,
-        value: simData?.quartos[index],
-        onChange: newValue => {
-            const lastQuartos = [...simData?.quartos]
-            lastQuartos[index] = newValue
-            return setQuartos(newValue)
-        },
-        options: [
-            {
-                value: 'none',
-                label: 'NÃO QUERO',
-            },
-            {
-                value: '_pq',
-                label: 'PEQUENO (APROX. 12 M2)',
-            },
-            {
-                value: '_md',
-                label: 'MÉDIO (APROX. 24 M2)',
-            },
-            {
-                value: '_gd',
-                label: 'GRANDE (APROX. 12 M2)',
-            },
-        ]
-    })
-
     const roomOptions = [
         {
-            value: 'none',
+            value: 0,
             label: 'NÃO QUERO',
         },
         {
-            value: '_pq',
-            label: 'PEQUENO (APROX. 12 M2)',
+            value: 12,
+            label: 'PEQUENO (APROX. 12 m²)',
         },
         {
-            value: '_md',
-            label: 'MÉDIO (APROX. 24 M2)',
+            value: 24,
+            label: 'MÉDIO (APROX. 24 m²)',
         },
         {
-            value: '_gd',
+            value: 36,
+            label: 'GRANDE (APROX. 36 m²)',
+        },
+    ]
+
+    const suiteOptions = [
+        {
+            value: 0,
+            label: 'NÃO QUERO',
+        },
+        {
+            value: 4,
+            label: 'PEQUENO (APROX. 4 m²)',
+        },
+        {
+            value: 8,
+            label: 'MÉDIO (APROX. 8 m²)',
+        },
+        {
+            value: 12,
+            label: 'GRANDE (APROX. 12 m²)',
+        },
+    ]
+
+    const closetOptions = [
+        {
+            value: 0,
+            label: 'NÃO QUERO',
+        },
+        {
+            value: 2.5,
+            label: 'PEQUENO (APROX. 2,5 M2)',
+        },
+        {
+            value: 8,
+            label: 'MÉDIO (APROX. 8 M2)',
+        },
+        {
+            value: 12,
             label: 'GRANDE (APROX. 12 M2)',
         },
     ]
 
-    // const quarto = {
-    //     title: 'Quarto',
-    //     value: quartos[0],
-    //     onChange: newValue => {
-    //         const lastQuartos = [...quartos]
-    //         lastQuartos[0] = newValue
-    //         return setQuartos(newValue)
-    //     },
-    //     options: [
-    //         {
-    //             value: 'sem_quarto',
-    //             label: 'NÃO QUERO',
-    //         },
-    //         {
-    //             value: 'quarto_pq',
-    //             label: 'PEQUENO (APROX. 12 M2)',
-    //         },
-    //         {
-    //             value: 'quarto_md',
-    //             label: 'MÉDIO (APROX. 24 M2)',
-    //         },
-    //         {
-    //             value: 'quarto_gd',
-    //             label: 'GRANDE (APROX. 12 M2)',
-    //         },
-    //     ]
-    // }
-
     useEffect(() => {
-        console.log('rows: ', rows)
-    }, [rows])
+        // console.log('simData[slide].value', simData[slide].value)
+        console.log('simData.quartos.value', simData.quartos.value) 
+        if (simData.quartos.value[0].quarto !== '' && simData.quartos.pattern !== '') {
+            const valorAmbiente = calculateQuartos(simData.quartos, baseSqMtr)
+            setRooms({
+                ...rooms,
+                quartos: valorAmbiente
+            })
+        }
+    }, [simData.quartos])
 
     return (
         <>
@@ -119,7 +112,7 @@ const QuartosESuitesSlide = ({ data }) => {
                     <TitleContainer
                         key={`${'Quartos/Suítes'}_title_container`}
                     >
-                        <h4>{'Escolha a quantidade eo tamanho dos'.toUpperCase()}</h4>
+                        <h4>{'Escolha a quantidade e o tamanho dos'.toUpperCase()}</h4>
                         <h2>{'Quartos/Suítes'.toUpperCase()}</h2>
                     </TitleContainer>
 
@@ -138,8 +131,9 @@ const QuartosESuitesSlide = ({ data }) => {
                             <Flex
                                 width='100%'
                                 margin='15px 0'
+                                alignItems='flex-start'
                             >
-                                {rooms.map((e, i) => (
+                                {room.map((e, i) => (
                                     <Flex
                                         column
                                         alignItems='flex-start'
@@ -154,7 +148,7 @@ const QuartosESuitesSlide = ({ data }) => {
                                         {/* { console.log(returnRoom(idx))} */}
                                         <RadioButtons
                                             small
-                                            options={roomOptions}
+                                            options={i === 0 ? roomOptions : (i === 1 ? suiteOptions : closetOptions)}
                                             onChange={(newValue) => {
                                                 const previousQuartos = [...simData.quartos.value]
                                                 console.log('previousQuartos: ', previousQuartos)

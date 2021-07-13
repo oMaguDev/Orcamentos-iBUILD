@@ -60,7 +60,7 @@ export const Wrapper = styled.div`
 
 export const Item = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: flex-start;
   // height: 48px;
   margin: 10px 0;

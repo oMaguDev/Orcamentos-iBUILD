@@ -173,6 +173,77 @@ export const calculateEscritorio = (escritorio, baseSqMtr) => {
     const porta = baseAcabamentos.escritorio[escritorio.pattern].porta
     const esquadria = baseAcabamentos.escritorio[escritorio.pattern].esquadria
 
+    let valorAmbiente = valorBase + paredesInternas + piso + pinturaParedes + pinturaForro + peitoril + porta + esquadria
+        
+    if (escritorio.confort === 'sim') {
+        valorAmbiente += baseObraBranca.conforto_interno * areaParede
+    }
+
+    const margemLucro = 1.3
+    valorAmbiente = valorAmbiente * margemLucro
+
+    return valorAmbiente
+}
+
+export const calculateQuartos = (quartos, baseSqMtr) => {
+    let area = [...quartos.value]
+    console.log('area: ', area)
+    area = area.map((e, i) => {
+        let thisRoomArea = 0
+        console.log(`quartos.value[${i}]: `, e)
+        for (let prop in e) {
+            thisRoomArea += e[prop]
+        }
+        return thisRoomArea
+    })
+    console.log('area: ', area)
+    area = area.reduce((acc, curr) => acc + curr)
+    console.log('area: ', area)
+
+    const areaPiso = area 
+    const areaParede = area * 2.93
+
+    const valorBase = baseSqMtr.value * area
+    const paredesInternas = areaParede * baseObraBranca.fechamento_interno.paredes
+    const piso = baseAcabamentos.quartos[quartos.pattern].piso * areaPiso
+    const pinturaParedes = baseAcabamentos.quartos[quartos.pattern].pintura * areaParede
+    const pinturaForro = baseAcabamentos.quartos[quartos.pattern].forro * area
+    const peitoril = baseAcabamentos.quartos[quartos.pattern].peitoril
+    const porta = baseAcabamentos.quartos[quartos.pattern].porta
+    const esquadria = baseAcabamentos.quartos[quartos.pattern].esquadria
+
+    let valorAmbiente = valorBase + paredesInternas + piso + pinturaParedes + pinturaForro + peitoril + porta + esquadria
+        
+    if (quartos.confort === 'sim') {
+        valorAmbiente += baseObraBranca.conforto_interno * areaParede
+    }
+
+    const margemLucro = 1.3
+    valorAmbiente = valorAmbiente * margemLucro
+
+    return valorAmbiente
+}
+
+export const calculateLavabos = (lavabos, baseSqMtr) => {
+    let area = [...lavabos.value]
+    console.log('area: ', area)
+    area = area.reduce((acc, curr) => acc + curr)
+    console.log('area: ', area)
+
+    const areaPiso = area 
+    const areaParede = area * 2.93
+
+    const valorBase = baseSqMtr.value * area
+    const paredesInternas = areaParede * baseObraBranca.fechamento_interno.paredes
+    const piso = baseAcabamentos.lavabos[lavabos.pattern].piso * areaPiso
+    const pinturaParedes = baseAcabamentos.lavabos[lavabos.pattern].pintura * areaParede
+    const pinturaForro = baseAcabamentos.lavabos[lavabos.pattern].forro * area
+    const peitoril = baseAcabamentos.lavabos[lavabos.pattern].peitoril
+    const porta = baseAcabamentos.lavabos[lavabos.pattern].porta
+    const esquadria = baseAcabamentos.lavabos[lavabos.pattern].esquadria
+    const loucas = baseAcabamentos.lavabos[lavabos.pattern].loucas
+    const marmore = baseAcabamentos.lavabos[lavabos.pattern].marmore
+
     // console.log('valor m2: ', valorBase)
     // console.log('valor paredes internas: ', paredesInternas)
     // console.log('valor piso: ', piso)
@@ -182,9 +253,50 @@ export const calculateEscritorio = (escritorio, baseSqMtr) => {
     // console.log('porta: ', porta)
     // console.log('esquadria: ', esquadria)
 
-    let valorAmbiente = valorBase + paredesInternas + piso + pinturaParedes + pinturaForro + peitoril + porta + esquadria
+    let valorAmbiente = valorBase + paredesInternas + piso + pinturaParedes + pinturaForro + peitoril + porta + esquadria + loucas + marmore
         
-    if (escritorio.confort === 'sim') {
+    if (lavabos.confort === 'sim') {
+        valorAmbiente += baseObraBranca.conforto_interno * areaParede
+    }
+
+    const margemLucro = 1.3
+    valorAmbiente = valorAmbiente * margemLucro
+
+    return valorAmbiente
+}
+
+export const calculateBanheiros = (banheiros, baseSqMtr) => {
+    let area = [...banheiros.value]
+    console.log('area: ', area)
+    area = area.reduce((acc, curr) => acc + curr)
+    console.log('area: ', area)
+
+    const areaPiso = area 
+    const areaParede = area * 2.93
+
+    const valorBase = baseSqMtr.value * area
+    const paredesInternas = areaParede * baseObraBranca.fechamento_interno.paredes
+    const piso = baseAcabamentos.banheiros[banheiros.pattern].piso * areaPiso
+    const pinturaParedes = baseAcabamentos.banheiros[banheiros.pattern].pintura * areaParede
+    const pinturaForro = baseAcabamentos.banheiros[banheiros.pattern].forro * area
+    const peitoril = baseAcabamentos.banheiros[banheiros.pattern].peitoril
+    const porta = baseAcabamentos.banheiros[banheiros.pattern].porta
+    const esquadria = baseAcabamentos.banheiros[banheiros.pattern].esquadria
+    const loucas = baseAcabamentos.banheiros[banheiros.pattern].loucas
+    const marmore = baseAcabamentos.banheiros[banheiros.pattern].marmore
+
+    // console.log('valor m2: ', valorBase)
+    // console.log('valor paredes internas: ', paredesInternas)
+    // console.log('valor piso: ', piso)
+    // console.log('valor pintura paredes internas: ', pinturaParedes)
+    // console.log('valor pintura forro: ', pinturaForro)
+    // console.log('peitoril: ', peitoril)
+    // console.log('porta: ', porta)
+    // console.log('esquadria: ', esquadria)
+
+    let valorAmbiente = valorBase + paredesInternas + piso + pinturaParedes + pinturaForro + peitoril + porta + esquadria + loucas + marmore
+        
+    if (banheiros.confort === 'sim') {
         valorAmbiente += baseObraBranca.conforto_interno * areaParede
     }
 

@@ -24,7 +24,9 @@ const Resources = () => {
     const { setActiveIndex } = useContext(ActiveIndexContext)
 
     return (
-        <Flex>
+        <Flex
+            height='calc(100% - 40px)'
+        >
             <Carousel
                 fullScreen
                 items={carouselItems}

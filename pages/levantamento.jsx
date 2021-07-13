@@ -227,7 +227,7 @@ const Levantamento = () => {
             />
             <Carousel
                 items={items}
-                // page='levantamento'
+                page='levantamento'
                 lastSlideAction={() => {
                     router.push('/cadastro')
                 }}

@@ -53,8 +53,8 @@ const Simular = () => {
         'Lavabos',
         'Banheiros Sociais',
         'Int. Hid./Ele.',
-        'Conforto',
-        'Acabamentos',
+        // 'Conforto',
+        // 'Acabamentos',
         'Resumo',
     ]
 

@@ -9,6 +9,8 @@ import { Parag } from "../../Text"
 import Button from "../../common/Button"
 import RadioButtonsList from "../../common/RadioButtons/RadioButtonsList"
 import { SimulationDataContext } from "../../../contexts/SimulationData"
+import { RoomValuesContext } from "../../../contexts/RoomValues"
+import { calculateBanheiros } from "../../../utils/calculate_room_value"
 
 
 const BanheirosSociaisSlide = ({ data }) => {
@@ -16,35 +18,22 @@ const BanheirosSociaisSlide = ({ data }) => {
     const [quartos, setQuartos] = useState([])
     // const [rows, setRows] = useState([1])
 
-    const { simData, setSimData } = useContext(SimulationDataContext)
+    const { simData, setSimData, baseSqMtr } = useContext(SimulationDataContext)
+    const { rooms, setRooms } = useContext(RoomValuesContext)
 
-    const quarto = {
-        title: 'Quarto',
-        value: quartos[0],
-        onChange: newValue => {
-            const lastQuartos = [...quartos]
-            lastQuartos[0] = newValue
-            return setQuartos(newValue)
-        },
-        options: [
-            {
-                value: 'sem_quarto',
-                label: 'NÃO QUERO',
-            },
-            {
-                value: 'quarto_pq',
-                label: 'PEQUENO (APROX. 12 M2)',
-            },
-            {
-                value: 'quarto_md',
-                label: 'MÉDIO (APROX. 24 M2)',
-            },
-            {
-                value: 'quarto_gd',
-                label: 'GRANDE (APROX. 12 M2)',
-            },
-        ]
-    }
+    const sizeOptions = [0, 4, 8, 12]
+
+    useEffect(() => {
+        // console.log('simData[slide].value', simData[slide].value)
+        console.log('simData.banheiros.value', simData.banheiros.value) 
+        if (simData.banheiros.value !== '' && simData.banheiros.pattern !== '') {
+            const valorAmbiente = calculateBanheiros(simData.banheiros, baseSqMtr)
+            setRooms({
+                ...rooms,
+                banheiros: valorAmbiente
+            })
+        }
+    }, [simData.banheiros])
 
     return (
         <>
@@ -78,10 +67,11 @@ const BanheirosSociaisSlide = ({ data }) => {
                             <RadioButtonsList
                                 labels={[
                                     'NÃO QUERO',
-                                    'PEQUENO (APROX. 8 M2)',
-                                    'MÉDIO (APROX. 12 M2)',
-                                    'GRANDE (APROX. 20 M2)'
+                                    'PEQUENO (APROX. 4 M2)',
+                                    'MÉDIO (APROX. 8 M2)',
+                                    'GRANDE (APROX. 12 M2)'
                                 ]}
+                                options={sizeOptions}
                                 entity={simData.banheiros.value}
                                 setEntity={newValue => setSimData({
                                     ...simData,

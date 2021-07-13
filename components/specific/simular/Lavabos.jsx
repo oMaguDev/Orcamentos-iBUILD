@@ -9,6 +9,8 @@ import { Parag } from "../../Text"
 import Button from "../../common/Button"
 import RadioButtonsList from "../../common/RadioButtons/RadioButtonsList"
 import { SimulationDataContext } from "../../../contexts/SimulationData"
+import { RoomValuesContext } from "../../../contexts/RoomValues"
+import { calculateLavabos } from "../../../utils/calculate_room_value"
 
 
 const LavabosSlide = ({ data }) => {
@@ -16,36 +18,23 @@ const LavabosSlide = ({ data }) => {
     // const [quartos, setQuartos] = useState([])
     // const [rows, setRows] = useState([1])
 
-    const { simData, setSimData } = useContext(SimulationDataContext)
+    const { simData, setSimData, baseSqMtr } = useContext(SimulationDataContext)
+    const { rooms, setRooms } = useContext(RoomValuesContext)
 
-    // const quarto = {
-    //     title: 'Quarto',
-    //     value: quartos[0],
-    //     onChange: newValue => {
-    //         const lastQuartos = [...quartos]
-    //         lastQuartos[0] = newValue
-    //         return setQuartos(newValue)
-    //     },
-    //     options: [
-    //         {
-    //             value: 'none',
-    //             label: 'NÃO QUERO',
-    //         },
-    //         {
-    //             value: '_pq',
-    //             label: 'PEQUENO (APROX. 12 M2)',
-    //         },
-    //         {
-    //             value: '_md',
-    //             label: 'MÉDIO (APROX. 24 M2)',
-    //         },
-    //         {
-    //             value: '_gd',
-    //             label: 'GRANDE (APROX. 12 M2)',
-    //         },
-    //     ]
-    // }
+    const sizeOptions = [0, 3.5, 6, 8]
 
+    useEffect(() => {
+        // console.log('simData[slide].value', simData[slide].value)
+        console.log('simData.lavabos.value', simData.lavabos.value) 
+        if (simData.lavabos.value !== '' && simData.lavabos.pattern !== '') {
+            const valorAmbiente = calculateLavabos(simData.lavabos, baseSqMtr)
+            setRooms({
+                ...rooms,
+                lavabos: valorAmbiente
+            })
+        }
+    }, [simData.lavabos])
+    
     return (
         <>
             <Box height='50px'></Box>
@@ -76,6 +65,7 @@ const LavabosSlide = ({ data }) => {
                             justifyContent='flex-start'
                         >
                             <RadioButtonsList
+                                options={sizeOptions}
                                 entity={simData.lavabos.value}
                                 setEntity={newValue => setSimData({
                                     ...simData,

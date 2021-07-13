@@ -5,7 +5,11 @@ import DataDisplay from '../../common/DataDisplay'
 
 const ResourcesIndex = () => {
     return (
-        <Flex column>
+        <Flex
+            column
+            height='calc(100vh - 200px)'
+            justifyContent='flex-start'
+        >
             <TitleContainer>
                 <h4>RESUMO DOS</h4>
                 <h1>RECURSOS PARA CONSTRUÇÃO</h1>
@@ -13,7 +17,7 @@ const ResourcesIndex = () => {
             <Flex
                 width='100%'
                 maxWidth='1050px'
-                margin='30px 0'
+                // margin='30px 0'
             >
                 <ResourcesIndexColumn>
                     <Box

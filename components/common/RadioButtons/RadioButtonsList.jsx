@@ -3,13 +3,13 @@ import { Flex } from "../../Containers"
 import { RadioButton, RadioButtonsTable } from "./styles"
 
 
-const RadioButtonsList = ({ labels, entity, setEntity }) => {
+const RadioButtonsList = ({ labels, entity, setEntity, options }) => {
 
     // const [lavabos, setEntity] = useState(new Array(4).fill(''))
 
     // console.log('entity: ', entity)
 
-    const optionsValues = [
+    const optionsValues = options ? options : [
         'none',
         'small',
         'medium',
