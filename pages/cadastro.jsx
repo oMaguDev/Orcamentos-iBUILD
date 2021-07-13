@@ -1,4 +1,4 @@
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import Button from "../components/common/Button"
 import Navbar from "../components/common/Navbar"
 import { Box, Flex, LogoMedium, TitleContainer } from "../components/Containers"
@@ -7,6 +7,8 @@ import Select from "../components/form/Select"
 import { ExplainingP } from "../components/Text"
 import { useRouter } from 'next/router'
 import { UserContext } from '../contexts/UserContext'
+import { createLead } from "../services/bitrixClient"
+import { getCityByUF, getUFs } from "../services/geoClient"
 
 const Cadastro = () => {
 
@@ -18,8 +20,69 @@ const Cadastro = () => {
     // const [phone, setPhone] = useState('')
     // const [state, setState] = useState('')
     // const [city, setCity] = useState('')
+    const initialSelect = [{
+        label: 'Selecione',
+        value: 'placeholder'
+    }]
+
+    const [states, setStates] = useState(initialSelect)
+    const [cities, setCities] = useState(initialSelect)
 
     const { user, setUser } = useContext(UserContext)
+
+    const handleCreateLead = () => {
+        console.log('user: ', user)
+        if (user && user.email) {
+            const lead = {
+                login: user.email,
+                password: 'ibuild_test_password',
+                title: 'Lead iBuild'
+            }
+            createLead(lead)
+        }
+    }
+
+    useEffect(() => {
+        getUFs()
+            .then(res => {
+                console.log('res: ', res)
+                if (res && res.data) {
+                    const data = [...res.data]
+                    const newOptions = data.map((e, i) => ({
+                        label: e.nome,
+                        value: e.sigla
+                    }))
+                    newOptions.unshift({
+                        label: 'Selecione',
+                        value: 'placeholder',
+                        disabled: true,
+                    })
+                    setStates(newOptions)
+                }
+            })
+    }, [])
+
+    useEffect(() => {
+        if (user && user?.uf !== 'placeholder') {
+            getCityByUF(user.uf)
+                .then(res => {
+                    console.log('res: ', res)
+                    if (res && res.data) {
+                        const data = [...res.data]
+                        const newOptions = data.map((e, i) => ({
+                            label: e.nome,
+                            value: e.nome
+                        }))
+                        newOptions.unshift({
+                            label: 'Selecione',
+                            value: 'placeholder',
+                            disabled: true,
+                        })
+                        setCities(newOptions)
+                    }
+                })
+        }
+    }, [user.uf])
 
     return (
         <Flex
@@ -48,6 +111,8 @@ const Cadastro = () => {
                 alignItems='flex-start'
                 padding='20px'
                 justifyContent='flex-start'
+                height='calc(100vh - 100px)'
+                overflow='auto'
             >
                 <TitleContainer>
                     <h4>
@@ -60,7 +125,7 @@ const Cadastro = () => {
                 <Flex
                     column
                     width='calc(100% - 50px)'
-                    margin='25px'
+                    margin='25px 25px 10px'
                 >
                     <Input
                         label='NOME COMPLETO'
@@ -129,6 +194,7 @@ const Cadastro = () => {
                                 ...user,
                                 uf: newValue.target.value
                             })}
+                            options={states}
                             key='uf_input'
                             small
                             margin='10px 10px 10px 0'
@@ -142,6 +208,7 @@ const Cadastro = () => {
                                 ...user,
                                 city: newValue.target.value
                             })}
+                            options={cities}
                             key='city_input'
                             small
                             margin='10px 0 10px 10px'
@@ -152,24 +219,27 @@ const Cadastro = () => {
                 <Flex
                     width='100%'
                     height='50px'
-                    margin='15px 0 0'
+                    // margin='15px 0 0'
                     justifyContent='space-evenly'
                 >
                     <Button
-                        onClick={() => router.push('/simular')}
-                        margin='10px'
+                        // onClick={() =>  router.push('/simular')}
+                        onClick={() =>  handleCreateLead()}
+                        margin='0 10px 10px 10px'
                         fontSize='0.8rem'
+                        fullWidth
                     >
-                        FAZER CADASTRO
+                        {/* FAZER CADASTRO */}
+                        CONTINUAR
                     </Button>
-                    <Button
+                    {/* <Button
                         secondary
                         margin='10px'
                         fontSize='0.8rem'
                         // onClick={() => router.push('/recursos')}
                     >
                         JÁ SOU CADASTRADO
-                    </Button>
+                    </Button> */}
                 </Flex>
             </Flex>
         </Flex>
