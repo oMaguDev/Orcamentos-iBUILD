@@ -92,19 +92,12 @@ const Carousel = ({
         switch (page) {
             case 'levantamento':
                 return activeIndexLevantamento
-                break;
-
             case 'recursos':
                 return activeIndexRecursos
-                break;
-
             case 'simular':
                 return activeIndexSimular
-                break;
-
             default:
                 return activeIndex
-                break;
         }
     }
 

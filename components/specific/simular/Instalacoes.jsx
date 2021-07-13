@@ -10,17 +10,43 @@ import Button from "../../common/Button"
 import RadioButtonsList from "../../common/RadioButtons/RadioButtonsList"
 import { ExplainingP } from "../../Text"
 import { SimulationDataContext } from "../../../contexts/SimulationData"
+import { RoomValuesContext } from "../../../contexts/RoomValues"
+import { SimulationStatusContext } from "../../../contexts/SimulationStatus"
+import { calculateInstalacoes, calculateInstalacoesPercentagem } from "../../../utils/calculate_room_value"
 
 
 const InstalacoesSlide = ({ data }) => {
 
-    const [instalacoes, setInstalacoes] = useState({
-        hidraulica: '',
-        eletrica: '',
-    })
+    // const [instalacoes, setInstalacoes] = useState({
+    //     hidraulica: '',
+    //     eletrica: '',
+    // })
     // const [rows, setRows] = useState([1])
 
     const { simData, setSimData } = useContext(SimulationDataContext)
+    const { simStatus } = useContext(SimulationStatusContext)
+    const { setInstalations } = useContext(RoomValuesContext)
+
+    const sizeOptions = [0, 4, 8, 12]
+
+    useEffect(() => {
+        // console.log('simData[slide].value', simData[slide].value)
+        console.log('simData.instalacoes', simData.instalacoes)
+        if (simData.instalacoes.eletrica === 7) {
+            setSimData({
+                ...simData,
+                instalacoes: {
+                    ...simData.instalacoes,
+                    eletrica: 6
+                }
+            })
+        }
+        if (simData.instalacoes.hidraulica !== '' && simData.instalacoes.pattern !== '') {
+            const porcentagem = calculateInstalacoesPercentagem(simData.instalacoes, simStatus.funds.current)
+
+            setInstalations(porcentagem)
+        }
+    }, [simData.instalacoes])
 
     const hidraulica = {
         title: 'Quarto',
@@ -34,12 +60,12 @@ const InstalacoesSlide = ({ data }) => {
         }),
         options: [
             {
-                value: 'so_agua_fria_option',
+                value: 7,
                 label: 'APENAS ÁGUA FRIA',
                 // description: 'Chuveiro elétrico, sem quecimento nas torneiras'
             },
             {
-                value: 'agua_fria_e_quente_option',
+                value: 9,
                 label: 'ÁGUA FRIA E QUENTE*',
             },
         ]
@@ -57,15 +83,15 @@ const InstalacoesSlide = ({ data }) => {
         }),
         options: [
             {
-                value: '110',
+                value: 5,
                 label: '110',
             },
+            // {
+            //     value: 6,
+            //     label: '220',
+            // },
             {
-                value: '220',
-                label: '220',
-            },
-            {
-                value: 'both',
+                value: 6,
                 label: '110 / 220',
             },
         ]

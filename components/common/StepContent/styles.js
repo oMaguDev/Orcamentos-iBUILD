@@ -53,8 +53,8 @@ export const MiddleContainer = styled.div`
 export const SlideContainer = styled.div`
 
     width: 100%;
-    // max-height: calc(100vh - 200px);
     height: calc(100vh - 200px);
+    // max-height: calc(100vh - 200px);
 
     // margin: 30px 0 0 0;
 

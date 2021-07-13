@@ -22,7 +22,7 @@ const RadioButtons = ({ options, select, onChange, row, small }) => {
             row={row}
         >
             {options && options.map((e, i) => (
-                <Item key={`${e.value}_option_item`}>
+                <Item key={`${e.label}_option_item`}>
 
                     {e.description ? (
                         <>
@@ -32,7 +32,7 @@ const RadioButtons = ({ options, select, onChange, row, small }) => {
                             onClick={() => onChange(e.value)}
                         />
                             <RadioButtonLabel
-                                key={`${e.value}_radio_label`}
+                                key={`${e.label}_radio_label`}
                                 small={small}
                                 row={row}
                             >
@@ -59,7 +59,7 @@ const RadioButtons = ({ options, select, onChange, row, small }) => {
                                 onClick={() => onChange(e.value)}
                             />
                             <RadioButtonLabel
-                                key={`${e.value}_radio_label`}
+                                key={`${e.label}_radio_label`}
                                 small={small}
                                 row={row}
                             >

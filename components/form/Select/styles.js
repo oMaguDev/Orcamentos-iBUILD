@@ -15,6 +15,8 @@ export const StyledSelect = styled.select`
     border-left: none;
     border-right: none;
 
+    // prevent safari bug::
+    -webkit-appearance: none;
     
     &:focus {
         border: 0.5px solid ${({ theme }) => theme.colors.primary.purple};
