@@ -25,7 +25,7 @@ const BanheirosSociaisSlide = ({ data }) => {
 
     useEffect(() => {
         // console.log('simData[slide].value', simData[slide].value)
-        console.log('simData.banheiros.value', simData.banheiros.value) 
+        // console.log('simData.banheiros.value', simData.banheiros.value) 
         if (simData.banheiros.value !== '' && simData.banheiros.pattern !== '') {
             const valorAmbiente = calculateBanheiros(simData.banheiros, baseSqMtr)
             setRooms({

@@ -102,7 +102,7 @@ export const SimulationDataContextProvider = ({ children }) => {
     })
 
     const baseSqrMtrValueCalculator = (category) => {
-        console.log('category: ', category)
+        // console.log('category: ', category)
         if (simData.pavimentos === 1) {
             return baseObraBranca[category].one_pavement_meter
         }
@@ -116,7 +116,6 @@ export const SimulationDataContextProvider = ({ children }) => {
     }
 
     useEffect(() => {
-        console.log('simData.paredes: ', simData.paredes)
         switch (simData.paredes) {
             case 'PAREDE ECONOMY':
                 setBaseSqMtr({

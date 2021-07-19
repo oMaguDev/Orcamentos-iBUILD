@@ -85,7 +85,7 @@ const QuartosESuitesSlide = ({ data }) => {
 
     useEffect(() => {
         // console.log('simData[slide].value', simData[slide].value)
-        console.log('simData.quartos.value', simData.quartos.value) 
+        // console.log('simData.quartos.value', simData.quartos.value) 
         if (simData.quartos.value[0].quarto !== '' && simData.quartos.pattern !== '') {
             const valorAmbiente = calculateQuartos(simData.quartos, baseSqMtr)
             setRooms({
@@ -151,11 +151,11 @@ const QuartosESuitesSlide = ({ data }) => {
                                             options={i === 0 ? roomOptions : (i === 1 ? suiteOptions : closetOptions)}
                                             onChange={(newValue) => {
                                                 const previousQuartos = [...simData.quartos.value]
-                                                console.log('previousQuartos: ', previousQuartos)
+                                                // console.log('previousQuartos: ', previousQuartos)
                                                 const previousQuartosRow = { ...previousQuartos[idx] }
                                                 previousQuartosRow[e] = newValue
                                                 previousQuartos[idx] = { ...previousQuartosRow }
-                                                console.log('previousQuartos: ', previousQuartos)
+                                                // console.log('previousQuartos: ', previousQuartos)
                                                 return setSimData({
                                                     ...simData,
                                                     quartos: {
