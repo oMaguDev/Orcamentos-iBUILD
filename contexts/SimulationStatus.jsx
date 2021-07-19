@@ -13,10 +13,10 @@ export const SimulationStatusContextProvider = ({ children }) => {
             previous: 0,
             available: 1000000,
         },
-        size: {
-            total: '',
-            current: '',
-            available: ''
+        area: {
+            total: 150,
+            current: 0,
+            available: 0,
         }
     })
 

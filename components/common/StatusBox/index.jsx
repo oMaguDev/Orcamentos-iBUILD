@@ -53,7 +53,7 @@ const StatusBox = () => {
                             TAMANHO DISPONÍVEL
                         </div>
                         <div className='value'>
-                            450 m²
+                            {(simStatus.area.total)} m²
                         </div>
                     </ValueBoxes>
                     <ValueBoxes>
@@ -61,7 +61,7 @@ const StatusBox = () => {
                             TOTAL ATÉ AGORA
                         </div>
                         <div className='value'>
-                            450 m²
+                            {(simStatus.area.current)} m²
                         </div>
                     </ValueBoxes>
                     <ValueBoxes last pink>
@@ -69,7 +69,7 @@ const StatusBox = () => {
                             VOCÊ AINDA PODE USAR
                         </div>
                         <div className='value'>
-                            0 m²
+                            {(simStatus.area.available)} m²
                         </div>
                     </ValueBoxes>
 
