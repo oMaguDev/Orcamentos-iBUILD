@@ -33,13 +33,19 @@ const Cadastro = () => {
     const handleCreateLead = () => {
         if (user) {
             const lead = {
-                LOGIN: 'bitrix_user@gmail.com',
-                PASSWORD: 'ibuild_test_password',
-                TITLE: 'Lead iBuild',
-                NAME: user.name,
-                PHONE_WORK: user.phone,
-                EMAIL_WORK: user.email,
-                
+                // LOGIN: 'diego@ibuildconstrutora.com.br',
+                // PASSWORD: 'DgfDvpC!',
+                // TITLE: 'Lead Orçamento Express',
+                // NAME: user.name,
+                // PHONE_WORK: user.phone,
+                // EMAIL_WORK: user.email,
+                nome: user.name,
+                email: user.email,
+                cpf: user.cpf,
+                telefone: user.phone,
+                uf: user.uf,
+                cidade: user.city
+
 
             }
             createLead(lead)
@@ -47,7 +53,8 @@ const Cadastro = () => {
                     router.push('/simular')
                 })
                 .catch(err => {
-                    router.push('/simular')
+                    // router.push('/simular')
+                    console.error(err)
                 })
         }
     }
