@@ -34,7 +34,12 @@ const Simular = () => {
         // baseSqrMtrValueCalculator,
     } = useContext(SimulationDataContext)
 
-    const { rooms, setRooms } = useContext(RoomValuesContext)
+    const {
+        rooms,
+        setRooms,
+        area,
+        setArea,
+    } = useContext(RoomValuesContext)
 
     const stepsTitles = [
         'Estilo da sua casa',
@@ -501,37 +506,44 @@ const Simular = () => {
 
     useEffect(() => {
         updateValues('garagem')
+        updateAreas('garagem')
     }, [simData.garagem])
 
     useEffect(() => {
         updateValues('sala')
+        updateAreas('sala')
     }, [simData.sala])
 
     useEffect(() => {
         updateValues('cozinha')
+        updateAreas('cozinha')
     }, [simData.cozinha])
 
     useEffect(() => {
         updateValues('areaGourmet')
+        updateAreas('areaGourmet')
     }, [simData.areaGourmet])
 
     useEffect(() => {
         updateValues('areaServico')
+        updateAreas('areaServico')
     }, [simData.areaServico])
 
     useEffect(() => {
         updateValues('despensa')
+        updateAreas('despensa')
     }, [simData.despensa])
 
     useEffect(() => {
         updateValues('escritorio')
+        updateAreas('escritorio')
     }, [simData.escritorio])
 
     const updateValues = (slide) => {
         // console.log('simData[slide].value', simData[slide].value)
         // console.log('simData[slide].pattern', simData[slide].pattern)
         
-        if (simData[slide].value !== '' && simData[slide].pattern !== '') {
+        if (simData[slide].value !== 0 && simData[slide].pattern !== '') {
             
             let valorAmbiente = 0
             switch (slide) {
@@ -598,6 +610,15 @@ const Simular = () => {
             }
 
         }
+    }
+
+    const updateAreas = (slide) => {
+        const roomArea = simData[slide].value
+        // console.log('roomArea: ', roomArea)
+        setArea({
+            ...area,
+            [slide]: roomArea
+        })
     }
 
     if (initial) {

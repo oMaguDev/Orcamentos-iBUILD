@@ -13,37 +13,37 @@ export const SimulationDataContextProvider = ({ children }) => {
         paredes: '',
         telhas: '',
         garagem: {
-            value: '',
+            value: 0,
             pattern: '',
             confort: '',
         },
         sala: {
-            value: '',
+            value: 0,
             pattern: '',
             confort: '',
         },
         cozinha: {
-            value: '',
+            value: 0,
             pattern: '',
             confort: '',
         },
         areaGourmet: {
-            value: '',
+            value: 0,
             pattern: '',
             confort: '',
         },
         areaServico: {
-            value: '',
+            value: 0,
             pattern: '',
             confort: '',
         },
         despensa: {
-            value: '',
+            value: 0,
             pattern: '',
             confort: '',
         },
         escritorio: {
-            value: '',
+            value: 0,
             pattern: '',
             confort: '',
         },
@@ -109,7 +109,7 @@ export const SimulationDataContextProvider = ({ children }) => {
         if (simData.pavimentos > 1) {
             const currentBase = baseObraBranca[category]
             const sqrMeterValue = (currentBase.initial_services + currentBase.foundation + 
-                (currentBase.structure * 1.08) + currentBase.slab + (currentBase.walls[0] * 1.2) + currentBase.walls[1] + currentBase.walls[2]) / 100
+                (currentBase.structure * 1.08) + currentBase.slab + (currentBase.walls[0] * 1.22) + currentBase.walls[1] + currentBase.walls[2]) / 100
             return sqrMeterValue
         }
         return 0

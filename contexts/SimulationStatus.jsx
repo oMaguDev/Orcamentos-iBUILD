@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { RoomValuesContext } from "./RoomValues";
+import { SimulationDataContext } from "./SimulationData";
 
 
 export const SimulationStatusContext = createContext()
@@ -20,20 +21,19 @@ export const SimulationStatusContextProvider = ({ children }) => {
         }
     })
 
-    const { rooms, setRooms, instalations } = useContext(RoomValuesContext)
+    const {
+        rooms,
+        setRooms,
+        instalations,
+        area,
+        // setArea
+    } = useContext(RoomValuesContext)
 
     const [sumRoomValues, setSumRoomValues] = useState(0)
+    const [sumRoomAreas, setSumRoomAreas] = useState(0)
     const [instalationValues, setInstalationValues] = useState(0)
 
-    // useEffect(() => {
-    //     setSimStatus({
-    //         ...simStatus,
-    //         funds: {
-    //             ...simStatus.funds,
-    //             available: updatedAvailableFunds
-    //         }
-    //     })
-    // }, [simStatus.funds.current])
+    // room values:
     
     useEffect(() => {
         let allRoomValues = 0
@@ -42,7 +42,7 @@ export const SimulationStatusContextProvider = ({ children }) => {
         }
         setSumRoomValues(allRoomValues)
     }, [rooms])
-
+  
     useEffect(() => {
         const newInstalationValues = instalations * sumRoomValues / 100
         // console.log('%: ', instalations / 100)
@@ -64,6 +64,33 @@ export const SimulationStatusContextProvider = ({ children }) => {
         })
 
     }, [sumRoomValues, instalationValues])
+    
+
+    // rooms areas:
+
+    useEffect(() => {
+        let allRoomsAreas = 0
+        for (let prop in area) {
+            allRoomsAreas += area[prop]
+        }
+        setSumRoomAreas(allRoomsAreas)
+    }, [area])
+
+
+    useEffect(() => {
+
+        const currentArea = sumRoomAreas
+        const availableArea = simStatus.area.total - currentArea
+
+        setSimStatus({
+            ...simStatus,
+            area: {
+                ...simStatus.area,
+                current: currentArea,
+                available: availableArea
+            }
+        })
+    }, [sumRoomAreas])
 
     return (
         <SimulationStatusContext.Provider value={{
