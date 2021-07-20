@@ -16,6 +16,7 @@ import { SimulationDataContext } from "../contexts/SimulationData"
 import ResumoImovelSlide from "../components/specific/simular/ResumoImovel"
 import { calculateAreaGourmet, calculateAreaServico, calculateCozinha, calculateDespensa, calculateEscritorio, calculateGarage, calculateSala } from "../utils/calculate_room_value"
 import { RoomValuesContext } from '../contexts/RoomValues'
+import router from "next/router"
 
 
 const Simular = () => {
@@ -60,7 +61,7 @@ const Simular = () => {
         'Int. Hid./Ele.',
         // 'Conforto',
         // 'Acabamentos',
-        'Resumo',
+        // 'Resumo',
     ]
 
     const steps = [
@@ -502,7 +503,7 @@ const Simular = () => {
     items.push(<InstalacoesSlide />)
     // items.push(<ConfortoSlide />)
     // items.push(<AcabamentoSlide />)
-    items.push(<ResumoImovelSlide />)
+    // items.push(<ResumoImovelSlide />)
 
     useEffect(() => {
         updateValues('garagem')
@@ -665,6 +666,7 @@ const Simular = () => {
             <Carousel
                 items={items}
                 page='simular'
+                lastSlideAction={() => router.push('/cadastro')}
             />
         </Flex>
     )

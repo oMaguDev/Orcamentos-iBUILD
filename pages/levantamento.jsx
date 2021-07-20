@@ -230,7 +230,7 @@ const Levantamento = () => {
                 items={items}
                 page='levantamento'
                 lastSlideAction={() => {
-                    router.push('/cadastro')
+                    router.push('/simular')
                 }}
             />
         </Flex>

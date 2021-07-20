@@ -50,7 +50,7 @@ const Cadastro = () => {
             }
             createLead(lead)
                 .then(res => {
-                    router.push('/simular')
+                    router.push('/final')
                 })
                 .catch(err => {
                     // router.push('/simular')
