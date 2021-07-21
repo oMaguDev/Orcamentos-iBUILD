@@ -6,7 +6,7 @@ const Navbar = () => {
     return (
         <NavContainer>
             <StyledNav>
-                <div>
+                <div style={{ cursor: 'pointer' }}>
                     <Link href='/'>
                         <LogoIcon src="/images/icone_vermelho.svg" alt="" />
                     </Link>
@@ -14,17 +14,29 @@ const Navbar = () => {
                 <Flex
                     margin='0 10px 0 0'
                 >
-                    <NavItem>
-                        SEU CADASTRO
-                    </NavItem>
+                    {/* <Link href='/cadastro'>
+                        <NavItem>
+                            SEU CADASTRO
+                        </NavItem>
+                    </Link> */}
+                    {/* / */}
+                    <Link href='/recursos'>
+                        <NavItem>
+                            INÍCIO
+                        </NavItem>
+                    </Link>
                     /
-                    <NavItem>
-                        LEVANTAMENTO DE RECURSOS
-                    </NavItem>
+                    <Link href='/levantamento'>
+                        <NavItem>
+                            LEVANTAMENTO DE RECURSOS
+                        </NavItem>
+                    </Link>
                     /
-                    <NavItem>
-                        MONTE SUA CASA
-                    </NavItem>
+                    <Link href='/simular'>
+                        <NavItem>
+                            MONTE SUA CASA
+                        </NavItem>
+                    </Link>
                 </Flex>
             </StyledNav>
             <Triangle />
