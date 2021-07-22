@@ -215,7 +215,7 @@ const Cadastro = () => {
                             key='uf_input'
                             small
                             margin='10px 10px 10px 0'
-                            width='20%'
+                            width='25%'
                         />
                         <Select
                             label='CIDADE'
@@ -229,7 +229,7 @@ const Cadastro = () => {
                             key='city_input'
                             small
                             margin='10px 0 10px 10px'
-                            width='80%'
+                            width='75%'
                         />
                     </Flex>
                 </Flex>

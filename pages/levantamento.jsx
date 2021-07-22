@@ -8,6 +8,7 @@ import { useRouter } from 'next/router'
 import ResourcesIndex from "../components/specific/levantamento/ResumoDosRecursos"
 import { ActiveIndexContext } from "../contexts/activeIndex"
 import { SimulationDataContext } from "../contexts/SimulationData"
+import Personal from "../components/specific/levantamento/Personal"
 
 
 const Levantamento = () => {
@@ -38,59 +39,59 @@ const Levantamento = () => {
     ]
 
     const steps = [
-        {
-            caption: 'Informações',
-            title: 'Pessoais',
-            imageSrc: '/images/Ambientes/Ambientes1.svg',
-            value: resources.renda,
-            onChange: newValue => setResources({
-                ...resources,
-                renda: newValue
-            }),
-            inputs: [
-                {
-                    value: resources.renda,
-                    onChange: newValue => setResources({
-                        ...resources,
-                        renda: newValue
-                    }),
-                    label: 'Renda Bruta Familiar (mensal comprovada)',
-                    placeholder: 'Insira a renda mensal em reais',
-                    type: 'number'
-                },
-                {
-                    value: resources.dob,
-                    onChange: newValue => setResources({
-                        ...resources,
-                        dob: newValue
-                    }),
-                    label: 'Data de nascimento (proponente mais velho)',
-                    placeholder: 'DD/MM/AAAA',
-                    // type: 'number',
-                    mask: 'date'
-                },
-                {
-                    value: resources.estado_civil,
-                    onChange: newValue => setResources({
-                        ...resources,
-                        estado_civil: newValue
-                    }),
-                    label: 'Estado Civil',
-                    placeholder: 'Insira o seu estado civil',
-                    type: 'number'
-                },
-                {
-                    value: resources.local_construcao,
-                    onChange: newValue => setResources({
-                        ...resources,
-                        local_construcao: newValue
-                    }),
-                    label: 'Local de construção',
-                    placeholder: 'Insira o estado e o municipio',
-                    type: 'number'
-                },
-            ]
-        },
+        // {
+        //     caption: 'Informações',
+        //     title: 'Pessoais',
+        //     imageSrc: '/images/Ambientes/Ambientes1.svg',
+        //     value: resources.renda,
+        //     onChange: newValue => setResources({
+        //         ...resources,
+        //         renda: newValue
+        //     }),
+        //     inputs: [
+        //         {
+        //             value: resources.renda,
+        //             onChange: newValue => setResources({
+        //                 ...resources,
+        //                 renda: newValue
+        //             }),
+        //             label: 'Renda Bruta Familiar (mensal comprovada)',
+        //             placeholder: 'Insira a renda mensal em reais',
+        //             type: 'number'
+        //         },
+        //         {
+        //             value: resources.dob,
+        //             onChange: newValue => setResources({
+        //                 ...resources,
+        //                 dob: newValue
+        //             }),
+        //             label: 'Data de nascimento (proponente mais velho)',
+        //             placeholder: 'DD/MM/AAAA',
+        //             // type: 'number',
+        //             mask: 'date'
+        //         },
+        //         {
+        //             value: resources.estado_civil,
+        //             onChange: newValue => setResources({
+        //                 ...resources,
+        //                 estado_civil: newValue
+        //             }),
+        //             label: 'Estado Civil',
+        //             placeholder: 'Insira o seu estado civil',
+        //             type: 'number'
+        //         },
+        //         {
+        //             value: resources.local_construcao,
+        //             onChange: newValue => setResources({
+        //                 ...resources,
+        //                 local_construcao: newValue
+        //             }),
+        //             label: 'Local de construção',
+        //             placeholder: 'Insira o estado e o municipio',
+        //             type: 'number'
+        //         },
+        //     ]
+        // },
         {
             caption: 'Recursos',
             title: 'Financeiros',
@@ -183,6 +184,8 @@ const Levantamento = () => {
     const items = steps.map((e, i) => (
         <StepContent isCheckout={i === steps.length - 1} noStatusBox data={e} />
     ))
+
+    items.unshift(<Personal />)
 
     items.push(<ResourcesIndex />)
 
