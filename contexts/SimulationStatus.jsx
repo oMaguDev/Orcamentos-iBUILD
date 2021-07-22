@@ -13,12 +13,13 @@ export const SimulationStatusContextProvider = ({ children }) => {
             current: 0,
             previous: 0,
             available: 1000000,
-        },
-        area: {
-            total: 150,
-            current: 0,
-            available: 0,
         }
+    })
+
+    const [simArea, setSimArea] = useState({
+        total: 150,
+        current: 0,
+        available: 0,
     })
 
     const {
@@ -34,7 +35,7 @@ export const SimulationStatusContextProvider = ({ children }) => {
     const [instalationValues, setInstalationValues] = useState(0)
 
     // room values:
-    
+
     useEffect(() => {
         let allRoomValues = 0
         for (let prop in rooms) {
@@ -42,7 +43,7 @@ export const SimulationStatusContextProvider = ({ children }) => {
         }
         setSumRoomValues(allRoomValues)
     }, [rooms])
-  
+
     useEffect(() => {
         const newInstalationValues = instalations * sumRoomValues / 100
         // console.log('%: ', instalations / 100)
@@ -64,14 +65,14 @@ export const SimulationStatusContextProvider = ({ children }) => {
         })
 
     }, [sumRoomValues, instalationValues])
-    
+
 
     // rooms areas:
 
     useEffect(() => {
         let allRoomsAreas = 0
-        for (let prop in area) {
-            allRoomsAreas += area[prop]
+        for (let room in area) {
+            allRoomsAreas += area[room]
         }
         setSumRoomAreas(allRoomsAreas)
     }, [area])
@@ -80,15 +81,12 @@ export const SimulationStatusContextProvider = ({ children }) => {
     useEffect(() => {
 
         const currentArea = sumRoomAreas
-        const availableArea = simStatus.area.total - currentArea
+        const availableArea = simArea.total - currentArea
 
-        setSimStatus({
-            ...simStatus,
-            area: {
-                ...simStatus.area,
-                current: currentArea,
-                available: availableArea
-            }
+        setSimArea({
+            ...simArea,
+            current: currentArea,
+            available: availableArea
         })
     }, [sumRoomAreas])
 
@@ -96,8 +94,10 @@ export const SimulationStatusContextProvider = ({ children }) => {
         <SimulationStatusContext.Provider value={{
             simStatus,
             setSimStatus,
+            simArea,
+            setSimArea
         }}>
-            { children }
+            {children}
         </SimulationStatusContext.Provider>
     )
 }

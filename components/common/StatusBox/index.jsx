@@ -7,7 +7,11 @@ import { Status, StatusBoxContainer, StatusNumbers, StatusNumbersLabel, ValueBox
 
 const StatusBox = () => {
 
-    const { simStatus, setSimStatus } = useContext(SimulationStatusContext)
+    const {
+        simStatus,
+        setSimStatus,
+        simArea,
+    } = useContext(SimulationStatusContext)
 
 
     return (
@@ -53,7 +57,7 @@ const StatusBox = () => {
                             TAMANHO DISPONÍVEL
                         </div>
                         <div className='value'>
-                            {(simStatus.area.total)} m²
+                            {(simArea.total)} m²
                         </div>
                     </ValueBoxes>
                     <ValueBoxes>
@@ -61,7 +65,7 @@ const StatusBox = () => {
                             TOTAL ATÉ AGORA
                         </div>
                         <div className='value'>
-                            {(simStatus.area.current)} m²
+                            {(simArea.current)} m²
                         </div>
                     </ValueBoxes>
                     <ValueBoxes last pink>
@@ -69,7 +73,7 @@ const StatusBox = () => {
                             VOCÊ AINDA PODE USAR
                         </div>
                         <div className='value'>
-                            {(simStatus.area.available)} m²
+                            {(simArea.available)} m²
                         </div>
                     </ValueBoxes>
 

@@ -507,49 +507,43 @@ const Simular = () => {
 
     useEffect(() => {
         updateValues('garagem')
-        updateAreas('garagem')
     }, [simData.garagem])
 
     useEffect(() => {
         updateValues('sala')
-        updateAreas('sala')
     }, [simData.sala])
 
     useEffect(() => {
         updateValues('cozinha')
-        updateAreas('cozinha')
     }, [simData.cozinha])
 
     useEffect(() => {
         updateValues('areaGourmet')
-        updateAreas('areaGourmet')
     }, [simData.areaGourmet])
 
     useEffect(() => {
         updateValues('areaServico')
-        updateAreas('areaServico')
     }, [simData.areaServico])
 
     useEffect(() => {
         updateValues('despensa')
-        updateAreas('despensa')
     }, [simData.despensa])
 
     useEffect(() => {
         updateValues('escritorio')
-        updateAreas('escritorio')
     }, [simData.escritorio])
 
     const updateValues = (slide) => {
         // console.log('simData[slide].value', simData[slide].value)
         // console.log('simData[slide].pattern', simData[slide].pattern)
         
-        if (simData[slide].value !== 0 && simData[slide].pattern !== '') {
+        if (simData[slide].pattern !== '') {
             
             let valorAmbiente = 0
             switch (slide) {
                 case 'garagem':
                     valorAmbiente = calculateGarage(simData.garagem, baseSqMtr)
+                    console.log('simData.garagem: ', simData.garagem)
                     setRooms({
                         ...rooms,
                         garagem: valorAmbiente
@@ -609,17 +603,13 @@ const Simular = () => {
                 default:
                 break;
             }
-
+            const roomArea = simData[slide].value
+            // console.log('roomArea: ', roomArea)
+            setArea({
+                ...area,
+                [slide]: roomArea
+            })
         }
-    }
-
-    const updateAreas = (slide) => {
-        const roomArea = simData[slide].value
-        // console.log('roomArea: ', roomArea)
-        setArea({
-            ...area,
-            [slide]: roomArea
-        })
     }
 
     if (initial) {

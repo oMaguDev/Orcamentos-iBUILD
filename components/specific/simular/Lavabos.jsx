@@ -25,7 +25,7 @@ const LavabosSlide = ({ data }) => {
 
     useEffect(() => {
         // console.log('simData[slide].value', simData[slide].value)
-        // console.log('simData.lavabos.value', simData.lavabos.value) 
+        console.log('simData.lavabos.value', simData.lavabos.value) 
         if (simData.lavabos.value !== '' && simData.lavabos.pattern !== '') {
             const valorAmbiente = calculateLavabos(simData.lavabos, baseSqMtr)
             setRooms({
