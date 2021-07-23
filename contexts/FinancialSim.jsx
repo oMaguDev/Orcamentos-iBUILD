@@ -1,4 +1,5 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
+import { pmt } from '../utils/pmt'
 
 
 export const FinancialSimContext = createContext()
@@ -23,6 +24,7 @@ export const FinancialSimContextProvider = ({ children }) => {
         valor_fgts: '',
         num_pis: '',
         mod_financiamento: '',
+        parcelas: '',
     })
 
     const [summary, setSummary] = useState({
@@ -30,6 +32,8 @@ export const FinancialSimContextProvider = ({ children }) => {
         jurosAM: 0.0064,
         prestamista: 0.00038128125,
         txAdm: 25,
+        valorFinanciamento: 0,
+        valorImovel: 0,
 
         parcelaPrice: 0,
         parcelaSAC: [
@@ -40,6 +44,27 @@ export const FinancialSimContextProvider = ({ children }) => {
     })
 
 
+    useEffect(() => {
+        if (resources.valor_entrada > 0 && !isNaN(parseFloat(resources.valor_entrada))) {
+            const valorFinanciado = parseFloat(resources.valor_entrada) / 0.3
+            const valorImovel = parseFloat(resources.valor_entrada) + valorFinanciado
+            setSummary({
+                ...summary,
+                valorFinanciamento: valorFinanciado,
+                valorImovel
+            })
+        }
+    }, [resources.valor_entrada])
+
+    useEffect(() => {
+        if (!isNaN(parseFloat(resources.parcelas)) && !isNaN(parseFloat(summary.valorFinanciamento)) && !isNaN(parseFloat(summary.jurosAM))) {
+            const pPrice = pmt(summary.jurosAM, resources.parcelas, summary.valorFinanciamento)
+            setSummary({
+                ...summary,
+                parcelaPrice: pPrice
+            })
+        }
+    }, [resources.parcelas, summary.valorFinanciamento])
 
     return (
         <FinancialSimContext.Provider value={{
