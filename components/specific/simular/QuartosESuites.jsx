@@ -9,7 +9,7 @@ import { Parag } from "../../Text"
 import Button from "../../common/Button"
 import { SimulationDataContext } from "../../../contexts/SimulationData"
 import { RoomValuesContext } from "../../../contexts/RoomValues"
-import { calculateQuartos } from "../../../utils/calculate_room_value"
+import { calculateQuartosArea, calculateQuartos } from "../../../utils/calculate_room_value"
 
 
 const QuartosESuitesSlide = ({ data }) => {
@@ -18,7 +18,11 @@ const QuartosESuitesSlide = ({ data }) => {
     const [rows, setRows] = useState([1])
 
     const { simData, setSimData, baseSqMtr } = useContext(SimulationDataContext)
-    const { rooms, setRooms } = useContext(RoomValuesContext)
+    const {
+        rooms,
+        setRooms,
+        area,
+        setArea, } = useContext(RoomValuesContext)
 
     const room = [
         'quarto',
@@ -92,6 +96,11 @@ const QuartosESuitesSlide = ({ data }) => {
                 ...rooms,
                 quartos: valorAmbiente
             })
+            const areaAmbiente = calculateQuartosArea(simData.quartos)
+            setArea({
+                ...area,
+                quartos: areaAmbiente
+            })
         }
     }, [simData.quartos])
 
@@ -127,7 +136,7 @@ const QuartosESuitesSlide = ({ data }) => {
                                 key={`${'Quartos/Suítes'}_radio_buttons`}
                             />
                         )} */}
-                        { rows?.map((el, idx) => (
+                        {rows?.map((el, idx) => (
                             <Flex
                                 width='100%'
                                 margin='15px 0'
@@ -162,7 +171,7 @@ const QuartosESuitesSlide = ({ data }) => {
                                                         ...simData.quartos,
                                                         value: previousQuartos
                                                     }
-                                                }) 
+                                                })
                                             }} //onChange(returnRoom(idx).value)
                                             select={simData && simData.quartos && simData.quartos.value && simData.quartos.value[idx][e]}
                                             key={`${'Quartos/Suítes'}_${idx}_radio_buttons`}
@@ -178,12 +187,12 @@ const QuartosESuitesSlide = ({ data }) => {
                             onClick={() => {
                                 const currentRows = rows.length
                                 setRows(new Array(currentRows + 1).fill(1))
-                                const oneMoreRow = [ ...simData.quartos.value ]
+                                const oneMoreRow = [...simData.quartos.value]
                                 oneMoreRow.push({
                                     quarto: '',
                                     suite: '',
                                     closet: ''
-                                },)
+                                })
                                 setSimData({
                                     ...simData,
                                     quartos: {

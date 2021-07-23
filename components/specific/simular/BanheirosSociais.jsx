@@ -10,7 +10,7 @@ import Button from "../../common/Button"
 import RadioButtonsList from "../../common/RadioButtons/RadioButtonsList"
 import { SimulationDataContext } from "../../../contexts/SimulationData"
 import { RoomValuesContext } from "../../../contexts/RoomValues"
-import { calculateBanheiros } from "../../../utils/calculate_room_value"
+import { calculateBanheiros, calculateBathroomArea } from "../../../utils/calculate_room_value"
 
 
 const BanheirosSociaisSlide = ({ data }) => {
@@ -19,7 +19,12 @@ const BanheirosSociaisSlide = ({ data }) => {
     // const [rows, setRows] = useState([1])
 
     const { simData, setSimData, baseSqMtr } = useContext(SimulationDataContext)
-    const { rooms, setRooms } = useContext(RoomValuesContext)
+    const {
+        rooms,
+        setRooms,
+        area,
+        setArea
+    } = useContext(RoomValuesContext)
 
     const sizeOptions = [0, 4, 8, 12]
 
@@ -31,6 +36,11 @@ const BanheirosSociaisSlide = ({ data }) => {
             setRooms({
                 ...rooms,
                 banheiros: valorAmbiente
+            })
+            const areaAmbiente = calculateBathroomArea(simData.banheiros)
+            setArea({
+                ...area,
+                banheiros: areaAmbiente
             })
         }
     }, [simData.banheiros])

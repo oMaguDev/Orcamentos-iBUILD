@@ -6,6 +6,7 @@ import { useContext, useEffect, useState } from "react"
 import { SimulationDataContext } from "../../../contexts/SimulationData"
 import { UserContext } from "../../../contexts/UserContext"
 import { getCityByUF, getUFs } from "../../../services/geoClient"
+import { FinancialSimContext } from "../../../contexts/FinancialSim"
 
 
 const Personal = ({ noStatusBox }) => {
@@ -19,7 +20,7 @@ const Personal = ({ noStatusBox }) => {
         value: 'placeholder'
     }])
 
-    const { resources, setResources } = useContext(SimulationDataContext)
+    const { resources, setResources } = useContext(FinancialSimContext)
     const { user, setUser } = useContext(UserContext)
 
     const data = {
@@ -127,7 +128,7 @@ const Personal = ({ noStatusBox }) => {
 
     return (
         <>
-            <Box height='50px'></Box>
+            {/* <Box height='50px'></Box> */}
             <SlideContainer
                 // width='100%'
                 // maxHeight='calc(100vh - 200px)'

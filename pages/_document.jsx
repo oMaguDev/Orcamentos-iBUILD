@@ -38,7 +38,7 @@ class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
-          <script src="//api.bitrix24.com/api/v1/"></script>
+          {/* <script src="//api.bitrix24.com/api/v1/"></script> */}
         </body>
       </Html>
     )

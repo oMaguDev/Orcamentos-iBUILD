@@ -190,19 +190,7 @@ export const calculateEscritorio = (escritorio, baseSqMtr) => {
 }
 
 export const calculateQuartos = (quartos, baseSqMtr) => {
-    let area = [...quartos.value]
-    console.log('area: ', area)
-    area = area.map((e, i) => {
-        let thisRoomArea = 0
-        console.log(`quartos.value[${i}]: `, e)
-        for (let prop in e) {
-            thisRoomArea += e[prop]
-        }
-        return thisRoomArea
-    })
-    console.log('area: ', area)
-    area = area.reduce((acc, curr) => acc + curr)
-    console.log('area: ', area)
+    let area = calculateQuartosArea(quartos)
 
     const areaPiso = area 
     const areaParede = area * 2.93
@@ -229,10 +217,7 @@ export const calculateQuartos = (quartos, baseSqMtr) => {
 }
 
 export const calculateLavabos = (lavabos, baseSqMtr) => {
-    let area = [...lavabos.value]
-    console.log('area: ', area)
-    area = area.reduce((acc, curr) => acc + curr)
-    console.log('area: ', area)
+    let area = calculateBathroomArea(lavabos)
 
     const areaPiso = area 
     const areaParede = area * 2.93
@@ -270,10 +255,7 @@ export const calculateLavabos = (lavabos, baseSqMtr) => {
 }
 
 export const calculateBanheiros = (banheiros, baseSqMtr) => {
-    let area = [...banheiros.value]
-    console.log('area: ', area)
-    area = area.reduce((acc, curr) => acc + curr)
-    console.log('area: ', area)
+    let area = calculateBathroomArea(banheiros)
 
     const areaPiso = area 
     const areaParede = area * 2.93
@@ -322,6 +304,30 @@ export const calculateInstalacoesPercentagem = (instalacoes, houseValue) => {
     return housePercentage
 }
 
+
+export const calculateQuartosArea = (quartos) => {
+    let area = [...quartos.value]
+    // console.log('area: ', area)
+    area = area.map((e, i) => {
+        let thisRoomArea = 0
+        // console.log(`quartos.value[${i}]: `, e)
+        for (let prop in e) {
+            thisRoomArea += e[prop]
+        }
+        return thisRoomArea
+    })
+    // console.log('area: ', area)
+    area = area.reduce((acc, curr) => acc + curr)
+    return area
+}
+
+export const calculateBathroomArea = (bathroom) => {
+    let area = [...bathroom.value]
+    // console.log('area: ', area)
+    area = area.reduce((acc, curr) => acc + curr)
+    // console.log('area: ', area)
+    return area
+}
 
 
 
