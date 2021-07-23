@@ -51,7 +51,7 @@ const Select = ({
                     onChange={onChange}
                 >
                     { options && options.map((e, i) => (
-                        <option value={e.value}>{e.label}</option>
+                        <option value={e.value} disabled={e.disabled}>{e.label}</option>
                     ))}
                 </StyledSelect>
                 {/* { Icon && (

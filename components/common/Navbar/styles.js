@@ -28,11 +28,16 @@ export const StyledNav = styled.nav`
 `
     
 export const NavItem = styled.div`
+
+    cursor: pointer;
     
     font-size: 0.8rem;
     margin: 0 5px;
     color: ${({ theme }) => theme.colors.text.white };
-    
+   
+    :hover {
+        text-decoration: underline;
+    }
 `
 
 export const Triangle = styled.div`

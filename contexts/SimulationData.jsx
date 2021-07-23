@@ -13,37 +13,37 @@ export const SimulationDataContextProvider = ({ children }) => {
         paredes: '',
         telhas: '',
         garagem: {
-            value: '',
+            value: 0,
             pattern: '',
             confort: '',
         },
         sala: {
-            value: '',
+            value: 0,
             pattern: '',
             confort: '',
         },
         cozinha: {
-            value: '',
+            value: 0,
             pattern: '',
             confort: '',
         },
         areaGourmet: {
-            value: '',
+            value: 0,
             pattern: '',
             confort: '',
         },
         areaServico: {
-            value: '',
+            value: 0,
             pattern: '',
             confort: '',
         },
         despensa: {
-            value: '',
+            value: 0,
             pattern: '',
             confort: '',
         },
         escritorio: {
-            value: '',
+            value: 0,
             pattern: '',
             confort: '',
         },
@@ -76,25 +76,7 @@ export const SimulationDataContextProvider = ({ children }) => {
         // acabamento: '',
     })
 
-    const [resources, setResources] = useState({
-        // first page:
-        resourcesSelect: '',
-        financed_before: '',
-        land_status: '',
-        project_status: '',
-
-        // step 0:
-        renda: '',
-        dob: '',
-        estado_civil: '',
-        local_construcao: '',
-        //  step 1:
-        valor_terreno: '',
-        valor_entrada: '',
-        valor_fgts: '',
-        num_pis: '',
-        mod_financiamento: '',
-    })
+    
 
     const [baseSqMtr, setBaseSqMtr] = useState({
         value: 0,
@@ -102,21 +84,20 @@ export const SimulationDataContextProvider = ({ children }) => {
     })
 
     const baseSqrMtrValueCalculator = (category) => {
-        console.log('category: ', category)
+        // console.log('category: ', category)
         if (simData.pavimentos === 1) {
             return baseObraBranca[category].one_pavement_meter
         }
         if (simData.pavimentos > 1) {
             const currentBase = baseObraBranca[category]
             const sqrMeterValue = (currentBase.initial_services + currentBase.foundation + 
-                (currentBase.structure * 1.08) + currentBase.slab + currentBase.walls) / 100
+                (currentBase.structure * 1.08) + currentBase.slab + (currentBase.walls[0] * 1.22) + currentBase.walls[1] + currentBase.walls[2]) / 100
             return sqrMeterValue
         }
         return 0
     }
 
     useEffect(() => {
-        console.log('simData.paredes: ', simData.paredes)
         switch (simData.paredes) {
             case 'PAREDE ECONOMY':
                 setBaseSqMtr({
@@ -171,8 +152,6 @@ export const SimulationDataContextProvider = ({ children }) => {
         <SimulationDataContext.Provider value={{
             simData,
             setSimData,
-            resources,
-            setResources,
             baseSqMtr,
             setBaseSqMtr,
             baseSqrMtrValueCalculator,

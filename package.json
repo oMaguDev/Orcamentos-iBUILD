@@ -8,7 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "mongoose": "^5.12.8",
+    "axios": "^0.21.1",
     "next": "10.2.0",
     "phosphor-react": "^1.2.1",
     "react": "17.0.2",

@@ -4,6 +4,7 @@ import { baseObraBranca } from "./base_obra_branca"
 
 export const calculateGarage = (garagem, baseSqMtr) => {
     const area = garagem.value
+    // console.log('garagem area: ', area)
     const areaPiso = area * 1.1
     const areaParede = area * 2.33
 
@@ -21,6 +22,9 @@ export const calculateGarage = (garagem, baseSqMtr) => {
 
     const margemLucro = 1.3
     valorAmbiente = valorAmbiente * margemLucro
+
+
+    // console.log('valorAmbiente: ', valorAmbiente)
 
     return valorAmbiente
 }

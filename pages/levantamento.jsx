@@ -7,7 +7,8 @@ import { useContext, useEffect, useState } from "react"
 import { useRouter } from 'next/router'
 import ResourcesIndex from "../components/specific/levantamento/ResumoDosRecursos"
 import { ActiveIndexContext } from "../contexts/activeIndex"
-import { SimulationDataContext } from "../contexts/SimulationData"
+import { FinancialSimContext } from '../contexts/FinancialSim'
+import Personal from "../components/specific/levantamento/Personal"
 
 
 const Levantamento = () => {
@@ -29,7 +30,7 @@ const Levantamento = () => {
     //     console.log('pavimentos: ', pavimentos)
     // }, [area, lavabos, estilo, pavimentos])
 
-    const { resources, setResources } = useContext(SimulationDataContext)
+    const { resources, setResources } = useContext(FinancialSimContext)
 
     const stepsTitles = [
         'Informações pessoais',
@@ -38,63 +39,64 @@ const Levantamento = () => {
     ]
 
     const steps = [
-        {
-            caption: 'Informações',
-            title: 'Pessoais',
-            imageSrc: '/images/Ambientes/Ambientes1.svg',
-            value: resources.renda,
-            onChange: newValue => setResources({
-                ...resources,
-                renda: newValue
-            }),
-            inputs: [
-                {
-                    value: resources.renda,
-                    onChange: newValue => setResources({
-                        ...resources,
-                        renda: newValue
-                    }),
-                    label: 'Renda Bruta Familiar (mensal comprovada)',
-                    placeholder: 'Insira a renda mensal em reais',
-                    type: 'number'
-                },
-                {
-                    value: resources.dob,
-                    onChange: newValue => setResources({
-                        ...resources,
-                        dob: newValue
-                    }),
-                    label: 'Data de nascimento (proponente mais velho)',
-                    placeholder: 'DD/MM/AAAA',
-                    // type: 'number',
-                    mask: 'date'
-                },
-                {
-                    value: resources.estado_civil,
-                    onChange: newValue => setResources({
-                        ...resources,
-                        estado_civil: newValue
-                    }),
-                    label: 'Estado Civil',
-                    placeholder: 'Insira o seu estado civil',
-                    type: 'number'
-                },
-                {
-                    value: resources.local_construcao,
-                    onChange: newValue => setResources({
-                        ...resources,
-                        local_construcao: newValue
-                    }),
-                    label: 'Local de construção',
-                    placeholder: 'Insira o estado e o municipio',
-                    type: 'number'
-                },
-            ]
-        },
+        // {
+        //     caption: 'Informações',
+        //     title: 'Pessoais',
+        //     imageSrc: '/images/Ambientes/Ambientes1.svg',
+        //     value: resources.renda,
+        //     onChange: newValue => setResources({
+        //         ...resources,
+        //         renda: newValue
+        //     }),
+        //     inputs: [
+        //         {
+        //             value: resources.renda,
+        //             onChange: newValue => setResources({
+        //                 ...resources,
+        //                 renda: newValue
+        //             }),
+        //             label: 'Renda Bruta Familiar (mensal comprovada)',
+        //             placeholder: 'Insira a renda mensal em reais',
+        //             type: 'number'
+        //         },
+        //         {
+        //             value: resources.dob,
+        //             onChange: newValue => setResources({
+        //                 ...resources,
+        //                 dob: newValue
+        //             }),
+        //             label: 'Data de nascimento (proponente mais velho)',
+        //             placeholder: 'DD/MM/AAAA',
+        //             // type: 'number',
+        //             mask: 'date'
+        //         },
+        //         {
+        //             value: resources.estado_civil,
+        //             onChange: newValue => setResources({
+        //                 ...resources,
+        //                 estado_civil: newValue
+        //             }),
+        //             label: 'Estado Civil',
+        //             placeholder: 'Insira o seu estado civil',
+        //             type: 'number'
+        //         },
+        //         {
+        //             value: resources.local_construcao,
+        //             onChange: newValue => setResources({
+        //                 ...resources,
+        //                 local_construcao: newValue
+        //             }),
+        //             label: 'Local de construção',
+        //             placeholder: 'Insira o estado e o municipio',
+        //             type: 'number'
+        //         },
+        //     ]
+        // },
         {
             caption: 'Recursos',
             title: 'Financeiros',
             value: resources.valor_terreno,
+            imageSrc: '/images/Ícones/Ícones 2.svg',
             onChange: newValue => setResources({
                 ...resources,
                 valor_terreno: newValue
@@ -183,6 +185,8 @@ const Levantamento = () => {
         <StepContent isCheckout={i === steps.length - 1} noStatusBox data={e} />
     ))
 
+    items.unshift(<Personal />)
+
     items.push(<ResourcesIndex />)
 
     if (startPage) {
@@ -223,13 +227,13 @@ const Levantamento = () => {
             <Stepper
                 steps={stepsTitles}
                 title='levantamento de recursos'    
-                // page='levantamento'
+                page='levantamento'
             />
             <Carousel
                 items={items}
                 page='levantamento'
                 lastSlideAction={() => {
-                    router.push('/cadastro')
+                    router.push('/simular')
                 }}
             />
         </Flex>

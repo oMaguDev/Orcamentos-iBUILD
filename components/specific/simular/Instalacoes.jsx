@@ -31,7 +31,7 @@ const InstalacoesSlide = ({ data }) => {
 
     useEffect(() => {
         // console.log('simData[slide].value', simData[slide].value)
-        console.log('simData.instalacoes', simData.instalacoes)
+        // console.log('simData.instalacoes', simData.instalacoes)
         if (simData.instalacoes.eletrica === 7) {
             setSimData({
                 ...simData,

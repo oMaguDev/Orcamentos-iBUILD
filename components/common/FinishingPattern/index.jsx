@@ -12,9 +12,6 @@ const FinishingPattern = ({
     setConfort,
 }) => {
 
-    // const [confort, setConfort] = useState('')
-    // const [pattern, setPattern] = useState('')
-
     const patterns = [
         {
             label: 'economy',
@@ -33,9 +30,6 @@ const FinishingPattern = ({
         },
     ]
 
-    useEffect(() => {
-        console.log('confort: ', confort)
-    }, [confort])
     return (
         <FinishingPatternContainer>
             <Parag margin='0'>

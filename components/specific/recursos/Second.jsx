@@ -4,6 +4,7 @@ import RadioButtons from "../../common/RadioButtons"
 import RadioIconButtons from "../../common/RadioIconButtons"
 import { Box, Flex, Layout, TitleContainer } from "../../Containers"
 import { ExplainingP } from "../../Text"
+import { FinancialSimContext } from '../../../contexts/FinancialSim'
 
 
 const Second = () => {
@@ -12,7 +13,7 @@ const Second = () => {
     const [activeProject, setActiveProject] = useState(null)
     // const [hasSimulated, setHasSimulated] = useState('')
 
-    const { resources, setResources } = useContext(SimulationDataContext)
+    const { resources, setResources } = useContext(FinancialSimContext)
 
 
     const iconOptionsLand = [

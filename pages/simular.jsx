@@ -16,6 +16,7 @@ import { SimulationDataContext } from "../contexts/SimulationData"
 import ResumoImovelSlide from "../components/specific/simular/ResumoImovel"
 import { calculateAreaGourmet, calculateAreaServico, calculateCozinha, calculateDespensa, calculateEscritorio, calculateGarage, calculateSala } from "../utils/calculate_room_value"
 import { RoomValuesContext } from '../contexts/RoomValues'
+import router from "next/router"
 
 
 const Simular = () => {
@@ -34,7 +35,12 @@ const Simular = () => {
         // baseSqrMtrValueCalculator,
     } = useContext(SimulationDataContext)
 
-    const { rooms, setRooms } = useContext(RoomValuesContext)
+    const {
+        rooms,
+        setRooms,
+        area,
+        setArea,
+    } = useContext(RoomValuesContext)
 
     const stepsTitles = [
         'Estilo da sua casa',
@@ -55,7 +61,7 @@ const Simular = () => {
         'Int. Hid./Ele.',
         // 'Conforto',
         // 'Acabamentos',
-        'Resumo',
+        // 'Resumo',
     ]
 
     const steps = [
@@ -497,7 +503,7 @@ const Simular = () => {
     items.push(<InstalacoesSlide />)
     // items.push(<ConfortoSlide />)
     // items.push(<AcabamentoSlide />)
-    items.push(<ResumoImovelSlide />)
+    // items.push(<ResumoImovelSlide />)
 
     useEffect(() => {
         updateValues('garagem')
@@ -531,12 +537,13 @@ const Simular = () => {
         // console.log('simData[slide].value', simData[slide].value)
         // console.log('simData[slide].pattern', simData[slide].pattern)
         
-        if (simData[slide].value !== '' && simData[slide].pattern !== '') {
+        if (simData[slide].pattern !== '') {
             
             let valorAmbiente = 0
             switch (slide) {
                 case 'garagem':
                     valorAmbiente = calculateGarage(simData.garagem, baseSqMtr)
+                    console.log('simData.garagem: ', simData.garagem)
                     setRooms({
                         ...rooms,
                         garagem: valorAmbiente
@@ -596,7 +603,12 @@ const Simular = () => {
                 default:
                 break;
             }
-
+            const roomArea = simData[slide].value
+            // console.log('roomArea: ', roomArea)
+            setArea({
+                ...area,
+                [slide]: roomArea
+            })
         }
     }
 
@@ -644,6 +656,7 @@ const Simular = () => {
             <Carousel
                 items={items}
                 page='simular'
+                lastSlideAction={() => router.push('/cadastro')}
             />
         </Flex>
     )

@@ -55,7 +55,7 @@ const RadioButtonsList = ({ labels, entity, setEntity, options }) => {
                             onClick={() => {
                                 const newEntity = [...entity]
                                 newEntity[0] = optionsValues[0]
-                                console.log('newEntity: ', newEntity)
+                                // console.log('newEntity: ', newEntity)
                                 setEntity(newEntity)
                             }}
                         />
@@ -66,7 +66,7 @@ const RadioButtonsList = ({ labels, entity, setEntity, options }) => {
                             onClick={() => {
                                 const newEntity = [...entity]
                                 newEntity[1] = optionsValues[0]
-                                console.log('newEntity: ', newEntity)
+                                // console.log('newEntity: ', newEntity)
                                 setEntity(newEntity)
                             }}
                         />
@@ -77,7 +77,7 @@ const RadioButtonsList = ({ labels, entity, setEntity, options }) => {
                             onClick={() => {
                                 const newEntity = [...entity]
                                 newEntity[2] = optionsValues[0]
-                                console.log('newEntity: ', newEntity)
+                                // console.log('newEntity: ', newEntity)
                                 setEntity(newEntity)
                             }}
                         />
@@ -88,7 +88,7 @@ const RadioButtonsList = ({ labels, entity, setEntity, options }) => {
                             onClick={() => {
                                 const newEntity = [...entity]
                                 newEntity[3] = optionsValues[0]
-                                console.log('newEntity: ', newEntity)
+                                // console.log('newEntity: ', newEntity)
                                 setEntity(newEntity)
                             }}
                         />
@@ -104,7 +104,7 @@ const RadioButtonsList = ({ labels, entity, setEntity, options }) => {
                             onClick={() => {
                                 const newEntity = [...entity]
                                 newEntity[0] = optionsValues[1]
-                                console.log('newEntity: ', newEntity)
+                                // console.log('newEntity: ', newEntity)
                                 setEntity(newEntity)
                             }}
                         />
@@ -115,7 +115,7 @@ const RadioButtonsList = ({ labels, entity, setEntity, options }) => {
                             onClick={() => {
                                 const newEntity = [...entity]
                                 newEntity[1] = optionsValues[1]
-                                console.log('newEntity: ', newEntity)
+                                // console.log('newEntity: ', newEntity)
                                 setEntity(newEntity)
                             }}
                         />
@@ -126,7 +126,7 @@ const RadioButtonsList = ({ labels, entity, setEntity, options }) => {
                             onClick={() => {
                                 const newEntity = [...entity]
                                 newEntity[2] = optionsValues[1]
-                                console.log('newEntity: ', newEntity)
+                                // console.log('newEntity: ', newEntity)
                                 setEntity(newEntity)
                             }}
                         />
@@ -137,7 +137,7 @@ const RadioButtonsList = ({ labels, entity, setEntity, options }) => {
                             onClick={() => {
                                 const newEntity = [...entity]
                                 newEntity[3] = optionsValues[1]
-                                console.log('newEntity: ', newEntity)
+                                // console.log('newEntity: ', newEntity)
                                 setEntity(newEntity)
                             }}
                         />
@@ -153,7 +153,7 @@ const RadioButtonsList = ({ labels, entity, setEntity, options }) => {
                             onClick={() => {
                                 const newEntity = [...entity]
                                 newEntity[0] = optionsValues[2]
-                                console.log('newEntity: ', newEntity)
+                                // console.log('newEntity: ', newEntity)
                                 setEntity(newEntity)
                             }}
                         />
@@ -164,7 +164,7 @@ const RadioButtonsList = ({ labels, entity, setEntity, options }) => {
                             onClick={() => {
                                 const newEntity = [...entity]
                                 newEntity[1] = optionsValues[2]
-                                console.log('newEntity: ', newEntity)
+                                // console.log('newEntity: ', newEntity)
                                 setEntity(newEntity)
                             }}
                         />
@@ -175,7 +175,7 @@ const RadioButtonsList = ({ labels, entity, setEntity, options }) => {
                             onClick={() => {
                                 const newEntity = [...entity]
                                 newEntity[2] = optionsValues[2]
-                                console.log('newEntity: ', newEntity)
+                                // console.log('newEntity: ', newEntity)
                                 setEntity(newEntity)
                             }}
                         />
@@ -186,7 +186,7 @@ const RadioButtonsList = ({ labels, entity, setEntity, options }) => {
                             onClick={() => {
                                 const newEntity = [...entity]
                                 newEntity[3] = optionsValues[2]
-                                console.log('newEntity: ', newEntity)
+                                // console.log('newEntity: ', newEntity)
                                 setEntity(newEntity)
                             }}
                         />
@@ -202,7 +202,7 @@ const RadioButtonsList = ({ labels, entity, setEntity, options }) => {
                             onClick={() => {
                                 const newEntity = [...entity]
                                 newEntity[0] = optionsValues[3]
-                                console.log('newEntity: ', newEntity)
+                                // console.log('newEntity: ', newEntity)
                                 setEntity(newEntity)
                             }}
                         />
@@ -213,7 +213,7 @@ const RadioButtonsList = ({ labels, entity, setEntity, options }) => {
                             onClick={() => {
                                 const newEntity = [...entity]
                                 newEntity[1] = optionsValues[3]
-                                console.log('newEntity: ', newEntity)
+                                // console.log('newEntity: ', newEntity)
                                 setEntity(newEntity)
                             }}
                         />
@@ -224,7 +224,7 @@ const RadioButtonsList = ({ labels, entity, setEntity, options }) => {
                             onClick={() => {
                                 const newEntity = [...entity]
                                 newEntity[2] = optionsValues[3]
-                                console.log('newEntity: ', newEntity)
+                                // console.log('newEntity: ', newEntity)
                                 setEntity(newEntity)
                             }}
                         />
@@ -235,7 +235,7 @@ const RadioButtonsList = ({ labels, entity, setEntity, options }) => {
                             onClick={() => {
                                 const newEntity = [...entity]
                                 newEntity[3] = optionsValues[3]
-                                console.log('newEntity: ', newEntity)
+                                // console.log('newEntity: ', newEntity)
                                 setEntity(newEntity)
                             }}
                         />

@@ -6,6 +6,7 @@ import { SimulationDataContextProvider } from '../contexts/SimulationData'
 import { SimulationStatusContextProvider } from '../contexts/SimulationStatus'
 import { UserContextProvider } from '../contexts/UserContext'
 import { RoomValuesContextProvider } from '../contexts/RoomValues'
+import { FinancialSimContextProvider } from '../contexts/FinancialSim'
 
 
 const GlobalStyle = createGlobalStyle`
@@ -72,17 +73,19 @@ function MyApp({ Component, pageProps }) {
             </Head>
             <GlobalStyle />
             <UserContextProvider>
-                <SimulationDataContextProvider>
-                    <RoomValuesContextProvider>
-                        <SimulationStatusContextProvider>
-                            <ActiveIndexProvider>
-                                <ThemeProvider theme={theme}>
-                                    <Component {...pageProps} />
-                                </ThemeProvider>
-                            </ActiveIndexProvider>
-                        </SimulationStatusContextProvider>
-                    </RoomValuesContextProvider>
-                </SimulationDataContextProvider>
+                <FinancialSimContextProvider>
+                    <SimulationDataContextProvider>
+                        <RoomValuesContextProvider>
+                            <SimulationStatusContextProvider>
+                                <ActiveIndexProvider>
+                                    <ThemeProvider theme={theme}>
+                                        <Component {...pageProps} />
+                                    </ThemeProvider>
+                                </ActiveIndexProvider>
+                            </SimulationStatusContextProvider>
+                        </RoomValuesContextProvider>
+                    </SimulationDataContextProvider>
+                </FinancialSimContextProvider>
             </UserContextProvider>
         </>
     )

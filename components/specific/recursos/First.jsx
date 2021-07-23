@@ -1,16 +1,16 @@
 import { useContext, useState } from "react"
-import { SimulationDataContext } from "../../../contexts/SimulationData"
 import RadioButtons from "../../common/RadioButtons"
 import RadioIconButtons from "../../common/RadioIconButtons"
 import { Box, Flex, Layout, TitleContainer } from "../../Containers"
 import { ExplainingP } from "../../Text"
+import { FinancialSimContext } from '../../../contexts/FinancialSim'
 
 
 const First = () => {
     // const [active, setActive] = useState(null)
     // const [hasSimulated, setHasSimulated] = useState('')
 
-    const { resources, setResources } = useContext(SimulationDataContext)
+    const { resources, setResources } = useContext(FinancialSimContext)
 
 
     const iconOptions = [
