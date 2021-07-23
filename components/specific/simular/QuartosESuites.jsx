@@ -9,7 +9,7 @@ import { Parag } from "../../Text"
 import Button from "../../common/Button"
 import { SimulationDataContext } from "../../../contexts/SimulationData"
 import { RoomValuesContext } from "../../../contexts/RoomValues"
-import { calculateAreaQuartos, calculateQuartos } from "../../../utils/calculate_room_value"
+import { calculateQuartosArea, calculateQuartos } from "../../../utils/calculate_room_value"
 
 
 const QuartosESuitesSlide = ({ data }) => {
@@ -96,7 +96,7 @@ const QuartosESuitesSlide = ({ data }) => {
                 ...rooms,
                 quartos: valorAmbiente
             })
-            const areaAmbiente = calculateAreaQuartos(simData.quartos)
+            const areaAmbiente = calculateQuartosArea(simData.quartos)
             setArea({
                 ...area,
                 quartos: areaAmbiente

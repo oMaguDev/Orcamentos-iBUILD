@@ -39,7 +39,9 @@ export const SimulationStatusContextProvider = ({ children }) => {
     useEffect(() => {
         let allRoomValues = 0
         for (let prop in rooms) {
-            allRoomValues += rooms[prop]
+            if (!isNaN(parseFloat(rooms[prop]))) {
+                allRoomValues += parseFloat(rooms[prop])
+            }
         }
         setSumRoomValues(allRoomValues)
     }, [rooms])
@@ -72,13 +74,18 @@ export const SimulationStatusContextProvider = ({ children }) => {
     useEffect(() => {
         let allRoomsAreas = 0
         for (let room in area) {
-            allRoomsAreas += area[room]
+            if (!isNaN(parseFloat(area[room]))) {
+                allRoomsAreas += parseFloat(area[room])
+                // console.log('area[room]: ', area[room])
+                // console.log('room: ', room)
+            }
         }
         setSumRoomAreas(allRoomsAreas)
     }, [area])
 
 
     useEffect(() => {
+        console.log('sumRoomAreas: ', sumRoomAreas)
 
         const currentArea = sumRoomAreas
         const availableArea = simArea.total - currentArea

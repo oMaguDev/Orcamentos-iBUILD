@@ -10,7 +10,7 @@ import Button from "../../common/Button"
 import RadioButtonsList from "../../common/RadioButtons/RadioButtonsList"
 import { SimulationDataContext } from "../../../contexts/SimulationData"
 import { RoomValuesContext } from "../../../contexts/RoomValues"
-import { calculateLavabos } from "../../../utils/calculate_room_value"
+import { calculateBathroomArea, calculateLavabos } from "../../../utils/calculate_room_value"
 
 
 const LavabosSlide = ({ data }) => {
@@ -19,7 +19,12 @@ const LavabosSlide = ({ data }) => {
     // const [rows, setRows] = useState([1])
 
     const { simData, setSimData, baseSqMtr } = useContext(SimulationDataContext)
-    const { rooms, setRooms } = useContext(RoomValuesContext)
+    const {
+        rooms,
+        setRooms,
+        area,
+        setArea,
+    } = useContext(RoomValuesContext)
 
     const sizeOptions = [0, 3.5, 6, 8]
 
@@ -33,6 +38,12 @@ const LavabosSlide = ({ data }) => {
                 lavabos: valorAmbiente
             })
         }
+        const areaAmbiente = calculateBathroomArea(simData.lavabos)
+        setArea({
+            ...area,
+            lavabos: areaAmbiente
+        })
+
     }, [simData.lavabos])
     
     return (
