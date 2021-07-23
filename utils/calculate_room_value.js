@@ -190,19 +190,7 @@ export const calculateEscritorio = (escritorio, baseSqMtr) => {
 }
 
 export const calculateQuartos = (quartos, baseSqMtr) => {
-    let area = [...quartos.value]
-    console.log('area: ', area)
-    area = area.map((e, i) => {
-        let thisRoomArea = 0
-        console.log(`quartos.value[${i}]: `, e)
-        for (let prop in e) {
-            thisRoomArea += e[prop]
-        }
-        return thisRoomArea
-    })
-    console.log('area: ', area)
-    area = area.reduce((acc, curr) => acc + curr)
-    console.log('area: ', area)
+    let area = calculateAreaQuartos(quartos)
 
     const areaPiso = area 
     const areaParede = area * 2.93
@@ -322,6 +310,22 @@ export const calculateInstalacoesPercentagem = (instalacoes, houseValue) => {
     return housePercentage
 }
 
+
+export const calculateAreaQuartos = (quartos) => {
+    let area = [...quartos.value]
+    // console.log('area: ', area)
+    area = area.map((e, i) => {
+        let thisRoomArea = 0
+        // console.log(`quartos.value[${i}]: `, e)
+        for (let prop in e) {
+            thisRoomArea += e[prop]
+        }
+        return thisRoomArea
+    })
+    // console.log('area: ', area)
+    area = area.reduce((acc, curr) => acc + curr)
+    return area
+}
 
 
 
