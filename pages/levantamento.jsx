@@ -7,7 +7,7 @@ import { useContext, useEffect, useState } from "react"
 import { useRouter } from 'next/router'
 import ResourcesIndex from "../components/specific/levantamento/ResumoDosRecursos"
 import { ActiveIndexContext } from "../contexts/activeIndex"
-import { SimulationDataContext } from "../contexts/SimulationData"
+import { FinancialSimContext } from '../contexts/FinancialSim'
 import Personal from "../components/specific/levantamento/Personal"
 
 
@@ -30,7 +30,7 @@ const Levantamento = () => {
     //     console.log('pavimentos: ', pavimentos)
     // }, [area, lavabos, estilo, pavimentos])
 
-    const { resources, setResources } = useContext(SimulationDataContext)
+    const { resources, setResources } = useContext(FinancialSimContext)
 
     const stepsTitles = [
         'Informações pessoais',

@@ -76,25 +76,7 @@ export const SimulationDataContextProvider = ({ children }) => {
         // acabamento: '',
     })
 
-    const [resources, setResources] = useState({
-        // first page:
-        resourcesSelect: '',
-        financed_before: '',
-        land_status: '',
-        project_status: '',
-
-        // step 0:
-        renda: '',
-        dob: '',
-        estado_civil: '',
-        local_construcao: '',
-        //  step 1:
-        valor_terreno: '',
-        valor_entrada: '',
-        valor_fgts: '',
-        num_pis: '',
-        mod_financiamento: '',
-    })
+    
 
     const [baseSqMtr, setBaseSqMtr] = useState({
         value: 0,
@@ -170,8 +152,6 @@ export const SimulationDataContextProvider = ({ children }) => {
         <SimulationDataContext.Provider value={{
             simData,
             setSimData,
-            resources,
-            setResources,
             baseSqMtr,
             setBaseSqMtr,
             baseSqrMtrValueCalculator,
