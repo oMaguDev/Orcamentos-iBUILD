@@ -1,9 +1,19 @@
 import { Box, Flex, TitleContainer } from "../../Containers"
 import { ResourcesIndexColumn } from "./styles"
 import DataDisplay from '../../common/DataDisplay'
+import { useContext, useEffect } from "react"
+import { FinancialSimContext } from "../../../contexts/FinancialSim"
 
 
 const ResourcesIndex = () => {
+
+
+    const { summary } = useContext(FinancialSimContext)
+
+    useEffect(() => {
+        console.log('summary: ', summary)
+    }, [])
+
     return (
         <Flex
             column

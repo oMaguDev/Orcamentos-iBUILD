@@ -25,10 +25,28 @@ export const FinancialSimContextProvider = ({ children }) => {
         mod_financiamento: '',
     })
 
+    const [summary, setSummary] = useState({
+        jurosAA: 0.08,
+        jurosAM: 0.0064,
+        prestamista: 0.00038128125,
+        txAdm: 25,
+
+        parcelaPrice: 0,
+        parcelaSAC: [
+            0,
+            0
+        ],
+        amortizacao: 0,
+    })
+
+
+
     return (
         <FinancialSimContext.Provider value={{
             resources,
-            setResources
+            setResources,
+            summary,
+            setSummary
         }}>
             { children }
         </FinancialSimContext.Provider>
