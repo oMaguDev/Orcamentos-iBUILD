@@ -46,13 +46,14 @@ export const FinancialSimContextProvider = ({ children }) => {
 
     useEffect(() => {
         if (resources.valor_entrada > 0 && !isNaN(parseFloat(resources.valor_entrada))) {
-            const valorFinanciado = parseFloat(resources.valor_entrada) / 0.3
-            const valorImovel = parseFloat(resources.valor_entrada) + valorFinanciado
+            const valorImovel = parseFloat(resources.valor_entrada) / 0.2
+            const valorFinanciado = valorImovel - parseFloat(resources.valor_entrada)
             setSummary({
                 ...summary,
                 valorFinanciamento: valorFinanciado,
                 valorImovel
             })
+            
         }
     }, [resources.valor_entrada])
 

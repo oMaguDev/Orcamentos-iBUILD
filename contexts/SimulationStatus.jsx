@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import { FinancialSimContext } from "./FinancialSim";
 import { RoomValuesContext } from "./RoomValues";
 import { SimulationDataContext } from "./SimulationData";
 
@@ -29,6 +30,8 @@ export const SimulationStatusContextProvider = ({ children }) => {
         area,
         // setArea
     } = useContext(RoomValuesContext)
+
+    const { summary } = useContext(FinancialSimContext)
 
     const [sumRoomValues, setSumRoomValues] = useState(0)
     const [sumRoomAreas, setSumRoomAreas] = useState(0)
@@ -96,6 +99,19 @@ export const SimulationStatusContextProvider = ({ children }) => {
             available: availableArea
         })
     }, [sumRoomAreas])
+
+
+    // update total funds:
+    useEffect(() => {
+        if (!isNaN(parseFloat(summary.valorImovel))) {
+            setSimStatus({
+                funds: {
+                    ...simStatus.funds,
+                    total: parseFloat(summary.valorImovel)
+                }
+            })
+        }
+    }, [summary.valorImovel])
 
     return (
         <SimulationStatusContext.Provider value={{

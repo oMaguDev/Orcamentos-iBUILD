@@ -92,7 +92,7 @@ const ResourcesIndex = () => {
                     >
                         <DataDisplay
                             label='Crédito disponível para financiamento'
-                            value='R$ 1.500.000,00'
+                            value={summary.valorFinanciamento === '' ? formatMoney(0) : formatMoney(parseFloat(summary.valorFinanciamento))}
                             key='Crédito disponível para financiamento'
                         />
                     </Box>
