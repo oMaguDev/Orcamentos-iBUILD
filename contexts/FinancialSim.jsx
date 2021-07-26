@@ -59,7 +59,7 @@ export const FinancialSimContextProvider = ({ children }) => {
 
     useEffect(() => {
         if (!isNaN(parseFloat(resources.parcelas)) && !isNaN(parseFloat(summary.valorFinanciamento)) && !isNaN(parseFloat(summary.jurosAM))) {
-            const pPrice = pmt(summary.jurosAM, resources.parcelas, summary.valorFinanciamento)
+            const pPrice = pmt(summary.jurosAM, resources.parcelas, summary.valorFinanciamento) + summary.txAdm
             setSummary({
                 ...summary,
                 parcelaPrice: pPrice

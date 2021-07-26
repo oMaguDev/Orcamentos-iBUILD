@@ -11,9 +11,9 @@ const ResourcesIndex = () => {
 
     const { summary, resources } = useContext(FinancialSimContext)
 
-    useEffect(() => {
-        console.log('summary: ', summary)
-    }, [])
+    // useEffect(() => {
+    //     console.log('summary: ', summary)
+    // }, [])
 
     return (
         <Flex
@@ -116,7 +116,7 @@ const ResourcesIndex = () => {
                         <DataDisplay
                             label='Quantidade de parcelas'
                             key='Quantidade de parcelas'
-                            value='360 meses'
+                            value={resources.parcelas === '' ? '360 meses' : `${resources.parcelas} meses`}
                         />
                         <DataDisplay
                             label='Seguros prestamista'
