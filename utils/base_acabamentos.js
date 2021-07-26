@@ -197,6 +197,7 @@ export const baseAcabamentos = {
             porta: 340.0,
             peitoril: 162.7,
             esquadria: 706.16,
+            suite: 1864.67,
         },
         standard: {
             piso: 112.70,
@@ -205,6 +206,7 @@ export const baseAcabamentos = {
             peitoril: 200.96,
             porta: 724.16,
             esquadria: 706.16,
+            suite: 4691.16,
         },
         premium: {
             piso: 141.77,
@@ -213,6 +215,7 @@ export const baseAcabamentos = {
             peitoril: 519.7,
             porta: 1145.43,
             esquadria: 1200,
+            suite: 8060.72,
         },
     },
     lavabos: {
