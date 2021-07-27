@@ -191,6 +191,32 @@ export const calculateEscritorio = (escritorio, baseSqMtr) => {
 
 export const calculateQuartos = (quartos, baseSqMtr) => {
     let area = calculateQuartosArea(quartos)
+    // const numSuites
+
+    // let area = [...quartos.value]
+    // // console.log('area: ', area)
+    // area = area.map((e, i) => {
+    //     let thisRoomArea = 0
+    //     // console.log(`quartos.value[${i}]: `, e)
+    //     for (let prop in e) {
+    //         thisRoomArea += e[prop]
+    //     }
+    //     return thisRoomArea
+    // })
+
+    let numSuites = [...quartos.value]
+
+    numSuites = numSuites.map((e, i) => {
+        if (parseFloat(e.suite) > 0) {
+            return 1
+        } else {
+            return 0
+        }
+    })
+
+    numSuites = numSuites.reduce((acc, curr) => acc + curr)
+
+    console.log('numSuites: ', numSuites)
 
     const areaPiso = area 
     const areaParede = area * 2.93
@@ -203,8 +229,19 @@ export const calculateQuartos = (quartos, baseSqMtr) => {
     const peitoril = baseAcabamentos.quartos[quartos.pattern].peitoril
     const porta = baseAcabamentos.quartos[quartos.pattern].porta
     const esquadria = baseAcabamentos.quartos[quartos.pattern].esquadria
+    const suite = baseAcabamentos.quartos[quartos.pattern].suite * numSuites
 
-    let valorAmbiente = valorBase + paredesInternas + piso + pinturaParedes + pinturaForro + peitoril + porta + esquadria
+
+    // console.log('valor m2: ', valorBase)
+    // console.log('valor paredes internas: ', paredesInternas)
+    // console.log('valor piso: ', piso)
+    // console.log('valor pintura paredes internas: ', pinturaParedes)
+    // console.log('valor pintura forro: ', pinturaForro)
+    // console.log('peitoril: ', peitoril)
+    // console.log('porta: ', porta)
+    // console.log('esquadria: ', esquadria)
+
+    let valorAmbiente = valorBase + paredesInternas + piso + pinturaParedes + pinturaForro + peitoril + porta + esquadria + suite
         
     if (quartos.confort === 'sim') {
         valorAmbiente += baseObraBranca.conforto_interno * areaParede
@@ -233,14 +270,7 @@ export const calculateLavabos = (lavabos, baseSqMtr) => {
     const loucas = baseAcabamentos.lavabos[lavabos.pattern].loucas
     const marmore = baseAcabamentos.lavabos[lavabos.pattern].marmore
 
-    // console.log('valor m2: ', valorBase)
-    // console.log('valor paredes internas: ', paredesInternas)
-    // console.log('valor piso: ', piso)
-    // console.log('valor pintura paredes internas: ', pinturaParedes)
-    // console.log('valor pintura forro: ', pinturaForro)
-    // console.log('peitoril: ', peitoril)
-    // console.log('porta: ', porta)
-    // console.log('esquadria: ', esquadria)
+    
 
     let valorAmbiente = valorBase + paredesInternas + piso + pinturaParedes + pinturaForro + peitoril + porta + esquadria + loucas + marmore
         
@@ -316,8 +346,8 @@ export const calculateQuartosArea = (quartos) => {
         }
         return thisRoomArea
     })
-    // console.log('area: ', area)
     area = area.reduce((acc, curr) => acc + curr)
+    console.log('area: ', area)
     return area
 }
 

@@ -9,6 +9,8 @@ import ResourcesIndex from "../components/specific/levantamento/ResumoDosRecurso
 import { ActiveIndexContext } from "../contexts/activeIndex"
 import { FinancialSimContext } from '../contexts/FinancialSim'
 import Personal from "../components/specific/levantamento/Personal"
+import { formatMoney } from "../utils/format"
+import Finance from "../components/specific/levantamento/Finance"
 
 
 const Levantamento = () => {
@@ -19,9 +21,9 @@ const Levantamento = () => {
 
     const [startPage, setStartPage] = useState(true)
 
-    useEffect(() => {
-        console.log('startPage: ', startPage )
-    }, [startPage])
+    // useEffect(() => {
+    //     console.log('startPage: ', startPage )
+    // }, [startPage])
 
     // useEffect(() => {
     //     console.log('area: ', area)
@@ -29,6 +31,12 @@ const Levantamento = () => {
     //     console.log('estilo: ', estilo)
     //     console.log('pavimentos: ', pavimentos)
     // }, [area, lavabos, estilo, pavimentos])
+
+    useEffect(() => {
+        console.log('formatMoney(parseFloat(resources.renda)): ', formatMoney(parseFloat(resources.renda)))
+        console.log('resources.renda: ', resources.renda)
+        console.log('parseFloat(resources.renda): ', parseFloat(resources.renda))
+    }, [])
 
     const { resources, setResources } = useContext(FinancialSimContext)
 
@@ -181,13 +189,19 @@ const Levantamento = () => {
         // },
     ]
 
-    const items = steps.map((e, i) => (
-        <StepContent isCheckout={i === steps.length - 1} noStatusBox data={e} />
-    ))
+    // const items = steps.map((e, i) => (
+    //     <StepContent isCheckout={i === steps.length - 1} noStatusBox data={e} />
+    // ))
 
-    items.unshift(<Personal />)
+    // items.unshift(<Personal />)
 
-    items.push(<ResourcesIndex />)
+    // items.push(<ResourcesIndex />)
+
+    const items = [
+        <Personal />,
+        <Finance />,
+        <ResourcesIndex />
+    ]
 
     if (startPage) {
         return (
