@@ -29,7 +29,7 @@ export const FinancialSimContextProvider = ({ children }) => {
 
     const [summary, setSummary] = useState({
         jurosAA: 0.08,
-        jurosAM: 0.0064,
+        jurosAM:  Math.pow(1.08, (1 / 12)) - 1,
         prestamista: 0.00038128125,
         txAdm: 25,
         valorFinanciamento: 0,
@@ -62,10 +62,34 @@ export const FinancialSimContextProvider = ({ children }) => {
             const pPrice = pmt(summary.jurosAM, resources.parcelas, summary.valorFinanciamento) + summary.txAdm
             setSummary({
                 ...summary,
-                parcelaPrice: pPrice
+                parcelaPrice: pPrice,
+                amortizacao: summary.valorFinanciamento / resources.parcelas
             })
         }
     }, [resources.parcelas, summary.valorFinanciamento])
+
+    useEffect(() => {
+        if (summary.valorFinanciamento > 0) {
+            const jurosCalculados = summary.valorFinanciamento * summary.jurosAM
+            const seguroPrestamista =  summary.valorFinanciamento * summary.prestamista
+            
+            console.log('jurosCalculados: ', jurosCalculados)
+            console.log('seguroPrestamista: ', seguroPrestamista)
+            console.log('amortizacao: ', summary.amortizacao)
+
+            
+            const primeiraParcela = jurosCalculados + summary.amortizacao + seguroPrestamista + summary.txAdm
+            const parcelas = [...summary.parcelaSAC]
+            parcelas[0] = primeiraParcela
+            console.log('parcelas: ', parcelas)
+            setSummary({
+                ...summary,
+                parcelaSAC: parcelas
+            })
+        }
+    }, [summary.valorFinanciamento, summary.amortizacao])
+
+
 
     return (
         <FinancialSimContext.Provider value={{
