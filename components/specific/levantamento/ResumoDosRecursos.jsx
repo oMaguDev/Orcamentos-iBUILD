@@ -111,7 +111,7 @@ const ResourcesIndex = () => {
                         <DataDisplay
                             key='Taxa a.m'
                             label='Taxa a.m'
-                            value={`${summary.jurosAM * 100}%`}
+                            value={`${(summary.jurosAM * 100).toFixed(2)}%`}
                         />
                         <DataDisplay
                             label='Quantidade de parcelas'

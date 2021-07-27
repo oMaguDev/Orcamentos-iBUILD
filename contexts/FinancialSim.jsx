@@ -90,7 +90,6 @@ export const FinancialSimContextProvider = ({ children }) => {
     }, [summary.valorFinanciamento, summary.amortizacao])
 
 
-
     return (
         <FinancialSimContext.Provider value={{
             resources,
