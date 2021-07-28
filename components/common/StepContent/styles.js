@@ -72,13 +72,16 @@ export const SlideContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-
+    
     ${(props) => props.small ? `
-    
         height: 100%;
-        // overflow: auto;
         margin-bottom: 30px;
-    
+        flex-direction: column;
+        justify-content: flex-start;
+        
+        max-height: 80vh;
+        overflow-y: auto;
+        overflow-x: hidden;
     ` : ''}
 
 `

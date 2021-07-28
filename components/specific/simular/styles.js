@@ -148,6 +148,13 @@ export const ExternalWallItem= styled.div`
             border: solid 3px ${props.theme.colors.primary.green };
         }
     ` : ''}
+
+    ${(props) => props.small ? `
+    
+        min-height: 200px;
+        // width: 80%;
+    
+    ` : ''}
         
 `
 
@@ -157,10 +164,13 @@ export const ColouredBox = styled.div`
     color: #fff;
     margin: 0 5px;
     padding: 5px;
-
-    width: ${(props) => props.width ? `${props.width}` : '150px'};
+    
+    width: ${(props) => props.width ? `${props.width}` : '100%'};
     height: ${(props) => props.height ? `${props.height}` : '50px'};
-
+    
+    &:last-child {
+        margin: 0;
+    }
 
     .label {
         font-size: 0.7rem;

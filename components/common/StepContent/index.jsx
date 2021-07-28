@@ -14,6 +14,7 @@ const StepContent = ({ data, noStatusBox, small }) => {
             <>
                 {/* <Box height='50px'></Box> */}
                 <SlideContainer
+                    small
                     // width='100%'
                     // maxHeight='calc(100vh - 200px)'
                     // justifyContent='space-evenly'

@@ -72,7 +72,7 @@ const PavimentosEscadas = ({ small }) => {
                 // alignItems='flex-start'
                 // transform='translateX(200px)'
                 margin='0 0 30px'
-                maxHeight='85vh'
+                maxHeight='80vh'
                 overflow='auto'
             >
                 {/* <StepContentContainer

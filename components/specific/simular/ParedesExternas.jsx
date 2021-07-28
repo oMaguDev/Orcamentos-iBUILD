@@ -116,6 +116,7 @@ const ParedesExternas = ({ small }) => {
                 >
                     {paredes && paredes.map((e, i) => (
                         <ExternalWallItem
+                            small
                             primaryColor={e.color}
                             selected={simData.paredes === e.label}
                             onClick={() => setSimData({
