@@ -24,16 +24,11 @@ const Resources = () => {
 
     const { setActiveIndex } = useContext(ActiveIndexContext)
 
-    const { height, width } = useWindowDimensions()
 
-    useEffect(() => {
-        console.log('height: ', height)
-        console.log('width: ', width)
-    }, [height, width])
 
     return (
         <Flex
-            height='calc(100% - 40px)'
+            // height='calc(100% - 40px)'
         >
             <Carousel
                 fullScreen

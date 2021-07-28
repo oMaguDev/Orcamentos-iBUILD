@@ -63,6 +63,9 @@ const theme = {
         },
     },
     boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.16)',
+    breakpoints: {
+        md: '1112px'
+    }
 }
 
 function MyApp({ Component, pageProps }) {

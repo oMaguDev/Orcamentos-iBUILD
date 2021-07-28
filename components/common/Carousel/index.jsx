@@ -108,11 +108,15 @@ const Carousel = ({
         return (
             <Flex
                 column
-                width='calc(100% - 250px)'
-            // height='80vh'
-            style={{
-                alignSelf: 'normal'
-            }}
+                // width='calc(100% - 250px)'
+                width='100%'
+                maxWidth='1200px'
+                margin='20px'
+                // height='100vh'
+                // justifyContent='flex-start'
+                style={{
+                    alignSelf: 'normal'
+                }}
             >
                 <AliceCarousel
                     // mouseTracking
