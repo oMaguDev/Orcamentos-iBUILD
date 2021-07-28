@@ -151,11 +151,11 @@ const Levantamento = () => {
                     items={items}
                     page='levantamento'
                     lastSlideAction={() => {
-                        if (summary.valorImovel < 1) {
-                            setErrorMessage(true)
-                        } else {
+                        // if (summary.valorImovel < 1) {
+                            // setErrorMessage(true)
+                        // } else {
                             router.push('/simular')
-                        }
+                        // }
                     }}
                 />
                 {/* summary.notFilled && */}
@@ -180,11 +180,11 @@ const Levantamento = () => {
                     items={items}
                     page='levantamento'
                     lastSlideAction={() => {
-                        if (summary.valorImovel < 1) {
-                            setErrorMessage(true)
-                        } else {
+                        // if (summary.valorImovel < 1) {
+                            // setErrorMessage(true)
+                        // } else {
                             router.push('/simular')
-                        }
+                        // }
                     }}
                 />
                 {/* summary.notFilled && */}
