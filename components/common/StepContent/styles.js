@@ -62,4 +62,10 @@ export const SlideContainer = styled.div`
     align-items: center;
     justify-content: center;
 
+    ${(props) => props.small ? `
+    
+        height: 100%;
+    
+    ` : ''}
+
 `

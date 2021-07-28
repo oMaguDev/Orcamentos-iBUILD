@@ -109,7 +109,7 @@ const Carousel = ({
             <Flex
                 column
                 // width='calc(100% - 250px)'
-                width='100%'
+                width='calc(100% - 40px)'
                 maxWidth='1200px'
                 margin='20px'
                 // height='100vh'

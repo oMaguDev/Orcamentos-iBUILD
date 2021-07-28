@@ -20,13 +20,15 @@ const Main = () => {
                 width='100%'
                 maxWidth='800px'
                 // height='90%'
-                margin='auto'
+                // margin='auto'
                 alignItems='center'
                 justifyContent='center'
                 padding='20px'
             // overflow='auto'
             >
-                <Box>
+                <Box
+                    width='100%'
+                >
                     <TitleContainer>
                         <h4>
                             CHEGOU A HORA DE TER A SUA CASA!
