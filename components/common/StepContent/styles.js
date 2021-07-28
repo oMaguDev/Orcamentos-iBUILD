@@ -27,8 +27,11 @@ export const StepContentContainer = styled.div`
         width: 100%;
         max-width: 500px;
         overflow: visible;
+        // overflow-x: auto;
 
     ` : ''}
+
+    ${(props) => props.overflow ? `overflow: ${props.overflow};` : ''}
 
 `
 
@@ -73,6 +76,8 @@ export const SlideContainer = styled.div`
     ${(props) => props.small ? `
     
         height: 100%;
+        // overflow: auto;
+        margin-bottom: 30px;
     
     ` : ''}
 

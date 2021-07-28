@@ -502,18 +502,18 @@ const Simular = () => {
         <StepContent key={`${e.title}_step_content_vai`} data={e} small={small} />
     ))
 
-    items.unshift(<Telhas key='telhas_slide' />)
-    items.unshift(<ParedesExternas key='paredes_externas_slide' />)
-    items.unshift(<PavimentosEscadas key='pavimentos_e_escadas_slide' />)
-    items.unshift(<EstiloCasa key='estilo_casa_slide' />)
+    items.unshift(<Telhas key='telhas_slide' small={small} />)
+    items.unshift(<ParedesExternas key='paredes_externas_slide' small={small} />)
+    items.unshift(<PavimentosEscadas key='pavimentos_e_escadas_slide' small={small} />)
+    items.unshift(<EstiloCasa key='estilo_casa_slide' small={small} />)
 
-    items.push(<QuartosESuitesSlide />)
-    items.push(<LavabosSlide />)
-    items.push(<BanheirosSociaisSlide />)
-    items.push(<InstalacoesSlide />)
-    // items.push(<ConfortoSlide />)
-    // items.push(<AcabamentoSlide />)
-    // items.push(<ResumoImovelSlide />)
+    items.push(<QuartosESuitesSlide small={small} />)
+    items.push(<LavabosSlide small={small} />)
+    items.push(<BanheirosSociaisSlide small={small} />)
+    items.push(<InstalacoesSlide small={small} />)
+    // items.push(<ConfortoSlide small={small} />)
+    // items.push(<AcabamentoSlide small={small} />)
+    // items.push(<ResumoImovelSlide small={small} />)
 
     useEffect(() => {
         updateValues('garagem')
