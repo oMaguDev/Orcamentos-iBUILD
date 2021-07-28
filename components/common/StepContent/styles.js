@@ -22,6 +22,14 @@ export const StepContentContainer = styled.div`
         align-items: center;
     ` : ''}
 
+    ${(props) => props.small ? `
+    
+        width: 100%;
+        max-width: 500px;
+        overflow: visible;
+
+    ` : ''}
+
 `
 
 export const StepImageContainer = styled.div`

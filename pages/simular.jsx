@@ -17,6 +17,12 @@ import ResumoImovelSlide from "../components/specific/simular/ResumoImovel"
 import { calculateAreaGourmet, calculateAreaServico, calculateCozinha, calculateDespensa, calculateEscritorio, calculateGarage, calculateSala } from "../utils/calculate_room_value"
 import { RoomValuesContext } from '../contexts/RoomValues'
 import router from "next/router"
+import { breakpoints } from "../utils/breakpoints"
+import useWindowDimensions from "../hooks/useWindowDimensions"
+import { PinkContainer } from "../components/specific/levantamento/styles"
+import { Parag, Title2 } from "../components/Text"
+import { ParagraphsContainer } from "../components/common/StepperBackground/styles"
+import Button from "../components/common/Button"
 
 
 const Simular = () => {
@@ -487,9 +493,13 @@ const Simular = () => {
         },
     ]
 
+    const { width } = useWindowDimensions()
+    const small = width < breakpoints.md && width !== 0
+
+
 
     const items = steps.map((e, i) => e.customComponent ? e.customComponent : (
-        <StepContent key={`${e.title}_step_content_vai`} data={e} />
+        <StepContent key={`${e.title}_step_content_vai`} data={e} small={small} />
     ))
 
     items.unshift(<Telhas key='telhas_slide' />)
@@ -536,9 +546,9 @@ const Simular = () => {
     const updateValues = (slide) => {
         // console.log('simData[slide].value', simData[slide].value)
         // console.log('simData[slide].pattern', simData[slide].pattern)
-        
+
         if (simData[slide].pattern !== '') {
-            
+
             let valorAmbiente = 0
             switch (slide) {
                 case 'garagem':
@@ -548,60 +558,60 @@ const Simular = () => {
                         ...rooms,
                         garagem: valorAmbiente
                     })
-                break;
-                    
+                    break;
+
                 case 'sala':
                     valorAmbiente = calculateSala(simData.sala, baseSqMtr)
                     setRooms({
                         ...rooms,
                         sala: valorAmbiente
                     })
-                break;
-                    
+                    break;
+
                 case 'cozinha':
                     valorAmbiente = calculateCozinha(simData.cozinha, baseSqMtr)
                     setRooms({
                         ...rooms,
                         cozinha: valorAmbiente
                     })
-                break;
-                    
+                    break;
+
                 case 'areaGourmet':
                     valorAmbiente = calculateAreaGourmet(simData.areaGourmet, baseSqMtr)
                     setRooms({
                         ...rooms,
                         areaGourmet: valorAmbiente
                     })
-                break;
-                    
+                    break;
+
                 case 'areaServico':
                     valorAmbiente = calculateAreaServico(simData.areaServico, baseSqMtr)
                     setRooms({
                         ...rooms,
                         areaServico: valorAmbiente
                     })
-                break;
-                    
+                    break;
+
                 case 'despensa':
                     valorAmbiente = calculateDespensa(simData.despensa, baseSqMtr)
                     setRooms({
                         ...rooms,
                         despensa: valorAmbiente
                     })
-                break;
-                    
+                    break;
+
                 case 'escritorio':
                     valorAmbiente = calculateEscritorio(simData.escritorio, baseSqMtr)
                     setRooms({
                         ...rooms,
                         escritorio: valorAmbiente
                     })
-                break;
+                    break;
 
-                
-                    
+
+
                 default:
-                break;
+                    break;
             }
             const roomArea = simData[slide].value
             // console.log('roomArea: ', roomArea)
@@ -612,7 +622,48 @@ const Simular = () => {
         }
     }
 
+
     if (initial) {
+        if (small) {
+            return (
+                <>
+                    <Navbar />
+                    <PinkContainer>
+                        <Box
+                            margin='10px 0 40px'
+                            maxWidth='650px'
+                        >
+                            <Title2
+                                fontSize='3rem'
+                                margin='0'
+                            >
+                                Agora, vamos montar a sua casa?
+                            </Title2>
+                            <ParagraphsContainer>
+                                <Parag
+                                    textColor='white'
+                                >
+                                    Se você ainda não possui o projeto arquitetônico, não tem problema, a seguir faremos um passo a passo onde você poderá montar a sua casa projetando os cômodos do seu jeito.
+                                </Parag>
+                                <Parag
+                                    textColor='white'
+                                >
+                                    Se você já possuir o projeto arquitetônico, preencha normalmente as próximas etapas conforme seu projeto e ao final saiba quanto sua casa vai custar.
+                                </Parag>
+                            </ParagraphsContainer>
+                        </Box>
+                        <div>
+                            <Button
+                                onClick={() => setInitial(false)}
+                            >
+                                COMEÇAR
+                            </Button>
+                        </div>
+                    </PinkContainer>
+                </>
+            )
+        }
+
         return (
             <Flex
                 // alignItems='center'
@@ -638,6 +689,20 @@ const Simular = () => {
                     <img src="/images/Pessoas/Pessoas 6.svg" width='100%' height='100%' alt="" />
                 </Box>
             </Flex>
+        )
+    }
+
+    if (small) {
+        return (
+            <>
+                <Navbar />
+                <Carousel
+                    fullScreen
+                    items={items}
+                    page='simular'
+                    lastSlideAction={() => router.push('/cadastro')}
+                />
+            </>
         )
     }
 
