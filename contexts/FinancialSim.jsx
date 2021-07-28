@@ -41,6 +41,8 @@ export const FinancialSimContextProvider = ({ children }) => {
             0
         ],
         amortizacao: 0,
+
+        notFilled: true,
     })
 
 

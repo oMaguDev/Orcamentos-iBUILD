@@ -1,4 +1,4 @@
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import RadioIconButtons from "../components/common/RadioIconButtons"
 import RadioButtons from "../components/common/RadioButtons"
 import { Box, Flex, Layout, TitleContainer } from "../components/Containers"
@@ -9,6 +9,7 @@ import Second from "../components/specific/recursos/Second"
 import { useRouter } from 'next/router'
 import { ActiveIndexContext } from "../contexts/activeIndex"
 import { SimulationDataContext } from "../contexts/SimulationData"
+import useWindowDimensions from '../hooks/useWindowDimensions'
 
 
 const Resources = () => {
@@ -22,6 +23,13 @@ const Resources = () => {
     const router = useRouter()
 
     const { setActiveIndex } = useContext(ActiveIndexContext)
+
+    const { height, width } = useWindowDimensions()
+
+    useEffect(() => {
+        console.log('height: ', height)
+        console.log('width: ', width)
+    }, [height, width])
 
     return (
         <Flex
