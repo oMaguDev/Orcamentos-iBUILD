@@ -19,12 +19,18 @@ export default function useWindowDimensions() {
         height: 0,
         width: 0
     })
+    
+    function handleResize() {
+        setWindowDimensions(getWindowDimensions())
+    }
 
     useEffect(() => {
-        function handleResize() {
-            setWindowDimensions(getWindowDimensions())
+        if (window && windowDimensions.width === 0) {
+            handleResize()
         }
+    }, [])
 
+    useEffect(() => {
         window.addEventListener('resize', handleResize)
         return () => window.removeEventListener('resize', handleResize)
     }, [])
