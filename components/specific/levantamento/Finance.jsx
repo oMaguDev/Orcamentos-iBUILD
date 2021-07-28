@@ -89,6 +89,7 @@ const Finance = ({ small }) => {
                     key={data.title}
                 >
                     <StepContentContainer
+                    small
                         key={`${data.title}_step_content_container`}
                     >
                         <TitleContainer

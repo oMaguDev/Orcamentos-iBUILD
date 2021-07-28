@@ -58,7 +58,7 @@ const Levantamento = () => {
     ]
 
     if (startPage) {
-        if (width < breakpoints.md && width !== 0) {
+        if (small) {
             return (
                 <>
                     <Navbar />
@@ -137,7 +137,7 @@ const Levantamento = () => {
         }
     }
 
-    if (width < breakpoints.md && width !== 0) {
+    if (small) {
         return (
             <>
                 <Navbar />
