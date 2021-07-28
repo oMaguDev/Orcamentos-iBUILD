@@ -56,7 +56,7 @@ export const OptionItem = styled.div`
 
 export const OptionsContainer = styled.div`
 
-  margin:  20px 0;
+  margin: 20px 0;
 
   display: flex;
   justify-content: flex-start;
@@ -77,6 +77,9 @@ export const OptionsContainer = styled.div`
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+
+    width: 100%;
+
   }
 `
 

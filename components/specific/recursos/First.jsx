@@ -55,7 +55,7 @@ const First = () => {
             <Flex
                 column
                 textAlign='left'
-                // width='100%'
+                width='100%'
                 // height='100%' //'calc(100% - 100px)'
                 // maxWidth='600px'
                 // margin='0'
