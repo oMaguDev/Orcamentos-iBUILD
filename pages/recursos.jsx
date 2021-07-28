@@ -10,20 +10,22 @@ import { useRouter } from 'next/router'
 import { ActiveIndexContext } from "../contexts/activeIndex"
 import { SimulationDataContext } from "../contexts/SimulationData"
 import useWindowDimensions from '../hooks/useWindowDimensions'
+import { breakpoints } from "../utils/breakpoints"
 
 
 const Resources = () => {
 
+    const { width } = useWindowDimensions()
+    const small = width < breakpoints.md && width !== 0
 
     const carouselItems = [
-        <First key='resources_slide_1' />,
-        <Second key='fist_2' />,
+        <First key='resources_slide_1' small={small} />,
+        <Second key='fist_2' small={small} />,
     ]
 
     const router = useRouter()
 
     const { setActiveIndex } = useContext(ActiveIndexContext)
-
 
 
     return (

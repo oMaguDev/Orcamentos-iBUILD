@@ -81,6 +81,13 @@ export const OptionsContainer = styled.div`
     width: 100%;
 
   }
+
+  ${(props) => props.small ? `
+    justify-content: flex-start;
+    align-items: flex-start;
+    max-width: calc(100vw - 40px);
+    overflow-x: auto;
+  ` : ''}
 `
 
 

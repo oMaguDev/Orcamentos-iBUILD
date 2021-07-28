@@ -9,7 +9,7 @@ import useWindowDimensions from "../../../hooks/useWindowDimensions"
 import { breakpoints } from "../../../utils/breakpoints"
 
 
-const Second = () => {
+const Second = ({ small }) => {
 
     const [activeLand, setActiveLand] = useState(null)
     const [activeProject, setActiveProject] = useState(null)
@@ -17,7 +17,6 @@ const Second = () => {
 
     const { resources, setResources } = useContext(FinancialSimContext)
 
-    const { width } = useWindowDimensions()
 
 
     const iconOptionsLand = [
@@ -56,7 +55,7 @@ const Second = () => {
         },
     ]
 
-    if (width < breakpoints.md && width !== 0) {
+    if (small) {
         return (
             <Flex
                 column
@@ -67,7 +66,7 @@ const Second = () => {
                 margin='20px 0 0 0'
                 alignItems='flex-start'
                 justifyContent='flex-start'
-                padding='20px'
+                // padding='20px'
             >
                 <TitleContainer>
                     <h4>
@@ -78,6 +77,7 @@ const Second = () => {
                     </h1>
                 </TitleContainer>
                 <RadioIconButtons
+                    small
                     options={iconOptionsLand}
                     active={resources.land_status}
                     setActive={(newValue) => setResources({
@@ -88,6 +88,7 @@ const Second = () => {
                     title='TERRENO'
                 />
                 <RadioIconButtons
+                    small
                     options={iconOptionsProject}
                     active={resources.project_status}
                     setActive={(newValue) => setResources({

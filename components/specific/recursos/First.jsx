@@ -8,13 +8,12 @@ import useWindowDimensions from "../../../hooks/useWindowDimensions"
 import { breakpoints } from '../../../utils/breakpoints'
 
 
-const First = () => {
+const First = ({ small }) => {
     // const [active, setActive] = useState(null)
     // const [hasSimulated, setHasSimulated] = useState('')
 
     const { resources, setResources } = useContext(FinancialSimContext)
 
-    const { width } = useWindowDimensions()
 
     // useEffect(() => {
     //     console.log('height: ', height)
@@ -50,7 +49,7 @@ const First = () => {
         },
     ]
 
-    if (width < breakpoints.md && width !== 0) {
+    if (small) {
         return (
             <Flex
                 column
@@ -62,7 +61,7 @@ const First = () => {
                 margin='20px 0 0 0'
                 alignItems='flex-start'
                 justifyContent='space-evenly'
-                padding='16px'
+                // padding='16px'
             >
                 <TitleContainer>
                     <h4>
@@ -73,6 +72,7 @@ const First = () => {
                     </h1>
                 </TitleContainer>
                 <RadioIconButtons
+                    small
                     options={iconOptions}
                     active={resources.resourcesSelect}
                     setActive={(newValue) => setResources({

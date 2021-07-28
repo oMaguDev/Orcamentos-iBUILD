@@ -17,7 +17,8 @@ const RadioIconButtons = ({
     active,
     setActive,
     withBorderBottom = false,
-    title
+    title,
+    small
 }) => {
 
     // const [select, setSelect] = useState(null);
@@ -27,19 +28,52 @@ const RadioIconButtons = ({
     // };
     // console.log('options: ', options)
 
+    if (small) {
+        return (
+            <OptionsContainer
+                withBorderBottom={withBorderBottom}
+                small
+            >
+                {title && (
+                    <Box
+                        // margin='0 16px 0 0'
+                    >
+                        <h2 style={{ margin: '0' }}>{title}</h2>
+                    </Box>
+                )}
+                <Flex
+                    alignItems='flex-start'
+                    justifyContent='flex-start'
+                >
+                    {options && options.map((e, i) => (
+                        <OptionItem key={e.label}>
+                            <IconContainer
+                                onClick={() => setActive(e.value)}
+                                active={active === e.value}
+                            >
+                                <img src={e.iconSrc} alt="" />
+                            </IconContainer>
+                            <p>{e.label.toUpperCase()}</p>
+                        </OptionItem>
+                    ))}
+                </Flex>
+            </OptionsContainer>
+        )
+    }
+
     return (
         <OptionsContainer withBorderBottom={withBorderBottom}>
             <Box
                 margin='0 16px 0 0'
             >
-                { title && (
-                    <h2>{ title }</h2>
+                {title && (
+                    <h2>{title}</h2>
                 )}
             </Box>
             <Flex
                 alignItems='flex-start'
             >
-                { options && options.map((e, i) => (
+                {options && options.map((e, i) => (
                     <OptionItem key={e.label}>
                         <IconContainer
                             onClick={() => setActive(e.value)}
