@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react";
+import { calculateLastSac } from "../utils/calculate_SAC";
 import { pmt } from '../utils/pmt'
 
 
@@ -71,7 +72,7 @@ export const FinancialSimContextProvider = ({ children }) => {
     }, [resources.parcelas, summary.valorFinanciamento])
 
     useEffect(() => {
-        if (summary.valorFinanciamento > 0) {
+        if (summary.valorFinanciamento > 0 && resources.parcelas !== '') {
             const jurosCalculados = summary.valorFinanciamento * summary.jurosAM
             const seguroPrestamista =  summary.valorFinanciamento * summary.prestamista
             
@@ -81,8 +82,10 @@ export const FinancialSimContextProvider = ({ children }) => {
 
             
             const primeiraParcela = jurosCalculados + summary.amortizacao + seguroPrestamista + summary.txAdm
+            const ultimaParcela = calculateLastSac(summary.valorFinanciamento, resources.parcelas, summary.amortizacao)
             const parcelas = [...summary.parcelaSAC]
             parcelas[0] = primeiraParcela
+            parcelas[1] = ultimaParcela
             console.log('parcelas: ', parcelas)
             setSummary({
                 ...summary,
