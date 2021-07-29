@@ -30,6 +30,7 @@ const Levantamento = () => {
 
 
     const { width } = useWindowDimensions()
+    const small = width < breakpoints.md && width !== 0
 
     useEffect(() => {
         console.log('formatMoney(parseFloat(resources.renda)): ', formatMoney(parseFloat(resources.renda)))
@@ -49,7 +50,6 @@ const Levantamento = () => {
         'Resumo',
     ]
 
-    const small = width < breakpoints.md && width !== 0
 
     const items = [
         <Personal small={small} />,
