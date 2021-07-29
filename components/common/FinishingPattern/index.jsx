@@ -10,6 +10,7 @@ const FinishingPattern = ({
     setPattern,
     confort,
     setConfort,
+    small,
 }) => {
 
     const patterns = [
@@ -45,9 +46,12 @@ const FinishingPattern = ({
                         color={e.color}
                         active={pattern === e.label}
                         onClick={() => setPattern(e.label)}
+                        small={small}
                     >
-                        <Flex>
-                            { e.icon }
+                        <Flex
+                            // fontSize={small ? '0.5rem' : undefined}
+                        >
+                            { small ? null : e.icon }
                             { e.label.toUpperCase() }
                         </Flex>
                     </StandardBox>

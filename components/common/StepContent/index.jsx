@@ -92,6 +92,7 @@ const StepContent = ({ data, noStatusBox, small }) => {
                                         setPattern={data.withFinishingPattern.setPattern}
                                         confort={data.withFinishingPattern.confort}
                                         setConfort={data.withFinishingPattern.setConfort}
+                                        small={small}
                                     />
                                 )}
                                 <StatusBox />
