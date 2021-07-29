@@ -48,13 +48,14 @@ export const Flex = styled.div`
     ${(props) => props.alignItems ? `align-items: ${props.alignItems};` : ''}
     ${(props) => props.justifyContent ? `justify-content: ${props.justifyContent};` : ''}
     ${(props) => props.overflow ? `overflow: ${props.overflow};` : ''}
+    ${(props) => props.fontSize ? `font-size: ${props.fontSize};` : ''}
 `
 
 
 export const Box = styled.div`
 
-    ${(props) => props.width ? `width: ${props.width};` : ''}
-    ${(props) => props.height ? `height: ${props.height};` : ''}
+${(props) => props.width ? `width: ${props.width};` : ''}
+${(props) => props.height ? `height: ${props.height};` : ''}
 
     ${(props) => props.padding ? `padding: ${props.padding};` : ''}
     ${(props) => props.margin ? `margin: ${props.margin};` : ''}
@@ -115,5 +116,7 @@ export const LogoMedium = styled.img`
 
     height: 55%;
     // width: 100%;
+    ${(props) => props.width ? `width: ${props.width};` : ''}
+
 
 `

@@ -11,6 +11,10 @@ export const NavContainer = styled.div`
 
     z-index: 10;
 
+    @media(max-width: ${({ theme }) => theme.breakpoints.md}) {
+        // width: 100vw;
+        position: relative;
+    }
 `
 
 export const StyledNav = styled.nav`
@@ -24,6 +28,11 @@ export const StyledNav = styled.nav`
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    @media(max-width: ${({ theme }) => theme.breakpoints.sm}) {
+        width: 100%;
+        // min-width: 100vw;
+    }
     
 `
     
@@ -48,6 +57,10 @@ export const Triangle = styled.div`
     border-width: 50px 15px 0 0;
     border-color: ${({ theme }) => theme.colors.primary.darkPurple } transparent transparent transparent;
     // border-color: #301934 transparent transparent transparent;
+
+    @media(max-width: ${({ theme }) => theme.breakpoints.sm}) {
+        display: none;
+    }
 
 `
 

@@ -13,7 +13,7 @@ import { RoomValuesContext } from "../../../contexts/RoomValues"
 import { calculateBathroomArea, calculateLavabos } from "../../../utils/calculate_room_value"
 
 
-const LavabosSlide = ({ data }) => {
+const LavabosSlide = ({ data, small }) => {
 
     // const [quartos, setQuartos] = useState([])
     // const [rows, setRows] = useState([1])
@@ -45,6 +45,73 @@ const LavabosSlide = ({ data }) => {
         })
 
     }, [simData.lavabos])
+
+    if (small) {
+        return (
+            <>
+                {/* <Box height='50px'></Box> */}
+                <SlideContainer
+                    key={'Lavabos'}
+                    small
+                >
+                    <StepContentContainer
+                        small
+                        key={`${'Lavabos'}_step_content_container`}
+                    >
+                        <TitleContainer
+                            key={`${'Lavabos'}_title_container`}
+                        >
+                            <h4>{'Escolha a quantidade e o tamanho dos'.toUpperCase()}</h4>
+                            <h2>{'Lavabos'.toUpperCase()}</h2>
+                        </TitleContainer>
+    
+                        <MiddleContainer
+                            key={`${'Lavabos'}_middle_container`}
+                        >
+                            <Flex
+                                width='100%'
+                                margin='15px 0'
+                                justifyContent='flex-start'
+                            >
+                                <RadioButtonsList
+                                    options={sizeOptions}
+                                    entity={simData.lavabos.value}
+                                    setEntity={newValue => setSimData({
+                                        ...simData,
+                                        lavabos: {
+                                            ...simData.lavabos,
+                                            value: newValue
+                                        }
+                                    })}
+                                />
+                            </Flex>
+                        </MiddleContainer>
+                        <>
+                            <FinishingPattern
+                                confort={simData.lavabos.confort}
+                                setConfort={newValue => setSimData({
+                                    ...simData,
+                                    lavabos: {
+                                        ...simData.lavabos,
+                                        confort: newValue
+                                    }
+                                })}
+                                pattern={simData.lavabos.pattern}
+                                setPattern={newValue => setSimData({
+                                    ...simData,
+                                    lavabos: {
+                                        ...simData.lavabos,
+                                        pattern: newValue
+                                    }
+                                })}
+                            />
+                            <StatusBox />
+                        </>
+                    </StepContentContainer>
+                </SlideContainer>
+            </>
+        )
+    }
     
     return (
         <>

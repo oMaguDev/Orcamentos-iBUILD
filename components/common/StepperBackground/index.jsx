@@ -5,7 +5,14 @@ import CustomStepper from "../CustomStepper"
 import { Background, StepDot, StepLine, StepperContainer, Triangle, StepDotsContainer, Label, MainTitle, ParagraphsContainer } from "./styles"
 
 
-const Stepper = ({ steps, title, pinkDisplay, onStart, parags, page }) => {
+const Stepper = ({
+    steps,
+    title,
+    pinkDisplay,
+    onStart,
+    parags,
+    page
+}) => {
 
     if (pinkDisplay) {
         return (

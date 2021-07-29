@@ -9,7 +9,7 @@ import { getCityByUF, getUFs } from "../../../services/geoClient"
 import { FinancialSimContext } from "../../../contexts/FinancialSim"
 
 
-const Finance = ({ noStatusBox }) => {
+const Finance = ({ small }) => {
 
     const { resources, setResources } = useContext(FinancialSimContext)
     const { user, setUser } = useContext(UserContext)
@@ -75,6 +75,52 @@ const Finance = ({ noStatusBox }) => {
                 type: 'number'
             },
         ]
+    }
+
+    if (small) {
+        return (
+            <>
+                {/* <Box height='50px'></Box> */}
+                <SlideContainer
+                    // width='100%'
+                    // maxHeight='calc(100vh - 200px)'
+                    // justifyContent='space-evenly'
+                    small
+                    key={data.title}
+                >
+                    <StepContentContainer
+                    small
+                        key={`${data.title}_step_content_container`}
+                    >
+                        <TitleContainer
+                            // margin='50px 0 0'
+                            key={`${data.title}_title_container`}
+                        >
+                            <h4>{data.caption.toUpperCase()}</h4>
+                            <h2>{data.title.toUpperCase()}</h2>
+                            <p>{data.subtitle}</p>
+                        </TitleContainer>
+                        <MiddleContainer
+                            key={`${data.title}_middle_container`}
+                        >
+                            {data.inputs && data.inputs.map((e, i) => (
+                                <Input
+                                    value={e.value}
+                                    onChange={(event) => e.onChange(event.target.value)}
+                                    label={e.label}
+                                    placeholder={e.placeholder}
+                                    type={e.type ? e.type : 'text'}
+                                    margin='10px 0'
+                                    width={e.width ? e.width : '100%'}
+                                    small
+                                    key={e.label}
+                                />
+                            ))}
+                        </MiddleContainer>
+                    </StepContentContainer>
+                </SlideContainer>
+            </>
+        )
     }
 
     return (

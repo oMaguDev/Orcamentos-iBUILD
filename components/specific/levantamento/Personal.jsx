@@ -9,7 +9,7 @@ import { getCityByUF, getUFs } from "../../../services/geoClient"
 import { FinancialSimContext } from "../../../contexts/FinancialSim"
 
 
-const Personal = ({ noStatusBox }) => {
+const Personal = ({ small }) => {
 
     const [states, setStates] = useState([{
         label: 'UF',
@@ -125,6 +125,91 @@ const Personal = ({ noStatusBox }) => {
         }
     }, [user.uf])
 
+    if (small) {
+        return (
+            <>
+                {/* <Box height='50px'></Box> */}
+                <SlideContainer
+                    // width='100%'
+                    // maxHeight='calc(100vh - 200px)'
+                    // justifyContent='space-evenly'
+                    small
+                    key={data.title}
+                >
+                    <StepContentContainer
+                        small
+                        key={`${data.title}_step_content_container`}
+                    >
+                        <TitleContainer
+                            // margin='50px 0 0'
+                            key={`${data.title}_title_container`}
+                        >
+                            <h4>{data.caption.toUpperCase()}</h4>
+                            <h2>{data.title.toUpperCase()}</h2>
+                            <p>{data.subtitle}</p>
+                        </TitleContainer>
+                        <MiddleContainer
+                            key={`${data.title}_middle_container`}
+                        >
+    
+                            {data.inputs && data.inputs.map((e, i) => (
+                                <Input
+                                    value={e.value}
+                                    onChange={(event) => e.onChange(event.target.value)}
+                                    label={e.label}
+                                    placeholder={e.placeholder}
+                                    type={e.type ? e.type : 'text'}
+                                    margin='10px 0'
+                                    width={e.width ? e.width : '100%'}
+                                    small
+                                    key={e.label}
+                                />
+                            ))}
+                            {/* <Select /> */}
+                            <Box
+                                margin='10px 0 0'
+                            >
+                                {('Local de construção').toUpperCase()}
+                            </Box>
+                            <Flex
+                                width='100%'
+                                justifyContent='space-evenly'
+                            >
+                                <Select
+                                    // label='Local de construção'
+                                    // placeholder='Insira o seu telefone com DDD'
+                                    value={user.uf}
+                                    onChange={newValue => setUser({
+                                        ...user,
+                                        uf: newValue.target.value
+                                    })}
+                                    options={states}
+                                    key='uf_input'
+                                    small
+                                    margin='10px 10px 10px 0'
+                                    width='25%'
+                                />
+                                <Select
+                                    // label='CIDADE'
+                                    // placeholder='Insira o telefone com DDD'
+                                    value={user.city}
+                                    onChange={newValue => setUser({
+                                        ...user,
+                                        city: newValue.target.value
+                                    })}
+                                    options={cities}
+                                    key='city_input'
+                                    small
+                                    margin='10px 0 10px 10px'
+                                    width='75%'
+                                />
+                            </Flex>
+                        </MiddleContainer>
+                    </StepContentContainer>
+                </SlideContainer>
+            </>
+        )
+    }
 
     return (
         <>

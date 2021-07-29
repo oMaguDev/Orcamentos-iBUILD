@@ -37,6 +37,12 @@ export const StandardBox = styled.div`
         border: solid 2px ${props.theme.colors.primary[props.color]};
         color: ${props.theme.colors.text.white };
     ` : ``}
+
+    ${(props) => props.small ? `
+        width: calc(100% - 5px);
+        padding: 5px 2px;
+    ` : ''}
+
 `
 
 export const FinishingPatternContainer = styled.div`

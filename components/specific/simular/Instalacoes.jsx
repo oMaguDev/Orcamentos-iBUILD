@@ -15,7 +15,7 @@ import { SimulationStatusContext } from "../../../contexts/SimulationStatus"
 import { calculateInstalacoes, calculateInstalacoesPercentagem } from "../../../utils/calculate_room_value"
 
 
-const InstalacoesSlide = ({ data }) => {
+const InstalacoesSlide = ({ data, small }) => {
 
     // const [instalacoes, setInstalacoes] = useState({
     //     hidraulica: '',
@@ -95,6 +95,67 @@ const InstalacoesSlide = ({ data }) => {
                 label: '110 / 220',
             },
         ]
+    }
+
+    if (small) {
+        return (
+            <>
+                <SlideContainer
+                    key={'Hidráulicas'}
+                    small
+                >
+                    <StepContentContainer
+                        small
+                        key={`${'Hidráulicas'}_step_content_container`}
+                    >
+                        <TitleContainer
+                            key={`${'Hidráulicas'}_title_container`}
+                        >
+                            <h4>{'Escolha o tipo de instalações'.toUpperCase()}</h4>
+                            <h2>{'Hidráulicas'.toUpperCase()}</h2>
+                        </TitleContainer>
+                        <RadioButtons
+                            options={hidraulica.options}
+                            onChange={hidraulica.onChange}
+                            select={hidraulica.value}
+                        />
+                        <TitleContainer
+                            key={`${'Elétrica'}_title_container`}
+                            margin='20px 0 0'
+                        >
+                            <h4>{'Escolha qual será a voltagem'.toUpperCase()}</h4>
+                            <h2>{'Elétrica*'.toUpperCase()}</h2>
+                        </TitleContainer>
+                        <Box
+                            margin='0 0 20px'
+                        >
+                            <RadioButtons
+                                options={eletrica.options}
+                                onChange={eletrica.onChange}
+                                select={eletrica.value}
+                            />
+                        </Box>
+                        <>
+                            <StatusBox />
+                            <ExplainingP
+                                fontSize='0.6rem'
+                                margin='8px 0 0 0'
+                            >
+                                * não comtempla instalações de equipamentos como boiler, placas fotovoltaicas e etc.
+                            </ExplainingP>
+                            <ExplainingP
+                                fontSize='0.6rem'
+                                margin='0'
+                            >
+                                ** Considerado da entrada de energia até o quadro principal. Pontos por cômodo: 4 (quatro) pontos de tomada,
+                                2 (dois) pontos de iluminação (somente plafon simples), enfiação, conduítes, quadro de energia de até 4
+                                pontos de iluminação externa ao imóvel (arandela de parede simples).
+                            </ExplainingP>
+                        </>
+                    </StepContentContainer>
+                </SlideContainer>
+            </>
+        )
     }
 
     return (

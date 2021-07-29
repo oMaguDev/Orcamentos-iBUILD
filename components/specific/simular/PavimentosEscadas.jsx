@@ -8,7 +8,7 @@ import { SimulationDataContext } from "../../../contexts/SimulationData"
 // import Input from '../../form/Input'
 
 
-const PavimentosEscadas = () => {
+const PavimentosEscadas = ({ small }) => {
 
     const [active, setActive] = useState(null)
 
@@ -56,7 +56,85 @@ const PavimentosEscadas = () => {
 
     // const [pavimentos, setPavimentos] = useState('')
     const { simData, setSimData } = useContext(SimulationDataContext)
+
     
+    if (small) {
+        return (
+            <Flex
+            // column
+            //     width='100%'
+                key='pavimentos_escadas'
+            // maxHeight='95vh'
+            // overflow='auto'
+
+            column
+                justifyContent='flex-start'
+                // alignItems='flex-start'
+                // transform='translateX(200px)'
+                margin='0 0 30px'
+                maxHeight='80vh'
+                overflow='auto'
+            >
+                {/* <StepContentContainer
+                    small
+                    overflow='auto'
+                > */}
+                    <TitleContainer
+                        key='pavimentos_title'
+                        >
+                        <h4>ESCOLHA A QUANTIDADE DE</h4>
+                        <h2>PAVIMENTOS</h2>
+                        {/* <p>{data.subtitle}</p> */}
+                    </TitleContainer>
+                   
+                            <RadioButtons
+                                options={pavimentosOptions}
+                                onChange={(newValue) => {
+                                    console.log('newValue: ', newValue)
+                                    setSimData({
+                                        ...simData,
+                                        pavimentos: newValue
+                                    })
+                                }}
+                                select={simData.pavimentos}
+                                key='pavimentos_e_escadas_radio_buttons'
+                                />
+                    <TitleContainer
+                        margin='50px 0 0'
+                        key='escadas_title'
+                    >
+                        <h4>ESCOLHA O MODELO DA</h4>
+                        <h2>Escada</h2>
+                        <p>Apesar das ilustrações das escadas estarem retas, elas podem ter qualquer caminho, RETA, L ou U</p>
+                    </TitleContainer>
+                    <Flex
+                        // justifyContent='flex-start'
+                        // alignItems='flex-start'
+                        wrap='wrap'
+                    >
+                        { escadas && escadas.map((e, i) => (
+                                <HomeStylePicContainer
+                                    width='130px'
+                                    height='100px'
+                                    imageSrc={e.imageSrc}
+                                    key={e.id}
+                                    active={simData.escada === e.id}
+                                    onClick={() => setSimData({
+                                        ...simData,
+                                        escada: e.id
+                                    })}
+                                    >
+                                    <div>
+                                        <div>{ simData.escada === e.id ? <img src='/images/Ícones/Ícones 11.svg' /> : null}</div>
+                                    </div>
+                                    <p>{ e.label }</p>
+                                </HomeStylePicContainer>
+                            ))}
+                    </Flex>
+                {/* </StepContentContainer> */}
+            </Flex>
+        )
+    }
 
     return (
         <Flex

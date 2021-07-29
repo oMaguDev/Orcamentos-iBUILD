@@ -63,6 +63,10 @@ const theme = {
         },
     },
     boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.16)',
+    breakpoints: {
+        md: '1112px',
+        sm: '672px'
+    }
 }
 
 function MyApp({ Component, pageProps }) {
@@ -70,6 +74,7 @@ function MyApp({ Component, pageProps }) {
         <>
             <Head>
                 <title>Orçamento Express | iBuild </title>
+                  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             </Head>
             <GlobalStyle />
             <UserContextProvider>

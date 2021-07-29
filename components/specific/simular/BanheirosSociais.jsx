@@ -13,7 +13,7 @@ import { RoomValuesContext } from "../../../contexts/RoomValues"
 import { calculateBanheiros, calculateBathroomArea } from "../../../utils/calculate_room_value"
 
 
-const BanheirosSociaisSlide = ({ data }) => {
+const BanheirosSociaisSlide = ({ data, small }) => {
 
     const [quartos, setQuartos] = useState([])
     // const [rows, setRows] = useState([1])
@@ -44,6 +44,78 @@ const BanheirosSociaisSlide = ({ data }) => {
             })
         }
     }, [simData.banheiros])
+
+    if (small) {
+        return (
+            <>
+                <SlideContainer
+                    key={'Banheiros Sociais'}
+                    small
+                >
+                    <StepContentContainer
+                        small
+                        key={`${'Banheiros Sociais'}_step_content_container`}
+                    >
+                        <TitleContainer
+                            key={`${'Banheiros Sociais'}_title_container`}
+                        >
+                            <h4>{'Escolha a quantidade e o tamanho dos'.toUpperCase()}</h4>
+                            <h2>{'Banheiros Sociais'.toUpperCase()}</h2>
+                        </TitleContainer>
+    
+                        <MiddleContainer
+                            key={`${'Banheiros Sociais'}_middle_container`}
+                        >
+                            <Flex
+                                width='100%'
+                                margin='15px 0'
+                                justifyContent='flex-start'
+                            >
+                                <RadioButtonsList
+                                    labels={[
+                                        'NÃO QUERO',
+                                        'PEQUENO (APROX. 4 M2)',
+                                        'MÉDIO (APROX. 8 M2)',
+                                        'GRANDE (APROX. 12 M2)'
+                                    ]}
+                                    options={sizeOptions}
+                                    entity={simData.banheiros.value}
+                                    setEntity={newValue => setSimData({
+                                        ...simData,
+                                        banheiros: {
+                                            ...simData.banheiros,
+                                            value: newValue
+                                        }
+                                    })}
+                                />
+                            </Flex>
+                        </MiddleContainer>
+                        <>
+                            <FinishingPattern
+                                confort={simData.banheiros.confort}
+                                setConfort={newValue => setSimData({
+                                    ...simData,
+                                    banheiros: {
+                                        ...simData.banheiros,
+                                        confort: newValue
+                                    }
+                                })}
+                                pattern={simData.banheiros.pattern}
+                                setPattern={newValue => setSimData({
+                                    ...simData,
+                                    banheiros: {
+                                        ...simData.banheiros,
+                                        pattern: newValue
+                                    }
+                                })}
+                            />
+                            <StatusBox />
+                        </>
+                    </StepContentContainer>
+                </SlideContainer>
+            </>
+        )
+    }
 
     return (
         <>

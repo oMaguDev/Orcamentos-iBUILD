@@ -10,10 +10,10 @@ export const SimulationStatusContextProvider = ({ children }) => {
 
     const [simStatus, setSimStatus] = useState({
         funds: {
-            total: 1000000,
+            total: 0,
             current: 0,
             previous: 0,
-            available: 1000000,
+            available: 0,
         }
     })
 

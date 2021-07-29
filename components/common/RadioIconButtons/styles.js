@@ -56,22 +56,38 @@ export const OptionItem = styled.div`
 
 export const OptionsContainer = styled.div`
 
-  margin:  20px 0;
+  margin: 20px 0;
 
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
-
+  
   ${(props) => props.withBorderBottom ? `
-    padding: 0 0 20px;
-    border-bottom: solid 2px ${props.theme.colors.text.neutral400};
+  padding: 0 0 20px;
+  border-bottom: solid 2px ${props.theme.colors.text.neutral400};
   ` : ''}
-
+  
   h2 {
     font-size: 3rem;
     font-weight: 200;
     letter-spacing: 2px;
   }
+  
+  @media(max-width: ${({ theme }) => theme.breakpoints.md }) {
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+    width: 100%;
+
+  }
+
+  ${(props) => props.small ? `
+    justify-content: flex-start;
+    align-items: flex-start;
+    max-width: calc(100vw - 40px);
+    overflow-x: auto;
+  ` : ''}
 `
 
 

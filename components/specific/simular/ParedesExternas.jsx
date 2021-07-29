@@ -13,7 +13,7 @@ import { Circle, List, SketchLogo } from 'phosphor-react'
 import { SimulationDataContext } from "../../../contexts/SimulationData"
 
 
-const ParedesExternas = () => {
+const ParedesExternas = ({ small }) => {
 
     // const [active, setActive] = useState(null)
 
@@ -93,6 +93,110 @@ const ParedesExternas = () => {
             imageSrc: "/images/paredes/Parede-Premium.png"
         },
     ]
+
+    if (small) {
+        return (
+            <Flex
+                column
+                // alignItems='flex-start'
+                // transform='translateX(200px)'
+                // margin='20px 0 0 100px'
+            >
+                <TitleContainer>
+                    <h4>ESCOLHA O PADRÃO DAS</h4>
+                    <h1>PAREDES EXTERNAS</h1>
+                </TitleContainer>
+                <Flex
+                    // column
+                    width='100%'
+                    // maxWidth='1050px'
+                    margin='0 0 30px'
+                    justifyContent='flex-start'
+                    overflow='auto'
+                >
+                    {paredes && paredes.map((e, i) => (
+                        <ExternalWallItem
+                            small
+                            primaryColor={e.color}
+                            selected={simData.paredes === e.label}
+                            onClick={() => setSimData({
+                                ...simData,
+                                paredes: e.label
+                            })}
+                        >
+                            <Flex
+                                width='100%'
+                                column
+                            >
+                                <Flex>
+                                    {i === 0 ? (
+                                        <List size={24} />
+                                    ) : (i === 1 ? (
+                                        <Circle size={24} />
+                                    ) : (
+                                        <SketchLogo size={24} />
+                                    ))}
+                                    <h3>
+                                        {e.label.toUpperCase()}
+                                    </h3>
+                                </Flex>
+                                <Flex
+                                    width='100%'
+                                >
+                                    {e.boxes.map((el, index) => (
+                                        <ColouredBox
+                                            primaryColor={e.color}
+                                        >
+                                            <div className="label">
+                                                {el.label.toUpperCase()}
+                                            </div>
+                                            <div className="value">
+                                                {el.value.toUpperCase()}
+                                            </div>
+                                        </ColouredBox>
+                                    ))}
+                                </Flex>
+                                <Flex
+                                    width='100%'
+                                    alignItems='flex-start'
+                                >
+                                    <ExternalWallImg src={e.imageSrc} alt="" />
+                                    <WallCompositionContainer>
+                                        <h4>
+                                            COMPOSIÇÃO DA PAREDE:
+                                        </h4>
+                                        {e.composition.map((elem, ind) => (
+                                            <Flex
+                                                className='compositionItem'
+                                                justifyContent='space-between'
+                                                alignItems='flex-start'
+                                                key={elem}
+                                                width='100%'
+                                            >
+                                                <CompositionListItemTag
+                                                    primaryColor={e.color}
+                                                >
+                                                    [{ind + 1}]
+                                                </CompositionListItemTag>
+                                                <CompositionListItem>
+                                                    {elem}
+                                                </CompositionListItem>
+                                            </Flex>
+                                        ))}
+                                    </WallCompositionContainer>
+                                </Flex>
+                            </Flex>
+                            <SelectedIconContainer
+                                selected={simData.paredes === e.label}
+                            >
+                                <img src="/images/Ícones/Ícones 11.svg" alt="" />
+                            </SelectedIconContainer>
+                        </ExternalWallItem>
+                    ))}
+                </Flex>
+            </Flex>
+        )
+    }
 
     return (
         <Flex

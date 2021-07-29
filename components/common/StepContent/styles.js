@@ -22,6 +22,17 @@ export const StepContentContainer = styled.div`
         align-items: center;
     ` : ''}
 
+    ${(props) => props.small ? `
+    
+        width: 100%;
+        max-width: 500px;
+        overflow: visible;
+        // overflow-x: auto;
+
+    ` : ''}
+
+    ${(props) => props.overflow ? `overflow: ${props.overflow};` : ''}
+
 `
 
 export const StepImageContainer = styled.div`
@@ -61,5 +72,16 @@ export const SlideContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    
+    ${(props) => props.small ? `
+        height: 100%;
+        margin-bottom: 30px;
+        flex-direction: column;
+        justify-content: flex-start;
+        
+        max-height: 80vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+    ` : ''}
 
 `
