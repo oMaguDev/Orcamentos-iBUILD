@@ -269,7 +269,7 @@ export const baseAcabamentos = {
             porta: 724.16,
             esquadria: 353.08,
             loucas: 4051.16,
-            marmore: 640.6426,
+            marmore: 640.64260,
         },
         premium: {
             piso: 141.77,
