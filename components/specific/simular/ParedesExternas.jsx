@@ -100,9 +100,9 @@ const ParedesExternas = ({ small }) => {
         return (
             <Flex
                 column
-                // alignItems='flex-start'
-                // transform='translateX(200px)'
-                // margin='20px 0 0 100px'
+            // alignItems='flex-start'
+            // transform='translateX(200px)'
+            // margin='20px 0 0 100px'
             >
                 <TitleContainer>
                     <h4>ESCOLHA O PADRÃO DAS</h4>
@@ -162,8 +162,13 @@ const ParedesExternas = ({ small }) => {
                                     width='100%'
                                     alignItems='flex-start'
                                 >
-                                    {/* <ExternalWallImg src={e.imageSrc} alt={`Padrão de parede ${i + 1}`} key={`padrao_parede_${i + 1}`} /> */}
-                                    <Image src={e.imageSrc} height={254} width={180} alt='Padrão de parede' key={`padrao_parede_${i + 1}`} />
+                                    {/* alt={`Padrão de parede ${i + 1}`} */}
+                                    {/* <Box
+                                        width='100%'
+                                    > */}
+                                        <ExternalWallImg src={e.imageSrc} key={`padrao_parede_${i + 1}`} />
+                                    {/* </Box> */}
+                                    {/* <Image src={e.imageSrc} height={254} width={180} alt='Padrão de parede' key={`padrao_parede_${i + 1}`} /> */}
                                     <WallCompositionContainer>
                                         <h4>
                                             COMPOSIÇÃO DA PAREDE:
@@ -213,10 +218,10 @@ const ParedesExternas = ({ small }) => {
                 <h1>PAREDES EXTERNAS</h1>
             </TitleContainer>
             <Flex
-                // column
-                // width='100%'
-                // maxWidth='1050px'
-                // margin='30px 0'
+            // column
+            // width='100%'
+            // maxWidth='1050px'
+            // margin='30px 0'
 
             >
                 {paredes && paredes.map((e, i) => (
