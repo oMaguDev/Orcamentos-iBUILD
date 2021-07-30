@@ -46,7 +46,7 @@ const ParedesExternas = ({ small }) => {
                 'ACABAMENTO',
             ],
             color: 'pink',
-            imageSrc: "/images/paredes/Parede-Economy.jpeg"
+            imageSrc: "/images/paredes/paredeeconomy.jpeg"
         },
         {
             label: 'PAREDE STANDARD',
