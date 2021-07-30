@@ -12,6 +12,7 @@ import {
 import { Circle, List, SketchLogo } from 'phosphor-react'
 import { SimulationDataContext } from "../../../contexts/SimulationData"
 import Image from 'next/image'
+// import paredeEconomyImg from '../../../public/images/Paredes/Pa'
 
 
 const ParedesExternas = ({ small }) => {
@@ -45,7 +46,7 @@ const ParedesExternas = ({ small }) => {
                 'ACABAMENTO',
             ],
             color: 'pink',
-            imageSrc: "/images/paredes/Parede_Economy.png"
+            imageSrc: "/images/paredes/Parede-Economy.jpeg"
         },
         {
             label: 'PAREDE STANDARD',
@@ -68,7 +69,7 @@ const ParedesExternas = ({ small }) => {
                 'ACABAMENTO',
             ],
             color: 'purple',
-            imageSrc: "/images/paredes/Parede_Standard.png"
+            imageSrc: "/images/paredes/Parede-Standard.jpeg"
         },
         {
             label: 'PAREDE PREMIUM',
@@ -91,7 +92,7 @@ const ParedesExternas = ({ small }) => {
                 'ACABAMENTO',
             ],
             color: 'darkPurple',
-            imageSrc: "/images/paredes/Parede_Premium.png"
+            imageSrc: "/images/paredes/Parede-Premium.jpeg"
         },
     ]
 
@@ -161,8 +162,8 @@ const ParedesExternas = ({ small }) => {
                                     width='100%'
                                     alignItems='flex-start'
                                 >
-                                    <ExternalWallImg src={e.imageSrc} />
-                                    {/* <Image src={e.imageSrc} height={254} width={254} /> */}
+                                    <ExternalWallImg src={e.imageSrc} alt={`Padrão de parede ${i + 1}`} key={`padrao_parede_${i + 1}`} />
+                                    {/* <Image src={e.imageSrc} height={254} width={254} alt='Padrão de parede' key={`padrao_parede_${i + 1}`} /> */}
                                     <WallCompositionContainer>
                                         <h4>
                                             COMPOSIÇÃO DA PAREDE:
