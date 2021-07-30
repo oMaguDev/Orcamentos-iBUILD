@@ -162,8 +162,8 @@ const ParedesExternas = ({ small }) => {
                                     width='100%'
                                     alignItems='flex-start'
                                 >
-                                    <ExternalWallImg src={e.imageSrc} alt={`Padrão de parede ${i + 1}`} key={`padrao_parede_${i + 1}`} />
-                                    {/* <Image src={e.imageSrc} height={254} width={254} alt='Padrão de parede' key={`padrao_parede_${i + 1}`} /> */}
+                                    {/* <ExternalWallImg src={e.imageSrc} alt={`Padrão de parede ${i + 1}`} key={`padrao_parede_${i + 1}`} /> */}
+                                    <Image src={e.imageSrc} height={254} width={180} alt='Padrão de parede' key={`padrao_parede_${i + 1}`} />
                                     <WallCompositionContainer>
                                         <h4>
                                             COMPOSIÇÃO DA PAREDE:
