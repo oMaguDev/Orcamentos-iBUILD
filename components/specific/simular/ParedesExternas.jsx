@@ -160,7 +160,7 @@ const ParedesExternas = ({ small }) => {
                                     width='100%'
                                     alignItems='flex-start'
                                 >
-                                    <ExternalWallImg src={e.imageSrc} alt="" />
+                                    <ExternalWallImg src={`${e.imageSrc}`} alt="" />
                                     <WallCompositionContainer>
                                         <h4>
                                             COMPOSIÇÃO DA PAREDE:
