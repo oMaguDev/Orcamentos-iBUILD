@@ -11,6 +11,7 @@ import {
 } from "./styles"
 import { Circle, List, SketchLogo } from 'phosphor-react'
 import { SimulationDataContext } from "../../../contexts/SimulationData"
+import Image from 'next/image'
 
 
 const ParedesExternas = ({ small }) => {
@@ -160,7 +161,8 @@ const ParedesExternas = ({ small }) => {
                                     width='100%'
                                     alignItems='flex-start'
                                 >
-                                    <ExternalWallImg src={`${e.imageSrc}`} alt="" />
+                                    {/* <ExternalWallImg src={e.imageSrc} /> */}
+                                    <Image src={e.imageSrc} height={254} width={254} />
                                     <WallCompositionContainer>
                                         <h4>
                                             COMPOSIÇÃO DA PAREDE:

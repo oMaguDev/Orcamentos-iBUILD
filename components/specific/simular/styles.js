@@ -101,11 +101,22 @@ export const HomeStylePicContainer = styled.div`
 
 `
 
-export const ExternalWallImg = styled.img`
+export const ExternalWallImg = styled.div`
 
-    width: 150px;
+    width: 175px;
+    height: 254px;
 
     margin: 10px;
+
+    ${(props) => props.src ? `
+        background-image: url(${props.src});
+
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+    ` : ''}
+
 `
 
 export const ExternalWallItem= styled.div`
