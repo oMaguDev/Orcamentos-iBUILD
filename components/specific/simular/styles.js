@@ -111,13 +111,8 @@ export const HomeStylePicContainer = styled.div`
 export const ExternalWallImg = styled.div`
 
 ${(props) => props.src ?  `
-    ${(props.src.includes('Economy') ? `
-        width: 190px;
-        height: 290px;
-    ` : `
-        width: 190px;
-        height: 260px;
-    `)}
+    width: 190px;
+    height: 260px;
 
     margin: 10px 10px 0 0;
 
