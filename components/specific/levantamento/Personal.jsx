@@ -30,7 +30,7 @@ const Personal = ({ small }) => {
             disabled: true
         },
         {
-            value: 'SOLTEIRO(A)',
+            value: 'SOLTEIRO',
             label: 'SOLTEIRO(A)'
         },
         {
@@ -190,7 +190,7 @@ const Personal = ({ small }) => {
                                 value={resources.estado_civil}
                                 onChange={newValue => setResources({
                                     ...resources,
-                                    estado_civil: newValue
+                                    estado_civil: newValue.target.value
                                 })}
                                 label='ESTADO CIVIL'
                                 key='uf_input'
@@ -290,7 +290,7 @@ const Personal = ({ small }) => {
                             value={resources.estado_civil}
                             onChange={newValue => setResources({
                                 ...resources,
-                                estado_civil: newValue
+                                estado_civil: newValue.target.value
                             })}
                             label='ESTADO CIVIL'
                             key='uf_input'
