@@ -125,6 +125,7 @@ const ParedesExternas = ({ small }) => {
                                 ...simData,
                                 paredes: e.label
                             })}
+                            key={`parede_externa_padrao_${e.label}`}
                         >
                             <Flex
                                 width='100%'
