@@ -23,6 +23,26 @@ const Personal = ({ small }) => {
     const { resources, setResources } = useContext(FinancialSimContext)
     const { user, setUser } = useContext(UserContext)
 
+    const estado_civil_options = [
+        {
+            value: 'placeholder',
+            label: 'Selecione',
+            disabled: true
+        },
+        {
+            value: 'SOLTEIRO(A)',
+            label: 'SOLTEIRO(A)'
+        },
+        {
+            value: 'CASADO',
+            label: 'CASADO(A)',
+        },
+        {
+            value: 'VIÚVO',
+            label: 'VIÚVO(A)'
+        },
+    ] 
+
     const data = {
         caption: 'Informações',
         title: 'Pessoais',
@@ -54,16 +74,16 @@ const Personal = ({ small }) => {
                 // type: 'number',
                 mask: 'date'
             },
-            {
-                value: resources?.estado_civil,
-                onChange: newValue => setResources({
-                    ...resources,
-                    estado_civil: newValue
-                }),
-                label: 'Estado Civil',
-                placeholder: 'Insira o seu estado civil',
-                type: 'number'
-            },
+            // {
+            //     value: resources?.estado_civil,
+            // onChange: newValue => setResources({
+            //     ...resources,
+            //     estado_civil: newValue
+            // }),
+            //     label: 'ESTADO CIVIL',
+            //     placeholder: 'Insira o seu estado civil',
+            //     type: 'text'
+            // },
             // {
             //     value: resources?.local_construcao,
             //     onChange: newValue => setResources({
@@ -94,7 +114,7 @@ const Personal = ({ small }) => {
                         value: e.sigla
                     }))
                     newOptions.unshift({
-                        label: 'Selecione',
+                        label: 'UF',
                         value: 'placeholder',
                         disabled: true,
                     })
@@ -115,7 +135,7 @@ const Personal = ({ small }) => {
                             value: e.nome
                         }))
                         newOptions.unshift({
-                            label: 'Selecione',
+                            label: 'Cidade',
                             value: 'placeholder',
                             disabled: true,
                         })
@@ -151,7 +171,7 @@ const Personal = ({ small }) => {
                         <MiddleContainer
                             key={`${data.title}_middle_container`}
                         >
-    
+
                             {data.inputs && data.inputs.map((e, i) => (
                                 <Input
                                     value={e.value}
@@ -166,6 +186,18 @@ const Personal = ({ small }) => {
                                 />
                             ))}
                             {/* <Select /> */}
+                            <Select
+                                value={resources.estado_civil}
+                                onChange={newValue => setResources({
+                                    ...resources,
+                                    estado_civil: newValue
+                                })}
+                                label='ESTADO CIVIL'
+                                key='uf_input'
+                                small
+                                margin='10px 10px 10px 0'
+                                options={estado_civil_options}
+                            />
                             <Box
                                 margin='10px 0 0'
                             >
@@ -254,6 +286,18 @@ const Personal = ({ small }) => {
                             />
                         ))}
                         {/* <Select /> */}
+                        <Select
+                            value={resources.estado_civil}
+                            onChange={newValue => setResources({
+                                ...resources,
+                                estado_civil: newValue
+                            })}
+                            label='ESTADO CIVIL'
+                            key='uf_input'
+                            small
+                            margin='10px 10px 10px 0'
+                            options={estado_civil_options}
+                        />
                         <Box
                             margin='10px 0 0'
                         >
