@@ -57,38 +57,40 @@ const Telhas = ({ small }) => {
                     value: baseSqMtrWithRoof
                 })
             }
-        }    
+        }
         setCounter(counter + 1)
     }, [simData.telhas])
 
     const inputs = null
-    
+
     return (
-        <StepContent data={{
-            caption: 'Escolha o tipo de',
-            title: 'Telha',
-            // subtitle: 'Escolha o tipo das telhas da casa',
-            imageSrc: '/images/Ambientes/Ambientes15.svg',
-            value: simData.telhas,
-            onChange: (newValue) => setSimData({
-                ...simData,
-                telhas: newValue
-            }),
-            options: [
-                {
-                    label: 'TERMOACÚSTICA',
-                    value: 'termoacustica',
-                },
-                {
-                    label: 'FIBROCIMENTO',
-                    value: 'fibrocimento',
-                },
-                {
-                    label: 'CERÂMICA',
-                    value: 'ceramica',
-                },
-            ]
-        }} 
+        <StepContent
+            data={{
+                caption: 'Escolha o tipo de',
+                title: 'Telha',
+                // subtitle: 'Escolha o tipo das telhas da casa',
+                imageSrc: '/images/Ambientes/Ambientes15.svg',
+                value: simData.telhas,
+                onChange: (newValue) => setSimData({
+                    ...simData,
+                    telhas: newValue
+                }),
+                options: [
+                    {
+                        label: 'TERMOACÚSTICA',
+                        value: 'termoacustica',
+                    },
+                    {
+                        label: 'FIBROCIMENTO',
+                        value: 'fibrocimento',
+                    },
+                    {
+                        label: 'CERÂMICA',
+                        value: 'ceramica',
+                    },
+                ]
+            }}
+            noStatusBox
             small={small}
         />
     )
