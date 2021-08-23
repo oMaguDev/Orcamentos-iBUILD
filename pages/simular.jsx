@@ -154,6 +154,10 @@ const Simular = () => {
             }),
             options: [
                 {
+                    label: 'NÃO QUERO',
+                    value: 0,
+                },
+                {
                     label: 'Pequena (Aprox. 10 m²)',
                     value: 10,
                 },
@@ -214,6 +218,10 @@ const Simular = () => {
                 }
             }),
             options: [
+                {
+                    label: 'NÃO QUERO',
+                    value: 0,
+                },
                 {
                     label: 'Pequena (Aprox. 10 m²)',
                     value: 10,
@@ -341,6 +349,10 @@ const Simular = () => {
             }),
             options: [
                 {
+                    label: 'NÃO QUERO',
+                    value: 0,
+                },
+                {
                     label: 'Pequena (Aprox. 3,5 m²)',
                     value: 3.5,
                 },
@@ -402,6 +414,10 @@ const Simular = () => {
             }),
             options: [
                 {
+                    label: 'NÃO QUERO',
+                    value: 0,
+                },
+                {
                     label: 'Pequena (Aprox. 3 m²)',
                     value: 3,
                 },
@@ -462,6 +478,10 @@ const Simular = () => {
                 }
             }),
             options: [
+                {
+                    label: 'NÃO QUERO',
+                    value: 0,
+                },
                 {
                     label: 'Pequeno (Aprox. 8 m²)',
                     value: 8,
