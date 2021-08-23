@@ -11,6 +11,8 @@ import {
 } from "./styles"
 import { Circle, List, SketchLogo } from 'phosphor-react'
 import { SimulationDataContext } from "../../../contexts/SimulationData"
+import Image from 'next/image'
+// import paredeEconomyImg from '../../../public/images/Paredes/Pa'
 
 
 const ParedesExternas = ({ small }) => {
@@ -44,7 +46,7 @@ const ParedesExternas = ({ small }) => {
                 'ACABAMENTO',
             ],
             color: 'pink',
-            imageSrc: "/images/paredes/Parede-Economy.png"
+            imageSrc: "/images/paredes/paredeeconomy.jpeg"
         },
         {
             label: 'PAREDE STANDARD',
@@ -67,7 +69,7 @@ const ParedesExternas = ({ small }) => {
                 'ACABAMENTO',
             ],
             color: 'purple',
-            imageSrc: "/images/paredes/Parede-Standard.png"
+            imageSrc: "/images/paredes/Parede-Standard.jpeg"
         },
         {
             label: 'PAREDE PREMIUM',
@@ -90,7 +92,7 @@ const ParedesExternas = ({ small }) => {
                 'ACABAMENTO',
             ],
             color: 'darkPurple',
-            imageSrc: "/images/paredes/Parede-Premium.png"
+            imageSrc: "/images/paredes/Parede-Premium.jpeg"
         },
     ]
 
@@ -98,9 +100,9 @@ const ParedesExternas = ({ small }) => {
         return (
             <Flex
                 column
-                // alignItems='flex-start'
-                // transform='translateX(200px)'
-                // margin='20px 0 0 100px'
+            // alignItems='flex-start'
+            // transform='translateX(200px)'
+            // margin='20px 0 0 100px'
             >
                 <TitleContainer>
                     <h4>ESCOLHA O PADRÃO DAS</h4>
@@ -123,6 +125,7 @@ const ParedesExternas = ({ small }) => {
                                 ...simData,
                                 paredes: e.label
                             })}
+                            key={`parede_externa_padrao_${e.label}`}
                         >
                             <Flex
                                 width='100%'
@@ -160,7 +163,13 @@ const ParedesExternas = ({ small }) => {
                                     width='100%'
                                     alignItems='flex-start'
                                 >
-                                    <ExternalWallImg src={e.imageSrc} alt="" />
+                                    {/* alt={`Padrão de parede ${i + 1}`} */}
+                                    {/* <Box
+                                        width='100%'
+                                    > */}
+                                        <ExternalWallImg src={e.imageSrc} key={`padrao_parede_${i + 1}`} />
+                                    {/* </Box> */}
+                                    {/* <Image src={e.imageSrc} height={254} width={180} alt='Padrão de parede' key={`padrao_parede_${i + 1}`} /> */}
                                     <WallCompositionContainer>
                                         <h4>
                                             COMPOSIÇÃO DA PAREDE:
@@ -210,10 +219,10 @@ const ParedesExternas = ({ small }) => {
                 <h1>PAREDES EXTERNAS</h1>
             </TitleContainer>
             <Flex
-                // column
-                // width='100%'
-                // maxWidth='1050px'
-                // margin='30px 0'
+            // column
+            // width='100%'
+            // maxWidth='1050px'
+            // margin='30px 0'
 
             >
                 {paredes && paredes.map((e, i) => (
