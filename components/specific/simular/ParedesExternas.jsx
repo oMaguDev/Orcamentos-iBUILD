@@ -2,12 +2,13 @@ import { useContext, useEffect, useState } from "react"
 import { Box, Flex, TitleContainer } from "../../Containers"
 import {
     ColouredBox,
-    ExternalWallImg,
+    // ExternalWallImg,
     ExternalWallItem,
     WallCompositionContainer,
     CompositionListItem,
     CompositionListItemTag,
     SelectedIconContainer,
+    // ExternalWallImgContainer,
 } from "./styles"
 import { Circle, List, SketchLogo } from 'phosphor-react'
 import { SimulationDataContext } from "../../../contexts/SimulationData"
@@ -188,7 +189,9 @@ const ParedesExternas = ({ small }) => {
                                     {/* <Box
                                         width='100%'
                                     > */}
-                                    <ExternalWallImg src={e.imageSrc} key={`padrao_parede_${i + 1}`} />
+                                    <Box margin='16px 8px'>
+                                        <img src={e.imageSrc} alt={e.label} height='240px' width='155px' />
+                                    </Box>
                                     {/* </Box> */}
                                     {/* <Image src={e.imageSrc} height={254} width={180} alt='Padrão de parede' key={`padrao_parede_${i + 1}`} /> */}
                                     <WallCompositionContainer>
@@ -290,7 +293,9 @@ const ParedesExternas = ({ small }) => {
                                 width='100%'
                                 alignItems='flex-start'
                             >
-                                <ExternalWallImg src={e.imageSrc} alt={e.label} />
+                                <Box margin='16px 8px'>
+                                    <img src={e.imageSrc} alt={e.label} height='240px' width='155px' />
+                                </Box>
                                 <WallCompositionContainer>
                                     <h4>
                                         COMPOSIÇÃO DA PAREDE:
