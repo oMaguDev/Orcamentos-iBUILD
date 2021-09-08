@@ -123,6 +123,8 @@ const Personal = ({ small }) => {
             })
     }, [])
 
+    //
+
     useEffect(() => {
         if (user && user?.uf !== 'placeholder') {
             getCityByUF(user.uf)
