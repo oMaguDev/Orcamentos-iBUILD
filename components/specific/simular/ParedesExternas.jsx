@@ -33,7 +33,7 @@ const ParedesExternas = ({ small }) => {
                 divisor = 2700
                 break;
             case 'premium':
-                    divisor = 3000        
+                divisor = 3000
                 break;
             default:
                 break;
@@ -251,7 +251,7 @@ const ParedesExternas = ({ small }) => {
                         selected={simData.paredes === e.value}
                         onClick={() => setSimData({
                             ...simData,
-                            paredes: e.label
+                            paredes: e.value
                         })}
                     >
                         <Flex
@@ -290,7 +290,7 @@ const ParedesExternas = ({ small }) => {
                                 width='100%'
                                 alignItems='flex-start'
                             >
-                                <ExternalWallImg src={e.imageSrc} alt="" />
+                                <ExternalWallImg src={e.imageSrc} alt={e.label} />
                                 <WallCompositionContainer>
                                     <h4>
                                         COMPOSIÇÃO DA PAREDE:
