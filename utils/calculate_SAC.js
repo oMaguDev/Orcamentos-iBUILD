@@ -24,7 +24,7 @@ export const calculateLastSac = (total, parcelas = 240, amortizacao, parcelaAtua
 
     valorRestante += amortizacao
 
-    console.log('valorRestante: ', valorRestante)
+    // console.log('valorRestante: ', valorRestante)
 
     const jurosAM = Math.pow(1.08, (1 / 12)) - 1
     const jurosCalculados = valorRestante * jurosAM

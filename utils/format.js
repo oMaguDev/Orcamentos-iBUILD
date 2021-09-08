@@ -17,3 +17,7 @@ export const formatMoney = (num) => {
     const f = num.toLocaleString('pt-br', { style: 'currency', currency: 'BRL'})
     return f
 }
+
+export function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}

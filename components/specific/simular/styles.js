@@ -108,23 +108,28 @@ export const HomeStylePicContainer = styled.div`
 //     margin: 10px;
 // `
 
-export const ExternalWallImg = styled.div`
+// export const ExternalWallImgContainer = styled.div`
 
-${(props) => props.src ?  `
-    width: 190px;
-    height: 260px;
+//     height: 100%;
 
-    margin: 10px 10px 0 0;
+// `
+// export const ExternalWallImg = styled.div`
 
-        background-image: url(${props.src});
+// ${(props) => props.src ?  `
+//     width: 190px;
+//     height: 260px;
 
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        position: relative;
-    ` : ''}
+//     margin: 10px 10px 0 0;
 
-`
+//         background-image: url(${props.src});
+
+//         background-position: center;
+//         background-repeat: no-repeat;
+//         background-size: cover;
+//         position: relative;
+//     ` : ''}
+
+// `
 
 export const ExternalWallItem= styled.div`
 
@@ -138,7 +143,7 @@ export const ExternalWallItem= styled.div`
     cursor: pointer;
 
     width: 320px;
-    min-height: 460px;
+    height: 460px;
 
     padding: 10px;
     margin: 10px;

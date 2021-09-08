@@ -18,7 +18,7 @@ export const SimulationStatusContextProvider = ({ children }) => {
     })
 
     const [simArea, setSimArea] = useState({
-        total: 150,
+        total: 0,
         current: 0,
         available: 0,
     })
@@ -88,7 +88,7 @@ export const SimulationStatusContextProvider = ({ children }) => {
 
 
     useEffect(() => {
-        console.log('sumRoomAreas: ', sumRoomAreas)
+        // console.log('sumRoomAreas: ', sumRoomAreas)
 
         const currentArea = sumRoomAreas
         const availableArea = simArea.total - currentArea
@@ -113,12 +113,31 @@ export const SimulationStatusContextProvider = ({ children }) => {
         }
     }, [summary.valorImovel])
 
+    const setTotalArea = (area) => {
+        setSimArea({
+            ...simArea,
+            total: area
+        })
+    }
+
+    const setTotalFunds = (totalFunds) => {
+        setSimStatus({
+            // ...simStatus,
+            funds: {
+                ...simStatus.funds,
+                total: totalFunds
+            }
+        })
+    }
+
     return (
         <SimulationStatusContext.Provider value={{
             simStatus,
             setSimStatus,
             simArea,
-            setSimArea
+            setSimArea,
+            setTotalArea,
+            setTotalFunds
         }}>
             {children}
         </SimulationStatusContext.Provider>

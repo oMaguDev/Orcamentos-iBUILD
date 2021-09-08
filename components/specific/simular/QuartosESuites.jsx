@@ -90,7 +90,7 @@ const QuartosESuitesSlide = ({ data, small }) => {
     useEffect(() => {
         // console.log('simData[slide].value', simData[slide].value)
         // console.log('simData.quartos.value', simData.quartos.value) 
-        if (simData.quartos.value[0].quarto !== '' && simData.quartos.pattern !== '') {
+        if (simData.quartos.value[0].quarto !== '' && simData.quartos.value[0].quarto !== 0 &&simData.quartos.pattern !== '') {
             const valorAmbiente = calculateQuartos(simData.quartos, baseSqMtr)
             setRooms({
                 ...rooms,

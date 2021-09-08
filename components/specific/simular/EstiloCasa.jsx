@@ -16,42 +16,42 @@ const EstiloCasa = ({ small }) => {
 
     const estilos = [
         {
-            id: 'casa_classica',
+            id: 'Clássico',
             imageSrc: '/images/EstilosCasa/classica.jpg',
             label: 'CLÁSSICO'
         },
         {
-            id: 'casa_neoclassica',
+            id: 'Neoclássico',
             imageSrc: '/images/EstilosCasa/neoClassica.jpg',
             label: 'NEO-CLÁSSICO'
         },
         {
-            id: 'casa_mediterranea',
+            id: 'Mediterrâneo',
             imageSrc: '/images/EstilosCasa/mediterranea.jpg',
             label: 'MEDITERRÂNEO'
         },
         {
-            id: 'casa_brasileira',
+            id: 'Brasileiro',
             imageSrc: '/images/EstilosCasa/brasileira.png',
             label: 'BRASILEIRO'
         },
         {
-            id: 'casa_minimalista',
+            id: 'Minimalista',
             imageSrc: '/images/EstilosCasa/minimalista.jpg',
             label: 'MINIMALISTA'
         },
         {
-            id: 'casa_contemporanea',
+            id: 'Contemporâneo',
             imageSrc: '/images/EstilosCasa/contemporanea.png',
             label: 'CONTEMPORÂNEO'
         },
         {
-            id: 'casa_americana',
+            id: 'Americano',
             imageSrc: '/images/EstilosCasa/americana.jpg',
             label: 'AMERICANO'
         },
         {
-            id: 'casa_europeia',
+            id: 'Europeu',
             imageSrc: '/images/EstilosCasa/europeia.jpg',
             label: 'EUROPEU'
         },

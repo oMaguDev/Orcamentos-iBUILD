@@ -64,7 +64,7 @@ const Cadastro = () => {
     useEffect(() => {
         getUFs()
             .then(res => {
-                console.log('res: ', res)
+                // console.log('res: ', res)
                 if (res && res.data) {
                     const data = [...res.data]
                     const newOptions = data.map((e, i) => ({
@@ -85,7 +85,7 @@ const Cadastro = () => {
         if (user && user?.uf !== 'placeholder') {
             getCityByUF(user.uf)
                 .then(res => {
-                    console.log('res: ', res)
+                    // console.log('res: ', res)
                     if (res && res.data) {
                         const data = [...res.data]
                         const newOptions = data.map((e, i) => ({

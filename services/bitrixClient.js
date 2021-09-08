@@ -17,7 +17,7 @@ export const createLead = (lead) => {
         params: lead,
     })
         .then(res => {
-            console.log('bitrix res: ', res)
+            // console.log('bitrix res: ', res)
             return res
         })
 }

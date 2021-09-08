@@ -19,7 +19,7 @@ const StatusBox = () => {
     const small = width < breakpoints.md && width !== 0
 
     if (small) {
-        console.log('smaallll')
+        // console.log('smaallll')
         return (
             <StatusBoxContainer>
                 <Flex>

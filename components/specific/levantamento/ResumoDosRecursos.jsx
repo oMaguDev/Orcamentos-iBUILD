@@ -5,16 +5,24 @@ import { useContext, useEffect } from "react"
 import { FinancialSimContext } from "../../../contexts/FinancialSim"
 import { formatMoney } from "../../../utils/format"
 import { SlideContainer, StepContentContainer } from "../../common/StepContent/styles"
+import { SimulationStatusContext } from "../../../contexts/SimulationStatus"
+import { round5 } from '../../../utils/round'
 
 
 const ResourcesIndex = ({ small }) => {
 
 
     const { summary, resources } = useContext(FinancialSimContext)
+    const { setTotalFunds } = useContext(SimulationStatusContext)
 
-    // useEffect(() => {
-    //     console.log('summary: ', summary)
-    // }, [])
+    const valorImovel = Number(resources.valor_entrada) + Number(resources.valor_fgts) + Number(summary.valorFinanciamento)
+
+
+    useEffect(() => {
+        // console.log('summary: ', summary)
+        const totalFunds = formatMoney(Number(resources.valor_entrada) + Number(resources.valor_fgts) + Number(summary.valorFinanciamento))
+        setTotalFunds(totalFunds)
+    }, [])
 
     if (small) {
         return (
@@ -48,13 +56,13 @@ const ResourcesIndex = ({ small }) => {
                             >
                                 <DataDisplay
                                     label='Renda bruta mensal'
-                                    value={resources.renda === '' ? formatMoney(0) : formatMoney(parseFloat(resources.renda))}
+                                    value={resources.renda === '' ? formatMoney(0) : formatMoney(Number(resources.renda))}
                                     key='Renda bruta mensal'
                                 />
                                 <DataDisplay
                                     key='Valor limite da parcela'
                                     label='Valor limite da parcela'
-                                    value={resources.renda === '' ? formatMoney(0) : formatMoney(parseFloat(0.3 * resources.renda))}
+                                    value={resources.renda === '' ? formatMoney(0) : formatMoney(Number(0.3 * resources.renda))}
                                 />
                             </Box>
                             <Box
@@ -64,27 +72,22 @@ const ResourcesIndex = ({ small }) => {
                                 <DataDisplay
                                     label='Valor da entrada'
                                     key='Valor da entrada'
-                                    value={resources.valor_entrada === '' ? formatMoney(0) : formatMoney(parseFloat(resources.valor_entrada))}
+                                    value={resources.valor_entrada === '' ? formatMoney(0) : formatMoney(Number(resources.valor_entrada))}
                                 />
                                 <DataDisplay
                                     label='Valor da FGTS'
                                     key='Valor da FGTS'
-                                    value={resources.valor_fgts === '' ? formatMoney(0) : formatMoney(parseFloat(resources.valor_fgts))}
+                                    value={resources.valor_fgts === '' ? formatMoney(0) : formatMoney(Number(resources.valor_fgts))}
                                 />
                                 <DataDisplay
                                     label='Valor da entrada + FGTS'
                                     key='Valor da entrada + FGTS'
-                                    value={resources.valor_entrada === '' || resources.valor_fgts === '' ? formatMoney(0) : formatMoney(parseFloat(resources.valor_entrada) + parseFloat(resources.valor_fgts))}
+                                    value={resources.valor_entrada === '' && resources.valor_fgts === '' ? formatMoney(0) : formatMoney(Number(resources.valor_entrada) + Number(resources.valor_fgts))}
                                 />
-                            </Box>
-                            <Box
-                                margin='0 0 20px 0'
-                                width='100%'
-                            >
                                 <DataDisplay
                                     label='Valor do terreno'
                                     key='Valor do terreno'
-                                    value={resources.valor_terreno === '' ? formatMoney(0) : formatMoney(parseFloat(resources.valor_terreno))}
+                                    value={resources.valor_terreno === '' ? formatMoney(0) : formatMoney(Number(resources.valor_terreno))}
                                 />
                             </Box>
                             <Box
@@ -93,18 +96,18 @@ const ResourcesIndex = ({ small }) => {
                             >
                                 <DataDisplay
                                     label='Tamanho estimado do imóvel'
-                                    value='150m²'
+                                    value={`${round5(valorImovel / 3000)}m² - ${round5(valorImovel / 2300)}m²`}
                                     key='Tamanho estimado do imóvel'
                                 />
-                            </Box>
-                            <Box
-                                margin='0 0 20px 0'
-                                width='100%'
-                            >
                                 <DataDisplay
                                     label='Crédito disponível para financiamento'
-                                    value={summary.valorFinanciamento === '' ? formatMoney(0) : formatMoney(parseFloat(summary.valorFinanciamento))}
+                                    value={summary.valorFinanciamento === '' ? formatMoney(0) : formatMoney(Number(summary.valorFinanciamento))}
                                     key='Crédito disponível para financiamento'
+                                />
+                                <DataDisplay
+                                    label='Valor total do imóvel'
+                                    value={formatMoney(valorImovel)}
+                                    key='Valor total do imóvel'
                                 />
                             </Box>
                             <Box
@@ -143,7 +146,7 @@ const ResourcesIndex = ({ small }) => {
                             >
                                 <DataDisplay
                                     label='Valor da parcela (price)'
-                                    value={summary.parcelaPrice === '' ? formatMoney(0) : formatMoney(parseFloat(summary.parcelaPrice))}
+                                    value={summary.parcelaPrice === '' ? formatMoney(0) : formatMoney(Number(summary.parcelaPrice))}
                                     key='Valor da parcela (price)'
                                 />
                             </Box>
@@ -153,17 +156,17 @@ const ResourcesIndex = ({ small }) => {
                             >
                                 <DataDisplay
                                     label='Valor inicial da prestação (SAC)'
-                                    value={summary.parcelaSAC[0] === '' ? formatMoney(0) : formatMoney(parseFloat(summary.parcelaSAC[0]))}
+                                    value={summary.parcelaSAC[0] === '' ? formatMoney(0) : formatMoney(Number(summary.parcelaSAC[0]))}
                                     key='Valor inicial da prestação (SAC)'
                                 />
                                 <DataDisplay
                                     label='Valor final da prestação (SAC)'
-                                    value={summary.parcelaSAC[1] === '' ? formatMoney(0) : formatMoney(parseFloat(summary.parcelaSAC[1]))}
+                                    value={summary.parcelaSAC[1] === '' ? formatMoney(0) : formatMoney(Number(summary.parcelaSAC[1]))}
                                     key='Valor final da prestação (SAC)'
                                 />
                                 <DataDisplay
                                     label='Amortização mensal'
-                                    value={summary.amortizacao === '' ? formatMoney(0) : formatMoney(parseFloat(summary.amortizacao))}
+                                    value={summary.amortizacao === '' ? formatMoney(0) : formatMoney(Number(summary.amortizacao))}
                                     key='Amortização mensal'
                                 />
                             </Box>
@@ -196,13 +199,13 @@ const ResourcesIndex = ({ small }) => {
                     >
                         <DataDisplay
                             label='Renda bruta mensal'
-                            value={resources.renda === '' ? formatMoney(0) : formatMoney(parseFloat(resources.renda))}
+                            value={resources.renda === '' ? formatMoney(0) : formatMoney(Number(resources.renda))}
                             key='Renda bruta mensal'
                         />
                         <DataDisplay
                             key='Valor limite da parcela'
                             label='Valor limite da parcela'
-                            value={resources.renda === '' ? formatMoney(0) : formatMoney(parseFloat(0.3 * resources.renda))}
+                            value={resources.renda === '' ? formatMoney(0) : formatMoney(Number(0.3 * resources.renda))}
                         />
                     </Box>
                     <Box
@@ -212,27 +215,22 @@ const ResourcesIndex = ({ small }) => {
                         <DataDisplay
                             label='Valor da entrada'
                             key='Valor da entrada'
-                            value={resources.valor_entrada === '' ? formatMoney(0) : formatMoney(parseFloat(resources.valor_entrada))}
+                            value={resources.valor_entrada === '' ? formatMoney(0) : formatMoney(Number(resources.valor_entrada))}
                         />
                         <DataDisplay
                             label='Valor da FGTS'
                             key='Valor da FGTS'
-                            value={resources.valor_fgts === '' ? formatMoney(0) : formatMoney(parseFloat(resources.valor_fgts))}
+                            value={resources.valor_fgts === '' ? formatMoney(0) : formatMoney(Number(resources.valor_fgts))}
                         />
                         <DataDisplay
                             label='Valor da entrada + FGTS'
                             key='Valor da entrada + FGTS'
-                            value={resources.valor_entrada === '' || resources.valor_fgts === '' ? formatMoney(0) : formatMoney(parseFloat(resources.valor_entrada) + parseFloat(resources.valor_fgts))}
+                            value={resources.valor_entrada === '' && resources.valor_fgts === '' ? formatMoney(0) : formatMoney(Number(resources.valor_entrada) + Number(resources.valor_fgts))}
                         />
-                    </Box>
-                    <Box
-                        margin='0 0 20px 0'
-                        width='100%'
-                    >
                         <DataDisplay
                             label='Valor do terreno'
                             key='Valor do terreno'
-                            value={resources.valor_terreno === '' ? formatMoney(0) : formatMoney(parseFloat(resources.valor_terreno))}
+                            value={resources.valor_terreno === '' ? formatMoney(0) : formatMoney(Number(resources.valor_terreno))}
                         />
                     </Box>
                     <Box
@@ -241,18 +239,18 @@ const ResourcesIndex = ({ small }) => {
                     >
                         <DataDisplay
                             label='Tamanho estimado do imóvel'
-                            value='150m²'
+                            value={`${round5(valorImovel / 3000)}m² - ${round5(valorImovel / 2300)}m²`}
                             key='Tamanho estimado do imóvel'
                         />
-                    </Box>
-                    <Box
-                        margin='0 0 20px 0'
-                        width='100%'
-                    >
                         <DataDisplay
                             label='Crédito disponível para financiamento'
-                            value={summary.valorFinanciamento === '' ? formatMoney(0) : formatMoney(parseFloat(summary.valorFinanciamento))}
+                            value={summary.valorFinanciamento === '' ? formatMoney(0) : formatMoney(Number(summary.valorFinanciamento))}
                             key='Crédito disponível para financiamento'
+                        />
+                        <DataDisplay
+                            label='Valor total do imóvel'
+                            value={formatMoney(valorImovel)}
+                            key='Valor total do imóvel'
                         />
                     </Box>
                 </ResourcesIndexColumn>
@@ -294,7 +292,7 @@ const ResourcesIndex = ({ small }) => {
                     >
                         <DataDisplay
                             label='Valor da parcela (price)'
-                            value={summary.parcelaPrice === '' ? formatMoney(0) : formatMoney(parseFloat(summary.parcelaPrice))}
+                            value={summary.parcelaPrice === '' ? formatMoney(0) : formatMoney(Number(summary.parcelaPrice))}
                             key='Valor da parcela (price)'
                         />
                     </Box>
@@ -304,17 +302,17 @@ const ResourcesIndex = ({ small }) => {
                     >
                         <DataDisplay
                             label='Valor inicial da prestação (SAC)'
-                            value={summary.parcelaSAC[0] === '' ? formatMoney(0) : formatMoney(parseFloat(summary.parcelaSAC[0]))}
+                            value={summary.parcelaSAC[0] === '' ? formatMoney(0) : formatMoney(Number(summary.parcelaSAC[0]))}
                             key='Valor inicial da prestação (SAC)'
                         />
                         <DataDisplay
                             label='Valor final da prestação (SAC)'
-                            value={summary.parcelaSAC[1] === '' ? formatMoney(0) : formatMoney(parseFloat(summary.parcelaSAC[1]))}
+                            value={summary.parcelaSAC[1] === '' ? formatMoney(0) : formatMoney(Number(summary.parcelaSAC[1]))}
                             key='Valor final da prestação (SAC)'
                         />
                         <DataDisplay
                             label='Amortização mensal'
-                            value={summary.amortizacao === '' ? formatMoney(0) : formatMoney(parseFloat(summary.amortizacao))}
+                            value={summary.amortizacao === '' ? formatMoney(0) : formatMoney(Number(summary.amortizacao))}
                             key='Amortização mensal'
                         />
                     </Box>

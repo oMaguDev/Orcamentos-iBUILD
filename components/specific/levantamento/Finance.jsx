@@ -7,6 +7,7 @@ import { SimulationDataContext } from "../../../contexts/SimulationData"
 import { UserContext } from "../../../contexts/UserContext"
 import { getCityByUF, getUFs } from "../../../services/geoClient"
 import { FinancialSimContext } from "../../../contexts/FinancialSim"
+import { SimulationStatusContext } from "../../../contexts/SimulationStatus"
 
 
 const Finance = ({ small }) => {

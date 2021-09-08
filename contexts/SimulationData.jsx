@@ -99,21 +99,21 @@ export const SimulationDataContextProvider = ({ children }) => {
 
     useEffect(() => {
         switch (simData.paredes) {
-            case 'PAREDE ECONOMY':
+            case 'economy':
                 setBaseSqMtr({
                     ...baseSqMtr,
                     category: 'economy'
                 })
                 break;
         
-            case 'PAREDE STANDARD':
+            case 'standard':
                 setBaseSqMtr({
                     ...baseSqMtr,
                     category: 'standard'
                 })
                 break;
         
-            case 'PAREDE PREMIUM':
+            case 'premium':
                 setBaseSqMtr({
                     ...baseSqMtr,
                     category: 'premium'
@@ -133,20 +133,6 @@ export const SimulationDataContextProvider = ({ children }) => {
             })
         }
     }, [baseSqMtr.category, simData.pavimentos])
-
-    
-
-    useEffect(() => {
-        console.log('baseSqMtr: ', baseSqMtr)
-    }, [baseSqMtr])
-
-    // useEffect(() => {
-    //     console.log('simData: ', simData)
-    // }, [simData])
-    
-    // useEffect(() => {
-    //     console.log('resources: ', resources)
-    // }, [resources])
 
     return (
         <SimulationDataContext.Provider value={{

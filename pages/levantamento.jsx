@@ -32,11 +32,11 @@ const Levantamento = () => {
     const { width } = useWindowDimensions()
     const small = width < breakpoints.md && width !== 0
 
-    useEffect(() => {
-        console.log('formatMoney(parseFloat(resources.renda)): ', formatMoney(parseFloat(resources.renda)))
-        console.log('resources.renda: ', resources.renda)
-        console.log('parseFloat(resources.renda): ', parseFloat(resources.renda))
-    }, [])
+    // useEffect(() => {
+    //     console.log('formatMoney(parseFloat(resources.renda)): ', formatMoney(parseFloat(resources.renda)))
+    //     console.log('resources.renda: ', resources.renda)
+    //     console.log('parseFloat(resources.renda): ', parseFloat(resources.renda))
+    // }, [])
 
     const {
         resources,
