@@ -66,7 +66,7 @@ const ParedesExternas = ({ small }) => {
                 'ACABAMENTO',
             ],
             color: 'pink',
-            imageSrc: "/images/paredes/paredeeconomy.jpeg"
+            imageSrc: "/images/Paredes/paredeeconomy.jpeg"
         },
         {
             value: 'standard',
@@ -90,7 +90,7 @@ const ParedesExternas = ({ small }) => {
                 'ACABAMENTO',
             ],
             color: 'purple',
-            imageSrc: "/images/paredes/Parede-Standard.jpeg"
+            imageSrc: "/images/Paredes/Parede-Standard.png"
         },
         {
             value: 'premium',
@@ -114,7 +114,7 @@ const ParedesExternas = ({ small }) => {
                 'ACABAMENTO',
             ],
             color: 'darkPurple',
-            imageSrc: "/images/paredes/Parede-Premium.jpeg"
+            imageSrc: "/images/Paredes/Parede-Premium.jpeg"
         },
     ]
 
