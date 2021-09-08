@@ -50,14 +50,15 @@ const Cadastro = () => {
 
 
             }
-            createLead(lead)
-                .then(res => {
-                    router.push('/final')
-                })
-                .catch(err => {
-                    // router.push('/simular')
-                    console.error(err)
-                })
+            // createLead(lead)
+            //     .then(res => {
+            //         router.push('/final')
+            //     })
+            //     .catch(err => {
+            //         // router.push('/simular')
+            //         console.error(err)
+            //     })
+                router.push('/final')
         }
     }
 

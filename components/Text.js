@@ -28,6 +28,14 @@ export const H3 = styled.h3`
 
 export const Title2 = styled.h2`
 ${(props) => props.fontSize ? `font-size: ${props.fontSize};` : ''}
+${(props) => props.fontWeight ? `font-weight: ${props.fontWeight};` : ''}
+${(props) => props.textColor ? `color: ${props.theme.colors.text[props.textColor]};` : ''}
+${(props) => props.margin ? `margin: ${props.margin};` : ''}
+`
+
+export const Title3 = styled.h3`
+${(props) => props.fontSize ? `font-size: ${props.fontSize};` : ''}
+${(props) => props.fontWeight ? `font-weight: ${props.fontWeight};` : ''}
 ${(props) => props.textColor ? `color: ${props.theme.colors.text[props.textColor]};` : ''}
 ${(props) => props.margin ? `margin: ${props.margin};` : ''}
 `
