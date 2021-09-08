@@ -6,6 +6,7 @@ import { FinancialSimContext } from "../../../contexts/FinancialSim"
 import { formatMoney } from "../../../utils/format"
 import { SlideContainer, StepContentContainer } from "../../common/StepContent/styles"
 import { SimulationStatusContext } from "../../../contexts/SimulationStatus"
+import { round5 } from '../../../utils/round'
 
 
 const ResourcesIndex = ({ small }) => {
@@ -13,6 +14,8 @@ const ResourcesIndex = ({ small }) => {
 
     const { summary, resources } = useContext(FinancialSimContext)
     const { setTotalFunds } = useContext(SimulationStatusContext)
+
+    const valorImovel = Number(resources.valor_entrada) + Number(resources.valor_fgts) + Number(summary.valorFinanciamento)
 
 
     useEffect(() => {
@@ -91,11 +94,11 @@ const ResourcesIndex = ({ small }) => {
                                 margin='0 0 20px 0'
                                 width='100%'
                             >
-                                {/* <DataDisplay
+                                <DataDisplay
                                     label='Tamanho estimado do imóvel'
-                                    value='150m²'
+                                    value={`${round5(valorImovel / 3000)}m² - ${round5(valorImovel / 2300)}m²`}
                                     key='Tamanho estimado do imóvel'
-                                /> */}
+                                />
                                 <DataDisplay
                                     label='Crédito disponível para financiamento'
                                     value={summary.valorFinanciamento === '' ? formatMoney(0) : formatMoney(Number(summary.valorFinanciamento))}
@@ -103,7 +106,7 @@ const ResourcesIndex = ({ small }) => {
                                 />
                                 <DataDisplay
                                     label='Valor total do imóvel'
-                                    value={formatMoney(Number(resources.valor_entrada) + Number(resources.valor_fgts) + Number(summary.valorFinanciamento))}
+                                    value={formatMoney(valorImovel)}
                                     key='Valor total do imóvel'
                                 />
                             </Box>
@@ -234,11 +237,11 @@ const ResourcesIndex = ({ small }) => {
                         margin='0 0 20px 0'
                         width='100%'
                     >
-                        {/* <DataDisplay
-                                    label='Tamanho estimado do imóvel'
-                                    value='150m²'
-                                    key='Tamanho estimado do imóvel'
-                                /> */}
+                        <DataDisplay
+                            label='Tamanho estimado do imóvel'
+                            value={`${round5(valorImovel / 3000)}m² - ${round5(valorImovel / 2300)}m²`}
+                            key='Tamanho estimado do imóvel'
+                        />
                         <DataDisplay
                             label='Crédito disponível para financiamento'
                             value={summary.valorFinanciamento === '' ? formatMoney(0) : formatMoney(Number(summary.valorFinanciamento))}
@@ -246,7 +249,7 @@ const ResourcesIndex = ({ small }) => {
                         />
                         <DataDisplay
                             label='Valor total do imóvel'
-                            value={formatMoney(Number(resources.valor_entrada) + Number(resources.valor_fgts) + Number(summary.valorFinanciamento))}
+                            value={formatMoney(valorImovel)}
                             key='Valor total do imóvel'
                         />
                     </Box>
