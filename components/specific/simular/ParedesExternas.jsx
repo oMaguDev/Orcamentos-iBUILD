@@ -12,21 +12,40 @@ import {
 import { Circle, List, SketchLogo } from 'phosphor-react'
 import { SimulationDataContext } from "../../../contexts/SimulationData"
 import Image from 'next/image'
+import { SimulationStatusContext } from "../../../contexts/SimulationStatus"
+import { round5 } from "../../../utils/round"
 // import paredeEconomyImg from '../../../public/images/Paredes/Pa'
 
 
 const ParedesExternas = ({ small }) => {
 
-    // const [active, setActive] = useState(null)
-
-    // useEffect(() => {
-    //     console.log('active: ', active)
-    // }, [active])
-
     const { simData, setSimData } = useContext(SimulationDataContext)
+    const { setTotalArea, simStatus } = useContext(SimulationStatusContext)
+
+    useEffect(() => {
+        const totalFunds = simStatus.funds.total
+        let divisor = 2300
+        switch (simData.paredes) {
+            case 'economy':
+                divisor = 2300
+                break;
+            case 'standard':
+                divisor = 2700
+                break;
+            case 'premium':
+                    divisor = 3000        
+                break;
+            default:
+                break;
+        }
+        const totalArea = round5(totalFunds / divisor)
+        // console.log('totalArea: ', totalArea)
+        setTotalArea(totalArea)
+    }, [simData.paredes])
 
     const paredes = [
         {
+            value: 'economy',
             label: 'PAREDE ECONOMY',
             boxes: [
                 {
@@ -49,6 +68,7 @@ const ParedesExternas = ({ small }) => {
             imageSrc: "/images/paredes/paredeeconomy.jpeg"
         },
         {
+            value: 'standard',
             label: 'PAREDE STANDARD',
             boxes: [
                 {
@@ -72,6 +92,7 @@ const ParedesExternas = ({ small }) => {
             imageSrc: "/images/paredes/Parede-Standard.jpeg"
         },
         {
+            value: 'premium',
             label: 'PAREDE PREMIUM',
             boxes: [
                 {
@@ -120,12 +141,12 @@ const ParedesExternas = ({ small }) => {
                         <ExternalWallItem
                             small
                             primaryColor={e.color}
-                            selected={simData.paredes === e.label}
+                            selected={simData.paredes === e.value}
                             onClick={() => setSimData({
                                 ...simData,
-                                paredes: e.label
+                                paredes: e.value
                             })}
-                            key={`parede_externa_padrao_${e.label}`}
+                            key={`parede_externa_padrao_${e.value}`}
                         >
                             <Flex
                                 width='100%'
@@ -167,7 +188,7 @@ const ParedesExternas = ({ small }) => {
                                     {/* <Box
                                         width='100%'
                                     > */}
-                                        <ExternalWallImg src={e.imageSrc} key={`padrao_parede_${i + 1}`} />
+                                    <ExternalWallImg src={e.imageSrc} key={`padrao_parede_${i + 1}`} />
                                     {/* </Box> */}
                                     {/* <Image src={e.imageSrc} height={254} width={180} alt='Padrão de parede' key={`padrao_parede_${i + 1}`} /> */}
                                     <WallCompositionContainer>
@@ -196,7 +217,7 @@ const ParedesExternas = ({ small }) => {
                                 </Flex>
                             </Flex>
                             <SelectedIconContainer
-                                selected={simData.paredes === e.label}
+                                selected={simData.paredes === e.value}
                             >
                                 <img src="/images/Ícones/Ícones 11.svg" alt="" />
                             </SelectedIconContainer>
@@ -223,12 +244,11 @@ const ParedesExternas = ({ small }) => {
             // width='100%'
             // maxWidth='1050px'
             // margin='30px 0'
-
             >
                 {paredes && paredes.map((e, i) => (
                     <ExternalWallItem
                         primaryColor={e.color}
-                        selected={simData.paredes === e.label}
+                        selected={simData.paredes === e.value}
                         onClick={() => setSimData({
                             ...simData,
                             paredes: e.label
@@ -297,7 +317,7 @@ const ParedesExternas = ({ small }) => {
                             </Flex>
                         </Flex>
                         <SelectedIconContainer
-                            selected={simData.paredes === e.label}
+                            selected={simData.paredes === e.value}
                         >
                             <img src="/images/Ícones/Ícones 11.svg" alt="" />
                         </SelectedIconContainer>

@@ -99,21 +99,21 @@ export const SimulationDataContextProvider = ({ children }) => {
 
     useEffect(() => {
         switch (simData.paredes) {
-            case 'PAREDE ECONOMY':
+            case 'economy':
                 setBaseSqMtr({
                     ...baseSqMtr,
                     category: 'economy'
                 })
                 break;
         
-            case 'PAREDE STANDARD':
+            case 'standard':
                 setBaseSqMtr({
                     ...baseSqMtr,
                     category: 'standard'
                 })
                 break;
         
-            case 'PAREDE PREMIUM':
+            case 'premium':
                 setBaseSqMtr({
                     ...baseSqMtr,
                     category: 'premium'
