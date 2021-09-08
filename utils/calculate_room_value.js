@@ -338,7 +338,7 @@ export const calculateInstalacoesPercentagem = (instalacoes, houseValue) => {
 
 export const calculateQuartosArea = (quartos) => {
     let area = [...quartos.value]
-    console.log('area: ', area)
+    // console.log('area: ', area)
     area = area.map((e, i) => {
         let thisRoomArea = 0
         // console.log(`quartos.value[${i}]: `, e)
@@ -348,7 +348,7 @@ export const calculateQuartosArea = (quartos) => {
         return thisRoomArea
     })
     area = area.reduce((acc, curr) => acc + curr)
-    console.log('area: ', area)
+    // console.log('area: ', area)
     return area
 }
 

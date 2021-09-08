@@ -88,7 +88,7 @@ export const SimulationStatusContextProvider = ({ children }) => {
 
 
     useEffect(() => {
-        console.log('sumRoomAreas: ', sumRoomAreas)
+        // console.log('sumRoomAreas: ', sumRoomAreas)
 
         const currentArea = sumRoomAreas
         const availableArea = simArea.total - currentArea

@@ -76,9 +76,9 @@ export const FinancialSimContextProvider = ({ children }) => {
             const jurosCalculados = summary.valorFinanciamento * summary.jurosAM
             const seguroPrestamista =  summary.valorFinanciamento * summary.prestamista
             
-            console.log('jurosCalculados: ', jurosCalculados)
-            console.log('seguroPrestamista: ', seguroPrestamista)
-            console.log('amortizacao: ', summary.amortizacao)
+            // console.log('jurosCalculados: ', jurosCalculados)
+            // console.log('seguroPrestamista: ', seguroPrestamista)
+            // console.log('amortizacao: ', summary.amortizacao)
 
             
             const primeiraParcela = jurosCalculados + summary.amortizacao + seguroPrestamista + summary.txAdm
@@ -86,7 +86,7 @@ export const FinancialSimContextProvider = ({ children }) => {
             const parcelas = [...summary.parcelaSAC]
             parcelas[0] = primeiraParcela
             parcelas[1] = ultimaParcela
-            console.log('parcelas: ', parcelas)
+            // console.log('parcelas: ', parcelas)
             setSummary({
                 ...summary,
                 parcelaSAC: parcelas

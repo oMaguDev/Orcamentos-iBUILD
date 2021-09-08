@@ -573,7 +573,7 @@ const Simular = () => {
             switch (slide) {
                 case 'garagem':
                     valorAmbiente = calculateGarage(simData.garagem, baseSqMtr)
-                    console.log('simData.garagem: ', simData.garagem)
+                    // console.log('simData.garagem: ', simData.garagem)
                     setRooms({
                         ...rooms,
                         garagem: valorAmbiente

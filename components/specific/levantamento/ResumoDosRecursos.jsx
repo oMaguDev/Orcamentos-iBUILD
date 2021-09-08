@@ -19,7 +19,7 @@ const ResourcesIndex = ({ small }) => {
 
 
     useEffect(() => {
-        console.log('summary: ', summary)
+        // console.log('summary: ', summary)
         const totalFunds = formatMoney(Number(resources.valor_entrada) + Number(resources.valor_fgts) + Number(summary.valorFinanciamento))
         setTotalFunds(totalFunds)
     }, [])

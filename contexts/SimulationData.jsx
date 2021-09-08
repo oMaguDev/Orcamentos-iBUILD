@@ -134,20 +134,6 @@ export const SimulationDataContextProvider = ({ children }) => {
         }
     }, [baseSqMtr.category, simData.pavimentos])
 
-    
-
-    useEffect(() => {
-        console.log('baseSqMtr: ', baseSqMtr)
-    }, [baseSqMtr])
-
-    // useEffect(() => {
-    //     console.log('simData: ', simData)
-    // }, [simData])
-    
-    // useEffect(() => {
-    //     console.log('resources: ', resources)
-    // }, [resources])
-
     return (
         <SimulationDataContext.Provider value={{
             simData,
