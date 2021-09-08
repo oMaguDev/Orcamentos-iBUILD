@@ -222,13 +222,8 @@ const ResourcesIndex = ({ small }) => {
                         <DataDisplay
                             label='Valor da entrada + FGTS'
                             key='Valor da entrada + FGTS'
-                            value={resources.valor_entrada === '' || resources.valor_fgts === '' ? formatMoney(0) : formatMoney(Number(resources.valor_entrada) + Number(resources.valor_fgts))}
+                            value={resources.valor_entrada === '' && resources.valor_fgts === '' ? formatMoney(0) : formatMoney(Number(resources.valor_entrada) + Number(resources.valor_fgts))}
                         />
-                    </Box>
-                    <Box
-                        margin='0 0 20px 0'
-                        width='100%'
-                    >
                         <DataDisplay
                             label='Valor do terreno'
                             key='Valor do terreno'
@@ -239,20 +234,20 @@ const ResourcesIndex = ({ small }) => {
                         margin='0 0 20px 0'
                         width='100%'
                     >
-                        <DataDisplay
-                            label='Tamanho estimado do imóvel'
-                            value='150m²'
-                            key='Tamanho estimado do imóvel'
-                        />
-                    </Box>
-                    <Box
-                        margin='0 0 20px 0'
-                        width='100%'
-                    >
+                        {/* <DataDisplay
+                                    label='Tamanho estimado do imóvel'
+                                    value='150m²'
+                                    key='Tamanho estimado do imóvel'
+                                /> */}
                         <DataDisplay
                             label='Crédito disponível para financiamento'
                             value={summary.valorFinanciamento === '' ? formatMoney(0) : formatMoney(Number(summary.valorFinanciamento))}
                             key='Crédito disponível para financiamento'
+                        />
+                        <DataDisplay
+                            label='Valor total do imóvel'
+                            value={formatMoney(Number(resources.valor_entrada) + Number(resources.valor_fgts) + Number(summary.valorFinanciamento))}
+                            key='Valor total do imóvel'
                         />
                     </Box>
                 </ResourcesIndexColumn>
