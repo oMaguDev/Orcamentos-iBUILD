@@ -41,17 +41,18 @@ const Cadastro = () => {
                 // NAME: user.name,
                 // PHONE_WORK: user.phone,
                 // EMAIL_WORK: user.email,
-                nome: user.name,
-                email: user.email,
-                cpf: user.cpf,
-                telefone: user.phone,
-                uf: user.uf,
-                cidade: user.city
+                NAME: user.name,
+                EMAIL: user.email,
+                CPF: user.cpf,
+                PHONE: user.phone,
+                UF: user.uf,
+                CITY: user.city
 
 
             }
             createLead(lead)
                 .then(res => {
+                    console.log('res: ', res)
                     router.push('/final')
                 })
                 .catch(err => {
