@@ -22,10 +22,7 @@ const Cadastro = () => {
     // const [phone, setPhone] = useState('')
     // const [state, setState] = useState('')
     // const [city, setCity] = useState('')
-    const initialSelect = [{
-        label: 'Selecione',
-        value: 'placeholder'
-    }]
+    const initialSelect = []
 
     const [states, setStates] = useState(initialSelect)
     const [cities, setCities] = useState(initialSelect)
@@ -72,11 +69,11 @@ const Cadastro = () => {
                         label: e.sigla,
                         value: e.sigla
                     }))
-                    newOptions.unshift({
-                        label: 'Selecione',
-                        value: 'placeholder',
-                        disabled: true,
-                    })
+                    // newOptions.unshift({
+                    //     label: 'Selecione',
+                    //     value: 'placeholder',
+                    //     disabled: true,
+                    // })
                     setStates(newOptions)
                 }
             })
@@ -93,11 +90,11 @@ const Cadastro = () => {
                             label: e.nome,
                             value: e.nome
                         }))
-                        newOptions.unshift({
-                            label: 'Selecione',
-                            value: 'placeholder',
-                            disabled: true,
-                        })
+                        // newOptions.unshift({
+                        //     label: 'Selecione',
+                        //     value: 'placeholder',
+                        //     disabled: true,
+                        // })
                         setCities(newOptions)
                     }
                 })
@@ -201,7 +198,7 @@ const Cadastro = () => {
                             >
                             <Select
                                 label='UF'
-                                placeholder='Insira o seu telefone com DDD'
+                                placeholder='UF'
                                 value={user.uf}
                                 onChange={newValue => setUser({
                                     ...user,
@@ -215,7 +212,7 @@ const Cadastro = () => {
                                 />
                             <Select
                                 label='CIDADE'
-                                placeholder='Insira o telefone com DDD'
+                                placeholder='Selecione a cidade'
                                 value={user.city}
                                 onChange={newValue => setUser({
                                     ...user,

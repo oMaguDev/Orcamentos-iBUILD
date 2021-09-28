@@ -18,12 +18,12 @@ const Finance = ({ small }) => {
     const data = {
         caption: 'Recursos',
         title: 'Financeiros',
-        value: resources.valor_terreno,
         imageSrc: '/images/Ícones/Ícones 2.svg',
-        onChange: newValue => setResources({
-            ...resources,
-            valor_terreno: newValue
-        }),
+        // value: resources.valor_terreno,
+        // onChange: newValue => setResources({
+        //     ...resources,
+        //     valor_terreno: newValue
+        // }),
         inputs: [
             {
                 value: resources.valor_terreno,
@@ -33,7 +33,8 @@ const Finance = ({ small }) => {
                 }),
                 label: 'Valor estimado para o terreno',
                 placeholder: 'Insira o valor em reais',
-                type: 'number'
+                type: 'number',
+                id: 'valor_terreno'
             },
             {
                 value: resources.valor_entrada,
@@ -43,7 +44,8 @@ const Finance = ({ small }) => {
                 }),
                 label: 'Valor disponível para entrada',
                 placeholder: 'Insira o valor da entrada em reais',
-                type: 'number'
+                type: 'number',
+                id: 'valor_entrada'
             },
             {
                 value: resources.valor_fgts,
@@ -53,7 +55,8 @@ const Finance = ({ small }) => {
                 }),
                 label: 'Tem FGTS? Se sim, quanto?',
                 placeholder: 'Insira o valor do FGTS',
-                type: 'number'
+                type: 'number',
+                id: 'valor_fgts'
             },
             {
                 value: resources.num_pis,
@@ -63,18 +66,20 @@ const Finance = ({ small }) => {
                 }),
                 label: 'Número do pis',
                 placeholder: 'Insira o número do pis',
-                type: 'number'
+                type: 'number',
+                id: 'num_pis'
             },
-            {
-                value: resources.parcelas,
-                onChange: newValue => setResources({
-                    ...resources,
-                    parcelas: newValue
-                }),
-                label: 'Quantidade de parcelas',
-                placeholder: 'Insira a número de parcelas',
-                type: 'number'
-            },
+            // {
+            //     value: resources.parcelas,
+            //     onChange: newValue => setResources({
+            //         ...resources,
+            //         parcelas: newValue
+            //     }),
+            //     label: 'Quantidade de parcelas',
+            //     placeholder: 'Insira a número de parcelas',
+            //     type: 'number',
+            //     id: 'parcelas'
+            // },
         ]
     }
 
@@ -114,9 +119,34 @@ const Finance = ({ small }) => {
                                     margin='10px 0'
                                     width={e.width ? e.width : '100%'}
                                     small
-                                    key={e.label}
+                                    key={e.id}
+                                    id={e.id}
                                 />
                             ))}
+                            <Select
+                            label='Quantidade de parcelas'
+                            placeholder='Selecione a quantidade de parcelas'
+                            value={resources.parcelas}
+                            onChange={newValue => setResources({
+                                ...resources,
+                                parcelas: newValue.target.value
+                            })}
+                            options={[
+                                {
+                                    value: 240,
+                                    label: '240'
+                                },
+                                {
+                                    value: 360,
+                                    label: '360'
+                                },
+                            ]}
+                            key='parcelas_num'
+                            id='parcelas_num'
+                            small
+                            margin='10px 10px 10px 0'
+                            // width='25%'
+                        />
                         </MiddleContainer>
                     </StepContentContainer>
                 </SlideContainer>
@@ -167,20 +197,30 @@ const Finance = ({ small }) => {
                             />
                         ))}
                         {/* <Select /> */}
-                        {/* <Select
+                        <Select
                             label='Quantidade de parcelas'
-                            // placeholder='Insira o seu telefone com DDD'
-                            value={user.uf}
-                            onChange={newValue => setUser({
-                                ...user,
-                                uf: newValue.target.value
+                            placeholder='Selecione a quantidade de parcelas'
+                            value={resources.parcelas}
+                            onChange={newValue => setResources({
+                                ...resources,
+                                parcelas: newValue.target.value
                             })}
-                            options={states}
-                            key='parcelas_num_input'
+                            options={[
+                                {
+                                    value: 240,
+                                    label: '240'
+                                },
+                                {
+                                    value: 360,
+                                    label: '360'
+                                },
+                            ]}
+                            key='parcelas_num'
+                            id='parcelas_num'
                             small
                             margin='10px 10px 10px 0'
-                            width='25%'
-                        /> */}
+                            // width='25%'
+                        />
                     </MiddleContainer>
                 </StepContentContainer>
             </SlideContainer>

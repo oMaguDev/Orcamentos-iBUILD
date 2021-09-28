@@ -42,8 +42,8 @@ export const SimulationStatusContextProvider = ({ children }) => {
     useEffect(() => {
         let allRoomValues = 0
         for (let prop in rooms) {
-            if (!isNaN(parseFloat(rooms[prop]))) {
-                allRoomValues += parseFloat(rooms[prop])
+            if ((Number(rooms[prop]))) {
+                allRoomValues += Number(rooms[prop])
             }
         }
         setSumRoomValues(allRoomValues)
@@ -77,8 +77,8 @@ export const SimulationStatusContextProvider = ({ children }) => {
     useEffect(() => {
         let allRoomsAreas = 0
         for (let room in area) {
-            if (!isNaN(parseFloat(area[room]))) {
-                allRoomsAreas += parseFloat(area[room])
+            if ((Number(area[room]))) {
+                allRoomsAreas += Number(area[room])
                 // console.log('area[room]: ', area[room])
                 // console.log('room: ', room)
             }
@@ -103,11 +103,11 @@ export const SimulationStatusContextProvider = ({ children }) => {
 
     // update total funds:
     useEffect(() => {
-        if (!isNaN(parseFloat(summary.valorImovel))) {
+        if ((Number(summary.valorImovel))) {
             setSimStatus({
                 funds: {
                     ...simStatus.funds,
-                    total: parseFloat(summary.valorImovel)
+                    total: Number(summary.valorImovel)
                 }
             })
         }

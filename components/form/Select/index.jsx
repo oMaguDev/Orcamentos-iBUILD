@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react"
 import { Box } from "../../Containers"
 import { AssistentP, SelectContainer, StyledSelect } from "./styles"
 
@@ -20,6 +21,24 @@ const Select = ({
     options,
     small
 }) => {
+
+    const [optionsWithPlaceholder, setOptionsWithPlaceholder] = useState([])
+    
+    
+    useEffect(() => {
+        const newOptions = [...options]
+        if (newOptions[0]?.value !== 'placeholder' && newOptions[1]?.value !== 'placeholder') {
+            newOptions.unshift({
+                value: 'placeholder',
+                label: placeholder,
+                disabled: true,
+                selected: true,
+            })
+            // console.log('options: ', options)
+            // console.log('newOptions: ', newOptions)
+            setOptionsWithPlaceholder(newOptions)
+        }
+    }, [options])
 
     // console.log('error: ', error, id)
 
@@ -50,8 +69,17 @@ const Select = ({
                     value={value}
                     onChange={onChange}
                 >
-                    { options && options.map((e, i) => (
-                        <option value={e.value} disabled={e.disabled}>{e.label}</option>
+                    { optionsWithPlaceholder && optionsWithPlaceholder.map((e, i) => (
+                        <option
+                            value={e.value ? e.value : e.label}
+                            disabled={e.disabled}
+                            // defaultValue={e.selected}
+                            defaultChecked={e.selected}
+                            // selected={e.selected}
+                            key={`${e.label}_select_option`}
+                        >
+                            {e.label}
+                        </option>
                     ))}
                 </StyledSelect>
                 {/* { Icon && (

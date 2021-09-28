@@ -12,7 +12,7 @@ import { round5 } from '../../../utils/round'
 const ResourcesIndex = ({ small }) => {
 
 
-    const { summary, resources } = useContext(FinancialSimContext)
+    const { summary, resources, calculateSummary } = useContext(FinancialSimContext)
     const { setTotalFunds } = useContext(SimulationStatusContext)
 
     const valorImovel = Number(resources.valor_entrada) + Number(resources.valor_fgts) + Number(summary.valorFinanciamento)
@@ -20,6 +20,7 @@ const ResourcesIndex = ({ small }) => {
 
     useEffect(() => {
         // console.log('summary: ', summary)
+        calculateSummary()
         const totalFunds = formatMoney(Number(resources.valor_entrada) + Number(resources.valor_fgts) + Number(summary.valorFinanciamento))
         setTotalFunds(totalFunds)
     }, [])

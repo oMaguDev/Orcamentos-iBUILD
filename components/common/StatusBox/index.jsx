@@ -63,7 +63,7 @@ const StatusBox = () => {
                                 TOTAL
                             </div>
                             <div className='value'>
-                                {(simArea.total)} m²
+                                {simArea.total} m²
                             </div>
                         </ValueBoxes>
                         <ValueBoxes>

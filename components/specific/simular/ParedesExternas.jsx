@@ -26,22 +26,27 @@ const ParedesExternas = ({ small }) => {
     useEffect(() => {
         const totalFunds = simStatus.funds.total
         let divisor = 2300
-        switch (simData.paredes) {
-            case 'economy':
-                divisor = 2300
-                break;
-            case 'standard':
-                divisor = 2700
-                break;
-            case 'premium':
-                divisor = 3000
-                break;
-            default:
-                break;
+        console.log('totalFunds: ', totalFunds)
+        console.log('simData.paredes: ', simData.paredes)
+        if ((totalFunds || totalFunds === 0) && simData.paredes) {
+            switch (simData.paredes) {
+                case 'economy':
+                    divisor = 2300
+                    break;
+                case 'standard':
+                    divisor = 2700
+                    break;
+                case 'premium':
+                    divisor = 3000
+                    break;
+                default:
+                    divisor = 2300
+                    break;
+            }
+            const totalArea = round5(totalFunds / divisor)
+            console.log('totalArea: ', totalArea)
+            setTotalArea(totalArea)
         }
-        const totalArea = round5(totalFunds / divisor)
-        // console.log('totalArea: ', totalArea)
-        setTotalArea(totalArea)
     }, [simData.paredes])
 
     const paredes = [

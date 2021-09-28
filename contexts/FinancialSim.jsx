@@ -25,7 +25,7 @@ export const FinancialSimContextProvider = ({ children }) => {
         valor_fgts: '',
         num_pis: '',
         mod_financiamento: '',
-        parcelas: '',
+        parcelas: 'placeholder',
     })
 
     const [summary, setSummary] = useState({
@@ -48,30 +48,55 @@ export const FinancialSimContextProvider = ({ children }) => {
 
 
     useEffect(() => {
-        if (resources.valor_entrada > 0 && !isNaN(parseFloat(resources.valor_entrada))) {
-            const valorImovel = parseFloat(resources.valor_entrada) / 0.2
-            const valorFinanciado = valorImovel - parseFloat(resources.valor_entrada)
+        calculateValorImovel(summary)
+    }, [resources.valor_entrada])
+
+    useEffect(() => {
+        calculateSummary(summary)
+    }, [resources.parcelas])
+
+    // useEffect(() => {
+    //     calculateParcelaSAC(summary)
+    // }, [summary.valorFinanciamento, summary.amortizacao])
+
+    const calculateValorImovel = () => {
+        if (resources.valor_entrada > 0 && !isNaN(Number(resources.valor_entrada))) {
+            const valorImovel = Number(resources.valor_entrada) / 0.2
+            const valorFinanciado = valorImovel - Number(resources.valor_entrada)
             setSummary({
                 ...summary,
                 valorFinanciamento: valorFinanciado,
                 valorImovel
             })
-            
+            return {
+                ...summary,
+                valorFinanciamento: valorFinanciado,
+                valorImovel
+            }
         }
-    }, [resources.valor_entrada])
+        // console.log('erro valor imovel')
+        return {...summary}
+    }
 
-    useEffect(() => {
-        if (!isNaN(parseFloat(resources.parcelas)) && !isNaN(parseFloat(summary.valorFinanciamento)) && !isNaN(parseFloat(summary.jurosAM))) {
+    const calculateParcelaPrice = (summary) => {
+        if (!isNaN(Number(resources.parcelas)) && !isNaN(Number(summary.valorFinanciamento)) && !isNaN(Number(summary.jurosAM))) {
             const pPrice = pmt(summary.jurosAM, resources.parcelas, summary.valorFinanciamento) + summary.txAdm
             setSummary({
                 ...summary,
                 parcelaPrice: pPrice,
                 amortizacao: summary.valorFinanciamento / resources.parcelas
             })
+            return {
+                ...summary,
+                parcelaPrice: pPrice,
+                amortizacao: summary.valorFinanciamento / resources.parcelas
+            }
         }
-    }, [resources.parcelas, summary.valorFinanciamento])
+        // console.log('erro parcela Price')
+        return {...summary}
+    }
 
-    useEffect(() => {
+    const calculateParcelaSAC = (summary) => {
         if (summary.valorFinanciamento > 0 && resources.parcelas !== '') {
             const jurosCalculados = summary.valorFinanciamento * summary.jurosAM
             const seguroPrestamista =  summary.valorFinanciamento * summary.prestamista
@@ -91,8 +116,24 @@ export const FinancialSimContextProvider = ({ children }) => {
                 ...summary,
                 parcelaSAC: parcelas
             })
+            return {
+                ...summary,
+                parcelaSAC: parcelas
+            }
         }
-    }, [summary.valorFinanciamento, summary.amortizacao])
+        // console.log('erro parcela SAC')
+        return {...summary}
+    }
+
+    const calculateSummary = () => {
+        let finalSummary = calculateValorImovel(summary)
+        finalSummary = calculateParcelaPrice(finalSummary)
+        finalSummary = calculateParcelaSAC(finalSummary)
+        // setSummary({ ...finalSummary })
+        // console.log('calculateSummary!')
+        // console.log('finalSummary: ', finalSummary)
+        // console.log('summary: ', summary)
+    }
 
 
     return (
@@ -100,7 +141,8 @@ export const FinancialSimContextProvider = ({ children }) => {
             resources,
             setResources,
             summary,
-            setSummary
+            setSummary,
+            calculateSummary
         }}>
             { children }
         </FinancialSimContext.Provider>

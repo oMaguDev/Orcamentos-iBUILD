@@ -11,24 +11,18 @@ import { FinancialSimContext } from "../../../contexts/FinancialSim"
 
 const Personal = ({ small }) => {
 
-    const [states, setStates] = useState([{
-        label: 'UF',
-        value: 'placeholder'
-    }])
-    const [cities, setCities] = useState([{
-        label: 'Cidade',
-        value: 'placeholder'
-    }])
+    const [states, setStates] = useState([])
+    const [cities, setCities] = useState([])
 
     const { resources, setResources } = useContext(FinancialSimContext)
     const { user, setUser } = useContext(UserContext)
 
     const estado_civil_options = [
-        {
-            value: 'placeholder',
-            label: 'Selecione',
-            disabled: true
-        },
+        // {
+        //     value: 'placeholder',
+        //     label: 'Selecione',
+        //     disabled: true
+        // },
         {
             value: 'SOLTEIRO',
             label: 'SOLTEIRO(A)'
@@ -61,7 +55,8 @@ const Personal = ({ small }) => {
                 }),
                 label: 'Renda Bruta Familiar (mensal comprovada)',
                 placeholder: 'Insira a renda mensal em reais',
-                type: 'number'
+                type: 'number',
+                id: 'renda_mensal'
             },
             {
                 value: resources?.dob,
@@ -72,7 +67,8 @@ const Personal = ({ small }) => {
                 label: 'Data de nascimento (proponente mais velho)',
                 placeholder: 'DD/MM/AAAA',
                 // type: 'number',
-                mask: 'date'
+                mask: 'date',
+                id: 'dob'
             },
             // {
             //     value: resources?.estado_civil,
@@ -113,11 +109,11 @@ const Personal = ({ small }) => {
                         label: e.sigla,
                         value: e.sigla
                     }))
-                    newOptions.unshift({
-                        label: 'UF',
-                        value: 'placeholder',
-                        disabled: true,
-                    })
+                    // newOptions.unshift({
+                    //     label: 'UF',
+                    //     value: 'placeholder',
+                    //     disabled: true,
+                    // })
                     setStates(newOptions)
                 }
             })
@@ -136,11 +132,11 @@ const Personal = ({ small }) => {
                             label: e.nome,
                             value: e.nome
                         }))
-                        newOptions.unshift({
-                            label: 'Cidade',
-                            value: 'placeholder',
-                            disabled: true,
-                        })
+                        // newOptions.unshift({
+                        //     label: 'Cidade',
+                        //     value: 'placeholder',
+                        //     disabled: true,
+                        // })
                         setCities(newOptions)
                     }
                 })
@@ -183,8 +179,10 @@ const Personal = ({ small }) => {
                                     type={e.type ? e.type : 'text'}
                                     margin='10px 0'
                                     width={e.width ? e.width : '100%'}
+                                    mask={e.mask}
                                     small
-                                    key={e.label}
+                                    key={e.id}
+                                    id={e.id}
                                 />
                             ))}
                             {/* <Select /> */}
@@ -195,6 +193,7 @@ const Personal = ({ small }) => {
                                     estado_civil: newValue.target.value
                                 })}
                                 label='ESTADO CIVIL'
+                                placeholder='Selecione o estado civil'
                                 key='uf_input'
                                 small
                                 margin='10px 10px 10px 0'
@@ -219,12 +218,13 @@ const Personal = ({ small }) => {
                                     })}
                                     options={states}
                                     key='uf_input'
+                                    placeholder='UF'
                                     small
                                     margin='10px 10px 10px 0'
                                     width='25%'
                                 />
                                 <Select
-                                    // label='CIDADE'
+                                    placeholder='CIDADE'
                                     // placeholder='Insira o telefone com DDD'
                                     value={user.city}
                                     onChange={newValue => setUser({
@@ -289,55 +289,57 @@ const Personal = ({ small }) => {
                         ))}
                         {/* <Select /> */}
                         <Select
-                            value={resources.estado_civil}
-                            onChange={newValue => setResources({
-                                ...resources,
-                                estado_civil: newValue.target.value
-                            })}
-                            label='ESTADO CIVIL'
-                            key='uf_input'
-                            small
-                            margin='10px 10px 10px 0'
-                            options={estado_civil_options}
-                        />
-                        <Box
-                            margin='10px 0 0'
-                        >
-                            {('Local de construção').toUpperCase()}
-                        </Box>
-                        <Flex
-                            width='100%'
-                            justifyContent='space-evenly'
-                        >
-                            <Select
-                                // label='Local de construção'
-                                // placeholder='Insira o seu telefone com DDD'
-                                value={user.uf}
-                                onChange={newValue => setUser({
-                                    ...user,
-                                    uf: newValue.target.value
+                                value={resources.estado_civil}
+                                onChange={newValue => setResources({
+                                    ...resources,
+                                    estado_civil: newValue.target.value
                                 })}
-                                options={states}
+                                label='ESTADO CIVIL'
+                                placeholder='Selecione o estado civil'
                                 key='uf_input'
                                 small
                                 margin='10px 10px 10px 0'
-                                width='25%'
+                                options={estado_civil_options}
                             />
-                            <Select
-                                // label='CIDADE'
-                                // placeholder='Insira o telefone com DDD'
-                                value={user.city}
-                                onChange={newValue => setUser({
-                                    ...user,
-                                    city: newValue.target.value
-                                })}
-                                options={cities}
-                                key='city_input'
-                                small
-                                margin='10px 0 10px 10px'
-                                width='75%'
-                            />
-                        </Flex>
+                            <Box
+                                margin='10px 0 0'
+                            >
+                                {('Local de construção').toUpperCase()}
+                            </Box>
+                            <Flex
+                                width='100%'
+                                justifyContent='space-evenly'
+                            >
+                                <Select
+                                    // label='Local de construção'
+                                    // placeholder='Insira o seu telefone com DDD'
+                                    value={user.uf}
+                                    onChange={newValue => setUser({
+                                        ...user,
+                                        uf: newValue.target.value
+                                    })}
+                                    options={states}
+                                    key='uf_input'
+                                    placeholder='UF'
+                                    small
+                                    margin='10px 10px 10px 0'
+                                    width='25%'
+                                />
+                                <Select
+                                    placeholder='CIDADE'
+                                    // placeholder='Insira o telefone com DDD'
+                                    value={user.city}
+                                    onChange={newValue => setUser({
+                                        ...user,
+                                        city: newValue.target.value
+                                    })}
+                                    options={cities}
+                                    key='city_input'
+                                    small
+                                    margin='10px 0 10px 10px'
+                                    width='75%'
+                                />
+                            </Flex>
                     </MiddleContainer>
                 </StepContentContainer>
             </SlideContainer>
