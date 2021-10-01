@@ -106,9 +106,9 @@ const ResourcesIndex = ({ small }) => {
                                     key='Crédito disponível para financiamento'
                                 />
                                 <DataDisplay
-                                    label='Valor total do imóvel'
+                                    label='Valor disponível para construção'
                                     value={formatMoney(valorImovel)}
-                                    key='Valor total do imóvel'
+                                    key='Valor disponível para construção'
                                 />
                             </Box>
                             <Box
@@ -183,6 +183,7 @@ const ResourcesIndex = ({ small }) => {
             column
             height='calc(100vh - 200px)'
             justifyContent='flex-start'
+            overflow='auto'
         >
             <TitleContainer>
                 <h4>RESUMO DOS</h4>
@@ -249,9 +250,9 @@ const ResourcesIndex = ({ small }) => {
                             key='Crédito disponível para financiamento'
                         />
                         <DataDisplay
-                            label='Valor total do imóvel'
+                            label='Valor disponível para construção'
                             value={formatMoney(valorImovel)}
-                            key='Valor total do imóvel'
+                            key='Valor disponível para construção'
                         />
                     </Box>
                 </ResourcesIndexColumn>
