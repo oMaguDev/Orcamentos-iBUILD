@@ -65,13 +65,21 @@ export const FinancialSimContextProvider = ({ children }) => {
         const marlonIndex = 0.009274
         if (rendaMensal > 0) {
             const valorFinanciamento = round5(0.3 * rendaMensal / marlonIndex)
+            const valorImovel = valorFinanciamento + Number(resources.valor_entrada) + Number(resources.valor_fgts) - Number(resources.valor_terreno)
             setSummary({
                 ...summary,
-                valorFinanciamento
+                valorFinanciamento,
+                valorImovel
             })
+            return {
+                ...summary,
+                valorFinanciamento,
+                valorImovel
+            }
             // console.log('valorFinanciamento: ', valorFinanciamento)
             // console.log('typeof valorFinanciamento: ', typeof valorFinanciamento)
         }
+        return {...summary}
     }
 
     const calculateValorImovel = () => {

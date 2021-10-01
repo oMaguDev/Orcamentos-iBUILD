@@ -125,7 +125,8 @@ export const SimulationStatusContextProvider = ({ children }) => {
             // ...simStatus,
             funds: {
                 ...simStatus.funds,
-                total: totalFunds
+                total: totalFunds,
+                available: totalFunds
             }
         })
     }
