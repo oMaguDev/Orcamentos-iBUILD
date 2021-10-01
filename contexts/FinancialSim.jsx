@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import { calculateLastSac } from "../utils/calculate_SAC";
 import { pmt } from '../utils/pmt'
+import { round5 } from "../utils/round";
 
 
 export const FinancialSimContext = createContext()
@@ -59,18 +60,32 @@ export const FinancialSimContextProvider = ({ children }) => {
     //     calculateParcelaSAC(summary)
     // }, [summary.valorFinanciamento, summary.amortizacao])
 
+    const calculateValorFinanciamento = () => {
+        const rendaMensal = Number(resources.renda)
+        const marlonIndex = 0.009274
+        if (rendaMensal > 0) {
+            const valorFinanciamento = round5(0.3 * rendaMensal / marlonIndex)
+            setSummary({
+                ...summary,
+                valorFinanciamento
+            })
+            // console.log('valorFinanciamento: ', valorFinanciamento)
+            // console.log('typeof valorFinanciamento: ', typeof valorFinanciamento)
+        }
+    }
+
     const calculateValorImovel = () => {
         if (resources.valor_entrada > 0 && !isNaN(Number(resources.valor_entrada))) {
             const valorImovel = Number(resources.valor_entrada) / 0.2
-            const valorFinanciado = valorImovel - Number(resources.valor_entrada)
+            // const valorFinanciado = valorImovel - Number(resources.valor_entrada)
             setSummary({
                 ...summary,
-                valorFinanciamento: valorFinanciado,
+                // valorFinanciamento: valorFinanciado,
                 valorImovel
             })
             return {
                 ...summary,
-                valorFinanciamento: valorFinanciado,
+                // valorFinanciamento: valorFinanciado,
                 valorImovel
             }
         }
@@ -142,7 +157,8 @@ export const FinancialSimContextProvider = ({ children }) => {
             setResources,
             summary,
             setSummary,
-            calculateSummary
+            calculateSummary,
+            calculateValorFinanciamento
         }}>
             { children }
         </FinancialSimContext.Provider>
