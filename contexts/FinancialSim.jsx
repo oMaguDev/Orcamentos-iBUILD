@@ -149,7 +149,7 @@ export const FinancialSimContextProvider = ({ children }) => {
     }
 
     const calculateSummary = () => {
-        let finalSummary = calculateValorImovel(summary)
+        let finalSummary = calculateValorFinanciamento(summary)
         finalSummary = calculateParcelaPrice(finalSummary)
         finalSummary = calculateParcelaSAC(finalSummary)
         // setSummary({ ...finalSummary })

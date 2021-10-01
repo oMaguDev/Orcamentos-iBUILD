@@ -116,7 +116,8 @@ export const SimulationStatusContextProvider = ({ children }) => {
     const setTotalArea = (area) => {
         setSimArea({
             ...simArea,
-            total: area
+            total: area,
+            available: area
         })
     }
 
