@@ -109,11 +109,7 @@ const ResourcesIndex = ({ small }) => {
                                     key='Crédito disponível para financiamento'
                                 />
                                 <DataDisplay
-<<<<<<< HEAD
                                     label='Valor disponível para construção'
-=======
-                                    label='Valor disponível para a construção'
->>>>>>> 3a8bb0fdbaf89bef9d73cd554151931995a18e39
                                     value={formatMoney(valorImovel)}
                                     key='Valor disponível para construção'
                                 />
