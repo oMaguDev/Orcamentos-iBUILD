@@ -1,7 +1,7 @@
 import { Box, Flex, TitleContainer } from "../../Containers"
 import { ResourcesIndexColumn } from "./styles"
 import DataDisplay from '../../common/DataDisplay'
-import { useContext, useEffect } from "react"
+import { useContext, useEffect, useState } from "react"
 import { FinancialSimContext } from "../../../contexts/FinancialSim"
 import { formatMoney } from "../../../utils/format"
 import { SlideContainer, StepContentContainer } from "../../common/StepContent/styles"
@@ -13,17 +13,20 @@ const ResourcesIndex = ({ small }) => {
 
 
     const { summary, resources, calculateSummary } = useContext(FinancialSimContext)
-    const { setTotalFunds } = useContext(SimulationStatusContext)
+    const { setTotalFunds, simStatus } = useContext(SimulationStatusContext)
 
-    const valorImovel = Number(resources.valor_entrada) + Number(resources.valor_fgts) + Number(summary.valorFinanciamento)
+    const [valorImovel, setValorImovel] = useState(0)
 
-
+    
+    
     useEffect(() => {
+        const valorConstrucao = Number(resources.valor_entrada) + Number(resources.valor_fgts) + Number(summary.valorFinanciamento) - Number(resources.valor_terreno)
+        setValorImovel(valorConstrucao)
+        // console.log('valorConstrucao: ', valorConstrucao)
         // console.log('summary: ', summary)
         calculateSummary()
-        const totalFunds = formatMoney(Number(resources.valor_entrada) + Number(resources.valor_fgts) + Number(summary.valorFinanciamento))
-        setTotalFunds(totalFunds)
-    }, [])
+        setTotalFunds(valorConstrucao)
+    }, [resources.parcelas])
 
     if (small) {
         return (
@@ -76,7 +79,7 @@ const ResourcesIndex = ({ small }) => {
                                     value={resources.valor_entrada === '' ? formatMoney(0) : formatMoney(Number(resources.valor_entrada))}
                                 />
                                 <DataDisplay
-                                    label='Valor da FGTS'
+                                    label='Valor do FGTS'
                                     key='Valor da FGTS'
                                     value={resources.valor_fgts === '' ? formatMoney(0) : formatMoney(Number(resources.valor_fgts))}
                                 />
@@ -106,7 +109,7 @@ const ResourcesIndex = ({ small }) => {
                                     key='Crédito disponível para financiamento'
                                 />
                                 <DataDisplay
-                                    label='Valor total do imóvel'
+                                    label='Valor disponível para a construção'
                                     value={formatMoney(valorImovel)}
                                     key='Valor total do imóvel'
                                 />
@@ -219,7 +222,7 @@ const ResourcesIndex = ({ small }) => {
                             value={resources.valor_entrada === '' ? formatMoney(0) : formatMoney(Number(resources.valor_entrada))}
                         />
                         <DataDisplay
-                            label='Valor da FGTS'
+                            label='Valor do FGTS'
                             key='Valor da FGTS'
                             value={resources.valor_fgts === '' ? formatMoney(0) : formatMoney(Number(resources.valor_fgts))}
                         />

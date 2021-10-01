@@ -12,8 +12,12 @@ import { SimulationStatusContext } from "../../../contexts/SimulationStatus"
 
 const Finance = ({ small }) => {
 
-    const { resources, setResources } = useContext(FinancialSimContext)
+    const { resources, setResources, calculateValorFinanciamento } = useContext(FinancialSimContext)
     const { user, setUser } = useContext(UserContext)
+
+    useEffect(() => {
+        calculateValorFinanciamento()
+    }, [resources.renda])
 
     const data = {
         caption: 'Recursos',

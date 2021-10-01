@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import { calculateLastSac } from "../utils/calculate_SAC";
 import { pmt } from '../utils/pmt'
+import { round5 } from "../utils/round";
 
 
 export const FinancialSimContext = createContext()
@@ -59,18 +60,40 @@ export const FinancialSimContextProvider = ({ children }) => {
     //     calculateParcelaSAC(summary)
     // }, [summary.valorFinanciamento, summary.amortizacao])
 
-    const calculateValorImovel = () => {
-        if (resources.valor_entrada > 0 && !isNaN(Number(resources.valor_entrada))) {
-            const valorImovel = Number(resources.valor_entrada) / 0.2
-            const valorFinanciado = valorImovel - Number(resources.valor_entrada)
+    const calculateValorFinanciamento = () => {
+        const rendaMensal = Number(resources.renda)
+        const marlonIndex = 0.009274
+        if (rendaMensal > 0) {
+            const valorFinanciamento = round5(0.3 * rendaMensal / marlonIndex)
+            const valorImovel = valorFinanciamento + Number(resources.valor_entrada) + Number(resources.valor_fgts) - Number(resources.valor_terreno)
             setSummary({
                 ...summary,
-                valorFinanciamento: valorFinanciado,
+                valorFinanciamento,
                 valorImovel
             })
             return {
                 ...summary,
-                valorFinanciamento: valorFinanciado,
+                valorFinanciamento,
+                valorImovel
+            }
+            // console.log('valorFinanciamento: ', valorFinanciamento)
+            // console.log('typeof valorFinanciamento: ', typeof valorFinanciamento)
+        }
+        return {...summary}
+    }
+
+    const calculateValorImovel = () => {
+        if (resources.valor_entrada > 0 && !isNaN(Number(resources.valor_entrada))) {
+            const valorImovel = Number(resources.valor_entrada) / 0.2
+            // const valorFinanciado = valorImovel - Number(resources.valor_entrada)
+            setSummary({
+                ...summary,
+                // valorFinanciamento: valorFinanciado,
+                valorImovel
+            })
+            return {
+                ...summary,
+                // valorFinanciamento: valorFinanciado,
                 valorImovel
             }
         }
@@ -126,7 +149,7 @@ export const FinancialSimContextProvider = ({ children }) => {
     }
 
     const calculateSummary = () => {
-        let finalSummary = calculateValorImovel(summary)
+        let finalSummary = calculateValorFinanciamento(summary)
         finalSummary = calculateParcelaPrice(finalSummary)
         finalSummary = calculateParcelaSAC(finalSummary)
         // setSummary({ ...finalSummary })
@@ -142,7 +165,8 @@ export const FinancialSimContextProvider = ({ children }) => {
             setResources,
             summary,
             setSummary,
-            calculateSummary
+            calculateSummary,
+            calculateValorFinanciamento
         }}>
             { children }
         </FinancialSimContext.Provider>
