@@ -6,6 +6,9 @@ export const baseObraBranca = {
         foundation: 14954.46,
         structure: 76020.00,
         slab: 958.30,
+        foundation_superficial: 149.54,
+        slab_wet: 191.66,
+        finishing: 109.41,
         walls: [
             17505.60,
             5356.80,
@@ -18,6 +21,9 @@ export const baseObraBranca = {
         foundation: 14954.46,
         structure: 76020.00,
         slab: 958.30,
+        foundation_superficial: 149.54,
+        slab_wet: 191.66,
+        finishing: 159.08,
         walls: [
             25452.80,
             5356.80,
@@ -30,6 +36,9 @@ export const baseObraBranca = {
         foundation: 14954.46,
         structure: 76020.00,
         slab: 958.30,
+        foundation_superficial: 149.54,
+        slab_wet: 191.66,
+        finishing: 179.38,
         walls: [
             28700.80,
             5356.80,

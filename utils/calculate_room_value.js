@@ -13,8 +13,9 @@ export const calculateGarage = (garagem, baseSqMtr) => {
     const piso = baseAcabamentos.garagem[garagem.pattern].piso * areaPiso
     const pinturaParedes = baseAcabamentos.garagem[garagem.pattern].pintura * areaParede
     const pinturaForro = baseAcabamentos.garagem[garagem.pattern].forro * area
+    const telheiros = 42 *  baseObraBranca[garagem.pattern].foundation_superficial + baseObraBranca[garagem.pattern].finishing + (baseObraBranca[garagem.pattern].slab_wet / 2)
 
-    let valorAmbiente = valorBase + paredesInternas + piso + pinturaParedes + pinturaForro
+    let valorAmbiente = valorBase + paredesInternas + piso + pinturaParedes + pinturaForro + telheiros
         
     if (garagem.confort === 'sim') {
         valorAmbiente += baseObraBranca.conforto_interno * areaParede
@@ -31,7 +32,7 @@ export const calculateGarage = (garagem, baseSqMtr) => {
 
 export const calculateSala = (sala, baseSqMtr) => {
     const area = sala.value
-    const areaPiso = area 
+    const areaPiso = area * 1.1
     const areaParede = area * 2.93
 
     const valorBase = baseSqMtr.value * area
@@ -126,6 +127,18 @@ export const calculateAreaServico = (areaServico, baseSqMtr) => {
     const esquadria = baseAcabamentos.areaServico[areaServico.pattern].esquadria
     const loucas = baseAcabamentos.areaServico[areaServico.pattern].loucas
     const marmore = baseAcabamentos.areaServico[areaServico.pattern].marmore
+
+    console.log('area: ', area)
+    console.log('valorBase: ', valorBase)
+    console.log('paredesInternas: ', paredesInternas)
+    console.log('piso: ', piso)
+    console.log('pinturaParedes: ', pinturaParedes)
+    console.log('pinturaForro: ', pinturaForro)
+    console.log('peitoril: ', peitoril)
+    console.log('porta: ', porta)
+    console.log('esquadria: ', esquadria)
+    console.log('loucas: ', loucas)
+    console.log('marmore: ', marmore)
 
     let valorAmbiente = valorBase + paredesInternas + piso + pinturaParedes + pinturaForro + peitoril + porta + esquadria + loucas + marmore
         
