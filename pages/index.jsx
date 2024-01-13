@@ -31,7 +31,7 @@ const Main = () => {
                 >
                     <TitleContainer>
                         <h4>
-                            CHEGOU A HORA DE TER A SUA CASA!
+                            CHEGOU A HORA DE TER A SUA CASA! V2.0
                         </h4>
                         <h1>
                             Saiba agora mesmo quanto sua casa vai custar e como ela pode ficar.
