@@ -38,14 +38,14 @@ const LoginPage = () => {
   console.log('Dados do usuário:', data);
   localStorage.setItem('userId', user.id);
   localStorage.setItem('franquia', data[0].franquia);;
-  router.push('/home');
+  router.push('/');
     }}
 
   return (
     <Layout>
       <Flex alignItems="center" justifyContent="center" height="100%">
         <Box width="400px" padding="20px" borderRadius="8px">
-          
+        <form onSubmit={handleLogin}>
           <Input 
             label="Email"
             placeholder="Email"
@@ -62,19 +62,19 @@ const LoginPage = () => {
           />
         
           <Button type="submit">Entrar</Button>
-
+          <div>
           <Button 
             variant="outline"
             onClick={() => Router.push('/signIn')}
           >
             Criar Conta
           </Button>
-
+          </div>
           <RadioButtons>
             <RadioButtons.Option value="1">Franquia 1</RadioButtons.Option>
             
           </RadioButtons>
-
+        </form>
         </Box>
       </Flex>
     </Layout>
