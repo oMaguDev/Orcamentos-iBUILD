@@ -5,12 +5,32 @@ import { useRouter } from 'next/router'
 import Button from '../components/common/Button'
 import useWindowDimensions from "../hooks/useWindowDimensions"
 import { breakpoints } from "../utils/breakpoints"
+import React from 'react';
 
 const Main = () => {
 
     const router = useRouter()
 
     const { width } = useWindowDimensions()
+
+    const [userId, setUserId] = React.useState('');
+    const [franquia, setfranquia] = React.useState('');
+
+    React.useEffect(() => {
+      const storedUserId = localStorage.getItem('userId');
+      if (storedUserId) {
+        setUserId(storedUserId);
+      }
+    }, []);
+    React.useEffect(() => {
+        const storedFranquia = localStorage.getItem('franquia');
+        if (storedFranquia) {
+          setfranquia(storedFranquia);
+        }
+      }, []);
+
+      console.log('userId: ', userId)
+      console.log('franquia: ', franquia)
 
     if (width < breakpoints.md && width !== 0) {
         return (
@@ -36,6 +56,9 @@ const Main = () => {
                         <h1>
                             Saiba agora mesmo quanto sua casa vai custar e como ela pode ficar.
                         </h1>
+                        <h2>
+                            {userId} e {franquia}
+                        </h2>
                     </TitleContainer>
                     <ExplainingP>
                         Sabemos que construir um imóvel é um grande passo na vida de qualquer pessoa, por isso desenvolvemos essa ferramenta,
