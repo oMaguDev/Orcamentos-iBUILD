@@ -11,7 +11,7 @@ import { breakpoints } from '../../../utils/breakpoints'
 const First = ({ small }) => {
     // const [active, setActive] = useState(null)
     // const [hasSimulated, setHasSimulated] = useState('')
-
+    console.log('first')
     const { resources, setResources } = useContext(FinancialSimContext)
 
 

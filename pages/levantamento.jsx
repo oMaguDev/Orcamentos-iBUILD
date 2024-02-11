@@ -23,8 +23,6 @@ const Levantamento = () => {
 
     const router = useRouter()
 
-    const { setActiveIndex } = useContext(ActiveIndexContext)
-
     const [startPage, setStartPage] = useState(true)
     const [errorMessage, setErrorMessage] = useState(false)
 

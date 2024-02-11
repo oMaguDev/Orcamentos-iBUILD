@@ -10,7 +10,7 @@ import { breakpoints } from "../../../utils/breakpoints"
 
 
 const Second = ({ small }) => {
-
+    console.log('second')
     const [activeLand, setActiveLand] = useState(null)
     const [activeProject, setActiveProject] = useState(null)
     // const [hasSimulated, setHasSimulated] = useState('')

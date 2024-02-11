@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from "react";
-import AliceCarousel from "react-alice-carousel"
-import "react-alice-carousel/lib/alice-carousel.css"
+import AliceCarousel from "react-alice-carousel";
+import "react-alice-carousel/lib/alice-carousel.css";
 import { CarouselButton, CarouselButtonContainer, CarouselItem, Dots } from "./styles";
-import Button from '../Button'
+import Button from '../Button';
 import { Box, Flex } from "../../Containers";
-import { CaretRight, CaretLeft } from 'phosphor-react'
+import { CaretRight, CaretLeft } from 'phosphor-react';
 import { ActiveIndexContext } from "../../../contexts/activeIndex";
 
 const responsive = {
@@ -59,7 +59,7 @@ const Carousel = ({
     const carouselItems = items ? items : defaultItems
 
     const slidePrev = () => {
-        // console.log('slidePrev')
+        console.log('slidePrev')
         if (currentPageIndex() > 0) {
             if (page === 'levantamento') {
                 return setActiveIndexLevantamento(activeIndexLevantamento - 1);
@@ -74,7 +74,7 @@ const Carousel = ({
     }
 
     const slideNext = () => {
-        // console.log('slideNext')
+        console.log('slideNext')
         if (currentPageIndex() < carouselItems.length - 1) {
             if (page === 'levantamento') {
                 return setActiveIndexLevantamento(activeIndexLevantamento + 1);
