@@ -7,6 +7,8 @@ import useWindowDimensions from "../hooks/useWindowDimensions"
 import { breakpoints } from "../utils/breakpoints"
 import React from 'react';
 
+
+
 const Main = () => {
 
     const router = useRouter()
@@ -16,21 +18,21 @@ const Main = () => {
     const [userId, setUserId] = React.useState('');
     const [franquia, setfranquia] = React.useState('');
 
+
     React.useEffect(() => {
       const storedUserId = localStorage.getItem('userId');
       if (storedUserId) {
         setUserId(storedUserId);
       }
-    }, []);
-    React.useEffect(() => {
-        const storedFranquia = localStorage.getItem('franquia');
+      const storedFranquia = localStorage.getItem('franquia');
         if (storedFranquia) {
           setfranquia(storedFranquia);
         }
-      }, []);
+    }, []);
 
       console.log('userId: ', userId)
       console.log('franquia: ', franquia)
+    
 
     if (width < breakpoints.md && width !== 0) {
         return (

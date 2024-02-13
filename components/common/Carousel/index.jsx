@@ -59,7 +59,6 @@ const Carousel = ({
     const carouselItems = items ? items : defaultItems
 
     const slidePrev = () => {
-        console.log('slidePrev')
         if (currentPageIndex() > 0) {
             if (page === 'levantamento') {
                 return setActiveIndexLevantamento(activeIndexLevantamento - 1);
@@ -74,7 +73,6 @@ const Carousel = ({
     }
 
     const slideNext = () => {
-        console.log('slideNext')
         if (currentPageIndex() < carouselItems.length - 1) {
             if (page === 'levantamento') {
                 return setActiveIndexLevantamento(activeIndexLevantamento + 1);

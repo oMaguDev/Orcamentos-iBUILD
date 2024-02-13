@@ -37,7 +37,7 @@ const LoginPage = () => {
 
   console.log('Dados do usuário:', data);
   localStorage.setItem('userId', user.id);
-  localStorage.setItem('franquia', data[0].franquia);;
+  localStorage.setItem('franquia', data[0].id_franquia);;
   router.push('/');
     }}
 

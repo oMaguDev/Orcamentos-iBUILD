@@ -1,8 +1,12 @@
-import { baseAcabamentos } from "./base_acabamentos"
+
+import { loadBaseAcabamentos } from "./base_acabamentos.js"
 import { baseObraBranca } from "./base_obra_branca"
 
 
-export const calculateGarage = (garagem, baseSqMtr) => {
+export const calculateGarage = async (garagem, baseSqMtr, franquia) => {
+    // Carregando os dados de forma assíncrona
+    const baseAcabamentos = await loadBaseAcabamentos();
+    console.log('calculate garage: ', baseAcabamentos)
     const area = garagem.value
     // console.log('garagem area: ', area)
     const areaPiso = area * 1.1

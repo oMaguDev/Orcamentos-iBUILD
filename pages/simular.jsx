@@ -563,7 +563,7 @@ const Simular = () => {
         updateValues('escritorio')
     }, [simData.escritorio])
 
-    const updateValues = (slide) => {
+    const updateValues = async (slide) => {
         // console.log('simData[slide].value', simData[slide].value)
         // console.log('simData[slide].pattern', simData[slide].pattern)
 
@@ -572,7 +572,7 @@ const Simular = () => {
             let valorAmbiente = 0
             switch (slide) {
                 case 'garagem':
-                    valorAmbiente = calculateGarage(simData.garagem, baseSqMtr)
+                    valorAmbiente = await calculateGarage(simData.garagem, baseSqMtr)
                     // console.log('simData.garagem: ', simData.garagem)
                     setRooms({
                         ...rooms,

@@ -28,7 +28,7 @@ const SignupPage = () => {
         const { data, error: insertError } = await supabase
         .from('detalhes_user')
         .insert([
-            { id_user: user.id, franquia: franquia}
+            { id_user: user.id, id_franquia: franquia}
         ]);
         // Realize ações após o sucesso do cadastro, como redirecionamento
       }
