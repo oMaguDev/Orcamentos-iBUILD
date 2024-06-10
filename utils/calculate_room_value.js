@@ -1,16 +1,17 @@
 
 import { loadBaseAcabamentos } from "./base_acabamentos.js"
-import { baseObraBranca } from "./base_obra_branca"
+import { loadbaseObraBranca } from "./base_obra_branca"
 
 
 export const calculateGarage = async (garagem, baseSqMtr, franquia) => {
-    // Carregando os dados de forma assíncrona
-    const baseAcabamentos = await loadBaseAcabamentos();
-    console.log('calculate garage: ', baseAcabamentos)
+    const baseAcabamentos = await loadBaseAcabamentos(franquia);
+    const baseObraBranca = await loadbaseObraBranca(franquia);
+    // console.log('valores retornados acabamento: ', baseAcabamentos)
+    // console.log('valores retornados obra branca: ', baseObraBranca)
     const area = garagem.value
-    // console.log('garagem area: ', area)
     const areaPiso = area * 1.1
     const areaParede = area * 2.33
+    console.log('garagem areaParede: ', areaParede)
 
     const valorBase = baseSqMtr.value * area
     const paredesInternas = areaParede * baseObraBranca.fechamento_interno.paredes
@@ -18,6 +19,14 @@ export const calculateGarage = async (garagem, baseSqMtr, franquia) => {
     const pinturaParedes = baseAcabamentos.garagem[garagem.pattern].pintura * areaParede
     const pinturaForro = baseAcabamentos.garagem[garagem.pattern].forro * area
     const telheiros = 42 *  baseObraBranca[garagem.pattern].foundation_superficial + baseObraBranca[garagem.pattern].finishing + (baseObraBranca[garagem.pattern].slab_wet / 2)
+
+    console.log("valorBase garagem",valorBase)
+    console.log("paredesInternas garagem",paredesInternas)
+    console.log("paredesInternas valor original garagem",baseObraBranca.fechamento_interno.paredes)
+    console.log("piso garagem",piso)
+    console.log("pinturaParedes garagem",pinturaParedes)
+    console.log("pinturaForro garagem",pinturaForro)
+    console.log("telheiros garagem",telheiros)
 
     let valorAmbiente = valorBase + paredesInternas + piso + pinturaParedes + pinturaForro + telheiros
         
@@ -28,13 +37,15 @@ export const calculateGarage = async (garagem, baseSqMtr, franquia) => {
     const margemLucro = 1.3
     valorAmbiente = valorAmbiente * margemLucro
 
-
-    // console.log('valorAmbiente: ', valorAmbiente)
+    console.log('valorAmbiente garagem: ', valorAmbiente)
 
     return valorAmbiente
 }
 
-export const calculateSala = (sala, baseSqMtr) => {
+export const calculateSala = async (sala, baseSqMtr, franquia) => {
+    const baseAcabamentos = await loadBaseAcabamentos(franquia);
+    const baseObraBranca = await loadbaseObraBranca(franquia);
+    
     const area = sala.value
     const areaPiso = area * 1.1
     const areaParede = area * 2.93
@@ -60,7 +71,10 @@ export const calculateSala = (sala, baseSqMtr) => {
     return valorAmbiente
 }
 
-export const calculateCozinha = (cozinha, baseSqMtr) => {
+export const calculateCozinha = async (cozinha, baseSqMtr, franquia) => {
+    const baseAcabamentos = await loadBaseAcabamentos(franquia);
+    const baseObraBranca = await loadbaseObraBranca(franquia);
+
     const area = cozinha.value
     const areaPiso = area 
     const areaParede = area * 2.93
@@ -88,7 +102,10 @@ export const calculateCozinha = (cozinha, baseSqMtr) => {
     return valorAmbiente
 }
 
-export const calculateAreaGourmet = (areaGourmet, baseSqMtr) => {
+export const calculateAreaGourmet = async (areaGourmet, baseSqMtr, franquia) => {
+    const baseAcabamentos = await loadBaseAcabamentos(franquia);
+    const baseObraBranca = await loadbaseObraBranca(franquia);
+
     const area = areaGourmet.value
     const areaPiso = area 
     const areaParede = area * 2.93
@@ -116,7 +133,10 @@ export const calculateAreaGourmet = (areaGourmet, baseSqMtr) => {
     return valorAmbiente
 }
 
-export const calculateAreaServico = (areaServico, baseSqMtr) => {
+export const calculateAreaServico = async (areaServico, baseSqMtr, franquia) => {
+    const baseAcabamentos = await loadBaseAcabamentos(franquia);
+    const baseObraBranca = await loadbaseObraBranca(franquia);
+
     const area = areaServico.value
     const areaPiso = area 
     const areaParede = area * 2.93
@@ -132,18 +152,6 @@ export const calculateAreaServico = (areaServico, baseSqMtr) => {
     const loucas = baseAcabamentos.areaServico[areaServico.pattern].loucas
     const marmore = baseAcabamentos.areaServico[areaServico.pattern].marmore
 
-    console.log('area: ', area)
-    console.log('valorBase: ', valorBase)
-    console.log('paredesInternas: ', paredesInternas)
-    console.log('piso: ', piso)
-    console.log('pinturaParedes: ', pinturaParedes)
-    console.log('pinturaForro: ', pinturaForro)
-    console.log('peitoril: ', peitoril)
-    console.log('porta: ', porta)
-    console.log('esquadria: ', esquadria)
-    console.log('loucas: ', loucas)
-    console.log('marmore: ', marmore)
-
     let valorAmbiente = valorBase + paredesInternas + piso + pinturaParedes + pinturaForro + peitoril + porta + esquadria + loucas + marmore
         
     if (areaServico.confort === 'sim') {
@@ -156,7 +164,10 @@ export const calculateAreaServico = (areaServico, baseSqMtr) => {
     return valorAmbiente
 }
 
-export const calculateDespensa = (despensa, baseSqMtr) => {
+export const calculateDespensa = async (despensa, baseSqMtr, franquia) => {
+    const baseAcabamentos = await loadBaseAcabamentos(franquia);
+    const baseObraBranca = await loadbaseObraBranca(franquia);
+
     const area = despensa.value
     const areaPiso = area 
     const areaParede = area * 2.93
@@ -180,7 +191,10 @@ export const calculateDespensa = (despensa, baseSqMtr) => {
     return valorAmbiente
 }
 
-export const calculateEscritorio = (escritorio, baseSqMtr) => {
+export const calculateEscritorio = async (escritorio, baseSqMtr, franquia) => {
+    const baseAcabamentos = await loadBaseAcabamentos(franquia);
+    const baseObraBranca = await loadbaseObraBranca(franquia);
+
     const area = escritorio.value
     const areaPiso = area 
     const areaParede = area * 2.93
@@ -206,7 +220,10 @@ export const calculateEscritorio = (escritorio, baseSqMtr) => {
     return valorAmbiente
 }
 
-export const calculateQuartos = (quartos, baseSqMtr) => {
+export const calculateQuartos = async (quartos, baseSqMtr, franquia) => {
+    const baseAcabamentos = await loadBaseAcabamentos(franquia);
+    const baseObraBranca = await loadbaseObraBranca(franquia);
+
     let area = calculateQuartosArea(quartos)
     // console.log('area: ', area)
     // const numSuites
@@ -249,16 +266,6 @@ export const calculateQuartos = (quartos, baseSqMtr) => {
     const esquadria = baseAcabamentos.quartos[quartos.pattern].esquadria
     const suite = baseAcabamentos.quartos[quartos.pattern].suite * numSuites
 
-
-    // console.log('valor m2: ', valorBase)
-    // console.log('valor paredes internas: ', paredesInternas)
-    // console.log('valor piso: ', piso)
-    // console.log('valor pintura paredes internas: ', pinturaParedes)
-    // console.log('valor pintura forro: ', pinturaForro)
-    // console.log('peitoril: ', peitoril)
-    // console.log('porta: ', porta)
-    // console.log('esquadria: ', esquadria)
-
     let valorAmbiente = valorBase + paredesInternas + piso + pinturaParedes + pinturaForro + peitoril + porta + esquadria + suite
         
     if (quartos.confort === 'sim') {
@@ -271,7 +278,10 @@ export const calculateQuartos = (quartos, baseSqMtr) => {
     return valorAmbiente
 }
 
-export const calculateLavabos = (lavabos, baseSqMtr) => {
+export const calculateLavabos = async (lavabos, baseSqMtr, franquia) => {
+    const baseAcabamentos = await loadBaseAcabamentos(franquia);
+    const baseObraBranca = await loadbaseObraBranca(franquia);
+
     let area = calculateBathroomArea(lavabos)
 
     const areaPiso = area 
@@ -288,8 +298,6 @@ export const calculateLavabos = (lavabos, baseSqMtr) => {
     const loucas = baseAcabamentos.lavabos[lavabos.pattern].loucas
     const marmore = baseAcabamentos.lavabos[lavabos.pattern].marmore
 
-    
-
     let valorAmbiente = valorBase + paredesInternas + piso + pinturaParedes + pinturaForro + peitoril + porta + esquadria + loucas + marmore
         
     if (lavabos.confort === 'sim') {
@@ -302,7 +310,10 @@ export const calculateLavabos = (lavabos, baseSqMtr) => {
     return valorAmbiente
 }
 
-export const calculateBanheiros = (banheiros, baseSqMtr) => {
+export const calculateBanheiros = async (banheiros, baseSqMtr, franquia) => {
+    const baseAcabamentos = await loadBaseAcabamentos(franquia);
+    const baseObraBranca = await loadbaseObraBranca(franquia);
+
     let area = calculateBathroomArea(banheiros)
 
     const areaPiso = area 
@@ -318,15 +329,6 @@ export const calculateBanheiros = (banheiros, baseSqMtr) => {
     const esquadria = baseAcabamentos.banheiros[banheiros.pattern].esquadria
     const loucas = baseAcabamentos.banheiros[banheiros.pattern].loucas
     const marmore = baseAcabamentos.banheiros[banheiros.pattern].marmore
-
-    // console.log('valor m2: ', valorBase)
-    // console.log('valor paredes internas: ', paredesInternas)
-    // console.log('valor piso: ', piso)
-    // console.log('valor pintura paredes internas: ', pinturaParedes)
-    // console.log('valor pintura forro: ', pinturaForro)
-    // console.log('peitoril: ', peitoril)
-    // console.log('porta: ', porta)
-    // console.log('esquadria: ', esquadria)
 
     let valorAmbiente = valorBase + paredesInternas + piso + pinturaParedes + pinturaForro + peitoril + porta + esquadria + loucas + marmore
         

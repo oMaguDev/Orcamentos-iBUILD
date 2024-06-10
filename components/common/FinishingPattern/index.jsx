@@ -15,17 +15,17 @@ const FinishingPattern = ({
 
     const patterns = [
         {
-            label: 'economy',
+            label: 'standard',
             color: 'pink',
             icon: <List size={18} style={{ margin: '1px 5px 0 0'}} />
         },
         {
-            label: 'standard',
+            label: 'premium',
             color: 'purple',
             icon: <Circle size={18} style={{ margin: '1px 5px 0 0'}} />
         },
         {
-            label: 'premium',
+            label: 'supreme',
             color: 'darkPurple',
             icon: <SketchLogo size={18} style={{ margin: '1px 5px 0 0'}} />
         },

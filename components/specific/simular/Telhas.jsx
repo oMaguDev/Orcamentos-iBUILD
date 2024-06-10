@@ -1,26 +1,27 @@
 import { useContext, useEffect, useState } from "react"
-import { Flex, TitleContainer } from "../../Containers"
-import RadioButtons from "../../common/RadioButtons"
-import StatusBox from "../../common/StatusBox"
-// import Select from "./Select"
-import { MiddleContainer, StepContentContainer, StepImageContainer } from "../../common/StepContent/styles"
-import Input from '../../form/Input'
-import FinishingPattern from "../../common/FinishingPattern"
 import StepContent from "../../common/StepContent"
 import { SimulationDataContext } from "../../../contexts/SimulationData"
-import { baseObraBranca } from "../../../utils/base_obra_branca"
-
+import { loadbaseObraBranca } from "../../../utils/base_obra_branca"
+import { UserContext } from "../../../contexts/UserContext"
 
 const Telhas = ({ small }) => {
+    const { franquia } = useContext(UserContext)
+    const [baseObraBranca, setBaseObraBranca] = useState(null);
 
-    // const [telhas, setTelhas] = useState('')
+    useEffect(() => {
+        const fetchBaseObraBranca = async () => {
+            const baseObra = await loadbaseObraBranca(franquia);
+            setBaseObraBranca(baseObra);
+        };
+
+        fetchBaseObraBranca();
+    }, [franquia]);
+
     const [counter, setCounter] = useState(0)
 
     const {
         simData,
         setSimData,
-        // simStatus,
-        // setSimStatus,
         baseSqMtr,
         setBaseSqMtr,
         baseSqrMtrValueCalculator,
@@ -42,7 +43,7 @@ const Telhas = ({ small }) => {
     ]
 
     useEffect(() => {
-        if (simData.telhas !== '') {
+        if (simData.telhas !== '' && baseObraBranca) {
             if (counter === 0) {
                 const baseSqMtrWithRoof = baseSqMtr.value + baseObraBranca.cobertura[simData.telhas] + baseObraBranca.cobertura.calhas
                 setBaseSqMtr({
@@ -59,7 +60,7 @@ const Telhas = ({ small }) => {
             }
         }
         setCounter(counter + 1)
-    }, [simData.telhas])
+    }, [simData.telhas, baseObraBranca])
 
     const inputs = null
 
@@ -68,7 +69,6 @@ const Telhas = ({ small }) => {
             data={{
                 caption: 'Escolha o tipo de',
                 title: 'Telha',
-                // subtitle: 'Escolha o tipo das telhas da casa',
                 imageSrc: '/images/Ambientes/Ambientes15.svg',
                 value: simData.telhas,
                 onChange: (newValue) => setSimData({

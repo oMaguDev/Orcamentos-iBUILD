@@ -28,17 +28,17 @@ const ConfortoSlide = ({ data }) => {
         }),
         options: [
             {
-                value: 'conforto_economy',
-                label: 'ECONOMY',
-                // description: 'Chuveiro elétrico, sem quecimento nas torneiras'
-            },
-            {
                 value: 'conforto_standard',
                 label: 'STANDARD',
+                // description: 'Chuveiro elétrico, sem quecimento nas torneiras'
             },
             {
                 value: 'conforto_premium',
                 label: 'PREMIUM',
+            },
+            {
+                value: 'conforto_supreme',
+                label: 'SUPREME',
             },
         ]
     }

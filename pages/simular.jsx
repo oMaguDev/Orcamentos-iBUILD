@@ -23,6 +23,7 @@ import { PinkContainer } from "../components/specific/levantamento/styles"
 import { Parag, Title2 } from "../components/Text"
 import { ParagraphsContainer } from "../components/common/StepperBackground/styles"
 import Button from "../components/common/Button"
+import { UserContext, UserContextProvider } from "../contexts/UserContext"
 
 
 const Simular = () => {
@@ -41,6 +42,8 @@ const Simular = () => {
         // baseSqrMtrValueCalculator,
     } = useContext(SimulationDataContext)
 
+    const { franquia } = useContext(UserContext)
+    // console.log("Franquia no simular: " , franquia)
     const {
         rooms,
         setRooms,
@@ -516,11 +519,12 @@ const Simular = () => {
     const { width } = useWindowDimensions()
     const small = width < breakpoints.md && width !== 0
 
-
-
-    const items = steps.map((e, i) => e.customComponent ? e.customComponent : (
-        <StepContent key={`${e.title}_step_content_vai`} data={e} small={small} />
-    ))
+    const items = steps.map((e, i) => {
+        //console.log(`Renderizando step: ${e.title}`, e);
+        return e.customComponent ? e.customComponent : (
+            <StepContent key={`${e.title}_step_content_vai`} data={e} small={small} />
+        );
+    });
 
     items.unshift(<Telhas key='telhas_slide' small={small} />)
     items.unshift(<ParedesExternas key='paredes_externas_slide' small={small} />)
@@ -538,6 +542,11 @@ const Simular = () => {
     useEffect(() => {
         updateValues('garagem')
     }, [simData.garagem])
+
+    useEffect(() => {
+        console.log("Dados da simulação atualizados: ", simData);
+    }, [simData]);
+    
 
     useEffect(() => {
         updateValues('sala')
@@ -572,7 +581,7 @@ const Simular = () => {
             let valorAmbiente = 0
             switch (slide) {
                 case 'garagem':
-                    valorAmbiente = await calculateGarage(simData.garagem, baseSqMtr)
+                    valorAmbiente = await calculateGarage(simData.garagem, baseSqMtr, franquia)
                     // console.log('simData.garagem: ', simData.garagem)
                     setRooms({
                         ...rooms,

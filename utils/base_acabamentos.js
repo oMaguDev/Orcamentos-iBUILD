@@ -1,30 +1,29 @@
-import { fetchValores } from "../services/buscarValoresSupabase";
+import { buscarValoresSupabase } from "../services/buscarValoresSupabase";
 console.log('base_acabamento: ')
 
-export async function loadBaseAcabamentos() {
-    const storedFranquia = localStorage.getItem('franquia');
-    const dadosBaseAcabamentos = await fetchValores(storedFranquia);
-    console.log('dadosBaseAcabamentos: ', dadosBaseAcabamentos)
+export async function loadBaseAcabamentos(franquia) {
+    const dadosBaseAcabamentos = await buscarValoresSupabase("obra_branca","Franquia_id", franquia);
+    // console.log('dadosBaseAcabamentos: ', dadosBaseAcabamentos)
     return {
         garagem: {
-            economy: {
-                piso: dadosBaseAcabamentos.find(objeto => objeto.id_item === 1 && objeto.id_tipo === 1 && objeto.id_categoria === 1)?.valor,
-                pintura: dadosBaseAcabamentos.find(objeto => objeto.id_item === 2 && objeto.id_tipo === 1 && objeto.id_categoria === 1)?.valor,
-                forro: dadosBaseAcabamentos.find(objeto => objeto.id_item === 3 && objeto.id_tipo === 1 && objeto.id_categoria === 1)?.valor,
-            },
             standard: {
-                piso: dadosBaseAcabamentos.find(objeto => objeto.id_item === 1 && objeto.id_tipo === 2 && objeto.id_categoria === 1)?.valor,
-                pintura: dadosBaseAcabamentos.find(objeto => objeto.id_item === 2 && objeto.id_tipo === 2 && objeto.id_categoria === 1)?.valor,
-                forro: dadosBaseAcabamentos.find(objeto => objeto.id_item === 3 && objeto.id_tipo === 2 && objeto.id_categoria === 1)?.valor,
+                piso: Number(dadosBaseAcabamentos.find(item => item.workItemId_scienge === 445)?.total_price) || 115.86,
+                pintura: Number(dadosBaseAcabamentos.find(item => item.workItemId_scienge === 445)?.total_price) || 115.86,
+                forro: Number(dadosBaseAcabamentos.find(item => item.workItemId_scienge === 445)?.total_price) || 115.86,
             },
             premium: {
-                piso: dadosBaseAcabamentos.find(objeto => objeto.id_item === 1 && objeto.id_tipo === 3 && objeto.id_categoria === 1)?.valor,
-                pintura: dadosBaseAcabamentos.find(objeto => objeto.id_item === 2 && objeto.id_tipo === 3 && objeto.id_categoria === 1)?.valor,
-                forro: dadosBaseAcabamentos.find(objeto => objeto.id_item === 3 && objeto.id_tipo === 3 && objeto.id_categoria === 1)?.valor,
+                piso: 4,
+                pintura: 4,
+                forro: 4,
+            },
+            supreme: {
+                piso: Number(dadosBaseAcabamentos.find(item => item.workItemId_scienge === 447)?.total_price) || 115.86,
+                pintura: 5,
+                forro: 5,
             },
         },
         sala: {
-            economy: {
+            standard: {
                 piso: 73.98,
                 pintura: 19.27,
                 forro: 21.64,
@@ -32,7 +31,7 @@ export async function loadBaseAcabamentos() {
                 porta: 340.0,
                 esquadria: 706.16,
             },
-            standard: {
+            premium: {
                 piso: 112.70,
                 pintura: 19.44,
                 forro: 21.64,
@@ -40,7 +39,7 @@ export async function loadBaseAcabamentos() {
                 porta: 724.16,
                 esquadria: 706.16,
             },
-            premium: {
+            supreme: {
                 piso: 141.77,
                 pintura: 21.98,
                 forro: 21.64,
@@ -50,7 +49,7 @@ export async function loadBaseAcabamentos() {
             },
         },
         cozinha: {
-            economy: {
+            standard: {
                 piso: 73.98,
                 pintura: 19.27,
                 forro: 21.64,
@@ -60,7 +59,7 @@ export async function loadBaseAcabamentos() {
                 loucas: 647.07,
                 marmore: 1669.8717,
             },
-            standard: {
+            premium: {
                 piso: 112.70,
                 pintura: 19.44,
                 forro: 21.64,
@@ -70,7 +69,7 @@ export async function loadBaseAcabamentos() {
                 loucas: 1151.88,
                 marmore: 1970.5842,
             },
-            premium: {
+            supreme: {
                 piso: 141.77,
                 pintura: 21.98,
                 forro: 21.64,
@@ -82,7 +81,7 @@ export async function loadBaseAcabamentos() {
             },
         },
         areaGourmet: {
-            economy: {
+            standard: {
                 piso: 73.98,
                 pintura: 19.27,
                 forro: 21.64,
@@ -92,7 +91,7 @@ export async function loadBaseAcabamentos() {
                 loucas: 647.07,
                 marmore: 4734.7391,
             },
-            standard: {
+            premium: {
                 piso: 112.70,
                 pintura: 19.44,
                 forro: 21.64,
@@ -102,7 +101,7 @@ export async function loadBaseAcabamentos() {
                 loucas: 1151.88,
                 marmore: 5587.3766,
             },
-            premium: {
+            supreme: {
                 piso: 141.77,
                 pintura: 21.98,
                 forro: 21.64,
@@ -114,7 +113,7 @@ export async function loadBaseAcabamentos() {
             },
         },
         areaServico: {
-            economy: {
+            standard: {
                 piso: 73.98,
                 pintura: 19.27,
                 forro: 21.64,
@@ -124,7 +123,7 @@ export async function loadBaseAcabamentos() {
                 loucas: 975.69,
                 marmore: 1236.942,
             },
-            standard: {
+            premium: {
                 piso: 112.70,
                 pintura: 19.44,
                 forro: 21.64,
@@ -134,7 +133,7 @@ export async function loadBaseAcabamentos() {
                 loucas: 975.69,
                 marmore: 1459.692,
             },
-            premium: {
+            supreme: {
                 piso: 141.77,
                 pintura: 21.98,
                 forro: 21.64,
@@ -146,21 +145,21 @@ export async function loadBaseAcabamentos() {
             },
         },
         despensa: {
-            economy: {
+            standard: {
                 piso: 73.98,
                 pintura: 19.27,
                 porta: 340.0,
                 forro: 21.64,
                 
             },
-            standard: {
+            premium: {
                 piso: 112.70,
                 pintura: 19.44,
                 forro: 21.64,
                 porta: 724.16,
 
             },
-            premium: {
+            supreme: {
                 piso: 141.77,
                 pintura: 21.98,
                 forro: 21.64,
@@ -169,7 +168,7 @@ export async function loadBaseAcabamentos() {
             },
         },
         escritorio: {
-            economy: {
+            standard: {
                 piso: 73.98,
                 pintura: 19.27,
                 forro: 21.64,
@@ -177,7 +176,7 @@ export async function loadBaseAcabamentos() {
                 peitoril: 162.7,
                 esquadria: 706.16,
             },
-            standard: {
+            premium: {
                 piso: 112.70,
                 pintura: 19.44,
                 forro: 21.64,
@@ -185,7 +184,7 @@ export async function loadBaseAcabamentos() {
                 porta: 724.16,
                 esquadria: 706.16,
             },
-            premium: {
+            supreme: {
                 piso: 141.77,
                 pintura: 21.98,
                 forro: 21.64,
@@ -195,7 +194,7 @@ export async function loadBaseAcabamentos() {
             },
         },
         quartos: {
-            economy: {
+            standard: {
                 piso: 73.98,
                 pintura: 19.27,
                 forro: 21.64,
@@ -204,7 +203,7 @@ export async function loadBaseAcabamentos() {
                 esquadria: 706.16,
                 suite: 1864.67,
             },
-            standard: {
+            premium: {
                 piso: 112.70,
                 pintura: 19.44,
                 forro: 21.64,
@@ -213,7 +212,7 @@ export async function loadBaseAcabamentos() {
                 esquadria: 706.16,
                 suite: 4691.16,
             },
-            premium: {
+            supreme: {
                 piso: 141.77,
                 pintura: 21.98,
                 forro: 21.64,
@@ -224,7 +223,7 @@ export async function loadBaseAcabamentos() {
             },
         },
         lavabos: {
-            economy: {
+            standard: {
                 piso: 73.98,
                 pintura: 19.27,
                 forro: 21.64,
@@ -234,7 +233,7 @@ export async function loadBaseAcabamentos() {
                 loucas: 975.69,
                 marmore: 542.8801,
             },
-            standard: {
+            premium: {
                 piso: 112.70,
                 pintura: 19.44,
                 forro: 21.64,
@@ -244,7 +243,7 @@ export async function loadBaseAcabamentos() {
                 loucas: 975.69,
                 marmore: 640.6426,
             },
-            premium: {
+            supreme: {
                 piso: 141.77,
                 pintura: 21.98,
                 forro: 21.64,
@@ -256,7 +255,7 @@ export async function loadBaseAcabamentos() {
             },
         },
         banheiros: {
-            economy: {
+            standard: {
                 piso: 73.98,
                 pintura: 19.27,
                 forro: 21.64,
@@ -266,7 +265,7 @@ export async function loadBaseAcabamentos() {
                 loucas: 1321.79,
                 marmore: 542.8801,
             },
-            standard: {
+            premium: {
                 piso: 112.70,
                 pintura: 19.44,
                 forro: 21.64,
@@ -276,7 +275,7 @@ export async function loadBaseAcabamentos() {
                 loucas: 4051.16,
                 marmore: 640.64260,
             },
-            premium: {
+            supreme: {
                 piso: 141.77,
                 pintura: 21.98,
                 forro: 21.64,

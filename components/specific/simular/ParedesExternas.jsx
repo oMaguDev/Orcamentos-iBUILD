@@ -30,13 +30,13 @@ const ParedesExternas = ({ small }) => {
         console.log('simData.paredes: ', simData.paredes)
         if ((totalFunds || totalFunds === 0) && simData.paredes) {
             switch (simData.paredes) {
-                case 'economy':
+                case 'standard':
                     divisor = 2300
                     break;
-                case 'standard':
+                case 'premium':
                     divisor = 2700
                     break;
-                case 'premium':
+                case 'supreme':
                     divisor = 3000
                     break;
                 default:
@@ -51,8 +51,8 @@ const ParedesExternas = ({ small }) => {
 
     const paredes = [
         {
-            value: 'economy',
-            label: 'PAREDE ECONOMY',
+            value: 'standard',
+            label: 'PAREDE STANDARD',
             boxes: [
                 {
                     label: 'Conforto térmico',
@@ -74,8 +74,8 @@ const ParedesExternas = ({ small }) => {
             imageSrc: "/images/Paredes/paredeeconomy.jpeg"
         },
         {
-            value: 'standard',
-            label: 'PAREDE STANDARD',
+            value: 'premium',
+            label: 'PAREDE PREMIUM',
             boxes: [
                 {
                     label: 'Conforto térmico',
@@ -98,8 +98,8 @@ const ParedesExternas = ({ small }) => {
             imageSrc: "/images/Paredes/Parede-Standard.png"
         },
         {
-            value: 'premium',
-            label: 'PAREDE PREMIUM',
+            value: 'supreme',
+            label: 'PAREDE SUPREME',
             boxes: [
                 {
                     label: 'Conforto térmico',

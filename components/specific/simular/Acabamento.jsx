@@ -31,31 +31,31 @@ const AcabamentoSlide = ({ data }) => {
         options: [
             {
                 value: 'placa_granito_1',
-                label: 'ECONOMY',
+                label: 'STANDARD',
                 // description: 'Chuveiro elétrico, sem quecimento nas torneiras'
             },
             {
                 value: 'placa_granito_2',
-                label: 'STANDARD',
+                label: 'PREMIUM',
             },
             {
                 value: 'placa_granito_3',
-                label: 'PREMIUM',
+                label: 'SUPREME',
             },
         ]
     }
 
     const patterns = [
         {
-            label: 'economy',
+            label: 'standard',
             color: 'pink',
         },
         {
-            label: 'standard',
+            label: 'premium',
             color: 'purple',
         },
         {
-            label: 'premium',
+            label: 'supreme',
             color: 'darkPurple',
         },
     ]

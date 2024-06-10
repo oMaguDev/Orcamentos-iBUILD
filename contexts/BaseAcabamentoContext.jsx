@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
-import { fetchValores } from '../services/buscarValoresSupabase';
+import { buscarValoresSupabase } from '../services/buscarValoresSupabase';
 
 const BaseAcabamentosContext = createContext();
 
@@ -10,7 +10,7 @@ export const BaseAcabamentosProvider = ({ children }) => {
   console.log('storedFranquia: ', storedFranquia)
   useEffect(() => {
     const loadData = async () => {
-      const dados = await fetchValores(storedFranquia);
+      const dados = await buscarValoresSupabase(storedFranquia);
       setBaseAcabamentos(dados);
     };
 
