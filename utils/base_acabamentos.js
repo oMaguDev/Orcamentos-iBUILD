@@ -8,18 +8,18 @@ export async function loadBaseAcabamentos(franquia) {
         garagem: {
             standard: {
                 piso: Number(dadosBaseAcabamentos.find(item => item.workItemId_scienge === 445)?.total_price) || 115.86,
-                pintura: Number(dadosBaseAcabamentos.find(item => item.workItemId_scienge === 445)?.total_price) || 115.86,
-                forro: Number(dadosBaseAcabamentos.find(item => item.workItemId_scienge === 445)?.total_price) || 115.86,
+                pintura: Number(dadosBaseAcabamentos.find(item => item.workItemId_scienge === 472)?.total_price) || 115.86,
+                forro: Number(dadosBaseAcabamentos.find(item => item.workItemId_scienge === 412)?.total_price) || 115.86,
             },
             premium: {
-                piso: 4,
-                pintura: 4,
-                forro: 4,
+                piso: Number(dadosBaseAcabamentos.find(item => item.workItemId_scienge === 447)?.total_price) || 115.86,
+                pintura: Number(dadosBaseAcabamentos.find(item => item.workItemId_scienge === 473)?.total_price) || 115.86,
+                forro: Number(dadosBaseAcabamentos.find(item => item.workItemId_scienge === 412)?.total_price) || 115.86,
             },
             supreme: {
-                piso: Number(dadosBaseAcabamentos.find(item => item.workItemId_scienge === 447)?.total_price) || 115.86,
-                pintura: 5,
-                forro: 5,
+                piso: Number(dadosBaseAcabamentos.find(item => item.workItemId_scienge === 448)?.total_price) || 115.86,
+                pintura: Number(dadosBaseAcabamentos.find(item => item.workItemId_scienge === 476)?.total_price) || 115.86,
+                forro: Number(dadosBaseAcabamentos.find(item => item.workItemId_scienge === 412)?.total_price) || 115.86,
             },
         },
         sala: {
