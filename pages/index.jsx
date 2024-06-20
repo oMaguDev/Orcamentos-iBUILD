@@ -30,7 +30,7 @@ const Main = () => {
         }
     }, []);
 
-      console.log('userId: ', userId)
+    //   console.log('userId: ', userId)
       console.log('franquia: ', franquia)
     
 
@@ -58,9 +58,6 @@ const Main = () => {
                         <h1>
                             Saiba agora mesmo quanto sua casa vai custar e como ela pode ficar.
                         </h1>
-                        <h2>
-                            {userId} e {franquia}
-                        </h2>
                     </TitleContainer>
                     <ExplainingP>
                         Sabemos que construir um imóvel é um grande passo na vida de qualquer pessoa, por isso desenvolvemos essa ferramenta,
