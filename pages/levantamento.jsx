@@ -44,14 +44,14 @@ const Levantamento = () => {
 
     const stepsTitles = [
         'Informações pessoais',
-        'Recursos Financeiros',
+        // 'Recursos Financeiros',
         'Resumo',
     ]
 
 
     const items = [
         <Personal small={small} />,
-        <Finance small={small} />,
+        // <Finance small={small} />,
         <ResourcesIndex small={small} />
     ]
 

@@ -188,7 +188,7 @@ const Main = () => {
                 >
                     <Button
                         fontWeight='600'
-                        onClick={() => router.push('/recursos')}
+                        onClick={() => router.push('/levantamento')}
                         pink
                     >
                         EU QUERO A MINHA CASA!

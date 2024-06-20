@@ -1,6 +1,6 @@
-import { Box } from "../../Containers"
-import { AssistentP, IconButton, InputContainer, StyledInput, StyledLabel } from "./styles"
-import MaskedInput from 'react-text-mask'
+import { Box } from "../../Containers";
+import { AssistentP, IconButton, InputContainer, StyledInput, StyledLabel } from "./styles";
+import InputMask from 'react-input-mask';
 
 const Input = ({
     id = 'input_id',
@@ -25,63 +25,11 @@ const Input = ({
     // console.log('error: ', error, id)
 
     const masks = {
-        phone: ['(', /[0-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/],
-        cpf: [ /[0-9]/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/],
-        cnpj: [ /[0-9]/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/],
-        date: [ /[0-9]/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/],
-    }
-
-    if (mask) {
-        return (
-            <Box
-                width={width}
-                height='100%'
-                textAlign='left'
-                margin={margin}
-            >
-                <Box
-                    margin='0 0 16px'
-                >
-                    <label htmlFor={id}>
-                        {label}
-                    </label>
-                </Box>
-                <InputContainer
-                    error={error}
-                    success={success}
-                    small={small}
-                >
-                    <MaskedInput
-                        mask={mask ? masks[mask] : null}
-                        // placeholder="Enter a phone number"
-                        id={id}
-                        name={id}
-                        type={type}
-                        placeholder={placeholder}
-                        value={value}
-                        onChange={onChange}
-                        render={(ref, props) => (
-                            <StyledInput
-                                // innerRef={ref}
-                                ref={(input) => ref(input)}
-                                {...props}
-                            />
-                            // <MyStyledInput innerRef={ref} {...props} />
-                        )}
-                    />
-
-                    {Icon && (
-                        <IconButton isActive={iconIsButton} onClick={onIconButtonClick}>
-                            <Icon size={24} weight="thin" />
-                        </IconButton>
-                    )}
-                </InputContainer>
-                { assistentText && (
-                    <AssistentP error={error}>{assistentText}</AssistentP>
-                )}
-            </Box>
-        )
-    }
+        phone: '(99) 99999-9999',
+        cpf: '999.999.999-99',
+        cnpj: '99.999.999/9999-99',
+        date: '99/99/9999',
+    };
 
     return (
         <Box
@@ -94,7 +42,7 @@ const Input = ({
                 margin='0 0 16px'
             >
                 <label htmlFor={id}>
-                    {label.toUpperCase()}
+                    {label}
                 </label>
             </Box>
             <InputContainer
@@ -102,26 +50,46 @@ const Input = ({
                 success={success}
                 small={small}
             >
-                <StyledInput
-                    id={id}
-                    name={id}
-                    type={type}
-                    placeholder={placeholder}
-                    value={value}
-                    onChange={onChange}
-                    pattern={pattern}
-                />
+                {mask ? (
+                    <InputMask
+                        mask={masks[mask]}
+                        id={id}
+                        name={id}
+                        type={type}
+                        placeholder={placeholder}
+                        value={value}
+                        onChange={onChange}
+                    >
+                        {(inputProps) => (
+                            <StyledInput
+                                {...inputProps}
+                                ref={inputProps.ref}
+                            />
+                        )}
+                    </InputMask>
+                ) : (
+                    <StyledInput
+                        id={id}
+                        name={id}
+                        type={type}
+                        placeholder={placeholder}
+                        value={value}
+                        onChange={onChange}
+                        pattern={pattern}
+                    />
+                )}
+
                 {Icon && (
                     <IconButton isActive={iconIsButton} onClick={onIconButtonClick}>
                         <Icon size={24} weight="thin" />
                     </IconButton>
                 )}
             </InputContainer>
-            { assistentText && (
+            {assistentText && (
                 <AssistentP error={error}>{assistentText}</AssistentP>
             )}
         </Box>
-    )
+    );
 }
 
-export default Input
+export default Input;
