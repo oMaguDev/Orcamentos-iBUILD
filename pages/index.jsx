@@ -93,7 +93,7 @@ const Main = () => {
                     >
                         <Button
                             fontWeight='600'
-                            onClick={() => router.push('/recursos')}
+                            onClick={() => router.push('/levantamento')}
                             pink
                             margin='0 0 50px'
                         >
