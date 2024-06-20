@@ -201,7 +201,7 @@ export async function loadBaseAcabamentos(franquia) {
                 peitoril: Number(dadosBaseAcabamentos.find(item => item.workItemId_scienge === 420)?.total_price) || 115.86,
                 porta: Number(dadosBaseAcabamentos.find(item => item.workItemId_scienge === 431)?.total_price) || 115.86,
                 esquadria: Number(dadosBaseAcabamentos.find(item => item.workItemId_scienge === 440)?.total_price) || 115.86,
-                suite: 115.86,
+                suite: Number(dadosBaseAcabamentos.find(item => item.workItemId_scienge === 502)?.total_price) || 115.86,
             },
             premium: {
                 piso: Number(dadosBaseAcabamentos.find(item => item.workItemId_scienge === 447)?.total_price) || 115.86,
@@ -210,7 +210,7 @@ export async function loadBaseAcabamentos(franquia) {
                 peitoril: Number(dadosBaseAcabamentos.find(item => item.workItemId_scienge === 421)?.total_price) || 115.86,
                 porta: Number(dadosBaseAcabamentos.find(item => item.workItemId_scienge === 432)?.total_price) || 115.86,
                 esquadria: Number(dadosBaseAcabamentos.find(item => item.workItemId_scienge === 7172)?.total_price) || 115.86,
-                suite: 115.86,
+                suite: Number(dadosBaseAcabamentos.find(item => item.workItemId_scienge === 516)?.total_price) || 115.86,
             },
             supreme: {
                 piso: Number(dadosBaseAcabamentos.find(item => item.workItemId_scienge === 448)?.total_price) || 115.86,
@@ -219,7 +219,7 @@ export async function loadBaseAcabamentos(franquia) {
                 peitoril: Number(dadosBaseAcabamentos.find(item => item.workItemId_scienge === 422)?.total_price) || 115.86,
                 porta: Number(dadosBaseAcabamentos.find(item => item.workItemId_scienge === 433)?.total_price) || 115.86,
                 esquadria: Number(dadosBaseAcabamentos.find(item => item.workItemId_scienge === 7172)?.total_price) || 115.86,
-                suite: 115.86,
+                suite: Number(dadosBaseAcabamentos.find(item => item.workItemId_scienge === 517)?.total_price) || 115.86,
             },
         },
         lavabos: {
