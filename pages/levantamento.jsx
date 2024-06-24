@@ -45,7 +45,7 @@ const Levantamento = () => {
     const stepsTitles = [
         'Informações pessoais',
         // 'Recursos Financeiros',
-        'Resumo',
+        // 'Resumo',
     ]
 
 
