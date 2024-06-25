@@ -37,7 +37,7 @@ const StatusBox = () => {
                         </ValueBoxes>
                         <ValueBoxes>
                             <div className='valueTag'>
-                                ATÉ AGORA
+                                Valor Atual
                             </div>
                             <div className='value'>
                                 {formatMoney(simStatus.funds.current)}
