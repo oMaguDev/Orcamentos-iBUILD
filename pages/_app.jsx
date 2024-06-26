@@ -1,6 +1,5 @@
 import { createGlobalStyle, ThemeConsumer, ThemeProvider } from 'styled-components'
 import { ActiveIndexProvider } from '../contexts/activeIndex'
-// import '../styles/globals.css'
 import Head from 'next/head'
 import { SessionProvider } from "next-auth/react"
 import { SimulationDataContextProvider } from '../contexts/SimulationData'
@@ -9,7 +8,6 @@ import { UserContextProvider } from '../contexts/UserContext'
 import { RoomValuesContextProvider } from '../contexts/RoomValues'
 import { FinancialSimContextProvider } from '../contexts/FinancialSim'
 import AuthWrapper from '../utils/AuthWrapper'
-
 
 const GlobalStyle = createGlobalStyle`
     * {
@@ -72,12 +70,14 @@ const theme = {
 }
 
 function MyApp({ Component, pageProps }) {
+    console.log("Rendering MyApp");
+
     return (
         <>
         <SessionProvider session={pageProps.session}>
             <Head>
-                <title>Orçamento Express | iBuild </title>
-                  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <title>Orçamento Express | iBuild</title>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             </Head>
             <GlobalStyle />
             <AuthWrapper>

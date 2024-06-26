@@ -6,8 +6,8 @@ import { loadbaseObraBranca } from "./base_obra_branca"
 export const calculateGarage = async (garagem, baseSqMtr, franquia) => {
     const baseAcabamentos = await loadBaseAcabamentos(franquia);
     const baseObraBranca = await loadbaseObraBranca(franquia);
-    // console.log('valores retornados acabamento: ', baseAcabamentos)
-    // console.log('valores retornados obra branca: ', baseObraBranca)
+    console.log('valores retornados acabamento: ', baseAcabamentos)
+    console.log('valores retornados obra branca: ', baseObraBranca)
     const area = garagem.value 
     const areaPiso = area * 1.1
     const areaParede = area * 2.33
@@ -21,7 +21,7 @@ export const calculateGarage = async (garagem, baseSqMtr, franquia) => {
     const telheiros = 42 *  baseObraBranca[garagem.pattern].foundation_superficial + baseObraBranca[garagem.pattern].finishing + (baseObraBranca[garagem.pattern].slab_wet / 2)
 
     console.log("baseSqMtr", baseSqMtr.value)
-    console.log("areaParede", areaParede.fechamento_interno.paredes)
+    console.log("areaParede", baseObraBranca.fechamento_interno.paredes)
     console.log("baseAcabamentos", baseAcabamentos.garagem[garagem.pattern].piso)
     console.log("baseAcabamentos", baseAcabamentos.garagem[garagem.pattern].pintura)
     console.log("baseAcabamentos", baseAcabamentos.garagem[garagem.pattern].forro)
