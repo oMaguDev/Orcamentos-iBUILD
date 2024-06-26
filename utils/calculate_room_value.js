@@ -4,31 +4,43 @@ import { loadbaseObraBranca } from "./base_obra_branca"
 
 
 export const calculateGarage = async (garagem, baseSqMtr, franquia) => {
+    console.log("############# Valores Base #############")
     const baseAcabamentos = await loadBaseAcabamentos(franquia);
     const baseObraBranca = await loadbaseObraBranca(franquia);
-    console.log('valores retornados acabamento: ', baseAcabamentos)
-    console.log('valores retornados obra branca: ', baseObraBranca)
-    const area = garagem.value 
-    const areaPiso = area * 1.1
-    const areaParede = area * 2.33
-    console.log('garagem areaParede: ', areaParede)
+    console.log('valores acabamento: ', baseAcabamentos)
+    console.log('valores obra branca: ', baseObraBranca)
+    console.log('Franquia: ', franquia)
+    console.log('valores Garagem: ', garagem)
 
-    const valorBase = baseSqMtr.value * area
+/*  
+    Custos da Garagem
+        [ ] Servicos iniciais
+        [ ] Fundação
+        [ ] Estrutura
+        [ ] Lajes
+        [ ] Coberturas
+        [ ] Eletrica
+        [ ] Paredes e Fechamento
+        [ ] Forro
+        [ ] Conforto Interno
+
+*/
+
+    console.log("############# Areas #############")
+    const metroQuadrado = garagem.value 
+    const areaPiso = metroQuadrado * 1.1
+    const areaParede = metroQuadrado * 2.33
+    console.log('garagem areaParede: ', areaParede)
+    console.log('garagem areaPiso: ', areaPiso)
+    console.log('baseSqMtr: ', baseSqMtr)
+    
+    console.log("############# Valores do comodo #############")
+    const valorBase = baseSqMtr.value * metroQuadrado
     const paredesInternas = areaParede * baseObraBranca.fechamento_interno.paredes
     const piso = baseAcabamentos.garagem[garagem.pattern].piso * areaPiso
     const pinturaParedes = baseAcabamentos.garagem[garagem.pattern].pintura * areaParede
-    const pinturaForro = baseAcabamentos.garagem[garagem.pattern].forro * area
+    const pinturaForro = baseAcabamentos.garagem[garagem.pattern].forro * metroQuadrado
     const telheiros = 42 *  baseObraBranca[garagem.pattern].foundation_superficial + baseObraBranca[garagem.pattern].finishing + (baseObraBranca[garagem.pattern].slab_wet / 2)
-
-    console.log("baseSqMtr", baseSqMtr.value)
-    console.log("areaParede", baseObraBranca.fechamento_interno.paredes)
-    console.log("baseAcabamentos", baseAcabamentos.garagem[garagem.pattern].piso)
-    console.log("baseAcabamentos", baseAcabamentos.garagem[garagem.pattern].pintura)
-    console.log("baseAcabamentos", baseAcabamentos.garagem[garagem.pattern].forro)
-    console.log("baseObraBranca", baseObraBranca[garagem.pattern].finishing)
-
-
-    console.log("##########################################################")
     console.log("valorBase garagem",valorBase)
     console.log("paredesInternas garagem",paredesInternas)
     console.log("paredesInternas valor original garagem",baseObraBranca.fechamento_interno.paredes)
