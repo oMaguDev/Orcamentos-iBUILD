@@ -31,6 +31,7 @@ export const SimulationDataContextProvider = ({ children }) => {
     const [simData, setSimData] = useState({
         estilo: '',
         pavimentos: 0,
+        vaos: 'N',
         escada: '',
         paredes: '',
         telhas: '',

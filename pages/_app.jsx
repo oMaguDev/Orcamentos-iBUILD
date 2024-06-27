@@ -70,7 +70,6 @@ const theme = {
 }
 
 function MyApp({ Component, pageProps }) {
-    console.log("Rendering MyApp");
 
     return (
         <>

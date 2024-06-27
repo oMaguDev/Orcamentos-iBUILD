@@ -59,6 +59,44 @@ export async function loadbaseObraBranca(franquia) {
         fechamento_interno: {
             paredes: 34.23,
         },
+        servicos_iniciais : {
+            canteiro_obra: Number(dadosObraBranca.find(item => item.workItemId_scienge === 353)?.total_price) || 9999, // Valor único
+            container_limpeza: Number(dadosObraBranca.find(item => item.workItemId_scienge === 7823)?.total_price) || 9999, // Mes
+            locacao_radier : Number(dadosObraBranca.find(item => item.workItemId_scienge === 357)?.total_price) || 9999, // m²
+        },
+        fundacao: {
+            equipamento: Number(dadosObraBranca.find(item => item.workItemId_scienge === 359)?.total_price) || 9999, // un/dia
+            formas_fundacao_radier: Number(dadosObraBranca.find(item => item.workItemId_scienge === 360)?.total_price) || 9999, // m
+            radier_concreto: Number(dadosObraBranca.find(item => item.workItemId_scienge === 7446)?.total_price) || 9999, // m3
+            bomba_lanca_concreto: Number(dadosObraBranca.find(item => item.workItemId_scienge === 366)?.total_price) || 9999, // un/dia
+        },
+        estrutura: {
+            locacao_andaimes: Number(dadosObraBranca.find(item => item.workItemId_scienge === 353)?.total_price) || 9999,
+            locacao_paineis_lsf: Number(dadosObraBranca.find(item => item.workItemId_scienge === 353)?.total_price) || 9999,
+            aco: [
+                Number(dadosObraBranca.find(item => item.workItemId_scienge === 370)?.total_price) || 9999,
+                Number(dadosObraBranca.find(item => item.workItemId_scienge === 7754)?.total_price) || 9999,
+                Number(dadosObraBranca.find(item => item.workItemId_scienge === 7759)?.total_price) || 9999,
+            ]
+        },
+        paredes: {
+            conforto_interno:{
+                instalacao_paineis: Number(dadosObraBranca.find(item => item.workItemId_scienge === 408)?.total_price) || 9999,
+                isolamento_termoacustico: Number(dadosObraBranca.find(item => item.workItemId_scienge === 409)?.total_price) || 9999,
+            },
+            fechamento_interno:{
+                locacao_andaimes_internos: Number(dadosObraBranca.find(item => item.workItemId_scienge === 7807)?.total_price) || 9999,
+                fechamento_placas_gesso: Number(dadosObraBranca.find(item => item.workItemId_scienge === 411)?.total_price) || 9999,
+            },
+            forros:{
+                Y:{
+                    forro_acustico: Number(dadosObraBranca.find(item => item.workItemId_scienge === 6017)?.total_price) || 9999,
+                },
+                N:{
+                    forro_acustico: Number(dadosObraBranca.find(item => item.workItemId_scienge === 414)?.total_price) || 9999,
+                },
+            }
+        },
         conforto_interno: 49.49,
 }
 }

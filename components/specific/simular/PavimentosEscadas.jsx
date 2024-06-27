@@ -5,6 +5,7 @@ import { MiddleContainer, StepContentContainer, StepImageContainer } from "../..
 import { useContext, useEffect, useState } from "react"
 import { HomeStylePicContainer } from "./styles"
 import { SimulationDataContext } from "../../../contexts/SimulationData"
+import ToggleButton from "../../common/Toggle"
 // import Input from '../../form/Input'
 
 
@@ -56,7 +57,13 @@ const PavimentosEscadas = ({ small }) => {
 
     // const [pavimentos, setPavimentos] = useState('')
     const { simData, setSimData } = useContext(SimulationDataContext)
-
+    
+    const handleToggleChange = (newValue) => {
+        setSimData({
+          ...simData,
+          vaos: newValue,
+        });
+      };
     
     if (small) {
         return (
@@ -166,6 +173,11 @@ const PavimentosEscadas = ({ small }) => {
                             select={simData.pavimentos}
                             key='pavimentos_e_escadas_radio_buttons'
                             />
+                <TitleContainer
+                    key='ToggleVao'>
+                        <h3>Seus cômodos terão grandes vãos abertos?</h3>
+                    </TitleContainer>
+                    <ToggleButton value={simData.vaos} onChange={handleToggleChange} />
                 <TitleContainer
                     margin='50px 0 0'
                     key='escadas_title'

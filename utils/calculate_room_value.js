@@ -3,7 +3,7 @@ import { loadBaseAcabamentos } from "./base_acabamentos.js"
 import { loadbaseObraBranca } from "./base_obra_branca"
 
 
-export const calculateGarage = async (garagem, baseSqMtr, franquia) => {
+export const calculateGarage = async (garagem, baseSqMtr, franquia, simData) => {
     console.log("############# Valores Base #############")
     const baseAcabamentos = await loadBaseAcabamentos(franquia);
     const baseObraBranca = await loadbaseObraBranca(franquia);
@@ -11,49 +11,111 @@ export const calculateGarage = async (garagem, baseSqMtr, franquia) => {
     console.log('valores obra branca: ', baseObraBranca)
     console.log('Franquia: ', franquia)
     console.log('valores Garagem: ', garagem)
+    console.log('valores simData: ', simData)
 
-/*  
-    Custos da Garagem
-        [ ] Servicos iniciais
-        [ ] Fundação
-        [ ] Estrutura
-        [ ] Lajes
-        [ ] Coberturas
-        [ ] Eletrica
-        [ ] Paredes e Fechamento
-        [ ] Forro
-        [ ] Conforto Interno
-
-*/
-
+    
     console.log("############# Areas #############")
     const metroQuadrado = garagem.value 
+    const tempoObraEmMeses = 4
     const areaPiso = metroQuadrado * 1.1
-    const areaParede = metroQuadrado * 2.33
+    const areaParede = metroQuadrado * 2.33 
     console.log('garagem areaParede: ', areaParede)
+    console.log('garagem metro Quadrado: ', metroQuadrado)
     console.log('garagem areaPiso: ', areaPiso)
     console.log('baseSqMtr: ', baseSqMtr)
     
+    /*  
+        Custos da Garagem
+            [x] Servicos iniciais
+            [x] Fundação
+            [x] Estrutura
+            [-] Lajes
+            [-] Coberturas
+            [-] Eletrica
+            [x] Paredes e Fechamento
+            [x] Forro
+            [x] Conforto Interno
+    */
     console.log("############# Valores do comodo #############")
-    const valorBase = baseSqMtr.value * metroQuadrado
-    const paredesInternas = areaParede * baseObraBranca.fechamento_interno.paredes
-    const piso = baseAcabamentos.garagem[garagem.pattern].piso * areaPiso
-    const pinturaParedes = baseAcabamentos.garagem[garagem.pattern].pintura * areaParede
-    const pinturaForro = baseAcabamentos.garagem[garagem.pattern].forro * metroQuadrado
-    const telheiros = 42 *  baseObraBranca[garagem.pattern].foundation_superficial + baseObraBranca[garagem.pattern].finishing + (baseObraBranca[garagem.pattern].slab_wet / 2)
-    console.log("valorBase garagem",valorBase)
-    console.log("paredesInternas garagem",paredesInternas)
-    console.log("paredesInternas valor original garagem",baseObraBranca.fechamento_interno.paredes)
-    console.log("piso garagem",piso)
-    console.log("pinturaParedes garagem",pinturaParedes)
-    console.log("pinturaForro garagem",pinturaForro)
-    console.log("telheiros garagem",telheiros)
-
-    let valorAmbiente = valorBase + paredesInternas + piso + pinturaParedes + pinturaForro + telheiros
-        
-    if (garagem.confort === 'sim') {
-        valorAmbiente += baseObraBranca.conforto_interno * areaParede
+    const canteiro_obra = baseObraBranca.servicos_iniciais.canteiro_obra * 1
+    const container_limpeza = baseObraBranca.servicos_iniciais.container_limpeza * tempoObraEmMeses
+    const locacao_radier = baseObraBranca.servicos_iniciais.locacao_radier * metroQuadrado
+    const servicosIniciais = canteiro_obra + container_limpeza + locacao_radier
+    console.log('Servicos iniciais: ',servicosIniciais)
+    
+    const equipamento = baseObraBranca.fundacao.equipamento * (tempoObraEmMeses * 31)
+    const formas_fundacao_radier = baseObraBranca.fundacao.formas_fundacao_radier * tempoObraEmMeses
+    const radier_concreto = baseObraBranca.fundacao.radier_concreto * (metroQuadrado * 2.33)
+    const bomba_lanca_concreto = baseObraBranca.fundacao.bomba_lanca_concreto * (tempoObraEmMeses * 31)
+    const fundacao = equipamento + formas_fundacao_radier + radier_concreto + bomba_lanca_concreto
+    console.log('equipamento: ',equipamento)
+    console.log('formas_fundacao_radier: ',formas_fundacao_radier)
+    console.log('radier_concreto: ',radier_concreto)
+    console.log('bomba_lanca_concreto: ',bomba_lanca_concreto)
+    console.log('Fundacao: ',fundacao)
+    
+    // Definir valor do aço de acordo com a condição
+    let acoConsiderado;
+    if (simData.pavimentos === 1) {
+        if (simData.vaos === "Y") {
+            acoConsiderado = 1;
+        } else {
+            acoConsiderado = 0;
+        }
+    } else if (simData.pavimentos > 1) {
+        if (simData.vaos === "Y") {
+            acoConsiderado = 2;
+        } else {
+            acoConsiderado = 1;
+        }
     }
+    const locacao_andaimes = baseObraBranca.estrutura.locacao_andaimes * metroQuadrado
+    const locacao_paineis_lsf = baseObraBranca.estrutura.locacao_paineis_lsf * areaParede
+    const aco = baseObraBranca.estrutura.aco[acoConsiderado] * metroQuadrado
+    const estrutura = locacao_andaimes + locacao_paineis_lsf + aco
+    console.log("aco considerado indice", acoConsiderado ,"valor aco", baseObraBranca.estrutura.aco[acoConsiderado], "aco considerado valor",aco)
+    
+    let instalacaoPaineis = 0;
+    let isolamentoTermoacustico = 0;
+    
+    if (simData.garagem.confort === "sim") {
+        instalacaoPaineis = baseObraBranca.paredes.conforto_interno.instalacao_paineis * areaParede;
+        isolamentoTermoacustico = baseObraBranca.paredes.conforto_interno.isolamento_termoacustico * (areaParede / 2);
+    }
+    const locacao_andaimes_internos = baseObraBranca.paredes.fechamento_interno.locacao_andaimes_internos * metroQuadrado
+    const fechamento_placas_gesso = baseObraBranca.paredes.fechamento_interno.fechamento_placas_gesso * areaParede
+    let forros;
+    if (simData.vaos === 'Y') {
+        forros = baseObraBranca.paredes.forros.Y.forro_acustico * metroQuadrado;
+    } else {
+        forros = baseObraBranca.paredes.forros.N.forro_acustico * metroQuadrado;
+    }
+    
+    const paredes = instalacaoPaineis + isolamentoTermoacustico + locacao_andaimes_internos + fechamento_placas_gesso + forros
+    console.log('Paredes: ',paredes)
+    
+    let valorAmbiente = servicosIniciais + fundacao + estrutura + paredes
+
+
+
+    // const valorBase = baseSqMtr.value * metroQuadrado
+    // const paredesInternas = areaParede * baseObraBranca.fechamento_interno.paredes
+    // const piso = baseAcabamentos.garagem[garagem.pattern].piso * areaPiso
+    // const pinturaParedes = baseAcabamentos.garagem[garagem.pattern].pintura * areaParede
+    // const pinturaForro = baseAcabamentos.garagem[garagem.pattern].forro * metroQuadrado
+    // const telheiros = 42 *  baseObraBranca[garagem.pattern].foundation_superficial + baseObraBranca[garagem.pattern].finishing + (baseObraBranca[garagem.pattern].slab_wet / 2)
+    // console.log("valorBase garagem",valorBase)
+    // console.log("paredesInternas garagem",paredesInternas)
+    // console.log("paredesInternas valor original garagem",baseObraBranca.fechamento_interno.paredes)
+    // console.log("piso garagem",piso)
+    // console.log("pinturaParedes garagem",pinturaParedes)
+    // console.log("pinturaForro garagem",pinturaForro)
+    // console.log("telheiros garagem",telheiros)
+
+        
+    // if (garagem.confort === 'sim') {
+        // valorAmbiente += baseObraBranca.conforto_interno * areaParede
+    // }
 
     const margemLucro = 1.3
     valorAmbiente = valorAmbiente * margemLucro
