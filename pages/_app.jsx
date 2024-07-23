@@ -11,7 +11,7 @@ import AuthWrapper from '../utils/AuthWrapper'
 
 const GlobalStyle = createGlobalStyle`
     * {
-        box-sizing: border-box;
+        box-sizing: border-box,
     }
 
     html, body {
@@ -33,8 +33,8 @@ const GlobalStyle = createGlobalStyle`
 
     .MuiStepIcon-root.MuiStepIcon-completed {
         color: #7dd23a !important;
-    }
-`
+    }`
+
 
 const theme = {
     colors: {

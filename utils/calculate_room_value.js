@@ -3,6 +3,7 @@ import { loadBaseAcabamentos } from "./base_acabamentos.js"
 import { loadbaseObraBranca } from "./base_obra_branca"
 
 const CalcularValorBase = async (franquia,simData,comodo,conforto) => {
+    console.log("############# calcular valor base #############")
     // console.log("############# Valores Base #############")
     const baseAcabamentos = await loadBaseAcabamentos(franquia);
     const baseObraBranca = await loadbaseObraBranca(franquia);
@@ -16,8 +17,8 @@ const CalcularValorBase = async (franquia,simData,comodo,conforto) => {
         metroQuadrado : comodo.value
     }
     console.log("############# Areas #############")
-    Dimensoes[areaPiso] = Dimensoes.metroQuadrado * 1.1
-    Dimensoes[areaParede] = Dimensoes.metroQuadrado * 2.33
+    Dimensoes['areaPiso'] = Dimensoes.metroQuadrado * 1.1
+    Dimensoes['areaParede'] = Dimensoes.metroQuadrado * 2.33
     console.log('comodo metro Quadrado: ', Dimensoes.metroQuadrado)
     console.log('comodo areaParede: ', Dimensoes.areaParede)
     console.log('comodo areaPiso: ', Dimensoes.areaPiso)
@@ -94,9 +95,9 @@ const CalcularValorBase = async (franquia,simData,comodo,conforto) => {
     
     const paredes = instalacaoPaineis + isolamentoTermoacustico + locacao_andaimes_internos + fechamento_placas_gesso + forros
     console.log('Paredes: ',paredes)
-    
     let valorAmbiente = estrutura + paredes
-    return valorAmbiente, Dimensoes
+    console.log("valor ambiente", valorAmbiente);
+    return {valorAmbiente, Dimensoes}
 }
 
 export const calculateGarage = async (garagem, baseSqMtr, franquia, simData) => {
@@ -116,7 +117,7 @@ export const calculateGarage = async (garagem, baseSqMtr, franquia, simData) => 
             [x] Conforto Interno
     */
 
-    let {valorAmbiente, Dimensoes} = CalcularValorBase(franquia,simData,garagem,simData.garagem.confort)
+    let {valorAmbiente, Dimensoes} = await CalcularValorBase(franquia,simData,garagem,simData.garagem.confort)
     console.log(`Valor retornado do ambiente: ${valorAmbiente}`);
     const margemLucro = 1.3
     valorAmbiente = valorAmbiente * margemLucro

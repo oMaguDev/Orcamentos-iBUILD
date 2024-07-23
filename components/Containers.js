@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 
-export const Layout = styled.div`
+export const Layout = styled.div `
 
     height: calc(100% - 100px);
     width: calc(100% - 100px);
