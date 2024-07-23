@@ -95,14 +95,13 @@ const CalcularValorBase = async (franquia,simData,comodo,conforto) => {
     
     const paredes = instalacaoPaineis + isolamentoTermoacustico + locacao_andaimes_internos + fechamento_placas_gesso + forros
     console.log('Paredes: ',paredes)
-    let valorAmbiente = estrutura + paredes
-    console.log("valor ambiente", valorAmbiente);
-    return {valorAmbiente, Dimensoes}
+    let valorObraBranca = estrutura + paredes
+    console.log("valor ambiente", valorObraBranca);
+    return {valorObraBranca, Dimensoes}
 }
 
 export const calculateGarage = async (garagem, baseSqMtr, franquia, simData) => {
     const baseAcabamentos = await loadBaseAcabamentos(franquia);
-    const baseObraBranca = await loadbaseObraBranca(franquia);
     
     /*  
         Custos da Garagem
@@ -117,8 +116,10 @@ export const calculateGarage = async (garagem, baseSqMtr, franquia, simData) => 
             [x] Conforto Interno
     */
 
-    let {valorAmbiente, Dimensoes} = await CalcularValorBase(franquia,simData,garagem,simData.garagem.confort)
-    console.log(`Valor retornado do ambiente: ${valorAmbiente}`);
+    let {valorObraBranca, Dimensoes} = await CalcularValorBase(franquia,simData,garagem,simData.garagem.confort)
+    console.log(`Valor retornado obra branca Garagem: ${valorObraBranca}`);
+    let valorAcabamentos = 0
+    let valorAmbiente = valorObraBranca + valorAcabamentos
     const margemLucro = 1.3
     valorAmbiente = valorAmbiente * margemLucro
 
@@ -129,178 +130,168 @@ export const calculateGarage = async (garagem, baseSqMtr, franquia, simData) => 
 
 export const calculateSala = async (sala, baseSqMtr, franquia) => {
     const baseAcabamentos = await loadBaseAcabamentos(franquia);
-    const baseObraBranca = await loadbaseObraBranca(franquia);
-    
-    const area = sala.value
-    const areaPiso = area * 1.1
-    const areaParede = area * 2.93
 
-    const valorBase = baseSqMtr.value * area
-    const paredesInternas = areaParede * baseObraBranca.fechamento_interno.paredes
-    const piso = baseAcabamentos.sala[sala.pattern].piso * areaPiso
-    const pinturaParedes = baseAcabamentos.sala[sala.pattern].pintura * areaParede
-    const pinturaForro = baseAcabamentos.sala[sala.pattern].forro * area
-    const peitoril = baseAcabamentos.sala[sala.pattern].peitoril
-    const porta = baseAcabamentos.sala[sala.pattern].porta
-    const esquadria = baseAcabamentos.sala[sala.pattern].esquadria
+    /*  
+    Custos da sala (A mapear)
+    [x] Servicos iniciais
+    [x] Fundação
+    [x] Estrutura
+    [-] Lajes
+    [-] Coberturas
+    [-] Eletrica
+    [x] Paredes e Fechamento
+    [x] Forro
+    [x] Conforto Interno
+    */
 
-    let valorAmbiente = valorBase + paredesInternas + piso + pinturaParedes + pinturaForro + peitoril + porta + esquadria
-        
-    if (sala.confort === 'sim') {
-        valorAmbiente += baseObraBranca.conforto_interno * areaParede
-    }
-
+    let {valorObraBranca, Dimensoes} = await CalcularValorBase(franquia,simData,sala,simData.sala.confort)
+    console.log(`Valor retornado obra branca sala: ${valorObraBranca}`);
+    let valorAcabamentos = 0
+    let valorAmbiente = valorObraBranca + valorAcabamentos
     const margemLucro = 1.3
     valorAmbiente = valorAmbiente * margemLucro
+
+    console.log('valorAmbiente sala: ', valorAmbiente)
 
     return valorAmbiente
 }
 
 export const calculateCozinha = async (cozinha, baseSqMtr, franquia) => {
     const baseAcabamentos = await loadBaseAcabamentos(franquia);
-    const baseObraBranca = await loadbaseObraBranca(franquia);
 
-    const area = cozinha.value
-    const areaPiso = area 
-    const areaParede = area * 2.93
+    /*  
+    Custos da sala (A mapear)
+    [x] Servicos iniciais
+    [x] Fundação
+    [x] Estrutura
+    [-] Lajes
+    [-] Coberturas
+    [-] Eletrica
+    [x] Paredes e Fechamento
+    [x] Forro
+    [x] Conforto Interno
+    */
 
-    const valorBase = baseSqMtr.value * area
-    const paredesInternas = areaParede * baseObraBranca.fechamento_interno.paredes
-    const piso = baseAcabamentos.cozinha[cozinha.pattern].piso * areaPiso
-    const pinturaParedes = baseAcabamentos.cozinha[cozinha.pattern].pintura * areaParede
-    const pinturaForro = baseAcabamentos.cozinha[cozinha.pattern].forro * area
-    const peitoril = baseAcabamentos.cozinha[cozinha.pattern].peitoril
-    const porta = baseAcabamentos.cozinha[cozinha.pattern].porta
-    const esquadria = baseAcabamentos.cozinha[cozinha.pattern].esquadria
-    const loucas = baseAcabamentos.cozinha[cozinha.pattern].loucas
-    const marmore = baseAcabamentos.cozinha[cozinha.pattern].marmore
-
-    let valorAmbiente = valorBase + paredesInternas + piso + pinturaParedes + pinturaForro + peitoril + porta + esquadria + loucas + marmore
-        
-    if (cozinha.confort === 'sim') {
-        valorAmbiente += baseObraBranca.conforto_interno * areaParede
-    }
-
+    let {valorObraBranca, Dimensoes} = await CalcularValorBase(franquia,simData,cozinha,simData.cozinha.confort)
+    console.log(`Valor retornado obra branca cozinha: ${valorObraBranca}`);
+    let valorAcabamentos = 0
+    let valorAmbiente = valorObraBranca + valorAcabamentos
     const margemLucro = 1.3
     valorAmbiente = valorAmbiente * margemLucro
+
+    console.log('valorAmbiente cozinha: ', valorAmbiente)
 
     return valorAmbiente
 }
 
 export const calculateAreaGourmet = async (areaGourmet, baseSqMtr, franquia) => {
     const baseAcabamentos = await loadBaseAcabamentos(franquia);
-    const baseObraBranca = await loadbaseObraBranca(franquia);
 
-    const area = areaGourmet.value
-    const areaPiso = area 
-    const areaParede = area * 2.93
+    /*  
+    Custos da areaGourmet (A mapear)
+    [x] Servicos iniciais
+    [x] Fundação
+    [x] Estrutura
+    [-] Lajes
+    [-] Coberturas
+    [-] Eletrica
+    [x] Paredes e Fechamento
+    [x] Forro
+    [x] Conforto Interno
+    */
 
-    const valorBase = baseSqMtr.value * area
-    const paredesInternas = areaParede * baseObraBranca.fechamento_interno.paredes
-    const piso = baseAcabamentos.areaGourmet[areaGourmet.pattern].piso * areaPiso
-    const pinturaParedes = baseAcabamentos.areaGourmet[areaGourmet.pattern].pintura * areaParede
-    const pinturaForro = baseAcabamentos.areaGourmet[areaGourmet.pattern].forro * area
-    const peitoril = baseAcabamentos.areaGourmet[areaGourmet.pattern].peitoril
-    const porta = baseAcabamentos.areaGourmet[areaGourmet.pattern].porta
-    const esquadria = baseAcabamentos.areaGourmet[areaGourmet.pattern].esquadria
-    const loucas = baseAcabamentos.areaGourmet[areaGourmet.pattern].loucas
-    const marmore = baseAcabamentos.areaGourmet[areaGourmet.pattern].marmore
-
-    let valorAmbiente = valorBase + paredesInternas + piso + pinturaParedes + pinturaForro + peitoril + porta + esquadria + loucas + marmore
-        
-    if (areaGourmet.confort === 'sim') {
-        valorAmbiente += baseObraBranca.conforto_interno * areaParede
-    }
-
+    let {valorObraBranca, Dimensoes} = await CalcularValorBase(franquia,simData,areaGourmet,simData.areaGourmet.confort)
+    console.log(`Valor retornado obra branca areaGourmet: ${valorObraBranca}`);
+    let valorAcabamentos = 0
+    let valorAmbiente = valorObraBranca + valorAcabamentos
     const margemLucro = 1.3
     valorAmbiente = valorAmbiente * margemLucro
+
+    console.log('valorAmbiente areaGourmet: ', valorAmbiente)
 
     return valorAmbiente
 }
 
 export const calculateAreaServico = async (areaServico, baseSqMtr, franquia) => {
     const baseAcabamentos = await loadBaseAcabamentos(franquia);
-    const baseObraBranca = await loadbaseObraBranca(franquia);
 
-    const area = areaServico.value
-    const areaPiso = area 
-    const areaParede = area * 2.93
+    /*  
+    Custos da areaServico (A mapear)
+    [x] Servicos iniciais
+    [x] Fundação
+    [x] Estrutura
+    [-] Lajes
+    [-] Coberturas
+    [-] Eletrica
+    [x] Paredes e Fechamento
+    [x] Forro
+    [x] Conforto Interno
+    */
 
-    const valorBase = baseSqMtr.value * area
-    const paredesInternas = areaParede * baseObraBranca.fechamento_interno.paredes
-    const piso = baseAcabamentos.areaServico[areaServico.pattern].piso * areaPiso
-    const pinturaParedes = baseAcabamentos.areaServico[areaServico.pattern].pintura * areaParede
-    const pinturaForro = baseAcabamentos.areaServico[areaServico.pattern].forro * area
-    const peitoril = baseAcabamentos.areaServico[areaServico.pattern].peitoril
-    const porta = baseAcabamentos.areaServico[areaServico.pattern].porta
-    const esquadria = baseAcabamentos.areaServico[areaServico.pattern].esquadria
-    const loucas = baseAcabamentos.areaServico[areaServico.pattern].loucas
-    const marmore = baseAcabamentos.areaServico[areaServico.pattern].marmore
-
-    let valorAmbiente = valorBase + paredesInternas + piso + pinturaParedes + pinturaForro + peitoril + porta + esquadria + loucas + marmore
-        
-    if (areaServico.confort === 'sim') {
-        valorAmbiente += baseObraBranca.conforto_interno * areaParede
-    }
-
+    let {valorObraBranca, Dimensoes} = await CalcularValorBase(franquia,simData,areaServico,simData.areaServico.confort)
+    console.log(`Valor retornado obra branca areaServico: ${valorObraBranca}`);
+    let valorAcabamentos = 0
+    let valorAmbiente = valorObraBranca + valorAcabamentos
     const margemLucro = 1.3
     valorAmbiente = valorAmbiente * margemLucro
+
+    console.log('valorAmbiente areaServico: ', valorAmbiente)
 
     return valorAmbiente
 }
 
 export const calculateDespensa = async (despensa, baseSqMtr, franquia) => {
     const baseAcabamentos = await loadBaseAcabamentos(franquia);
-    const baseObraBranca = await loadbaseObraBranca(franquia);
 
-    const area = despensa.value
-    const areaPiso = area 
-    const areaParede = area * 2.93
-    
-    const valorBase = baseSqMtr.value * area
-    const paredesInternas = areaParede * baseObraBranca.fechamento_interno.paredes
-    const piso = baseAcabamentos.despensa[despensa.pattern].piso * areaPiso
-    const pinturaParedes = baseAcabamentos.despensa[despensa.pattern].pintura * areaParede
-    const pinturaForro = baseAcabamentos.despensa[despensa.pattern].forro * area
-    const porta = baseAcabamentos.despensa[despensa.pattern].porta
-    
-    let valorAmbiente = valorBase + paredesInternas + piso + pinturaParedes + pinturaForro +  porta
-    
-    if (despensa.confort === 'sim') {
-        valorAmbiente += baseObraBranca.conforto_interno * areaParede
-    }
-    
+    /*  
+    Custos da areaServico (A mapear)
+    [x] Servicos iniciais
+    [x] Fundação
+    [x] Estrutura
+    [-] Lajes
+    [-] Coberturas
+    [-] Eletrica
+    [x] Paredes e Fechamento
+    [x] Forro
+    [x] Conforto Interno
+    */
+
+    let {valorObraBranca, Dimensoes} = await CalcularValorBase(franquia,simData,areaServico,simData.areaServico.confort)
+    console.log(`Valor retornado obra branca areaServico: ${valorObraBranca}`);
+    let valorAcabamentos = 0
+    let valorAmbiente = valorObraBranca + valorAcabamentos
     const margemLucro = 1.3
     valorAmbiente = valorAmbiente * margemLucro
-    
+
+    console.log('valorAmbiente areaServico: ', valorAmbiente)
+
     return valorAmbiente
 }
 
 export const calculateEscritorio = async (escritorio, baseSqMtr, franquia) => {
     const baseAcabamentos = await loadBaseAcabamentos(franquia);
-    const baseObraBranca = await loadbaseObraBranca(franquia);
 
-    const area = escritorio.value
-    const areaPiso = area 
-    const areaParede = area * 2.93
+    /*  
+    Custos da escritorio (A mapear)
+    [x] Servicos iniciais
+    [x] Fundação
+    [x] Estrutura
+    [-] Lajes
+    [-] Coberturas
+    [-] Eletrica
+    [x] Paredes e Fechamento
+    [x] Forro
+    [x] Conforto Interno
+    */
 
-    const valorBase = baseSqMtr.value * area
-    const paredesInternas = areaParede * baseObraBranca.fechamento_interno.paredes
-    const piso = baseAcabamentos.escritorio[escritorio.pattern].piso * areaPiso
-    const pinturaParedes = baseAcabamentos.escritorio[escritorio.pattern].pintura * areaParede
-    const pinturaForro = baseAcabamentos.escritorio[escritorio.pattern].forro * area
-    const peitoril = baseAcabamentos.escritorio[escritorio.pattern].peitoril
-    const porta = baseAcabamentos.escritorio[escritorio.pattern].porta
-    const esquadria = baseAcabamentos.escritorio[escritorio.pattern].esquadria
-
-    let valorAmbiente = valorBase + paredesInternas + piso + pinturaParedes + pinturaForro + peitoril + porta + esquadria
-        
-    if (escritorio.confort === 'sim') {
-        valorAmbiente += baseObraBranca.conforto_interno * areaParede
-    }
-
+    let {valorObraBranca, Dimensoes} = await CalcularValorBase(franquia,simData,escritorio,simData.escritorio.confort)
+    console.log(`Valor retornado obra branca escritorio: ${valorObraBranca}`);
+    let valorAcabamentos = 0
+    let valorAmbiente = valorObraBranca + valorAcabamentos
     const margemLucro = 1.3
     valorAmbiente = valorAmbiente * margemLucro
+
+    console.log('valorAmbiente escritorio: ', valorAmbiente)
 
     return valorAmbiente
 }
