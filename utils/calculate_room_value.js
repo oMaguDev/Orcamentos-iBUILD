@@ -244,7 +244,7 @@ export const calculateDespensa = async (despensa, baseSqMtr, franquia) => {
     const baseAcabamentos = await loadBaseAcabamentos(franquia);
 
     /*  
-    Custos da areaServico (A mapear)
+    Custos da despensa (A mapear)
     [x] Servicos iniciais
     [x] Fundação
     [x] Estrutura
@@ -256,14 +256,14 @@ export const calculateDespensa = async (despensa, baseSqMtr, franquia) => {
     [x] Conforto Interno
     */
 
-    let {valorObraBranca, Dimensoes} = await CalcularValorBase(franquia,simData,areaServico,simData.areaServico.confort)
-    console.log(`Valor retornado obra branca areaServico: ${valorObraBranca}`);
+    let {valorObraBranca, Dimensoes} = await CalcularValorBase(franquia,simData,despensa,simData.despensa.confort)
+    console.log(`Valor retornado obra branca despensa: ${valorObraBranca}`);
     let valorAcabamentos = 0
     let valorAmbiente = valorObraBranca + valorAcabamentos
     const margemLucro = 1.3
     valorAmbiente = valorAmbiente * margemLucro
 
-    console.log('valorAmbiente areaServico: ', valorAmbiente)
+    console.log('valorAmbiente despensa: ', valorAmbiente)
 
     return valorAmbiente
 }
@@ -429,7 +429,6 @@ export const calculateInstalacoesPercentagem = (instalacoes, houseValue) => {
     // return valorAmbiente
     return housePercentage
 }
-
 
 export const calculateQuartosArea = (quartos) => {
     let area = [...quartos.value]
