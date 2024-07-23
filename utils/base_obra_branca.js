@@ -71,8 +71,10 @@ export async function loadbaseObraBranca(franquia) {
             bomba_lanca_concreto: Number(dadosObraBranca.find(item => item.workItemId_scienge === 366)?.total_price) || 9999, // un/dia
         },
         estrutura: {
-            locacao_andaimes: Number(dadosObraBranca.find(item => item.workItemId_scienge === 353)?.total_price) || 9999,
-            locacao_paineis_lsf: Number(dadosObraBranca.find(item => item.workItemId_scienge === 353)?.total_price) || 9999,
+            locacao_andaimes: Number(dadosObraBranca.find(item => item.workItemId_scienge === 6798)?.total_price) || 9999,
+            locacao_paineis_lsf: Number(dadosObraBranca.find(item => item.workItemId_scienge === 367)?.total_price) || 9999,
+            locacao_andaimes_interno: Number(dadosObraBranca.find(item => item.workItemId_scienge === 7807)?.total_price) || 9999,
+            locacao_andaimes_externo: Number(dadosObraBranca.find(item => item.workItemId_scienge === 7806)?.total_price) || 9999,
             aco: [
                 Number(dadosObraBranca.find(item => item.workItemId_scienge === 370)?.total_price) || 9999,
                 Number(dadosObraBranca.find(item => item.workItemId_scienge === 7754)?.total_price) || 9999,
