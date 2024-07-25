@@ -8,8 +8,9 @@ import { UserContextProvider } from '../contexts/UserContext'
 import { RoomValuesContextProvider } from '../contexts/RoomValues'
 import { FinancialSimContextProvider } from '../contexts/FinancialSim'
 import AuthWrapper from '../utils/AuthWrapper'
+import GlobalStyle from '../styles/GlobalStyles'
 
-const GlobalStyle = createGlobalStyle`
+const GlobalStyle1 = createGlobalStyle`
     * {
         box-sizing: border-box,
     }
@@ -79,6 +80,7 @@ function MyApp({ Component, pageProps }) {
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             </Head>
             <GlobalStyle />
+            <GlobalStyle1 />
             <AuthWrapper>
             <UserContextProvider>
                 <FinancialSimContextProvider>
