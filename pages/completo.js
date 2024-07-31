@@ -171,6 +171,84 @@ export default function Home() {
 
   return (
     <form onSubmit={handleSubmit}>
+      {/* Pavimentos */}
+      <SectionWithHeader title="Pavimentos e Estrutura" description="Informações sobre a estrutura da obra">
+        <SubSection title="Quantidade de Pavimentos">
+          <Row>
+            <Column>
+              <Label htmlFor="quantidadePavimentos">Quantos pavimentos?</Label>
+              <Select
+                id="quantidadePavimentos"
+                name="quantidadePavimentos"
+                value={formData.quantidadePavimentos || ''}
+                onChange={(e) => handleChange(e, 'estrutura', 'quantidadePavimentos')}
+                >
+                <option value="1">1 Pavimento (Térrea)</option>
+                <option value="2">2 Pavimentos</option>
+              </Select>
+            </Column>
+            </Row>
+            <Row>
+            <Column>
+              <SwitchContainer>
+                <SwitchLabel>
+                  Obra possui grandes vãos?
+                  <SwitchInput
+                    type="checkbox"
+                    name="grandesVaos"
+                    checked={formData.estrutura.grandesVaos || false}
+                    onChange={(e) => handleChange(e, 'estrutura', 'grandesVaos')}
+                  />
+                  <SwitchSlider checked={formData.estrutura.grandesVaos || false} />
+                </SwitchLabel>
+              </SwitchContainer>
+            </Column>
+          </Row>
+        </SubSection>
+
+        <SubSection title="Estilo de Escada">
+          <Row>
+            <Column>
+              <Label htmlFor="estiloEscada">Qual o padrão de escada? (Só tem escada se tem mais de 1 pavimento?)</Label>
+              <Select
+                id="estiloEscada"
+                name="estiloEscada"
+                value={formData.estrutura.estiloEscada || ''}
+                onChange={(e) => handleChange(e, 'estrutura', 'estiloEscada')}
+              >
+                <option value="engastada">Escada engastada com parte inferior fechada</option>
+                <option value="vigasLaterais">Escada com vigas laterais</option>
+                <option value="vigaCentral">Escada com viga central</option>
+                <option value="suspensa">Escada suspensa</option>
+                <option value="flutuante">Escada flutuante</option>
+              </Select>
+            </Column>
+          </Row>
+        </SubSection>
+
+        <SubSection title="Estilo Arquitetônico">
+          <Row>
+            <Column>
+              <Label htmlFor="estiloArquitetonico">Qual o estilo da sua casa? (Precisa no completo?)</Label>
+              <Select
+                id="estiloArquitetonico"
+                name="estiloArquitetonico"
+                value={formData.estrutura.estiloArquitetonico || ''}
+                onChange={(e) => handleChange(e, 'estrutura', 'estiloArquitetonico')}
+              >
+                <option value="minimalista">Minimalista</option>
+                <option value="contemporanea">Contemporânea</option>
+                <option value="neoClassica">Neo-Clássica</option>
+                <option value="mediterranea">Mediterrânea</option>
+                <option value="americano">Americano</option>
+                <option value="europeia">Europeia</option>
+                <option value="brasileira">Brasileira</option>
+                <option value="classica">Clássica</option>
+              </Select>
+            </Column>
+          </Row>
+        </SubSection>
+      </SectionWithHeader>  
       {/* Garagem */}
       <SectionWithHeader title="Garagem" description="Informações sobre a garagem">
         <SubSection title="Dimensões">
@@ -1114,81 +1192,7 @@ export default function Home() {
           </Row>
         </SubSection>
       </SectionWithHeader>
-      <SectionWithHeader title="Pavimentos e Estrutura" description="Informações sobre a estrutura da obra">
-        <SubSection title="Quantidade de Pavimentos">
-          <Row>
-            <Column>
-              <Label htmlFor="quantidadePavimentos">Quantos pavimentos?</Label>
-              <Select
-                id="quantidadePavimentos"
-                name="quantidadePavimentos"
-                value={formData.quantidadePavimentos || ''}
-                onChange={(e) => handleChange(e, 'estrutura', 'quantidadePavimentos')}
-              >
-                <option value="1">1 Pavimento (Térrea)</option>
-                <option value="2">2 Pavimentos</option>
-              </Select>
-            </Column>
-            <Column>
-              <SwitchContainer>
-                <SwitchLabel>
-                  Obra possui grandes vãos e balanços que podem aumentar o peso do aço
-                  <SwitchInput
-                    type="checkbox"
-                    name="grandesVaos"
-                    checked={formData.estrutura.grandesVaos || false}
-                    onChange={(e) => handleChange(e, 'estrutura', 'grandesVaos')}
-                  />
-                  <SwitchSlider checked={formData.estrutura.grandesVaos || false} />
-                </SwitchLabel>
-              </SwitchContainer>
-            </Column>
-          </Row>
-        </SubSection>
 
-        <SubSection title="Estilo de Escada">
-          <Row>
-            <Column>
-              <Label htmlFor="estiloEscada">Qual o padrão de escada?</Label>
-              <Select
-                id="estiloEscada"
-                name="estiloEscada"
-                value={formData.estrutura.estiloEscada || ''}
-                onChange={(e) => handleChange(e, 'estrutura', 'estiloEscada')}
-              >
-                <option value="engastada">Escada engastada com parte inferior fechada</option>
-                <option value="vigasLaterais">Escada com vigas laterais</option>
-                <option value="vigaCentral">Escada com viga central</option>
-                <option value="suspensa">Escada suspensa</option>
-                <option value="flutuante">Escada flutuante</option>
-              </Select>
-            </Column>
-          </Row>
-        </SubSection>
-
-        <SubSection title="Estilo Arquitetônico">
-          <Row>
-            <Column>
-              <Label htmlFor="estiloArquitetonico">Qual o estilo da sua casa?</Label>
-              <Select
-                id="estiloArquitetonico"
-                name="estiloArquitetonico"
-                value={formData.estrutura.estiloArquitetonico || ''}
-                onChange={(e) => handleChange(e, 'estrutura', 'estiloArquitetonico')}
-              >
-                <option value="minimalista">Minimalista</option>
-                <option value="contemporanea">Contemporânea</option>
-                <option value="neoClassica">Neo-Clássica</option>
-                <option value="mediterranea">Mediterrânea</option>
-                <option value="americano">Americano</option>
-                <option value="europeia">Europeia</option>
-                <option value="brasileira">Brasileira</option>
-                <option value="classica">Clássica</option>
-              </Select>
-            </Column>
-          </Row>
-        </SubSection>
-      </SectionWithHeader>
 
       <SectionWithHeader title="Paredes Externas" description="Informações sobre as paredes externas">
         <SubSection title="Metragem de Paredes Externas">
