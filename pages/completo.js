@@ -24,9 +24,9 @@ const initialState = {
     perimetroGaragem: "",
     peDireitoGaragem: "",
     marmoresGaragem: "",
-    marmoresGaragemAcabamento: "standard",
+    marmoresGaragemAcabamento: "",
     portasGaragem: "",
-    soleirasGaragem: "standard",
+    soleirasGaragem: "",
     garagemConforto: false,
   },
   sala: {
@@ -40,7 +40,7 @@ const initialState = {
     peDireitoDuploSala: "",
     portasSala: "",
     esquadriasSala: "",
-    salaAcabamento: "standard",
+    salaAcabamento: "",
     salaConforto: false,
   },
   quartos: [],
@@ -53,7 +53,7 @@ const initialState = {
     vidrosAluminioCozinha: "",
     kitsCozinha: "",
     marmoresCozinha: "",
-    acabamentoCozinha: "standard",
+    acabamentoCozinha: "",
     confortoCozinha: false,
   },
   lavabos: [],
@@ -65,7 +65,7 @@ const initialState = {
     vidrosAluminioGourmet: "",
     kitsGourmet: "",
     marmoresGourmet: "",
-    acabamentoGourmet: "standard",
+    acabamentoGourmet: "",
     confortoGourmet: false,
   },
   areaServico: {
@@ -76,7 +76,7 @@ const initialState = {
     vidrosAluminioServico: "",
     kitsServico: "",
     marmoresServico: "",
-    acabamentoServico: "standard",
+    acabamentoServico: "",
     confortoServico: false,
   },
   despensa: {
@@ -85,7 +85,7 @@ const initialState = {
     peDireitoDespensa: "",
     portasMadeiraDespensa: "",
     vidrosAluminioDespensa: "",
-    acabamentoDespensa: "standard",
+    acabamentoDespensa: "",
     confortoDespensa: false,
   },
   escritorio: {
@@ -94,24 +94,24 @@ const initialState = {
     peDireitoEscritorio: "",
     portasMadeiraEscritorio: "",
     vidrosAluminioEscritorio: "",
-    acabamentoEscritorio: "standard",
+    acabamentoEscritorio: "",
     confortoEscritorio: false,
   },
   estrutura: {
-    quantidadePavimentos: "1",
+    quantidadePavimentos: "",
     grandesVaos: false,
     estiloEscada: "",
     estiloArquitetonico: "",
   },
   paredesExternas: {
     metragemParedesExternas: "",
-    padraoParedesExternas: "standard",
+    padraoParedesExternas: "",
   },
   cobertura: {
     areaCobertura: "",
     areaLajes: "",
     areaCalhas: "",
-    tipoCobertura: "termoacustica",
+    tipoCobertura: "",
   },
   hallEntrada: {
     areaHallEntrada: "",
@@ -127,10 +127,10 @@ const initialState = {
     alturaPeDireitoDuplo: "",
   },
   eletrica: {
-    voltagemEletrica: "220",
+    voltagemEletrica: "",
   },
   hidraulica: {
-    tipoHidraulica: "fria",
+    tipoHidraulica: "",
   },
 };
 
@@ -148,8 +148,8 @@ export default function Home() {
         ...prevFormData[section],
         [field]: fieldValue,
       },
-    }));
-  };
+    })
+  )};
 
   const handleSubChange = (section, index, e, field) => {
     const { name, value, type, checked } = e.target;
@@ -191,13 +191,14 @@ export default function Home() {
           <Row>
             <Column>
               <Label htmlFor="quantidadePavimentos">Quantos pavimentos?</Label>
+              console.log(formData.quantidadePavimentos)
               <Select
                 id="quantidadePavimentos"
                 name="quantidadePavimentos"
-                value={formData.quantidadePavimentos || ''}
+                value={formData.estrutura.quantidadePavimentos || ''}
                 onChange={(e) => handleChange(e, 'estrutura', 'quantidadePavimentos')}
                 >
-                <option value="1">1 Pavimento (Térrea)</option>
+                <option value="1">1 Pavimento - Térrea</option>
                 <option value="2">2 Pavimentos</option>
               </Select>
             </Column>
