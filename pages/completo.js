@@ -1165,6 +1165,104 @@ export default function Home() {
         </SubSection>
       </SectionWithHeader>
 
+      <SectionWithHeader title="Despensa" description="Informações sobre a despensa">
+        <SubSection title="Dimensões">
+          <Row>
+            <Column>
+              <Label htmlFor="areaDespensa">Área da Despensa (m²)</Label>
+              <InputNumber
+                type="number"
+                id="areaDespensa"
+                name="areaDespensa"
+                value={formData.despensa.areaDespensa || ''}
+                onChange={(e) => handleChange(e, 'despensa', 'areaDespensa')}
+              />
+            </Column>
+          </Row>
+          <Row>
+          <Column>
+              <Label htmlFor="perimetroDespensa">Perímetro</Label>
+              <InputNumber
+                type="number"
+                id="perimetroDespensa"
+                name="perimetroDespensa"
+                value={formData.despensa.perimetroDespensa || ''}
+                onChange={(e) => handleChange(e, 'despensa', 'perimetroDespensa')}
+              />
+            </Column>
+            <Column>
+              <Label htmlFor="peDireitoDespensa">Pé Direito</Label>
+              <InputNumber
+                type="number"
+                id="peDireitoDespensa"
+                name="peDireitoDespensa"
+                value={formData.despensa.peDireitoDespensa || ''}
+                onChange={(e) => handleChange(e, 'despensa', 'peDireitoDespensa')}
+              />
+            </Column>
+          </Row>
+        </SubSection>
+
+        <SubSection title="Esquadrias de Madeira, Vidro e Alumínio">
+          <Row>
+            <Column>
+              <Label htmlFor="portasMadeiraDespensa">Quantidade de Portas de Madeiras</Label>
+              <InputNumber
+                type="number"
+                id="portasMadeiraDespensa"
+                name="portasMadeiraDespensa"
+                value={formData.despensa.portasMadeiraDespensa || ''}
+                onChange={(e) => handleChange(e, 'despensa', 'portasMadeiraDespensa')}
+              />
+            </Column>
+            <Column>
+              <Label htmlFor="vidrosAluminioDespensa">M² de Vidros/Esquadria de Alumínio</Label>
+              <InputNumber
+                type="number"
+                id="vidrosAluminioDespensa"
+                name="vidrosAluminioDespensa"
+                value={formData.despensa.vidrosAluminioDespensa || ''}
+                onChange={(e) => handleChange(e, 'despensa', 'vidrosAluminioDespensa')}
+              />
+            </Column>
+          </Row>
+        </SubSection>
+
+        <SubSection title="Acabamentos">
+          <Row>
+            <Column>
+              <Label htmlFor="acabamentoDespensa">Tipo de Acabamento</Label>
+              <Select
+                id="acabamentoDespensa"
+                name="acabamentoDespensa"
+                value={formData.despensa.acabamentoDespensa || ''}
+                onChange={(e) => handleChange(e, 'despensa', 'acabamentoDespensa')}
+              >
+                <option value="standard">Standard</option>
+                <option value="premium">Premium</option>
+                <option value="supreme">Supreme</option>
+                <option value="sem_acabamento">Sem acabamento</option>
+              </Select>
+            </Column>
+            <Column>
+              <SwitchContainer>
+                <SwitchLabel>
+                  Conforto Termoacústico
+                  <SwitchInput
+                    type="checkbox"
+                    name="confortoDespensa"
+                    checked={formData.despensa.confortoDespensa || false}
+                    onChange={(e) => handleChange(e, 'despensa', 'confortoDespensa')}
+                  />
+                  <SwitchSlider checked={formData.despensa.confortoDespensa || false} />
+                </SwitchLabel>
+              </SwitchContainer>
+            </Column>
+          </Row>
+        </SubSection>
+      </SectionWithHeader>
+
+
       {formData.quartos.map((quarto, index) => (
         <SectionWithHeader key={index} title={`Quarto ${index + 1}`} description={`Informações sobre o quarto ${index + 1}`}>
           <SubSection title="Dimensões">
@@ -1256,100 +1354,7 @@ export default function Home() {
 
       
 
-      <SectionWithHeader title="Despensa" description="Informações sobre a despensa">
-        <SubSection title="Dimensões">
-          <Row>
-            <Column>
-              <Label htmlFor="areaDespensa">Área da Despensa (m²)</Label>
-              <InputNumber
-                type="number"
-                id="areaDespensa"
-                name="areaDespensa"
-                value={formData.despensa.areaDespensa || ''}
-                onChange={(e) => handleChange(e, 'despensa', 'areaDespensa')}
-              />
-            </Column>
-            <Column>
-              <Label htmlFor="perimetroDespensa">Perímetro</Label>
-              <InputNumber
-                type="number"
-                id="perimetroDespensa"
-                name="perimetroDespensa"
-                value={formData.despensa.perimetroDespensa || ''}
-                onChange={(e) => handleChange(e, 'despensa', 'perimetroDespensa')}
-              />
-            </Column>
-            <Column>
-              <Label htmlFor="peDireitoDespensa">Pé Direito</Label>
-              <InputNumber
-                type="number"
-                id="peDireitoDespensa"
-                name="peDireitoDespensa"
-                value={formData.despensa.peDireitoDespensa || ''}
-                onChange={(e) => handleChange(e, 'despensa', 'peDireitoDespensa')}
-              />
-            </Column>
-          </Row>
-        </SubSection>
-
-        <SubSection title="Esquadrias de Madeira, Vidro e Alumínio">
-          <Row>
-            <Column>
-              <Label htmlFor="portasMadeiraDespensa">Quantidade de Portas de Madeiras até 0,9 m de largura</Label>
-              <InputNumber
-                type="number"
-                id="portasMadeiraDespensa"
-                name="portasMadeiraDespensa"
-                value={formData.despensa.portasMadeiraDespensa || ''}
-                onChange={(e) => handleChange(e, 'despensa', 'portasMadeiraDespensa')}
-              />
-            </Column>
-            <Column>
-              <Label htmlFor="vidrosAluminioDespensa">M² de Vidros/Esquadria de Alumínio</Label>
-              <InputNumber
-                type="number"
-                id="vidrosAluminioDespensa"
-                name="vidrosAluminioDespensa"
-                value={formData.despensa.vidrosAluminioDespensa || ''}
-                onChange={(e) => handleChange(e, 'despensa', 'vidrosAluminioDespensa')}
-              />
-            </Column>
-          </Row>
-        </SubSection>
-
-        <SubSection title="Acabamentos">
-          <Row>
-            <Column>
-              <Label htmlFor="acabamentoDespensa">Tipo de Acabamento</Label>
-              <Select
-                id="acabamentoDespensa"
-                name="acabamentoDespensa"
-                value={formData.despensa.acabamentoDespensa || ''}
-                onChange={(e) => handleChange(e, 'despensa', 'acabamentoDespensa')}
-              >
-                <option value="standard">Standard</option>
-                <option value="premium">Premium</option>
-                <option value="supreme">Supreme</option>
-                <option value="sem_acabamento">Sem acabamento</option>
-              </Select>
-            </Column>
-            <Column>
-              <SwitchContainer>
-                <SwitchLabel>
-                  Conforto Termoacústico
-                  <SwitchInput
-                    type="checkbox"
-                    name="confortoDespensa"
-                    checked={formData.despensa.confortoDespensa || false}
-                    onChange={(e) => handleChange(e, 'despensa', 'confortoDespensa')}
-                  />
-                  <SwitchSlider checked={formData.despensa.confortoDespensa || false} />
-                </SwitchLabel>
-              </SwitchContainer>
-            </Column>
-          </Row>
-        </SubSection>
-      </SectionWithHeader>
+     
 
       <SectionWithHeader title="Escritório" description="Informações sobre o escritório">
         <SubSection title="Dimensões">
