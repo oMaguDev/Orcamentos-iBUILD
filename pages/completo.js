@@ -126,6 +126,12 @@ const initialState = {
     perimetroPeDireitoDuplo: "",
     alturaPeDireitoDuplo: "",
   },
+  eletrica: {
+    voltagemEletrica: "",
+  },
+  hidraulica: {
+    tipoHidraulica: "",
+  },
 };
 
 
@@ -1462,6 +1468,54 @@ export default function Home() {
                 value={formData.peDireitoDuplo.alturaPeDireitoDuplo || ''}
                 onChange={(e) => handleChange(e, 'peDireitoDuplo', 'alturaPeDireitoDuplo')}
               />
+            </Column>
+          </Row>
+        </SubSection>
+      </SectionWithHeader>
+
+      <SectionWithHeader title="Elétrica e Hidráulica" description="Instalações elétricas e hidráulicas">
+        <SubSection title="Instalações Elétricas">
+          <Row>
+            <Column>
+              <Label htmlFor="voltagemEletrica">Qual a voltagem elétrica?</Label>
+              <Select
+                id="voltagemEletrica"
+                name="voltagemEletrica"
+                value={formData.eletrica.voltagemEletrica || ''}
+                onChange={(e) => handleChange(e, 'eletrica', 'voltagemEletrica')}
+              >
+                <option value="110">110</option>
+                <option value="220">220</option>
+                <option value="sem_acabamento">Sem acabamento</option>
+              </Select>
+            </Column>
+          </Row>
+          <Row>
+            <Column>
+              <p>É bom saber: Só selecione este campo se você simulou a sua obra sem acabamentos! Vamos entender: este simulador prevê que a Elétrica representa aproximadamente 7,5% do valor total de uma obra com acabamentos. Se você orçar sem acabamentos esse percentual de 7,5% não será suficiente, portanto se escolher sem acabamento a verba de Elétrica passará a ser de 9,38% do valor total.</p>
+            </Column>
+          </Row>
+        </SubSection>
+
+        <SubSection title="Instalações Hidráulicas">
+          <Row>
+            <Column>
+              <Label htmlFor="tipoHidraulica">Qual o tipo de instalações hidráulicas?</Label>
+              <Select
+                id="tipoHidraulica"
+                name="tipoHidraulica"
+                value={formData.hidraulica.tipoHidraulica || ''}
+                onChange={(e) => handleChange(e, 'hidraulica', 'tipoHidraulica')}
+              >
+                <option value="fria">Rede de água fria, chuveiro elétrico, sem aquecimento nas torneiras e chuveiros</option>
+                <option value="fria_quente">Rede de água fria e quente preparada para aquecimento nas torneiras e chuveiros</option>
+                <option value="sem_acabamento">Sem acabamento</option>
+              </Select>
+            </Column>
+          </Row>
+          <Row>
+            <Column>
+              <p>É bom saber: Só selecione este campo se você simulou a sua obra sem acabamentos! Vamos entender: este simulador prevê que a Hidráulica representa aproximadamente 8,5% do valor total de uma obra com acabamentos. Se você orçar sem acabamentos esse percentual de 8,5% não será suficiente, portanto se escolher sem acabamento a verba de Hidráulica passará a ser de 10,5% do valor total.</p>
             </Column>
           </Row>
         </SubSection>
