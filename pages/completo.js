@@ -169,6 +169,7 @@ export default function Home() {
 
   return (
     <form onSubmit={handleSubmit}>
+      {/* Garagem */}
       <SectionWithHeader title="Garagem" description="Informações sobre a garagem">
         <SubSection title="Dimensões">
           <Row>
@@ -180,7 +181,7 @@ export default function Home() {
                 name="areaGaragem"
                 value={formData.garagem.areaGaragem || ''}
                 onChange={(e) => handleChange(e, 'garagem', 'areaGaragem')}
-              />
+                />
             </Column>
             <Column>
               <Label htmlFor="telheirosGaragem">Somatória de Telheiros (m²)</Label>
@@ -190,7 +191,7 @@ export default function Home() {
                 name="telheirosGaragem"
                 value={formData.garagem.telheirosGaragem || ''}
                 onChange={(e) => handleChange(e, 'garagem', 'telheirosGaragem')}
-              />
+                />
             </Column>
           </Row>
           <Row>
@@ -202,7 +203,7 @@ export default function Home() {
                 name="calcadasGaragem"
                 value={formData.garagem.calcadasGaragem || ''}
                 onChange={(e) => handleChange(e, 'garagem', 'calcadasGaragem')}
-              />
+                />
             </Column>
           </Row>
           <Row>
@@ -214,7 +215,7 @@ export default function Home() {
                 name="perimetroGaragem"
                 value={formData.garagem.perimetroGaragem || ''}
                 onChange={(e) => handleChange(e, 'garagem', 'perimetroGaragem')}
-              />
+                />
             </Column>
             <Column>
               <Label htmlFor="peDireitoGaragem">Pé Direito</Label>
@@ -224,30 +225,62 @@ export default function Home() {
                 name="peDireitoGaragem"
                 value={formData.garagem.peDireitoGaragem || ''}
                 onChange={(e) => handleChange(e, 'garagem', 'peDireitoGaragem')}
-              />
+                />
             </Column>
           </Row>
         </SubSection>
         
-        <SubSection title="Obra Branca">
+        <SubSection title="Acabamentos">
           <Row>
             <Column>
-              <Label htmlFor="garagemType">Tipo de Garagem</Label>
-              <Select
-                id="garagemType"
-                name="garagemType"
-                value={formData.garagem.garagemType || ''}
-                onChange={(e) => handleChange(e, 'garagem', 'garagemType')}
-              >
-                <option value="">Selecione um tipo</option>
-                <option value="single">Simples</option>
-                <option value="double">Dupla</option>
-              </Select>
+              <Label htmlFor="marmoresGaragem">Área de Mármores e Granitos em m²</Label>
+              <InputNumber
+                type="number"
+                id="marmoresGaragem"
+                name="marmoresGaragem"
+                value={formData.garagem.marmoresGaragem || ''}
+                onChange={(e) => handleChange(e, 'garagem', 'marmoresGaragem')}
+                />
+            </Column>
+            <Column>
+              <Label htmlFor="marmoresGaragemAcabamento">Tipo de Acabamento</Label>
+                <Select
+                  id="marmoresGaragemAcabamento"
+                  name="marmoresGaragemAcabamento"
+                  value={formData.garagem.marmoresGaragemAcabamento || ''}
+                  onChange={(e) => handleChange(e, 'garagem', 'marmoresGaragemAcabamento')}
+                  >
+                  <option value="standard">Standard</option>
+                  <option value="premium">Premium</option>
+                  <option value="supreme">Supreme</option>
+                </Select>
             </Column>
           </Row>
-        </SubSection>
-
-        <SubSection title="Acabamentos">
+          <Row>
+            <Column>
+              <Label htmlFor="portasGaragem">Quantidade de portas</Label>
+              <InputNumber
+                type="number"
+                id="portasGaragem"
+                name="portasGaragem"
+                value={formData.garagem.portasGaragem || ''}
+                onChange={(e) => handleChange(e, 'garagem', 'portasGaragem')}
+                />
+            </Column>
+            <Column>
+              <Label htmlFor="soleirasGaragem">Acabamento das Soleiras e Beirais</Label>
+                <Select
+                  id="soleirasGaragem"
+                  name="soleirasGaragem"
+                  value={formData.garagem.soleirasGaragem || ''}
+                  onChange={(e) => handleChange(e, 'garagem', 'soleirasGaragem')}
+                  >
+                  <option value="standard">Standard</option>
+                  <option value="premium">Premium</option>
+                  <option value="supreme">Supreme</option>
+                </Select>
+            </Column>
+          </Row>
           <Row>
             <Column>
               <SwitchContainer>
@@ -263,23 +296,11 @@ export default function Home() {
                 </SwitchLabel>
               </SwitchContainer>
             </Column>
-            <Column>
-              <Label htmlFor="garagemAcabamento">Tipo de Acabamento</Label>
-              <Select
-                id="garagemAcabamento"
-                name="garagemAcabamento"
-                value={formData.garagem.garagemAcabamento || ''}
-                onChange={(e) => handleChange(e, 'garagem', 'garagemAcabamento')}
-              >
-                <option value="standard">Standard</option>
-                <option value="premium">Premium</option>
-                <option value="supreme">Supreme</option>
-              </Select>
-            </Column>
           </Row>
         </SubSection>
       </SectionWithHeader>
 
+      {/* Sala */}
       <SectionWithHeader title="Sala" description="Informações sobre a sala">
         <SubSection title="Dimensões">
           <Row>
