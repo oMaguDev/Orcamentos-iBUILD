@@ -87,7 +87,37 @@ const initialState = {
     acabamentoEscritorio: "standard",
     confortoEscritorio: false,
   },
+  estrutura: {
+    quantidadePavimentos: "1",
+    grandesVaos: false,
+    estiloEscada: "",
+    estiloArquitetonico: "",
+  },
+  paredesExternas: {
+    metragemParedesExternas: "",
+    padraoParedesExternas: "standard",
+  },
+  cobertura: {
+    areaCobertura: "",
+    areaLajes: "",
+    areaCalhas: "",
+    tipoCobertura: "termoacustica",
+  },
+  hallEntrada: {
+    areaHallEntrada: "",
+  },
+  salaJantar: {
+    areaSalaJantar: "",
+  },
+  corredores: {
+    areaCorredores: "",
+  },
+  peDireitoDuplo: {
+    perimetroPeDireitoDuplo: "",
+    alturaPeDireitoDuplo: "",
+  },
 };
+
 
 export default function Home() {
   const router = useRouter();
@@ -1061,6 +1091,256 @@ export default function Home() {
           </Row>
         </SubSection>
       </SectionWithHeader>
+      <SectionWithHeader title="Pavimentos e Estrutura" description="Informações sobre a estrutura da obra">
+        <SubSection title="Quantidade de Pavimentos">
+          <Row>
+            <Column>
+              <Label htmlFor="quantidadePavimentos">Quantos pavimentos?</Label>
+              <Select
+                id="quantidadePavimentos"
+                name="quantidadePavimentos"
+                value={formData.quantidadePavimentos || ''}
+                onChange={(e) => handleChange(e, 'estrutura', 'quantidadePavimentos')}
+              >
+                <option value="1">1 Pavimento (Térrea)</option>
+                <option value="2">2 Pavimentos</option>
+              </Select>
+            </Column>
+            <Column>
+              <SwitchContainer>
+                <SwitchLabel>
+                  Obra possui grandes vãos e balanços que podem aumentar o peso do aço
+                  <SwitchInput
+                    type="checkbox"
+                    name="grandesVaos"
+                    checked={formData.estrutura.grandesVaos || false}
+                    onChange={(e) => handleChange(e, 'estrutura', 'grandesVaos')}
+                  />
+                  <SwitchSlider checked={formData.estrutura.grandesVaos || false} />
+                </SwitchLabel>
+              </SwitchContainer>
+            </Column>
+          </Row>
+        </SubSection>
+
+        <SubSection title="Estilo de Escada">
+          <Row>
+            <Column>
+              <Label htmlFor="estiloEscada">Qual o padrão de escada?</Label>
+              <Select
+                id="estiloEscada"
+                name="estiloEscada"
+                value={formData.estrutura.estiloEscada || ''}
+                onChange={(e) => handleChange(e, 'estrutura', 'estiloEscada')}
+              >
+                <option value="engastada">Escada engastada com parte inferior fechada</option>
+                <option value="vigasLaterais">Escada com vigas laterais</option>
+                <option value="vigaCentral">Escada com viga central</option>
+                <option value="suspensa">Escada suspensa</option>
+                <option value="flutuante">Escada flutuante</option>
+              </Select>
+            </Column>
+          </Row>
+        </SubSection>
+
+        <SubSection title="Estilo Arquitetônico">
+          <Row>
+            <Column>
+              <Label htmlFor="estiloArquitetonico">Qual o estilo da sua casa?</Label>
+              <Select
+                id="estiloArquitetonico"
+                name="estiloArquitetonico"
+                value={formData.estrutura.estiloArquitetonico || ''}
+                onChange={(e) => handleChange(e, 'estrutura', 'estiloArquitetonico')}
+              >
+                <option value="minimalista">Minimalista</option>
+                <option value="contemporanea">Contemporânea</option>
+                <option value="neoClassica">Neo-Clássica</option>
+                <option value="mediterranea">Mediterrânea</option>
+                <option value="americano">Americano</option>
+                <option value="europeia">Europeia</option>
+                <option value="brasileira">Brasileira</option>
+                <option value="classica">Clássica</option>
+              </Select>
+            </Column>
+          </Row>
+        </SubSection>
+      </SectionWithHeader>
+
+      <SectionWithHeader title="Paredes Externas" description="Informações sobre as paredes externas">
+        <SubSection title="Metragem de Paredes Externas">
+          <Row>
+            <Column>
+              <Label htmlFor="metragemParedesExternas">Somatória total de m² de parede externa</Label>
+              <InputNumber
+                type="number"
+                id="metragemParedesExternas"
+                name="metragemParedesExternas"
+                value={formData.paredesExternas.metragemParedesExternas || ''}
+                onChange={(e) => handleChange(e, 'paredesExternas', 'metragemParedesExternas')}
+              />
+            </Column>
+          </Row>
+        </SubSection>
+
+        <SubSection title="Padrão das Paredes Externas">
+          <Row>
+            <Column>
+              <Label htmlFor="padraoParedesExternas">Qual o padrão das paredes externas?</Label>
+              <Select
+                id="padraoParedesExternas"
+                name="padraoParedesExternas"
+                value={formData.paredesExternas.padraoParedesExternas || ''}
+                onChange={(e) => handleChange(e, 'paredesExternas', 'padraoParedesExternas')}
+              >
+                <option value="standard">Standard</option>
+                <option value="premium">Premium</option>
+                <option value="supreme">Supreme</option>
+              </Select>
+            </Column>
+          </Row>
+        </SubSection>
+      </SectionWithHeader>
+
+      <SectionWithHeader title="Cobertura" description="Informações sobre a cobertura">
+        <SubSection title="Área de Cobertura">
+          <Row>
+            <Column>
+              <Label htmlFor="areaCobertura">Somatória total de área de cobertura incluindo telheiros e eventuais beirais (m²)</Label>
+              <InputNumber
+                type="number"
+                id="areaCobertura"
+                name="areaCobertura"
+                value={formData.cobertura.areaCobertura || ''}
+                onChange={(e) => handleChange(e, 'cobertura', 'areaCobertura')}
+              />
+            </Column>
+            <Column>
+              <Label htmlFor="areaLajes">Somatória total de áreas de lajes impermeabilizadas (m²)</Label>
+              <InputNumber
+                type="number"
+                id="areaLajes"
+                name="areaLajes"
+                value={formData.cobertura.areaLajes || ''}
+                onChange={(e) => handleChange(e, 'cobertura', 'areaLajes')}
+              />
+            </Column>
+          </Row>
+        </SubSection>
+
+        <SubSection title="Calhas, Rufos e Pingadeiras">
+          <Row>
+            <Column>
+              <Label htmlFor="areaCalhas">Somatória total de calhas, rufos e pingadeiras (m²)</Label>
+              <InputNumber
+                type="number"
+                id="areaCalhas"
+                name="areaCalhas"
+                value={formData.cobertura.areaCalhas || ''}
+                onChange={(e) => handleChange(e, 'cobertura', 'areaCalhas')}
+              />
+            </Column>
+          </Row>
+        </SubSection>
+
+        <SubSection title="Tipos de Cobertura">
+          <Row>
+            <Column>
+              <Label htmlFor="tipoCobertura">Tipo de Cobertura</Label>
+              <Select
+                id="tipoCobertura"
+                name="tipoCobertura"
+                value={formData.cobertura.tipoCobertura || ''}
+                onChange={(e) => handleChange(e, 'cobertura', 'tipoCobertura')}
+              >
+                <option value="termoacustica">Cobertura Telha Termoacústica</option>
+                <option value="fibrocimento">Cobertura Telha Fibrocimento</option>
+                <option value="ceramica">Cobertura Telha Cerâmica</option>
+                <option value="translucida">Cobertura Telha Translúcida</option>
+              </Select>
+            </Column>
+          </Row>
+        </SubSection>
+      </SectionWithHeader>
+
+      <SectionWithHeader title="Hall de Entrada" description="Informações sobre o hall de entrada">
+        <SubSection title="Dimensões">
+          <Row>
+            <Column>
+              <Label htmlFor="areaHallEntrada">Área do Hall de Entrada (m²)</Label>
+              <InputNumber
+                type="number"
+                id="areaHallEntrada"
+                name="areaHallEntrada"
+                value={formData.hallEntrada.areaHallEntrada || ''}
+                onChange={(e) => handleChange(e, 'hallEntrada', 'areaHallEntrada')}
+              />
+            </Column>
+          </Row>
+        </SubSection>
+      </SectionWithHeader>
+
+      <SectionWithHeader title="Sala de Jantar" description="Informações sobre a sala de jantar">
+        <SubSection title="Dimensões">
+          <Row>
+            <Column>
+              <Label htmlFor="areaSalaJantar">Área da Sala de Jantar (m²)</Label>
+              <InputNumber
+                type="number"
+                id="areaSalaJantar"
+                name="areaSalaJantar"
+                value={formData.salaJantar.areaSalaJantar || ''}
+                onChange={(e) => handleChange(e, 'salaJantar', 'areaSalaJantar')}
+              />
+            </Column>
+          </Row>
+        </SubSection>
+      </SectionWithHeader>
+
+      <SectionWithHeader title="Corredores" description="Informações sobre os corredores">
+        <SubSection title="Dimensões">
+          <Row>
+            <Column>
+              <Label htmlFor="areaCorredores">Área dos Corredores (m²)</Label>
+              <InputNumber
+                type="number"
+                id="areaCorredores"
+                name="areaCorredores"
+                value={formData.corredores.areaCorredores || ''}
+                onChange={(e) => handleChange(e, 'corredores', 'areaCorredores')}
+              />
+            </Column>
+          </Row>
+        </SubSection>
+      </SectionWithHeader>
+
+      <SectionWithHeader title="Pé Direito Duplo" description="Informações sobre o pé direito duplo">
+        <SubSection title="Dimensões">
+          <Row>
+            <Column>
+              <Label htmlFor="perimetroPeDireitoDuplo">Perímetro</Label>
+              <InputNumber
+                type="number"
+                id="perimetroPeDireitoDuplo"
+                name="perimetroPeDireitoDuplo"
+                value={formData.peDireitoDuplo.perimetroPeDireitoDuplo || ''}
+                onChange={(e) => handleChange(e, 'peDireitoDuplo', 'perimetroPeDireitoDuplo')}
+              />
+            </Column>
+            <Column>
+              <Label htmlFor="alturaPeDireitoDuplo">Altura do Pé Direito Duplo (m)</Label>
+              <InputNumber
+                type="number"
+                id="alturaPeDireitoDuplo"
+                name="alturaPeDireitoDuplo"
+                value={formData.peDireitoDuplo.alturaPeDireitoDuplo || ''}
+                onChange={(e) => handleChange(e, 'peDireitoDuplo', 'alturaPeDireitoDuplo')}
+              />
+            </Column>
+          </Row>
+        </SubSection>
+      </SectionWithHeader>
+
 
       <SubmitButton type="submit">Enviar</SubmitButton>
     </form>
