@@ -30,10 +30,18 @@ const initialState = {
     garagemConforto: false,
   },
   sala: {
-    salaSize: "",
-    salaFloorType: "",
-    salaConforto: false,
+    hallEntradaSala: "",
+    salaEstar: "",
+    tvSala: "",
+    corredoresSala: "",
+    perimetroSala: "",
+    peDireitoSala: "",
+    perimetroPeDuploSala: "",
+    peDireitoDuploSala: "",
+    portasSala: "",
+    esquadriasSala: "",
     salaAcabamento: "standard",
+    salaConforto: false,
   },
   quartos: [],
   banheiros: [],
@@ -385,38 +393,141 @@ export default function Home() {
         <SubSection title="Dimensões">
           <Row>
             <Column>
-              <Label htmlFor="salaSize">Tamanho da Sala (m²)</Label>
+              <Label htmlFor="hallEntradaSala">Hall de Entrada</Label>
               <InputNumber
                 type="number"
-                id="salaSize"
-                name="salaSize"
-                value={formData.sala.salaSize || ''}
-                onChange={(e) => handleChange(e, 'sala', 'salaSize')}
+                id="hallEntradaSala"
+                name="hallEntradaSala"
+                value={formData.sala.hallEntradaSala || ''}
+                onChange={(e) => handleChange(e, 'sala', 'hallEntradaSala')}
+              />
+            </Column>
+            <Column>
+              <Label htmlFor="salaEstar">Sala de Estar/Jantar</Label>
+              <InputNumber
+                type="number"
+                id="salaEstar"
+                name="salaEstar"
+                value={formData.sala.salaEstar || ''}
+                onChange={(e) => handleChange(e, 'sala', 'salaEstar')}
+              />
+            </Column>
+          </Row>
+          <Row>
+            <Column>
+              <Label htmlFor="tvSala">Sala de Tv</Label>
+              <InputNumber
+                type="number"
+                id="tvSala"
+                name="tvSala"
+                value={formData.sala.tvSala || ''}
+                onChange={(e) => handleChange(e, 'sala', 'tvSala')}
+              />
+            </Column>
+            <Column>
+              <Label htmlFor="corredoresSala">Corredores</Label>
+              <InputNumber
+                type="number"
+                id="corredoresSala"
+                name="corredoresSala"
+                value={formData.sala.corredoresSala || ''}
+                onChange={(e) => handleChange(e, 'sala', 'corredoresSala')}
+              />
+            </Column>
+          </Row>
+              <text>
+              Levantamento Área de Paredes 
+              </text>
+          <Row>
+            <Column>
+              <Label htmlFor="perimetroSala">Perímetro</Label>
+              <InputNumber
+                type="number"
+                id="perimetroSala"
+                name="perimetroSala"
+                value={formData.sala.perimetroSala || ''}
+                onChange={(e) => handleChange(e, 'sala', 'perimetroSala')}
+              />
+            </Column>
+            <Column>
+              <Label htmlFor="peDireitoSala">Pé Direito</Label>
+              <InputNumber
+                type="number"
+                id="peDireitoSala"
+                name="peDireitoSala"
+                value={formData.sala.peDireitoSala || ''}
+                onChange={(e) => handleChange(e, 'sala', 'peDireitoSala')}
+              />
+            </Column>
+          </Row>
+            <text>
+            Levantamento Área de Paredes Pé Direto Duplo
+            </text>
+          <Row>
+            <Column>
+              <Label htmlFor="perimetroPeDuploSala">Perímetro</Label>
+              <InputNumber
+                type="number"
+                id="perimetroPeDuploSala"
+                name="perimetroPeDuploSala"
+                value={formData.sala.perimetroPeDuploSala || ''}
+                onChange={(e) => handleChange(e, 'sala', 'perimetroPeDuploSala')}
+              />
+            </Column>
+            <Column>
+              <Label htmlFor="peDireitoDuploSala">Pé Direito Duplo</Label>
+              <InputNumber
+                type="number"
+                id="peDireitoDuploSala"
+                name="peDireitoDuploSala"
+                value={formData.sala.peDireitoDuploSala || ''}
+                onChange={(e) => handleChange(e, 'sala', 'peDireitoDuploSala')}
               />
             </Column>
           </Row>
         </SubSection>
 
-        <SubSection title="Obra Branca">
-          <Row>
+        <SubSection title="Esquadrias de Madeira, Vidros e Alúmínio">
+        <Row>
             <Column>
-              <Label htmlFor="salaFloorType">Tipo de Piso</Label>
-              <Select
-                id="salaFloorType"
-                name="salaFloorType"
-                value={formData.sala.salaFloorType || ''}
-                onChange={(e) => handleChange(e, 'sala', 'salaFloorType')}
-              >
-                <option value="">Selecione um tipo</option>
-                <option value="wood">Madeira</option>
-                <option value="tile">Cerâmica</option>
-              </Select>
+              <Label htmlFor="portasSala">Quantidade de portas</Label>
+              <InputNumber
+                type="number"
+                id="portasSala"
+                name="portasSala"
+                value={formData.sala.portasSala || ''}
+                onChange={(e) => handleChange(e, 'sala', 'portasSala')}
+                />
+            </Column>
+            <Column>
+              <Label htmlFor="esquadriasSala">M² de Vidros/Esquadria de Alumínio</Label>
+              <InputNumber
+                type="number"
+                id="esquadriasSala"
+                name="esquadriasSala"
+                value={formData.sala.esquadriasSala || ''}
+                onChange={(e) => handleChange(e, 'sala', 'esquadriasSala')}
+                />
             </Column>
           </Row>
         </SubSection>
 
         <SubSection title="Acabamentos">
           <Row>
+          <Column>
+              <Label htmlFor="salaAcabamento">Tipo de Acabamento</Label>
+              <Select
+                id="salaAcabamento"
+                name="salaAcabamento"
+                value={formData.sala.salaAcabamento || ''}
+                onChange={(e) => handleChange(e, 'sala', 'salaAcabamento')}
+              >
+                <option value="standard">Standard</option>
+                <option value="premium">Premium</option>
+                <option value="supreme">Supreme</option>
+                <option value="sem_acabamento">Sem Acabamento (?)</option>
+              </Select>
+            </Column>
             <Column>
               <SwitchContainer>
                 <SwitchLabel>
@@ -430,19 +541,6 @@ export default function Home() {
                   <SwitchSlider checked={formData.sala.salaConforto || false} />
                 </SwitchLabel>
               </SwitchContainer>
-            </Column>
-            <Column>
-              <Label htmlFor="salaAcabamento">Tipo de Acabamento</Label>
-              <Select
-                id="salaAcabamento"
-                name="salaAcabamento"
-                value={formData.sala.salaAcabamento || ''}
-                onChange={(e) => handleChange(e, 'sala', 'salaAcabamento')}
-              >
-                <option value="standard">Standard</option>
-                <option value="premium">Premium</option>
-                <option value="supreme">Supreme</option>
-              </Select>
             </Column>
           </Row>
         </SubSection>
