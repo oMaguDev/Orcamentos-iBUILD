@@ -23,9 +23,11 @@ const initialState = {
     calcadasGaragem: "",
     perimetroGaragem: "",
     peDireitoGaragem: "",
-    garagemType: "",
+    marmoresGaragem: "",
+    marmoresGaragemAcabamento: "standard",
+    portasGaragem: "",
+    soleirasGaragem: "standard",
     garagemConforto: false,
-    garagemAcabamento: "standard",
   },
   sala: {
     salaSize: "",
