@@ -318,6 +318,41 @@ export default function Home() {
           </Row>
         </SubSection>
       </SectionWithHeader>
+      {/* Paredes Externas */}
+      <SectionWithHeader title="Paredes Externas" description="Informações sobre as paredes externas">
+        <SubSection title="Metragem de Paredes Externas">
+          <Row>
+            <Column>
+              <Label htmlFor="metragemParedesExternas">Somatória total de m² de parede externa</Label>
+              <InputNumber
+                type="number"
+                id="metragemParedesExternas"
+                name="metragemParedesExternas"
+                value={formData.paredesExternas.metragemParedesExternas || ''}
+                onChange={(e) => handleChange(e, 'paredesExternas', 'metragemParedesExternas')}
+              />
+            </Column>
+          </Row>
+        </SubSection>
+
+        <SubSection title="Padrão das Paredes Externas">
+          <Row>
+            <Column>
+              <Label htmlFor="padraoParedesExternas">Qual o padrão das paredes externas?</Label>
+              <Select
+                id="padraoParedesExternas"
+                name="padraoParedesExternas"
+                value={formData.paredesExternas.padraoParedesExternas || ''}
+                onChange={(e) => handleChange(e, 'paredesExternas', 'padraoParedesExternas')}
+              >
+                <option value="standard">Standard</option>
+                <option value="premium">Premium</option>
+                <option value="supreme">Supreme</option>
+              </Select>
+            </Column>
+          </Row>
+        </SubSection>
+      </SectionWithHeader>
       {/* Garagem */}
       <SectionWithHeader title="Garagem" description="Informações sobre a garagem">
         <SubSection title="Dimensões">
@@ -448,7 +483,6 @@ export default function Home() {
           </Row>
         </SubSection>
       </SectionWithHeader>
-
       {/* Sala */}
       <SectionWithHeader title="Sala" description="Informações sobre a sala">
         <SubSection title="Dimensões">
@@ -1353,40 +1387,7 @@ export default function Home() {
       </SectionWithHeader>
 
 
-      <SectionWithHeader title="Paredes Externas" description="Informações sobre as paredes externas">
-        <SubSection title="Metragem de Paredes Externas">
-          <Row>
-            <Column>
-              <Label htmlFor="metragemParedesExternas">Somatória total de m² de parede externa</Label>
-              <InputNumber
-                type="number"
-                id="metragemParedesExternas"
-                name="metragemParedesExternas"
-                value={formData.paredesExternas.metragemParedesExternas || ''}
-                onChange={(e) => handleChange(e, 'paredesExternas', 'metragemParedesExternas')}
-              />
-            </Column>
-          </Row>
-        </SubSection>
-
-        <SubSection title="Padrão das Paredes Externas">
-          <Row>
-            <Column>
-              <Label htmlFor="padraoParedesExternas">Qual o padrão das paredes externas?</Label>
-              <Select
-                id="padraoParedesExternas"
-                name="padraoParedesExternas"
-                value={formData.paredesExternas.padraoParedesExternas || ''}
-                onChange={(e) => handleChange(e, 'paredesExternas', 'padraoParedesExternas')}
-              >
-                <option value="standard">Standard</option>
-                <option value="premium">Premium</option>
-                <option value="supreme">Supreme</option>
-              </Select>
-            </Column>
-          </Row>
-        </SubSection>
-      </SectionWithHeader>
+      
 
       <SectionWithHeader title="Hall de Entrada" description="Informações sobre o hall de entrada">
         <SubSection title="Dimensões">
