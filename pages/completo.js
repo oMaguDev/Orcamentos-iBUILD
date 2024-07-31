@@ -1262,6 +1262,102 @@ export default function Home() {
         </SubSection>
       </SectionWithHeader>
 
+      <SectionWithHeader title="Escritório" description="Informações sobre o escritório">
+        <SubSection title="Dimensões">
+          <Row>
+            <Column>
+              <Label htmlFor="areaEscritorio">Área do Escritório (m²)</Label>
+              <InputNumber
+                type="number"
+                id="areaEscritorio"
+                name="areaEscritorio"
+                value={formData.escritorio.areaEscritorio || ''}
+                onChange={(e) => handleChange(e, 'escritorio', 'areaEscritorio')}
+              />
+            </Column>
+          </Row>
+          <Row>
+          <Column>
+              <Label htmlFor="perimetroEscritorio">Perímetro</Label>
+              <InputNumber
+                type="number"
+                id="perimetroEscritorio"
+                name="perimetroEscritorio"
+                value={formData.escritorio.perimetroEscritorio || ''}
+                onChange={(e) => handleChange(e, 'escritorio', 'perimetroEscritorio')}
+              />
+            </Column>
+            <Column>
+              <Label htmlFor="peDireitoEscritorio">Pé Direito</Label>
+              <InputNumber
+                type="number"
+                id="peDireitoEscritorio"
+                name="peDireitoEscritorio"
+                value={formData.escritorio.peDireitoEscritorio || ''}
+                onChange={(e) => handleChange(e, 'escritorio', 'peDireitoEscritorio')}
+              />
+            </Column>
+          </Row>
+        </SubSection>
+
+        <SubSection title="Esquadrias de Madeira, Vidro e Alumínio">
+          <Row>
+            <Column>
+              <Label htmlFor="portasMadeiraEscritorio">Quantidade de Portas de Madeiras</Label>
+              <InputNumber
+                type="number"
+                id="portasMadeiraEscritorio"
+                name="portasMadeiraEscritorio"
+                value={formData.escritorio.portasMadeiraEscritorio || ''}
+                onChange={(e) => handleChange(e, 'escritorio', 'portasMadeiraEscritorio')}
+              />
+            </Column>
+            <Column>
+              <Label htmlFor="vidrosAluminioEscritorio">M² de Vidros/Esquadria de Alumínio</Label>
+              <InputNumber
+                type="number"
+                id="vidrosAluminioEscritorio"
+                name="vidrosAluminioEscritorio"
+                value={formData.escritorio.vidrosAluminioEscritorio || ''}
+                onChange={(e) => handleChange(e, 'escritorio', 'vidrosAluminioEscritorio')}
+              />
+            </Column>
+          </Row>
+        </SubSection>
+
+        <SubSection title="Acabamentos">
+          <Row>
+            <Column>
+              <Label htmlFor="acabamentoEscritorio">Tipo de Acabamento</Label>
+              <Select
+                id="acabamentoEscritorio"
+                name="acabamentoEscritorio"
+                value={formData.escritorio.acabamentoEscritorio || ''}
+                onChange={(e) => handleChange(e, 'escritorio', 'acabamentoEscritorio')}
+              >
+                <option value="standard">Standard</option>
+                <option value="premium">Premium</option>
+                <option value="supreme">Supreme</option>
+                <option value="sem_acabamento">Sem acabamento</option>
+              </Select>
+            </Column>
+            <Column>
+              <SwitchContainer>
+                <SwitchLabel>
+                  Conforto Termoacústico
+                  <SwitchInput
+                    type="checkbox"
+                    name="confortoEscritorio"
+                    checked={formData.escritorio.confortoEscritorio || false}
+                    onChange={(e) => handleChange(e, 'escritorio', 'confortoEscritorio')}
+                  />
+                  <SwitchSlider checked={formData.escritorio.confortoEscritorio || false} />
+                </SwitchLabel>
+              </SwitchContainer>
+            </Column>
+          </Row>
+        </SubSection>
+      </SectionWithHeader>
 
       {formData.quartos.map((quarto, index) => (
         <SectionWithHeader key={index} title={`Quarto ${index + 1}`} description={`Informações sobre o quarto ${index + 1}`}>
@@ -1356,100 +1452,7 @@ export default function Home() {
 
      
 
-      <SectionWithHeader title="Escritório" description="Informações sobre o escritório">
-        <SubSection title="Dimensões">
-          <Row>
-            <Column>
-              <Label htmlFor="areaEscritorio">Área do Escritório (m²)</Label>
-              <InputNumber
-                type="number"
-                id="areaEscritorio"
-                name="areaEscritorio"
-                value={formData.escritorio.areaEscritorio || ''}
-                onChange={(e) => handleChange(e, 'escritorio', 'areaEscritorio')}
-              />
-            </Column>
-            <Column>
-              <Label htmlFor="perimetroEscritorio">Perímetro</Label>
-              <InputNumber
-                type="number"
-                id="perimetroEscritorio"
-                name="perimetroEscritorio"
-                value={formData.escritorio.perimetroEscritorio || ''}
-                onChange={(e) => handleChange(e, 'escritorio', 'perimetroEscritorio')}
-              />
-            </Column>
-            <Column>
-              <Label htmlFor="peDireitoEscritorio">Pé Direito</Label>
-              <InputNumber
-                type="number"
-                id="peDireitoEscritorio"
-                name="peDireitoEscritorio"
-                value={formData.escritorio.peDireitoEscritorio || ''}
-                onChange={(e) => handleChange(e, 'escritorio', 'peDireitoEscritorio')}
-              />
-            </Column>
-          </Row>
-        </SubSection>
-
-        <SubSection title="Esquadrias de Madeira, Vidro e Alumínio">
-          <Row>
-            <Column>
-              <Label htmlFor="portasMadeiraEscritorio">Quantidade de Portas de Madeiras até 0,9 m de largura</Label>
-              <InputNumber
-                type="number"
-                id="portasMadeiraEscritorio"
-                name="portasMadeiraEscritorio"
-                value={formData.escritorio.portasMadeiraEscritorio || ''}
-                onChange={(e) => handleChange(e, 'escritorio', 'portasMadeiraEscritorio')}
-              />
-            </Column>
-            <Column>
-              <Label htmlFor="vidrosAluminioEscritorio">M² de Vidros/Esquadria de Alumínio</Label>
-              <InputNumber
-                type="number"
-                id="vidrosAluminioEscritorio"
-                name="vidrosAluminioEscritorio"
-                value={formData.escritorio.vidrosAluminioEscritorio || ''}
-                onChange={(e) => handleChange(e, 'escritorio', 'vidrosAluminioEscritorio')}
-              />
-            </Column>
-          </Row>
-        </SubSection>
-
-        <SubSection title="Acabamentos">
-          <Row>
-            <Column>
-              <Label htmlFor="acabamentoEscritorio">Tipo de Acabamento</Label>
-              <Select
-                id="acabamentoEscritorio"
-                name="acabamentoEscritorio"
-                value={formData.escritorio.acabamentoEscritorio || ''}
-                onChange={(e) => handleChange(e, 'escritorio', 'acabamentoEscritorio')}
-              >
-                <option value="standard">Standard</option>
-                <option value="premium">Premium</option>
-                <option value="supreme">Supreme</option>
-                <option value="sem_acabamento">Sem acabamento</option>
-              </Select>
-            </Column>
-            <Column>
-              <SwitchContainer>
-                <SwitchLabel>
-                  Conforto Termoacústico
-                  <SwitchInput
-                    type="checkbox"
-                    name="confortoEscritorio"
-                    checked={formData.escritorio.confortoEscritorio || false}
-                    onChange={(e) => handleChange(e, 'escritorio', 'confortoEscritorio')}
-                  />
-                  <SwitchSlider checked={formData.escritorio.confortoEscritorio || false} />
-                </SwitchLabel>
-              </SwitchContainer>
-            </Column>
-          </Row>
-        </SubSection>
-      </SectionWithHeader>
+      
 
 
       
