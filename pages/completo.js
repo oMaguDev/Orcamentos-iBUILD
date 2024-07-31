@@ -127,10 +127,10 @@ const initialState = {
     alturaPeDireitoDuplo: "",
   },
   eletrica: {
-    voltagemEletrica: "",
+    voltagemEletrica: "220",
   },
   hidraulica: {
-    tipoHidraulica: "",
+    tipoHidraulica: "fria",
   },
 };
 
