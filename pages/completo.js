@@ -1374,6 +1374,28 @@ export default function Home() {
                 />
               </Column>
               <Column>
+                <Label htmlFor={`quartoClosetSize${index}`}>Área do Closet (m²)</Label>
+                <InputNumber
+                  type="number"
+                  id={`quartoClosetSize${index}`}
+                  name={`quartoClosetSize${index}`}
+                  value={quarto.quartoClosetSize || ''}
+                  onChange={(e) => handleSubChange('quartos', index, e, 'quartoClosetSize')}
+                />
+              </Column>
+              <Column>
+                <Label htmlFor={`quartoBanheiroSize${index}`}>Área do Banheiro (m²)</Label>
+                <InputNumber
+                  type="number"
+                  id={`quartoBanheiroSize${index}`}
+                  name={`quartoBanheiroSize${index}`}
+                  value={quarto.quartoBanheiroSize || ''}
+                  onChange={(e) => handleSubChange('quartos', index, e, 'quartoBanheiroSize')}
+                />
+              </Column>
+            </Row>
+            <Row>
+            <Column>
                 <Label htmlFor={`perimetroQuarto${index}`}>Perímetro</Label>
                 <InputNumber
                   type="number"
@@ -1395,7 +1417,30 @@ export default function Home() {
               </Column>
             </Row>
           </SubSection>
-
+          <SubSection title="Esquadrias de Madeira, Vidros e Alumínio">
+            <Row>
+              <Column>
+              <Label htmlFor={`portasQuarto${index}`}>Quantidade de Portas de Madeira</Label>
+                <InputNumber
+                  type="number"
+                  id={`portasQuarto${index}`}
+                  name={`portasQuarto${index}`}
+                  value={lavabo.portasQuarto || ''}
+                  onChange={(e) => handleSubChange('quartos', index, e, 'portasQuarto')}
+                />
+              </Column>
+              <Column>
+              <Label htmlFor={`esquadriasQuarto${index}`}>M² de Vidros/Esquadrias de Alumínio</Label>
+                <InputNumber
+                  type="number"
+                  id={`esquadriasQuarto${index}`}
+                  name={`esquadriasQuarto${index}`}
+                  value={lavabo.esquadriasQuarto || ''}
+                  onChange={(e) => handleSubChange('quartos', index, e, 'esquadriasQuarto')}
+                />
+              </Column>
+            </Row>
+          </SubSection>
           <SubSection title="Mármores e Granitos">
             <Row>
               <Column>
@@ -1448,92 +1493,119 @@ export default function Home() {
 
       <button type="button" onClick={() => addSubItem('quartos')}>Adicionar Quarto</button> 
 
-      
-
-     
-
-      
-
-
-      
-
-      <SectionWithHeader title="Hall de Entrada" description="Informações sobre o hall de entrada">
-        <SubSection title="Dimensões">
-          <Row>
+      {formData.banheiros.map((banheiro, index) => (
+        <SectionWithHeader key={index} title={`banheiro ${index + 1}`} description={`Informações sobre o banheiro ${index + 1}`}>
+          <SubSection title="Dimensões">
+            <Row>
+              <Column>
+                <Label htmlFor={`banheiroSize${index}`}>Área do banheiro (m²)</Label>
+                <InputNumber
+                  type="number"
+                  id={`banheiroSize${index}`}
+                  name={`banheiroSize${index}`}
+                  value={banheiro.banheiroSize || ''}
+                  onChange={(e) => handleSubChange('banheiros', index, e, 'banheiroSize')}
+                />
+              </Column>
+            </Row>
+            <Row>
             <Column>
-              <Label htmlFor="areaHallEntrada">Área do Hall de Entrada (m²)</Label>
-              <InputNumber
-                type="number"
-                id="areaHallEntrada"
-                name="areaHallEntrada"
-                value={formData.hallEntrada.areaHallEntrada || ''}
-                onChange={(e) => handleChange(e, 'hallEntrada', 'areaHallEntrada')}
-              />
-            </Column>
-          </Row>
-        </SubSection>
-      </SectionWithHeader>
+                <Label htmlFor={`perimetrobanheiro${index}`}>Perímetro</Label>
+                <InputNumber
+                  type="number"
+                  id={`perimetrobanheiro${index}`}
+                  name={`perimetrobanheiro${index}`}
+                  value={banheiro.perimetro || ''}
+                  onChange={(e) => handleSubChange('banheiros', index, e, 'perimetro')}
+                />
+              </Column>
+              <Column>
+                <Label htmlFor={`peDireitobanheiro${index}`}>Pé Direito</Label>
+                <InputNumber
+                  type="number"
+                  id={`peDireitobanheiro${index}`}
+                  name={`peDireitobanheiro${index}`}
+                  value={banheiro.peDireito || ''}
+                  onChange={(e) => handleSubChange('banheiros', index, e, 'peDireito')}
+                />
+              </Column>
+            </Row>
+          </SubSection>
+          <SubSection title="Esquadrias de Madeira, Vidros e Alumínio">
+            <Row>
+              <Column>
+              <Label htmlFor={`portasBanheiro${index}`}>Quantidade de Portas de Madeira</Label>
+                <InputNumber
+                  type="number"
+                  id={`portasBanheiro${index}`}
+                  name={`portasBanheiro${index}`}
+                  value={lavabo.portasBanheiro || ''}
+                  onChange={(e) => handleSubChange('banheiros', index, e, 'portasBanheiro')}
+                />
+              </Column>
+              <Column>
+              <Label htmlFor={`esquadriasBanheiro${index}`}>M² de Vidros/Esquadrias de Alumínio</Label>
+                <InputNumber
+                  type="number"
+                  id={`esquadriasBanheiro${index}`}
+                  name={`esquadriasBanheiro${index}`}
+                  value={lavabo.esquadriasBanheiro || ''}
+                  onChange={(e) => handleSubChange('banheiros', index, e, 'esquadriasBanheiro')}
+                />
+              </Column>
+            </Row>
+          </SubSection>
+          <SubSection title="Mármores e Granitos">
+            <Row>
+              <Column>
+                <Label htmlFor={`marmores${index}`}>Quantidade de Balcões e Bancadas</Label>
+                <InputNumber
+                  type="number"
+                  id={`marmores${index}`}
+                  name={`marmores${index}`}
+                  value={banheiro.marmores || ''}
+                  onChange={(e) => handleSubChange('banheiros', index, e, 'marmores')}
+                />
+              </Column>
+            </Row>
+          </SubSection>
 
-      <SectionWithHeader title="Sala de Jantar" description="Informações sobre a sala de jantar">
-        <SubSection title="Dimensões">
-          <Row>
-            <Column>
-              <Label htmlFor="areaSalaJantar">Área da Sala de Jantar (m²)</Label>
-              <InputNumber
-                type="number"
-                id="areaSalaJantar"
-                name="areaSalaJantar"
-                value={formData.salaJantar.areaSalaJantar || ''}
-                onChange={(e) => handleChange(e, 'salaJantar', 'areaSalaJantar')}
-              />
-            </Column>
-          </Row>
-        </SubSection>
-      </SectionWithHeader>
+          <SubSection title="Acabamentos">
+            <Row>
+              <Column>
+                <Label htmlFor={`acabamento${index}`}>Tipo de Acabamento</Label>
+                <Select
+                  id={`acabamento${index}`}
+                  name={`acabamento${index}`}
+                  value={banheiro.acabamento || ''}
+                  onChange={(e) => handleSubChange('banheiros', index, e, 'acabamento')}
+                >
+                  <option value="standard">Standard</option>
+                  <option value="premium">Premium</option>
+                  <option value="supreme">Supreme</option>
+                  <option value="sem_acabamento">Sem acabamento</option>
+                </Select>
+              </Column>
+              <Column>
+                <SwitchContainer>
+                  <SwitchLabel>
+                    Conforto Termoacústico
+                    <SwitchInput
+                      type="checkbox"
+                      name={`conforto${index}`}
+                      checked={banheiro.conforto || false}
+                      onChange={(e) => handleSubChange('banheiros', index, e, 'conforto')}
+                    />
+                    <SwitchSlider checked={banheiro.conforto || false} />
+                  </SwitchLabel>
+                </SwitchContainer>
+              </Column>
+            </Row>
+          </SubSection>
+        </SectionWithHeader>
+      ))}
 
-      <SectionWithHeader title="Corredores" description="Informações sobre os corredores">
-        <SubSection title="Dimensões">
-          <Row>
-            <Column>
-              <Label htmlFor="areaCorredores">Área dos Corredores (m²)</Label>
-              <InputNumber
-                type="number"
-                id="areaCorredores"
-                name="areaCorredores"
-                value={formData.corredores.areaCorredores || ''}
-                onChange={(e) => handleChange(e, 'corredores', 'areaCorredores')}
-              />
-            </Column>
-          </Row>
-        </SubSection>
-      </SectionWithHeader>
-
-      <SectionWithHeader title="Pé Direito Duplo" description="Informações sobre o pé direito duplo">
-        <SubSection title="Dimensões">
-          <Row>
-            <Column>
-              <Label htmlFor="perimetroPeDireitoDuplo">Perímetro</Label>
-              <InputNumber
-                type="number"
-                id="perimetroPeDireitoDuplo"
-                name="perimetroPeDireitoDuplo"
-                value={formData.peDireitoDuplo.perimetroPeDireitoDuplo || ''}
-                onChange={(e) => handleChange(e, 'peDireitoDuplo', 'perimetroPeDireitoDuplo')}
-              />
-            </Column>
-            <Column>
-              <Label htmlFor="alturaPeDireitoDuplo">Altura do Pé Direito Duplo (m)</Label>
-              <InputNumber
-                type="number"
-                id="alturaPeDireitoDuplo"
-                name="alturaPeDireitoDuplo"
-                value={formData.peDireitoDuplo.alturaPeDireitoDuplo || ''}
-                onChange={(e) => handleChange(e, 'peDireitoDuplo', 'alturaPeDireitoDuplo')}
-              />
-            </Column>
-          </Row>
-        </SubSection>
-      </SectionWithHeader>
+      <button type="button" onClick={() => addSubItem('banheiros')}>Adicionar banheiro</button>
 
       <SectionWithHeader title="Elétrica e Hidráulica" description="Instalações elétricas e hidráulicas">
         <SubSection title="Instalações Elétricas">
@@ -1582,7 +1654,6 @@ export default function Home() {
           </Row>
         </SubSection>
       </SectionWithHeader>
-
 
       <SubmitButton type="submit">Enviar</SubmitButton>
     </form>
