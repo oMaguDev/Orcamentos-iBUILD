@@ -647,6 +647,142 @@ export default function Home() {
         </SubSection>
       </SectionWithHeader>
 
+      <SectionWithHeader title="Cozinha" description="Informações sobre a cozinha">
+        <SubSection title="Dimensões">
+          <Row>
+            <Column>
+              <Label htmlFor="areaCozinha">Área da Cozinha (m²)</Label>
+              <InputNumber
+                type="number"
+                id="areaCozinha"
+                name="areaCozinha"
+                value={formData.cozinha.areaCozinha || ''}
+                onChange={(e) => handleChange(e, 'cozinha', 'areaCozinha')}
+              />
+            </Column>
+          </Row>
+          <Row>
+          <Column>
+              <Label htmlFor="perimetroCozinha">Perímetro</Label>
+              <InputNumber
+                type="number"
+                id="perimetroCozinha"
+                name="perimetroCozinha"
+                value={formData.cozinha.perimetroCozinha || ''}
+                onChange={(e) => handleChange(e, 'cozinha', 'perimetroCozinha')}
+              />
+            </Column>
+            <Column>
+              <Label htmlFor="peDireitoCozinha">Pé Direito</Label>
+              <InputNumber
+                type="number"
+                id="peDireitoCozinha"
+                name="peDireitoCozinha"
+                value={formData.cozinha.peDireitoCozinha || ''}
+                onChange={(e) => handleChange(e, 'cozinha', 'peDireitoCozinha')}
+              />
+            </Column>
+          </Row>
+        </SubSection>
+
+        <SubSection title="Esquadrias de Madeira, Vidro e Alumínio">
+          <Row>
+            <Column>
+              <Label htmlFor="portasMadeiraCozinha">Quantidade de Portas de Madeiras</Label>
+              <InputNumber
+                type="number"
+                id="portasMadeiraCozinha"
+                name="portasMadeiraCozinha"
+                value={formData.cozinha.portasMadeiraCozinha || ''}
+                onChange={(e) => handleChange(e, 'cozinha', 'portasMadeiraCozinha')}
+              />
+            </Column>
+            <Column>
+              <Label htmlFor="vidrosAluminioCozinha">M² de Vidros/Esquadria de Alumínio</Label>
+              <InputNumber
+                type="number"
+                id="vidrosAluminioCozinha"
+                name="vidrosAluminioCozinha"
+                value={formData.cozinha.vidrosAluminioCozinha || ''}
+                onChange={(e) => handleChange(e, 'cozinha', 'vidrosAluminioCozinha')}
+              />
+            </Column>
+          </Row>
+        </SubSection>
+
+        <SubSection title="Kit Cozinha">
+          <Row>
+            <Column>
+              <Label htmlFor="kitsCozinha">Quantos Kits Cozinha possui no projeto?</Label>
+              <InputNumber
+                type="number"
+                id="kitsCozinha"
+                name="kitsCozinha"
+                value={formData.cozinha.kitsCozinha || ''}
+                onChange={(e) => handleChange(e, 'cozinha', 'kitsCozinha')}
+              />
+            </Column>
+            <Column>
+              <p>Se a cozinha possuir uma ilha além da pia padrão ou a área gourmet for no mesmo ambiente considerar 2 Kits Cozinha ou mais caso seja o caso
+              </p>
+            </Column>
+          </Row>
+        </SubSection>
+
+        <SubSection title="Mármores e Granitos">
+          <Row>
+            <Column>
+              <Label htmlFor="marmoresCozinha">Quantidade total de balcões e bancadas (mármores e granitos)</Label>
+              <InputNumber
+                type="number"
+                id="marmoresCozinha"
+                name="marmoresCozinha"
+                value={formData.cozinha.marmoresCozinha || ''}
+                onChange={(e) => handleChange(e, 'cozinha', 'marmoresCozinha')}
+              />
+            </Column>
+            <Column>
+            <p>
+              Somar todas as áreas de balcoes e bancadas, inclusive ilhas e etc.
+            </p>
+            </Column>
+          </Row>
+        </SubSection>
+
+        <SubSection title="Acabamentos">
+          <Row>
+            <Column>
+              <Label htmlFor="acabamentoCozinha">Tipo de Acabamento</Label>
+              <Select
+                id="acabamentoCozinha"
+                name="acabamentoCozinha"
+                value={formData.cozinha.acabamentoCozinha || ''}
+                onChange={(e) => handleChange(e, 'cozinha', 'acabamentoCozinha')}
+              >
+                <option value="standard">Standard</option>
+                <option value="premium">Premium</option>
+                <option value="supreme">Supreme</option>
+                <option value="sem_acabamento">Sem acabamento</option>
+              </Select>
+            </Column>
+            <Column>
+              <SwitchContainer>
+                <SwitchLabel>
+                  Conforto Termoacústico
+                  <SwitchInput
+                    type="checkbox"
+                    name="confortoCozinha"
+                    checked={formData.cozinha.confortoCozinha || false}
+                    onChange={(e) => handleChange(e, 'cozinha', 'confortoCozinha')}
+                  />
+                  <SwitchSlider checked={formData.cozinha.confortoCozinha || false} />
+                </SwitchLabel>
+              </SwitchContainer>
+            </Column>
+          </Row>
+        </SubSection>
+      </SectionWithHeader>
+
       {formData.quartos.map((quarto, index) => (
         <SectionWithHeader key={index} title={`Quarto ${index + 1}`} description={`Informações sobre o quarto ${index + 1}`}>
           <SubSection title="Dimensões">
@@ -738,130 +874,7 @@ export default function Home() {
 
       {/* Seções para outros cômodos */}
       
-      <SectionWithHeader title="Cozinha" description="Informações sobre a cozinha">
-        <SubSection title="Dimensões">
-          <Row>
-            <Column>
-              <Label htmlFor="areaCozinha">Área da Cozinha (m²)</Label>
-              <InputNumber
-                type="number"
-                id="areaCozinha"
-                name="areaCozinha"
-                value={formData.cozinha.areaCozinha || ''}
-                onChange={(e) => handleChange(e, 'cozinha', 'areaCozinha')}
-              />
-            </Column>
-            <Column>
-              <Label htmlFor="perimetroCozinha">Perímetro</Label>
-              <InputNumber
-                type="number"
-                id="perimetroCozinha"
-                name="perimetroCozinha"
-                value={formData.cozinha.perimetroCozinha || ''}
-                onChange={(e) => handleChange(e, 'cozinha', 'perimetroCozinha')}
-              />
-            </Column>
-            <Column>
-              <Label htmlFor="peDireitoCozinha">Pé Direito</Label>
-              <InputNumber
-                type="number"
-                id="peDireitoCozinha"
-                name="peDireitoCozinha"
-                value={formData.cozinha.peDireitoCozinha || ''}
-                onChange={(e) => handleChange(e, 'cozinha', 'peDireitoCozinha')}
-              />
-            </Column>
-          </Row>
-        </SubSection>
-
-        <SubSection title="Esquadrias de Madeira, Vidro e Alumínio">
-          <Row>
-            <Column>
-              <Label htmlFor="portasMadeiraCozinha">Quantidade de Portas de Madeiras até 0,9 m de largura</Label>
-              <InputNumber
-                type="number"
-                id="portasMadeiraCozinha"
-                name="portasMadeiraCozinha"
-                value={formData.cozinha.portasMadeiraCozinha || ''}
-                onChange={(e) => handleChange(e, 'cozinha', 'portasMadeiraCozinha')}
-              />
-            </Column>
-            <Column>
-              <Label htmlFor="vidrosAluminioCozinha">M² de Vidros/Esquadria de Alumínio</Label>
-              <InputNumber
-                type="number"
-                id="vidrosAluminioCozinha"
-                name="vidrosAluminioCozinha"
-                value={formData.cozinha.vidrosAluminioCozinha || ''}
-                onChange={(e) => handleChange(e, 'cozinha', 'vidrosAluminioCozinha')}
-              />
-            </Column>
-          </Row>
-        </SubSection>
-
-        <SubSection title="Kit Cozinha">
-          <Row>
-            <Column>
-              <Label htmlFor="kitsCozinha">Quantos Kits Cozinha possui no projeto?</Label>
-              <InputNumber
-                type="number"
-                id="kitsCozinha"
-                name="kitsCozinha"
-                value={formData.cozinha.kitsCozinha || ''}
-                onChange={(e) => handleChange(e, 'cozinha', 'kitsCozinha')}
-              />
-            </Column>
-          </Row>
-        </SubSection>
-
-        <SubSection title="Mármores e Granitos">
-          <Row>
-            <Column>
-              <Label htmlFor="marmoresCozinha">Quantidade total de balcões e bancadas (mármores e granitos)</Label>
-              <InputNumber
-                type="number"
-                id="marmoresCozinha"
-                name="marmoresCozinha"
-                value={formData.cozinha.marmoresCozinha || ''}
-                onChange={(e) => handleChange(e, 'cozinha', 'marmoresCozinha')}
-              />
-            </Column>
-          </Row>
-        </SubSection>
-
-        <SubSection title="Acabamentos">
-          <Row>
-            <Column>
-              <Label htmlFor="acabamentoCozinha">Tipo de Acabamento</Label>
-              <Select
-                id="acabamentoCozinha"
-                name="acabamentoCozinha"
-                value={formData.cozinha.acabamentoCozinha || ''}
-                onChange={(e) => handleChange(e, 'cozinha', 'acabamentoCozinha')}
-              >
-                <option value="standard">Standard</option>
-                <option value="premium">Premium</option>
-                <option value="supreme">Supreme</option>
-                <option value="sem_acabamento">Sem acabamento</option>
-              </Select>
-            </Column>
-            <Column>
-              <SwitchContainer>
-                <SwitchLabel>
-                  Conforto Termoacústico
-                  <SwitchInput
-                    type="checkbox"
-                    name="confortoCozinha"
-                    checked={formData.cozinha.confortoCozinha || false}
-                    onChange={(e) => handleChange(e, 'cozinha', 'confortoCozinha')}
-                  />
-                  <SwitchSlider checked={formData.cozinha.confortoCozinha || false} />
-                </SwitchLabel>
-              </SwitchContainer>
-            </Column>
-          </Row>
-        </SubSection>
-      </SectionWithHeader>
+      
 
       {formData.lavabos.map((lavabo, index) => (
         <SectionWithHeader key={index} title={`Lavabo ${index + 1}`} description={`Informações sobre o lavabo ${index + 1}`}>
