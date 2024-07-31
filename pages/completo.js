@@ -1038,6 +1038,133 @@ export default function Home() {
         </SubSection>
       </SectionWithHeader>
 
+      <SectionWithHeader title="Área de Serviço" description="Informações sobre a área de serviço">
+        <SubSection title="Dimensões">
+          <Row>
+            <Column>
+              <Label htmlFor="areaServico">Área de Serviço (m²)</Label>
+              <InputNumber
+                type="number"
+                id="areaServico"
+                name="areaServico"
+                value={formData.areaServico.areaServico || ''}
+                onChange={(e) => handleChange(e, 'areaServico', 'areaServico')}
+              />
+            </Column>
+          </Row>
+          <Row>
+          <Column>
+              <Label htmlFor="perimetroServico">Perímetro</Label>
+              <InputNumber
+                type="number"
+                id="perimetroServico"
+                name="perimetroServico"
+                value={formData.areaServico.perimetroServico || ''}
+                onChange={(e) => handleChange(e, 'areaServico', 'perimetroServico')}
+              />
+            </Column>
+            <Column>
+              <Label htmlFor="peDireitoServico">Pé Direito</Label>
+              <InputNumber
+                type="number"
+                id="peDireitoServico"
+                name="peDireitoServico"
+                value={formData.areaServico.peDireitoServico || ''}
+                onChange={(e) => handleChange(e, 'areaServico', 'peDireitoServico')}
+              />
+            </Column>
+          </Row>
+        </SubSection>
+
+        <SubSection title="Esquadrias de Madeira, Vidro e Alumínio">
+          <Row>
+            <Column>
+              <Label htmlFor="portasMadeiraServico">Quantidade de Portas de Madeiras</Label>
+              <InputNumber
+                type="number"
+                id="portasMadeiraServico"
+                name="portasMadeiraServico"
+                value={formData.areaServico.portasMadeiraServico || ''}
+                onChange={(e) => handleChange(e, 'areaServico', 'portasMadeiraServico')}
+              />
+            </Column>
+            <Column>
+              <Label htmlFor="vidrosAluminioServico">M² de Vidros/Esquadria de Alumínio</Label>
+              <InputNumber
+                type="number"
+                id="vidrosAluminioServico"
+                name="vidrosAluminioServico"
+                value={formData.areaServico.vidrosAluminioServico || ''}
+                onChange={(e) => handleChange(e, 'areaServico', 'vidrosAluminioServico')}
+              />
+            </Column>
+          </Row>
+        </SubSection>
+
+        <SubSection title="Kit Lavanderia">
+          <Row>
+            <Column>
+              <Label htmlFor="kitsServico">Quantos Kits Lavanderia possui no projeto?</Label>
+              <InputNumber
+                type="number"
+                id="kitsServico"
+                name="kitsServico"
+                value={formData.areaServico.kitsServico || ''}
+                onChange={(e) => handleChange(e, 'areaServico', 'kitsServico')}
+              />
+            </Column>
+          </Row>
+        </SubSection>
+
+        <SubSection title="Mármores e Granitos">
+          <Row>
+            <Column>
+              <Label htmlFor="marmoresServico">Quantidade total de balcões e bancadas (mármores e granitos)</Label>
+              <InputNumber
+                type="number"
+                id="marmoresServico"
+                name="marmoresServico"
+                value={formData.areaServico.marmoresServico || ''}
+                onChange={(e) => handleChange(e, 'areaServico', 'marmoresServico')}
+              />
+            </Column>
+          </Row>
+        </SubSection>
+
+        <SubSection title="Acabamentos">
+          <Row>
+            <Column>
+              <Label htmlFor="acabamentoServico">Tipo de Acabamento</Label>
+              <Select
+                id="acabamentoServico"
+                name="acabamentoServico"
+                value={formData.areaServico.acabamentoServico || ''}
+                onChange={(e) => handleChange(e, 'areaServico', 'acabamentoServico')}
+              >
+                <option value="standard">Standard</option>
+                <option value="premium">Premium</option>
+                <option value="supreme">Supreme</option>
+                <option value="sem_acabamento">Sem acabamento</option>
+              </Select>
+            </Column>
+            <Column>
+              <SwitchContainer>
+                <SwitchLabel>
+                  Conforto Termoacústico
+                  <SwitchInput
+                    type="checkbox"
+                    name="confortoServico"
+                    checked={formData.areaServico.confortoServico || false}
+                    onChange={(e) => handleChange(e, 'areaServico', 'confortoServico')}
+                  />
+                  <SwitchSlider checked={formData.areaServico.confortoServico || false} />
+                </SwitchLabel>
+              </SwitchContainer>
+            </Column>
+          </Row>
+        </SubSection>
+      </SectionWithHeader>
+
       {formData.quartos.map((quarto, index) => (
         <SectionWithHeader key={index} title={`Quarto ${index + 1}`} description={`Informações sobre o quarto ${index + 1}`}>
           <SubSection title="Dimensões">
@@ -1127,130 +1254,7 @@ export default function Home() {
 
       <button type="button" onClick={() => addSubItem('quartos')}>Adicionar Quarto</button> 
 
-      <SectionWithHeader title="Área de Serviço" description="Informações sobre a área de serviço">
-        <SubSection title="Dimensões">
-          <Row>
-            <Column>
-              <Label htmlFor="areaServico">Área de Serviço (m²)</Label>
-              <InputNumber
-                type="number"
-                id="areaServico"
-                name="areaServico"
-                value={formData.areaServico.areaServico || ''}
-                onChange={(e) => handleChange(e, 'areaServico', 'areaServico')}
-              />
-            </Column>
-            <Column>
-              <Label htmlFor="perimetroServico">Perímetro</Label>
-              <InputNumber
-                type="number"
-                id="perimetroServico"
-                name="perimetroServico"
-                value={formData.areaServico.perimetroServico || ''}
-                onChange={(e) => handleChange(e, 'areaServico', 'perimetroServico')}
-              />
-            </Column>
-            <Column>
-              <Label htmlFor="peDireitoServico">Pé Direito</Label>
-              <InputNumber
-                type="number"
-                id="peDireitoServico"
-                name="peDireitoServico"
-                value={formData.areaServico.peDireitoServico || ''}
-                onChange={(e) => handleChange(e, 'areaServico', 'peDireitoServico')}
-              />
-            </Column>
-          </Row>
-        </SubSection>
-
-        <SubSection title="Esquadrias de Madeira, Vidro e Alumínio">
-          <Row>
-            <Column>
-              <Label htmlFor="portasMadeiraServico">Quantidade de Portas de Madeiras até 0,9 m de largura</Label>
-              <InputNumber
-                type="number"
-                id="portasMadeiraServico"
-                name="portasMadeiraServico"
-                value={formData.areaServico.portasMadeiraServico || ''}
-                onChange={(e) => handleChange(e, 'areaServico', 'portasMadeiraServico')}
-              />
-            </Column>
-            <Column>
-              <Label htmlFor="vidrosAluminioServico">M² de Vidros/Esquadria de Alumínio</Label>
-              <InputNumber
-                type="number"
-                id="vidrosAluminioServico"
-                name="vidrosAluminioServico"
-                value={formData.areaServico.vidrosAluminioServico || ''}
-                onChange={(e) => handleChange(e, 'areaServico', 'vidrosAluminioServico')}
-              />
-            </Column>
-          </Row>
-        </SubSection>
-
-        <SubSection title="Kit Lavanderia">
-          <Row>
-            <Column>
-              <Label htmlFor="kitsServico">Quantos Kits Lavanderia possui no projeto?</Label>
-              <InputNumber
-                type="number"
-                id="kitsServico"
-                name="kitsServico"
-                value={formData.areaServico.kitsServico || ''}
-                onChange={(e) => handleChange(e, 'areaServico', 'kitsServico')}
-              />
-            </Column>
-          </Row>
-        </SubSection>
-
-        <SubSection title="Mármores e Granitos">
-          <Row>
-            <Column>
-              <Label htmlFor="marmoresServico">Quantidade total de balcões e bancadas (mármores e granitos)</Label>
-              <InputNumber
-                type="number"
-                id="marmoresServico"
-                name="marmoresServico"
-                value={formData.areaServico.marmoresServico || ''}
-                onChange={(e) => handleChange(e, 'areaServico', 'marmoresServico')}
-              />
-            </Column>
-          </Row>
-        </SubSection>
-
-        <SubSection title="Acabamentos">
-          <Row>
-            <Column>
-              <Label htmlFor="acabamentoServico">Tipo de Acabamento</Label>
-              <Select
-                id="acabamentoServico"
-                name="acabamentoServico"
-                value={formData.areaServico.acabamentoServico || ''}
-                onChange={(e) => handleChange(e, 'areaServico', 'acabamentoServico')}
-              >
-                <option value="standard">Standard</option>
-                <option value="premium">Premium</option>
-                <option value="supreme">Supreme</option>
-                <option value="sem_acabamento">Sem acabamento</option>
-              </Select>
-            </Column>
-            <Column>
-              <SwitchContainer>
-                <SwitchLabel>
-                  Conforto Termoacústico
-                  <SwitchInput
-                    type="checkbox"
-                    name="confortoServico"
-                    checked={formData.areaServico.confortoServico || false}
-                    onChange={(e) => handleChange(e, 'areaServico', 'confortoServico')}
-                  />
-                  <SwitchSlider checked={formData.areaServico.confortoServico || false} />
-                </SwitchLabel>
-              </SwitchContainer>
-            </Column>
-          </Row>
-        </SubSection>
-      </SectionWithHeader>
+      
 
       <SectionWithHeader title="Despensa" description="Informações sobre a despensa">
         <SubSection title="Dimensões">
