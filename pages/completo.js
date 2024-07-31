@@ -911,6 +911,133 @@ export default function Home() {
       ))}
       <button type="button" onClick={() => addSubItem('lavabos')}>Adicionar Lavabo</button>
 
+      <SectionWithHeader title="Área Gourmet" description="Informações sobre a área gourmet">
+        <SubSection title="Dimensões">
+          <Row>
+            <Column>
+              <Label htmlFor="areaGourmet">Área Gourmet (m²)</Label>
+              <InputNumber
+                type="number"
+                id="areaGourmet"
+                name="areaGourmet"
+                value={formData.areaGourmet.areaGourmet || ''}
+                onChange={(e) => handleChange(e, 'areaGourmet', 'areaGourmet')}
+              />
+            </Column>
+          </Row>
+          <Row>
+          <Column>
+              <Label htmlFor="perimetroGourmet">Perímetro</Label>
+              <InputNumber
+                type="number"
+                id="perimetroGourmet"
+                name="perimetroGourmet"
+                value={formData.areaGourmet.perimetroGourmet || ''}
+                onChange={(e) => handleChange(e, 'areaGourmet', 'perimetroGourmet')}
+              />
+            </Column>
+            <Column>
+              <Label htmlFor="peDireitoGourmet">Pé Direito</Label>
+              <InputNumber
+                type="number"
+                id="peDireitoGourmet"
+                name="peDireitoGourmet"
+                value={formData.areaGourmet.peDireitoGourmet || ''}
+                onChange={(e) => handleChange(e, 'areaGourmet', 'peDireitoGourmet')}
+              />
+            </Column>
+          </Row>
+        </SubSection>
+
+        <SubSection title="Esquadrias de Madeira, Vidro e Alumínio">
+          <Row>
+            <Column>
+              <Label htmlFor="portasMadeiraGourmet">Quantidade de Portas de Madeiras</Label>
+              <InputNumber
+                type="number"
+                id="portasMadeiraGourmet"
+                name="portasMadeiraGourmet"
+                value={formData.areaGourmet.portasMadeiraGourmet || ''}
+                onChange={(e) => handleChange(e, 'areaGourmet', 'portasMadeiraGourmet')}
+              />
+            </Column>
+            <Column>
+              <Label htmlFor="vidrosAluminioGourmet">M² de Vidros/Esquadria de Alumínio</Label>
+              <InputNumber
+                type="number"
+                id="vidrosAluminioGourmet"
+                name="vidrosAluminioGourmet"
+                value={formData.areaGourmet.vidrosAluminioGourmet || ''}
+                onChange={(e) => handleChange(e, 'areaGourmet', 'vidrosAluminioGourmet')}
+              />
+            </Column>
+          </Row>
+        </SubSection>
+
+        <SubSection title="Kit Área Gourmet">
+          <Row>
+            <Column>
+              <Label htmlFor="kitsGourmet">Quantos Kits Área Gourmet possui no projeto?</Label>
+              <InputNumber
+                type="number"
+                id="kitsGourmet"
+                name="kitsGourmet"
+                value={formData.areaGourmet.kitsGourmet || ''}
+                onChange={(e) => handleChange(e, 'areaGourmet', 'kitsGourmet')}
+              />
+            </Column>
+          </Row>
+        </SubSection>
+
+        <SubSection title="Mármores e Granitos">
+          <Row>
+            <Column>
+              <Label htmlFor="marmoresGourmet">Quantidade total de balcões e bancadas (mármores e granitos)</Label>
+              <InputNumber
+                type="number"
+                id="marmoresGourmet"
+                name="marmoresGourmet"
+                value={formData.areaGourmet.marmoresGourmet || ''}
+                onChange={(e) => handleChange(e, 'areaGourmet', 'marmoresGourmet')}
+              />
+            </Column>
+          </Row>
+        </SubSection>
+
+        <SubSection title="Acabamentos">
+          <Row>
+            <Column>
+              <Label htmlFor="acabamentoGourmet">Tipo de Acabamento</Label>
+              <Select
+                id="acabamentoGourmet"
+                name="acabamentoGourmet"
+                value={formData.areaGourmet.acabamentoGourmet || ''}
+                onChange={(e) => handleChange(e, 'areaGourmet', 'acabamentoGourmet')}
+              >
+                <option value="standard">Standard</option>
+                <option value="premium">Premium</option>
+                <option value="supreme">Supreme</option>
+                <option value="sem_acabamento">Sem acabamento</option>
+              </Select>
+            </Column>
+            <Column>
+              <SwitchContainer>
+                <SwitchLabel>
+                  Conforto Termoacústico
+                  <SwitchInput
+                    type="checkbox"
+                    name="confortoGourmet"
+                    checked={formData.areaGourmet.confortoGourmet || false}
+                    onChange={(e) => handleChange(e, 'areaGourmet', 'confortoGourmet')}
+                  />
+                  <SwitchSlider checked={formData.areaGourmet.confortoGourmet || false} />
+                </SwitchLabel>
+              </SwitchContainer>
+            </Column>
+          </Row>
+        </SubSection>
+      </SectionWithHeader>
+
       {formData.quartos.map((quarto, index) => (
         <SectionWithHeader key={index} title={`Quarto ${index + 1}`} description={`Informações sobre o quarto ${index + 1}`}>
           <SubSection title="Dimensões">
@@ -999,132 +1126,6 @@ export default function Home() {
       ))}
 
       <button type="button" onClick={() => addSubItem('quartos')}>Adicionar Quarto</button> 
-
-
-      <SectionWithHeader title="Área Gourmet" description="Informações sobre a área gourmet">
-        <SubSection title="Dimensões">
-          <Row>
-            <Column>
-              <Label htmlFor="areaGourmet">Área Gourmet (m²)</Label>
-              <InputNumber
-                type="number"
-                id="areaGourmet"
-                name="areaGourmet"
-                value={formData.areaGourmet.areaGourmet || ''}
-                onChange={(e) => handleChange(e, 'areaGourmet', 'areaGourmet')}
-              />
-            </Column>
-            <Column>
-              <Label htmlFor="perimetroGourmet">Perímetro</Label>
-              <InputNumber
-                type="number"
-                id="perimetroGourmet"
-                name="perimetroGourmet"
-                value={formData.areaGourmet.perimetroGourmet || ''}
-                onChange={(e) => handleChange(e, 'areaGourmet', 'perimetroGourmet')}
-              />
-            </Column>
-            <Column>
-              <Label htmlFor="peDireitoGourmet">Pé Direito</Label>
-              <InputNumber
-                type="number"
-                id="peDireitoGourmet"
-                name="peDireitoGourmet"
-                value={formData.areaGourmet.peDireitoGourmet || ''}
-                onChange={(e) => handleChange(e, 'areaGourmet', 'peDireitoGourmet')}
-              />
-            </Column>
-          </Row>
-        </SubSection>
-
-        <SubSection title="Esquadrias de Madeira, Vidro e Alumínio">
-          <Row>
-            <Column>
-              <Label htmlFor="portasMadeiraGourmet">Quantidade de Portas de Madeiras até 0,9 m de largura</Label>
-              <InputNumber
-                type="number"
-                id="portasMadeiraGourmet"
-                name="portasMadeiraGourmet"
-                value={formData.areaGourmet.portasMadeiraGourmet || ''}
-                onChange={(e) => handleChange(e, 'areaGourmet', 'portasMadeiraGourmet')}
-              />
-            </Column>
-            <Column>
-              <Label htmlFor="vidrosAluminioGourmet">M² de Vidros/Esquadria de Alumínio</Label>
-              <InputNumber
-                type="number"
-                id="vidrosAluminioGourmet"
-                name="vidrosAluminioGourmet"
-                value={formData.areaGourmet.vidrosAluminioGourmet || ''}
-                onChange={(e) => handleChange(e, 'areaGourmet', 'vidrosAluminioGourmet')}
-              />
-            </Column>
-          </Row>
-        </SubSection>
-
-        <SubSection title="Kit Área Gourmet">
-          <Row>
-            <Column>
-              <Label htmlFor="kitsGourmet">Quantos Kits Área Gourmet possui no projeto?</Label>
-              <InputNumber
-                type="number"
-                id="kitsGourmet"
-                name="kitsGourmet"
-                value={formData.areaGourmet.kitsGourmet || ''}
-                onChange={(e) => handleChange(e, 'areaGourmet', 'kitsGourmet')}
-              />
-            </Column>
-          </Row>
-        </SubSection>
-
-        <SubSection title="Mármores e Granitos">
-          <Row>
-            <Column>
-              <Label htmlFor="marmoresGourmet">Quantidade total de balcões e bancadas (mármores e granitos)</Label>
-              <InputNumber
-                type="number"
-                id="marmoresGourmet"
-                name="marmoresGourmet"
-                value={formData.areaGourmet.marmoresGourmet || ''}
-                onChange={(e) => handleChange(e, 'areaGourmet', 'marmoresGourmet')}
-              />
-            </Column>
-          </Row>
-        </SubSection>
-
-        <SubSection title="Acabamentos">
-          <Row>
-            <Column>
-              <Label htmlFor="acabamentoGourmet">Tipo de Acabamento</Label>
-              <Select
-                id="acabamentoGourmet"
-                name="acabamentoGourmet"
-                value={formData.areaGourmet.acabamentoGourmet || ''}
-                onChange={(e) => handleChange(e, 'areaGourmet', 'acabamentoGourmet')}
-              >
-                <option value="standard">Standard</option>
-                <option value="premium">Premium</option>
-                <option value="supreme">Supreme</option>
-                <option value="sem_acabamento">Sem acabamento</option>
-              </Select>
-            </Column>
-            <Column>
-              <SwitchContainer>
-                <SwitchLabel>
-                  Conforto Termoacústico
-                  <SwitchInput
-                    type="checkbox"
-                    name="confortoGourmet"
-                    checked={formData.areaGourmet.confortoGourmet || false}
-                    onChange={(e) => handleChange(e, 'areaGourmet', 'confortoGourmet')}
-                  />
-                  <SwitchSlider checked={formData.areaGourmet.confortoGourmet || false} />
-                </SwitchLabel>
-              </SwitchContainer>
-            </Column>
-          </Row>
-        </SubSection>
-      </SectionWithHeader>
 
       <SectionWithHeader title="Área de Serviço" description="Informações sobre a área de serviço">
         <SubSection title="Dimensões">
