@@ -1425,7 +1425,7 @@ export default function Home() {
                   type="number"
                   id={`portasQuarto${index}`}
                   name={`portasQuarto${index}`}
-                  value={lavabo.portasQuarto || ''}
+                  value={quarto.portasQuarto || ''}
                   onChange={(e) => handleSubChange('quartos', index, e, 'portasQuarto')}
                 />
               </Column>
@@ -1435,7 +1435,7 @@ export default function Home() {
                   type="number"
                   id={`esquadriasQuarto${index}`}
                   name={`esquadriasQuarto${index}`}
-                  value={lavabo.esquadriasQuarto || ''}
+                  value={quarto.esquadriasQuarto || ''}
                   onChange={(e) => handleSubChange('quartos', index, e, 'esquadriasQuarto')}
                 />
               </Column>
@@ -1539,7 +1539,7 @@ export default function Home() {
                   type="number"
                   id={`portasBanheiro${index}`}
                   name={`portasBanheiro${index}`}
-                  value={lavabo.portasBanheiro || ''}
+                  value={banheiro.portasBanheiro || ''}
                   onChange={(e) => handleSubChange('banheiros', index, e, 'portasBanheiro')}
                 />
               </Column>
@@ -1549,7 +1549,7 @@ export default function Home() {
                   type="number"
                   id={`esquadriasBanheiro${index}`}
                   name={`esquadriasBanheiro${index}`}
-                  value={lavabo.esquadriasBanheiro || ''}
+                  value={banheiro.esquadriasBanheiro || ''}
                   onChange={(e) => handleSubChange('banheiros', index, e, 'esquadriasBanheiro')}
                 />
               </Column>
