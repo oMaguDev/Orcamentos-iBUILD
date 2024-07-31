@@ -257,6 +257,67 @@ export default function Home() {
           </Row>
         </SubSection>
       </SectionWithHeader>  
+      {/* Cobertura */}
+      <SectionWithHeader title="Cobertura" description="Informações sobre a cobertura">
+        <SubSection title="Área de Cobertura">
+          <Row>
+            <Column>
+              <Label htmlFor="areaCobertura">Somatória total de área de cobertura incluindo telheiros e eventuais beirais (m²)</Label>
+              <InputNumber
+                type="number"
+                id="areaCobertura"
+                name="areaCobertura"
+                value={formData.cobertura.areaCobertura || ''}
+                onChange={(e) => handleChange(e, 'cobertura', 'areaCobertura')}
+              />
+            </Column>
+            <Column>
+              <Label htmlFor="areaLajes">Somatória total de áreas de lajes impermeabilizadas (m²)</Label>
+              <InputNumber
+                type="number"
+                id="areaLajes"
+                name="areaLajes"
+                value={formData.cobertura.areaLajes || ''}
+                onChange={(e) => handleChange(e, 'cobertura', 'areaLajes')}
+              />
+            </Column>
+          </Row>
+        </SubSection>
+
+        <SubSection title="Calhas, Rufos e Pingadeiras">
+          <Row>
+            <Column>
+              <Label htmlFor="areaCalhas">Somatória total de calhas, rufos e pingadeiras (m²)</Label>
+              <InputNumber
+                type="number"
+                id="areaCalhas"
+                name="areaCalhas"
+                value={formData.cobertura.areaCalhas || ''}
+                onChange={(e) => handleChange(e, 'cobertura', 'areaCalhas')}
+              />
+            </Column>
+          </Row>
+        </SubSection>
+
+        <SubSection title="Tipos de Cobertura">
+          <Row>
+            <Column>
+              <Label htmlFor="tipoCobertura">Tipo de Cobertura</Label>
+              <Select
+                id="tipoCobertura"
+                name="tipoCobertura"
+                value={formData.cobertura.tipoCobertura || ''}
+                onChange={(e) => handleChange(e, 'cobertura', 'tipoCobertura')}
+              >
+                <option value="termoacustica">Cobertura Telha Termoacústica</option>
+                <option value="fibrocimento">Cobertura Telha Fibrocimento</option>
+                <option value="ceramica">Cobertura Telha Cerâmica</option>
+                <option value="translucida">Cobertura Telha Translúcida</option>
+              </Select>
+            </Column>
+          </Row>
+        </SubSection>
+      </SectionWithHeader>
       {/* Garagem */}
       <SectionWithHeader title="Garagem" description="Informações sobre a garagem">
         <SubSection title="Dimensões">
@@ -1321,67 +1382,6 @@ export default function Home() {
                 <option value="standard">Standard</option>
                 <option value="premium">Premium</option>
                 <option value="supreme">Supreme</option>
-              </Select>
-            </Column>
-          </Row>
-        </SubSection>
-      </SectionWithHeader>
-
-      <SectionWithHeader title="Cobertura" description="Informações sobre a cobertura">
-        <SubSection title="Área de Cobertura">
-          <Row>
-            <Column>
-              <Label htmlFor="areaCobertura">Somatória total de área de cobertura incluindo telheiros e eventuais beirais (m²)</Label>
-              <InputNumber
-                type="number"
-                id="areaCobertura"
-                name="areaCobertura"
-                value={formData.cobertura.areaCobertura || ''}
-                onChange={(e) => handleChange(e, 'cobertura', 'areaCobertura')}
-              />
-            </Column>
-            <Column>
-              <Label htmlFor="areaLajes">Somatória total de áreas de lajes impermeabilizadas (m²)</Label>
-              <InputNumber
-                type="number"
-                id="areaLajes"
-                name="areaLajes"
-                value={formData.cobertura.areaLajes || ''}
-                onChange={(e) => handleChange(e, 'cobertura', 'areaLajes')}
-              />
-            </Column>
-          </Row>
-        </SubSection>
-
-        <SubSection title="Calhas, Rufos e Pingadeiras">
-          <Row>
-            <Column>
-              <Label htmlFor="areaCalhas">Somatória total de calhas, rufos e pingadeiras (m²)</Label>
-              <InputNumber
-                type="number"
-                id="areaCalhas"
-                name="areaCalhas"
-                value={formData.cobertura.areaCalhas || ''}
-                onChange={(e) => handleChange(e, 'cobertura', 'areaCalhas')}
-              />
-            </Column>
-          </Row>
-        </SubSection>
-
-        <SubSection title="Tipos de Cobertura">
-          <Row>
-            <Column>
-              <Label htmlFor="tipoCobertura">Tipo de Cobertura</Label>
-              <Select
-                id="tipoCobertura"
-                name="tipoCobertura"
-                value={formData.cobertura.tipoCobertura || ''}
-                onChange={(e) => handleChange(e, 'cobertura', 'tipoCobertura')}
-              >
-                <option value="termoacustica">Cobertura Telha Termoacústica</option>
-                <option value="fibrocimento">Cobertura Telha Fibrocimento</option>
-                <option value="ceramica">Cobertura Telha Cerâmica</option>
-                <option value="translucida">Cobertura Telha Translúcida</option>
               </Select>
             </Column>
           </Row>
