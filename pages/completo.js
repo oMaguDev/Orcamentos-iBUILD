@@ -783,6 +783,134 @@ export default function Home() {
         </SubSection>
       </SectionWithHeader>
 
+      {formData.lavabos.map((lavabo, index) => (
+        <SectionWithHeader key={index} title={`Lavabo ${index + 1}`} description={`Informações sobre o lavabo ${index + 1}`}>
+          <SubSection title="Dimensões">
+            <Row>
+              <Column>
+                <Label htmlFor={`areaLavabo${index}`}>Área do Lavabo (m²)</Label>
+                <InputNumber
+                  type="number"
+                  id={`areaLavabo${index}`}
+                  name={`areaLavabo${index}`}
+                  value={lavabo.areaLavabo || ''}
+                  onChange={(e) => handleSubChange('lavabos', index, e, 'areaLavabo')}
+                />
+              </Column>
+            </Row>
+            <Row>
+            <Column>
+                <Label htmlFor={`perimetroLavabo${index}`}>Perímetro</Label>
+                <InputNumber
+                  type="number"
+                  id={`perimetroLavabo${index}`}
+                  name={`perimetroLavabo${index}`}
+                  value={lavabo.perimetro || ''}
+                  onChange={(e) => handleSubChange('lavabos', index, e, 'perimetro')}
+                />
+              </Column>
+              <Column>
+                <Label htmlFor={`peDireitoLavabo${index}`}>Pé Direito</Label>
+                <InputNumber
+                  type="number"
+                  id={`peDireitoLavabo${index}`}
+                  name={`peDireitoLavabo${index}`}
+                  value={lavabo.peDireito || ''}
+                  onChange={(e) => handleSubChange('lavabos', index, e, 'peDireito')}
+                />
+              </Column>
+            </Row>
+          </SubSection>
+
+          <SubSection title="Esquadrias de Madeira, Vidros e Alumínio">
+            <Row>
+              <Column>
+              <Label htmlFor={`portasLavabo${index}`}>Quantidade de Portas de Madeira</Label>
+                <InputNumber
+                  type="number"
+                  id={`portasLavabo${index}`}
+                  name={`portasLavabo${index}`}
+                  value={lavabo.portasLavabo || ''}
+                  onChange={(e) => handleSubChange('lavabos', index, e, 'portasLavabo')}
+                />
+              </Column>
+              <Column>
+              <Label htmlFor={`esquadriasLavabo${index}`}>M² de Vidros/Esquadrias de Alumínio</Label>
+                <InputNumber
+                  type="number"
+                  id={`esquadriasLavabo${index}`}
+                  name={`esquadriasLavabo${index}`}
+                  value={lavabo.esquadriasLavabo || ''}
+                  onChange={(e) => handleSubChange('lavabos', index, e, 'esquadriasLavabo')}
+                />
+              </Column>
+            </Row>
+          </SubSection>
+          <SubSection>
+            <Row>
+              <Column>
+              <Label htmlFor={`kitLavabo${index}`}>Quantos Kits Lavabo possui no projeto? (não seria a quantidade de lavabos?)</Label>
+                <InputNumber
+                  type="number"
+                  id={`kitLavabo${index}`}
+                  name={`kitLavabo${index}`}
+                  value={lavabo.kitLavabo || ''}
+                  onChange={(e) => handleSubChange('lavabos', index, e, 'kitLavabo')}
+                />
+              </Column>
+            </Row>
+          </SubSection>
+          <SubSection title="Mármores e Granitos">
+            <Row>
+              <Column>
+                <Label htmlFor={`marmoresLavabo${index}`}>Quantidade de Balcões e Bancadas</Label>
+                <InputNumber
+                  type="number"
+                  id={`marmoresLavabo${index}`}
+                  name={`marmoresLavabo${index}`}
+                  value={lavabo.marmores || ''}
+                  onChange={(e) => handleSubChange('lavabos', index, e, 'marmores')}
+                />
+              </Column>
+            </Row>
+          </SubSection>
+
+          <SubSection title="Acabamentos">
+            <Row>
+              <Column>
+                <Label htmlFor={`acabamentoLavabo${index}`}>Tipo de Acabamento</Label>
+                <Select
+                  id={`acabamentoLavabo${index}`}
+                  name={`acabamentoLavabo${index}`}
+                  value={lavabo.acabamento || ''}
+                  onChange={(e) => handleSubChange('lavabos', index, e, 'acabamento')}
+                >
+                  <option value="standard">Standard</option>
+                  <option value="premium">Premium</option>
+                  <option value="supreme">Supreme</option>
+                  <option value="sem_acabamento">Sem acabamento</option>
+                </Select>
+              </Column>
+              <Column>
+                <SwitchContainer>
+                  <SwitchLabel>
+                    Conforto Termoacústico
+                    <SwitchInput
+                      type="checkbox"
+                      name={`confortoLavabo${index}`}
+                      checked={lavabo.conforto || false}
+                      onChange={(e) => handleSubChange('lavabos', index, e, 'conforto')}
+                    />
+                    <SwitchSlider checked={lavabo.conforto || false} />
+                  </SwitchLabel>
+                </SwitchContainer>
+              </Column>
+            </Row>
+          </SubSection>
+        </SectionWithHeader>
+      ))}
+      <button type="button" onClick={() => addSubItem('lavabos')}>Adicionar Lavabo</button>
+
       {formData.quartos.map((quarto, index) => (
         <SectionWithHeader key={index} title={`Quarto ${index + 1}`} description={`Informações sobre o quarto ${index + 1}`}>
           <SubSection title="Dimensões">
@@ -870,100 +998,8 @@ export default function Home() {
         </SectionWithHeader>
       ))}
 
-      <button type="button" onClick={() => addSubItem('quartos')}>Adicionar Quarto</button>
+      <button type="button" onClick={() => addSubItem('quartos')}>Adicionar Quarto</button> 
 
-      {/* Seções para outros cômodos */}
-      
-      
-
-      {formData.lavabos.map((lavabo, index) => (
-        <SectionWithHeader key={index} title={`Lavabo ${index + 1}`} description={`Informações sobre o lavabo ${index + 1}`}>
-          <SubSection title="Dimensões">
-            <Row>
-              <Column>
-                <Label htmlFor={`areaLavabo${index}`}>Área do Lavabo (m²)</Label>
-                <InputNumber
-                  type="number"
-                  id={`areaLavabo${index}`}
-                  name={`areaLavabo${index}`}
-                  value={lavabo.areaLavabo || ''}
-                  onChange={(e) => handleSubChange('lavabos', index, e, 'areaLavabo')}
-                />
-              </Column>
-              <Column>
-                <Label htmlFor={`perimetroLavabo${index}`}>Perímetro</Label>
-                <InputNumber
-                  type="number"
-                  id={`perimetroLavabo${index}`}
-                  name={`perimetroLavabo${index}`}
-                  value={lavabo.perimetro || ''}
-                  onChange={(e) => handleSubChange('lavabos', index, e, 'perimetro')}
-                />
-              </Column>
-              <Column>
-                <Label htmlFor={`peDireitoLavabo${index}`}>Pé Direito</Label>
-                <InputNumber
-                  type="number"
-                  id={`peDireitoLavabo${index}`}
-                  name={`peDireitoLavabo${index}`}
-                  value={lavabo.peDireito || ''}
-                  onChange={(e) => handleSubChange('lavabos', index, e, 'peDireito')}
-                />
-              </Column>
-            </Row>
-          </SubSection>
-
-          <SubSection title="Mármores e Granitos">
-            <Row>
-              <Column>
-                <Label htmlFor={`marmoresLavabo${index}`}>Quantidade de Balcões e Bancadas</Label>
-                <InputNumber
-                  type="number"
-                  id={`marmoresLavabo${index}`}
-                  name={`marmoresLavabo${index}`}
-                  value={lavabo.marmores || ''}
-                  onChange={(e) => handleSubChange('lavabos', index, e, 'marmores')}
-                />
-              </Column>
-            </Row>
-          </SubSection>
-
-          <SubSection title="Acabamentos">
-            <Row>
-              <Column>
-                <Label htmlFor={`acabamentoLavabo${index}`}>Tipo de Acabamento</Label>
-                <Select
-                  id={`acabamentoLavabo${index}`}
-                  name={`acabamentoLavabo${index}`}
-                  value={lavabo.acabamento || ''}
-                  onChange={(e) => handleSubChange('lavabos', index, e, 'acabamento')}
-                >
-                  <option value="standard">Standard</option>
-                  <option value="premium">Premium</option>
-                  <option value="supreme">Supreme</option>
-                  <option value="sem_acabamento">Sem acabamento</option>
-                </Select>
-              </Column>
-              <Column>
-                <SwitchContainer>
-                  <SwitchLabel>
-                    Conforto Termoacústico
-                    <SwitchInput
-                      type="checkbox"
-                      name={`confortoLavabo${index}`}
-                      checked={lavabo.conforto || false}
-                      onChange={(e) => handleSubChange('lavabos', index, e, 'conforto')}
-                    />
-                    <SwitchSlider checked={lavabo.conforto || false} />
-                  </SwitchLabel>
-                </SwitchContainer>
-              </Column>
-            </Row>
-          </SubSection>
-        </SectionWithHeader>
-      ))}
-
-      <button type="button" onClick={() => addSubItem('lavabos')}>Adicionar Lavabo</button>
 
       <SectionWithHeader title="Área Gourmet" description="Informações sobre a área gourmet">
         <SubSection title="Dimensões">
