@@ -1,24 +1,24 @@
-import { createGlobalStyle, ThemeConsumer, ThemeProvider } from 'styled-components'
-import { ActiveIndexProvider } from '../contexts/activeIndex'
-import Head from 'next/head'
-import { SessionProvider } from "next-auth/react"
-import { SimulationDataContextProvider } from '../contexts/SimulationData'
-import { SimulationStatusContextProvider } from '../contexts/SimulationStatus'
-import { UserContextProvider } from '../contexts/UserContext'
-import { RoomValuesContextProvider } from '../contexts/RoomValues'
-import { FinancialSimContextProvider } from '../contexts/FinancialSim'
-import AuthWrapper from '../utils/AuthWrapper'
-import GlobalStyle from '../styles/GlobalStyles'
+import { createGlobalStyle, ThemeConsumer, ThemeProvider } from 'styled-components';
+import { ActiveIndexProvider } from '../contexts/activeIndex';
+import Head from 'next/head';
+import { SessionProvider } from "next-auth/react";
+import { SimulationDataContextProvider } from '../contexts/SimulationData';
+import { SimulationStatusContextProvider } from '../contexts/SimulationStatus';
+import { UserContextProvider } from '../contexts/UserContext';
+import { RoomValuesContextProvider } from '../contexts/RoomValues';
+import { FinancialSimContextProvider } from '../contexts/FinancialSim';
+import AuthWrapper from '../utils/AuthWrapper';
+import GlobalStyle from '../styles/GlobalStyles';
 
 const GlobalStyle1 = createGlobalStyle`
     * {
-        box-sizing: border-box,
+        box-sizing: border-box;
     }
 
     html, body {
         margin: 0;
         padding: 0;
-        background: #fff;
+        background: #f0f0f0; /* Cor de fundo da página */
         color: #54596c;
         font-family: urw-din, sans-serif;
         height: 100%;
@@ -34,8 +34,8 @@ const GlobalStyle1 = createGlobalStyle`
 
     .MuiStepIcon-root.MuiStepIcon-completed {
         color: #7dd23a !important;
-    }`
-
+    }
+`;
 
 const theme = {
     colors: {
@@ -51,7 +51,7 @@ const theme = {
             fadedLightGreen: 'rgba(189, 228, 167, 0.4)',
         },
         text: {
-            title: '#ff1b5f', // '#bd1245', // '#b93f64' // 
+            title: '#ff1b5f',
             main: '#54596c',
             neutral200: '#c5cee0',
             neutral400: '#7e8aa4',
@@ -68,10 +68,9 @@ const theme = {
         md: '1112px',
         sm: '672px'
     }
-}
+};
 
 function MyApp({ Component, pageProps }) {
-
     return (
         <>
         <SessionProvider session={pageProps.session}>
@@ -100,7 +99,7 @@ function MyApp({ Component, pageProps }) {
             </AuthWrapper>
         </SessionProvider>
         </>
-    )
+    );
 }
 
-export default MyApp
+export default MyApp;

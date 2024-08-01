@@ -10,6 +10,8 @@ const SectionHeader = styled.h2`
   margin-bottom: 10px;
   font-size: 1.75em;
   font-weight: bold;
+  background-color: #e0e0e0;
+  padding: 20px 5px 20px 5px;
 `;
 
 const SectionDescription = styled.p`

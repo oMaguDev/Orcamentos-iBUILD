@@ -15,6 +15,7 @@ import {
   SubSection,
   SubmitButton
 } from '../components/Inputs';
+import { FormContainer,PageContainer } from '../components/Completo/FormContainer';
 
 const initialState = {
   garagem: {
@@ -113,19 +114,6 @@ const initialState = {
     areaCalhas: "",
     tipoCobertura: "",
   },
-  hallEntrada: {
-    areaHallEntrada: "",
-  },
-  salaJantar: {
-    areaSalaJantar: "",
-  },
-  corredores: {
-    areaCorredores: "",
-  },
-  peDireitoDuplo: {
-    perimetroPeDireitoDuplo: "",
-    alturaPeDireitoDuplo: "",
-  },
   eletrica: {
     voltagemEletrica: "",
   },
@@ -140,6 +128,8 @@ export default function Home() {
   const [formData, setFormData] = useState(initialState);
 
   const handleChange = (e, section, field) => {
+    // console.log("handleChange called");
+    // console.log(e);
     const { name, value, type, checked } = e.target;
     const fieldValue = type === 'checkbox' ? checked : value;
     setFormData(prevFormData => ({
@@ -175,29 +165,33 @@ export default function Home() {
   };
 
   const handleSubmit = e => {
+    console.log("handleSubmit called");  // Log de debug
     e.preventDefault();
     const jsonData = JSON.stringify(formData);
+    console.log(jsonData);  // Log de debug
     router.push({
       pathname: '/resumo',
       query: { data: jsonData },
     });
   };
+  
 
   return (
-    <form onSubmit={handleSubmit}>
+    <PageContainer>
+    <FormContainer onSubmit={handleSubmit}>
       {/* Pavimentos */}
       <SectionWithHeader title="Pavimentos e Estrutura" description="Informações sobre a estrutura da obra">
         <SubSection title="Quantidade de Pavimentos">
           <Row>
             <Column>
               <Label htmlFor="quantidadePavimentos">Quantos pavimentos?</Label>
-              console.log(formData.quantidadePavimentos)
               <Select
                 id="quantidadePavimentos"
                 name="quantidadePavimentos"
                 value={formData.estrutura.quantidadePavimentos || ''}
                 onChange={(e) => handleChange(e, 'estrutura', 'quantidadePavimentos')}
                 >
+                <option value="">Selecione uma opção</option>
                 <option value="1">1 Pavimento - Térrea</option>
                 <option value="2">2 Pavimentos</option>
               </Select>
@@ -231,6 +225,7 @@ export default function Home() {
                 value={formData.estrutura.estiloEscada || ''}
                 onChange={(e) => handleChange(e, 'estrutura', 'estiloEscada')}
               >
+                <option value="">Selecione uma opção</option>
                 <option value="engastada">Escada engastada com parte inferior fechada</option>
                 <option value="vigasLaterais">Escada com vigas laterais</option>
                 <option value="vigaCentral">Escada com viga central</option>
@@ -251,6 +246,7 @@ export default function Home() {
                 value={formData.estrutura.estiloArquitetonico || ''}
                 onChange={(e) => handleChange(e, 'estrutura', 'estiloArquitetonico')}
               >
+                <option value="">Selecione uma opção</option>
                 <option value="minimalista">Minimalista</option>
                 <option value="contemporanea">Contemporânea</option>
                 <option value="neoClassica">Neo-Clássica</option>
@@ -316,6 +312,7 @@ export default function Home() {
                 value={formData.cobertura.tipoCobertura || ''}
                 onChange={(e) => handleChange(e, 'cobertura', 'tipoCobertura')}
               >
+                <option value="">Selecione uma opção</option>
                 <option value="termoacustica">Cobertura Telha Termoacústica</option>
                 <option value="fibrocimento">Cobertura Telha Fibrocimento</option>
                 <option value="ceramica">Cobertura Telha Cerâmica</option>
@@ -352,6 +349,7 @@ export default function Home() {
                 value={formData.paredesExternas.padraoParedesExternas || ''}
                 onChange={(e) => handleChange(e, 'paredesExternas', 'padraoParedesExternas')}
               >
+                <option value="">Selecione uma opção</option>
                 <option value="standard">Standard</option>
                 <option value="premium">Premium</option>
                 <option value="supreme">Supreme</option>
@@ -441,6 +439,7 @@ export default function Home() {
                   value={formData.garagem.marmoresGaragemAcabamento || ''}
                   onChange={(e) => handleChange(e, 'garagem', 'marmoresGaragemAcabamento')}
                   >
+                  <option value="">Selecione uma opção</option>
                   <option value="standard">Standard</option>
                   <option value="premium">Premium</option>
                   <option value="supreme">Supreme</option>
@@ -466,6 +465,7 @@ export default function Home() {
                   value={formData.garagem.soleirasGaragem || ''}
                   onChange={(e) => handleChange(e, 'garagem', 'soleirasGaragem')}
                   >
+                  <option value="">Selecione uma opção</option>
                   <option value="standard">Standard</option>
                   <option value="premium">Premium</option>
                   <option value="supreme">Supreme</option>
@@ -624,6 +624,7 @@ export default function Home() {
                 value={formData.sala.salaAcabamento || ''}
                 onChange={(e) => handleChange(e, 'sala', 'salaAcabamento')}
               >
+                <option value="">Selecione uma opção</option>
                 <option value="standard">Standard</option>
                 <option value="premium">Premium</option>
                 <option value="supreme">Supreme</option>
@@ -760,6 +761,7 @@ export default function Home() {
                 value={formData.cozinha.acabamentoCozinha || ''}
                 onChange={(e) => handleChange(e, 'cozinha', 'acabamentoCozinha')}
               >
+                <option value="">Selecione uma opção</option>
                 <option value="standard">Standard</option>
                 <option value="premium">Premium</option>
                 <option value="supreme">Supreme</option>
@@ -886,6 +888,7 @@ export default function Home() {
                   value={lavabo.acabamento || ''}
                   onChange={(e) => handleSubChange('lavabos', index, e, 'acabamento')}
                 >
+                  <option value="">Selecione uma opção</option>
                   <option value="standard">Standard</option>
                   <option value="premium">Premium</option>
                   <option value="supreme">Supreme</option>
@@ -1015,6 +1018,7 @@ export default function Home() {
                 value={formData.areaGourmet.acabamentoGourmet || ''}
                 onChange={(e) => handleChange(e, 'areaGourmet', 'acabamentoGourmet')}
               >
+                <option value="">Selecione uma opção</option>
                 <option value="standard">Standard</option>
                 <option value="premium">Premium</option>
                 <option value="supreme">Supreme</option>
@@ -1142,6 +1146,7 @@ export default function Home() {
                 value={formData.areaServico.acabamentoServico || ''}
                 onChange={(e) => handleChange(e, 'areaServico', 'acabamentoServico')}
               >
+                <option value="">Selecione uma opção</option>
                 <option value="standard">Standard</option>
                 <option value="premium">Premium</option>
                 <option value="supreme">Supreme</option>
@@ -1239,6 +1244,7 @@ export default function Home() {
                 value={formData.despensa.acabamentoDespensa || ''}
                 onChange={(e) => handleChange(e, 'despensa', 'acabamentoDespensa')}
               >
+                <option value="">Selecione uma opção</option>
                 <option value="standard">Standard</option>
                 <option value="premium">Premium</option>
                 <option value="supreme">Supreme</option>
@@ -1336,6 +1342,7 @@ export default function Home() {
                 value={formData.escritorio.acabamentoEscritorio || ''}
                 onChange={(e) => handleChange(e, 'escritorio', 'acabamentoEscritorio')}
               >
+                <option value="">Selecione uma opção</option>
                 <option value="standard">Standard</option>
                 <option value="premium">Premium</option>
                 <option value="supreme">Supreme</option>
@@ -1467,6 +1474,7 @@ export default function Home() {
                   value={quarto.acabamento || ''}
                   onChange={(e) => handleSubChange('quartos', index, e, 'acabamento')}
                 >
+                  <option value="">Selecione uma opção</option>
                   <option value="standard">Standard</option>
                   <option value="premium">Premium</option>
                   <option value="supreme">Supreme</option>
@@ -1581,6 +1589,7 @@ export default function Home() {
                   value={banheiro.acabamento || ''}
                   onChange={(e) => handleSubChange('banheiros', index, e, 'acabamento')}
                 >
+                  <option value="">Selecione uma opção</option>
                   <option value="standard">Standard</option>
                   <option value="premium">Premium</option>
                   <option value="supreme">Supreme</option>
@@ -1619,6 +1628,7 @@ export default function Home() {
                 value={formData.eletrica.voltagemEletrica || ''}
                 onChange={(e) => handleChange(e, 'eletrica', 'voltagemEletrica')}
               >
+                <option value="">Selecione uma opção</option>
                 <option value="110">110</option>
                 <option value="220">220</option>
                 <option value="sem_acabamento">Sem acabamento</option>
@@ -1642,6 +1652,7 @@ export default function Home() {
                 value={formData.hidraulica.tipoHidraulica || ''}
                 onChange={(e) => handleChange(e, 'hidraulica', 'tipoHidraulica')}
               >
+                <option value="">Selecione uma opção</option>
                 <option value="fria">Rede de água fria, chuveiro elétrico, sem aquecimento nas torneiras e chuveiros</option>
                 <option value="fria_quente">Rede de água fria e quente preparada para aquecimento nas torneiras e chuveiros</option>
                 <option value="sem_acabamento">Sem acabamento</option>
@@ -1657,6 +1668,7 @@ export default function Home() {
       </SectionWithHeader>
 
       <SubmitButton type="submit">Enviar</SubmitButton>
-    </form>
+    </FormContainer>
+    </PageContainer>
   );
 }

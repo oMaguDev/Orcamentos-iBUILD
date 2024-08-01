@@ -45,10 +45,6 @@ const Resumo = () => {
       {renderFormData(formData.estrutura, "Estrutura")}
       {renderFormData(formData.paredesExternas, "Paredes Externas")}
       {renderFormData(formData.cobertura, "Cobertura")}
-      {renderFormData(formData.hallEntrada, "Hall de Entrada")}
-      {renderFormData(formData.salaJantar, "Sala de Jantar")}
-      {renderFormData(formData.corredores, "Corredores")}
-      {renderFormData(formData.peDireitoDuplo, "Pé Direito Duplo")}
       {renderFormData(formData.eletrica, "Elétrica")}
       {renderFormData(formData.hidraulica, "Hidráulica")}
 
