@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import {
   Section,
@@ -125,24 +125,44 @@ const initialState = {
 
 export default function Home() {
   const router = useRouter();
-  const [formData, setFormData] = useState(initialState);
+  const [formData, setFormData] = useState(() => {
+    // Carrega o estado inicial do localStorage, se existir
+    if (typeof window !== "undefined") {
+      const savedData = localStorage.getItem('formData');
+      return savedData ? JSON.parse(savedData) : initialState;
+    }
+    return initialState;
+  });
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const savedData = localStorage.getItem('formData');
+      if (savedData) {
+        setFormData(JSON.parse(savedData));
+      }
+      setIsClient(true);
+    }
+  }, []);
 
   const handleChange = (e, section, field) => {
-    // console.log("handleChange called");
-    // console.log(e);
-    const { name, value, type, checked } = e.target;
+    const { type, checked, value } = e.target;
     const fieldValue = type === 'checkbox' ? checked : value;
-    setFormData(prevFormData => ({
-      ...prevFormData,
-      [section]: {
-        ...prevFormData[section],
-        [field]: fieldValue,
-      },
-    })
-  )};
-
+    setFormData(prevFormData => {
+      const newFormData = {
+        ...prevFormData,
+        [section]: {
+          ...prevFormData[section],
+          [field]: fieldValue,
+        },
+      };
+      localStorage.setItem('formData', JSON.stringify(newFormData)); // Salva no localStorage
+      return newFormData;
+    });
+  };
+  
   const handleSubChange = (section, index, e, field) => {
-    const { name, value, type, checked } = e.target;
+    const { type, checked, value } = e.target;
     const fieldValue = type === 'checkbox' ? checked : value;
     setFormData(prevFormData => {
       const newArray = [...prevFormData[section]];
@@ -150,37 +170,66 @@ export default function Home() {
         ...newArray[index],
         [field]: fieldValue,
       };
-      return {
+      const newFormData = {
         ...prevFormData,
         [section]: newArray,
       };
+      localStorage.setItem('formData', JSON.stringify(newFormData)); // Salva no localStorage
+      return newFormData;
     });
   };
 
   const addSubItem = (section) => {
-    setFormData(prevFormData => ({
-      ...prevFormData,
-      [section]: [...prevFormData[section], {}],
-    }));
+    setFormData(prevFormData => {
+      const newArray = [...prevFormData[section], {}];
+      const newFormData = {
+        ...prevFormData,
+        [section]: newArray,
+      };
+      localStorage.setItem('formData', JSON.stringify(newFormData)); // Salva no localStorage
+      return newFormData;
+    });
   };
 
   const handleSubmit = e => {
-    console.log("handleSubmit called");  // Log de debug
     e.preventDefault();
     const jsonData = JSON.stringify(formData);
-    console.log(jsonData);  // Log de debug
+    localStorage.setItem('formData', jsonData); // Salva no localStorage
     router.push({
       pathname: '/resumo',
-      query: { data: jsonData },
     });
   };
   
 
   return (
+    isClient && (
     <PageContainer>
     <FormContainer onSubmit={handleSubmit}>
       {/* Pavimentos */}
       <SectionWithHeader title="Pavimentos e Estrutura" description="Informações sobre a estrutura da obra">
+      <SubSection title="Estilo Arquitetônico">
+          <Row>
+            <Column>
+              <Label htmlFor="estiloArquitetonico">Qual o estilo da sua casa? (Precisa no completo?)</Label>
+              <Select
+                id="estiloArquitetonico"
+                name="estiloArquitetonico"
+                value={formData.estrutura.estiloArquitetonico || ''}
+                onChange={(e) => handleChange(e, 'estrutura', 'estiloArquitetonico')}
+              >
+                <option value="">Selecione uma opção</option>
+                <option value="minimalista">Minimalista</option>
+                <option value="contemporanea">Contemporânea</option>
+                <option value="neoClassica">Neo-Clássica</option>
+                <option value="mediterranea">Mediterrânea</option>
+                <option value="americano">Americano</option>
+                <option value="europeia">Europeia</option>
+                <option value="brasileira">Brasileira</option>
+                <option value="classica">Clássica</option>
+              </Select>
+            </Column>
+          </Row>
+        </SubSection>
         <SubSection title="Quantidade de Pavimentos">
           <Row>
             <Column>
@@ -215,50 +264,27 @@ export default function Home() {
           </Row>
         </SubSection>
 
-        <SubSection title="Estilo de Escada">
-          <Row>
-            <Column>
-              <Label htmlFor="estiloEscada">Qual o padrão de escada? (Só tem escada se tem mais de 1 pavimento?)</Label>
-              <Select
-                id="estiloEscada"
-                name="estiloEscada"
-                value={formData.estrutura.estiloEscada || ''}
-                onChange={(e) => handleChange(e, 'estrutura', 'estiloEscada')}
-              >
-                <option value="">Selecione uma opção</option>
-                <option value="engastada">Escada engastada com parte inferior fechada</option>
-                <option value="vigasLaterais">Escada com vigas laterais</option>
-                <option value="vigaCentral">Escada com viga central</option>
-                <option value="suspensa">Escada suspensa</option>
-                <option value="flutuante">Escada flutuante</option>
-              </Select>
-            </Column>
-          </Row>
-        </SubSection>
-
-        <SubSection title="Estilo Arquitetônico">
-          <Row>
-            <Column>
-              <Label htmlFor="estiloArquitetonico">Qual o estilo da sua casa? (Precisa no completo?)</Label>
-              <Select
-                id="estiloArquitetonico"
-                name="estiloArquitetonico"
-                value={formData.estrutura.estiloArquitetonico || ''}
-                onChange={(e) => handleChange(e, 'estrutura', 'estiloArquitetonico')}
-              >
-                <option value="">Selecione uma opção</option>
-                <option value="minimalista">Minimalista</option>
-                <option value="contemporanea">Contemporânea</option>
-                <option value="neoClassica">Neo-Clássica</option>
-                <option value="mediterranea">Mediterrânea</option>
-                <option value="americano">Americano</option>
-                <option value="europeia">Europeia</option>
-                <option value="brasileira">Brasileira</option>
-                <option value="classica">Clássica</option>
-              </Select>
-            </Column>
-          </Row>
-        </SubSection>
+        {formData.estrutura.quantidadePavimentos === '2' && (
+            <SubSection title="Estilo de Escada">
+              <Row>
+                <Column>
+                  <Label htmlFor="estiloEscada">Qual o padrão de escada?</Label>
+                  <Select
+                    id="estiloEscada"
+                    name="estiloEscada"
+                    value={formData.estrutura.estiloEscada || ''}
+                    onChange={(e) => handleChange(e, 'estrutura', 'estiloEscada')}
+                  >
+                    <option value="engastada">Escada engastada com parte inferior fechada</option>
+                    <option value="vigasLaterais">Escada com vigas laterais</option>
+                    <option value="vigaCentral">Escada com viga central</option>
+                    <option value="suspensa">Escada suspensa</option>
+                    <option value="flutuante">Escada flutuante</option>
+                  </Select>
+                </Column>
+              </Row>
+            </SubSection>
+          )}
       </SectionWithHeader>  
       {/* Cobertura */}
       <SectionWithHeader title="Cobertura" description="Informações sobre a cobertura">
@@ -1503,7 +1529,7 @@ export default function Home() {
       <button type="button" onClick={() => addSubItem('quartos')}>Adicionar Quarto</button> 
 
       {formData.banheiros.map((banheiro, index) => (
-        <SectionWithHeader key={index} title={`banheiro ${index + 1}`} description={`Informações sobre o banheiro ${index + 1}`}>
+        <SectionWithHeader key={index} title={`Banheiro ${index + 1}`} description={`Informações sobre o banheiro ${index + 1}`}>
           <SubSection title="Dimensões">
             <Row>
               <Column>
@@ -1670,5 +1696,5 @@ export default function Home() {
       <SubmitButton type="submit">Enviar</SubmitButton>
     </FormContainer>
     </PageContainer>
-  );
+  ));
 }

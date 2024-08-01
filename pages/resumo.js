@@ -1,10 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { calculateRoomValues } from "../utils/calculations";
 
 const Resumo = () => {
   const router = useRouter();
-  const formData = JSON.parse(router.query.data || "{}");
+  const [formData, setFormData] = useState(null);
+  const [franquia, setFranquia] = useState(null);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const savedData = localStorage.getItem('formData');
+      setFormData(savedData ? JSON.parse(savedData) : null);
+      const savedFranquia = localStorage.getItem('franquia');
+      setFranquia(savedFranquia ? JSON.parse(savedFranquia) : null);
+    }
+  }, []);
+
+  const clearData = () => {
+    localStorage.removeItem('formData');
+    router.push('/completo');
+  };
 
   if (!formData) {
     return <div>Loading...</div>;
@@ -15,7 +30,7 @@ const Resumo = () => {
     salaValue,
     quartoValue,
     totalValue,
-  } = calculateRoomValues(formData);
+  } = calculateRoomValues(formData, franquia);
 
   const renderFormData = (data, sectionName) => (
     <div>
@@ -53,6 +68,11 @@ const Resumo = () => {
       <p><strong>Sala:</strong> {salaValue}</p>
       <p><strong>Quarto:</strong> {quartoValue}</p>
       <p><strong>Valor Total:</strong> {totalValue}</p>
+
+      <h2>Franquia</h2>
+      <p>{franquia}</p>
+
+      <button onClick={clearData}>Limpar Dados e Voltar</button>
     </div>
   );
 };

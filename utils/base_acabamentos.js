@@ -3,7 +3,7 @@ console.log('base_acabamento: ')
 
 export async function loadBaseAcabamentos(franquia) {
     const dadosBaseAcabamentos = await buscarValoresSupabase("obra_branca","Franquia_id", franquia);
-    // console.log('dadosBaseAcabamentos: ', dadosBaseAcabamentos)
+    console.log('dadosBaseAcabamentos: ', dadosBaseAcabamentos)
     return {
         garagem: {
             standard: {

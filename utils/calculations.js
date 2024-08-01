@@ -1,7 +1,12 @@
-export const calculateRoomValues = (formData) => {
-    const garagemValue = calculateGaragemValue(formData);
-    const salaValue = calculateSalaValue(formData);
-    const quartoValue = calculateQuartoValue(formData);
+import { loadBaseAcabamentos } from "./base_acabamentos.js"
+import { loadbaseObraBranca } from "./base_obra_branca"
+
+export const calculateRoomValues = (formData, franquia) => {
+    const baseAcabamentos = loadBaseAcabamentos(franquia);
+    const baseObraBranca = loadbaseObraBranca(franquia);
+    const garagemValue = calculateGaragemValue(formData,baseObraBranca,baseAcabamentos);
+    const salaValue = calculateSalaValue(formData,baseObraBranca,baseAcabamentos);
+    const quartoValue = calculateQuartoValue(formData,baseObraBranca,baseAcabamentos);
   
     const totalValue = garagemValue + salaValue + quartoValue;
   
@@ -13,7 +18,7 @@ export const calculateRoomValues = (formData) => {
     };
   };
   
-  const calculateGaragemValue = (formData) => {
+  const calculateGaragemValue = (formData,baseObraBranca,baseAcabamentos) => {
     let value = formData.garagemSize * getAcabamentoMultiplier(formData.garagemAcabamento);
     if (formData.garagemConforto) {
       value *= 1.1; // 10% extra for comfort
@@ -21,7 +26,7 @@ export const calculateRoomValues = (formData) => {
     return value;
   };
   
-  const calculateSalaValue = (formData) => {
+  const calculateSalaValue = (formData,baseObraBranca,baseAcabamentos) => {
     let value = formData.salaSize * getAcabamentoMultiplier(formData.salaAcabamento);
     if (formData.salaConforto) {
       value *= 1.1; // 10% extra for comfort
@@ -29,7 +34,7 @@ export const calculateRoomValues = (formData) => {
     return value;
   };
   
-  const calculateQuartoValue = (formData) => {
+  const calculateQuartoValue = (formData,baseObraBranca,baseAcabamentos) => {
     let value = formData.quartoSize * getAcabamentoMultiplier(formData.quartoAcabamento);
     if (formData.quartoConforto) {
       value *= 1.1; // 10% extra for comfort
