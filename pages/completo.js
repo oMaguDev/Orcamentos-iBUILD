@@ -147,7 +147,13 @@ export default function Home() {
 
   const handleChange = (e, section, field) => {
     const { type, checked, value } = e.target;
-    const fieldValue = type === 'checkbox' ? checked : value;
+    let fieldValue = type === 'checkbox' ? checked : value;
+  
+    // Verifica se o campo é numérico e converte para número
+    if (type === 'number') {
+      fieldValue = parseFloat(fieldValue);
+    }
+  
     setFormData(prevFormData => {
       const newFormData = {
         ...prevFormData,
@@ -163,7 +169,13 @@ export default function Home() {
   
   const handleSubChange = (section, index, e, field) => {
     const { type, checked, value } = e.target;
-    const fieldValue = type === 'checkbox' ? checked : value;
+    let fieldValue = type === 'checkbox' ? checked : value;
+  
+    // Verifica se o campo é numérico e converte para número
+    if (type === 'number') {
+      fieldValue = parseFloat(fieldValue);
+    }
+  
     setFormData(prevFormData => {
       const newArray = [...prevFormData[section]];
       newArray[index] = {
