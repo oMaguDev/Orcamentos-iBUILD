@@ -13,7 +13,11 @@ import {
   Row,
   SectionWithHeader,
   SubSection,
-  SubmitButton
+  SubmitButton,
+  ImageToggleContainer,
+  ImageToggle,
+  Image,
+  ImageLabel,
 } from '../components/Inputs';
 import { FormContainer,PageContainer } from '../components/Completo/FormContainer';
 
@@ -121,7 +125,23 @@ const initialState = {
     tipoHidraulica: "",
   },
 };
+const estiloArquitetonicoOptions = [
+  { value: 'minimalista', label: 'Minimalista', img: '/images/EstilosCasa/minimalista.jpg' },
+  { value: 'contemporanea', label: 'Contemporânea', img: '/images/EstilosCasa/contemporanea.png' },
+  { value: 'neoClassica', label: 'Neo-Clássica', img: '/images/EstilosCasa/neoClassica.jpg' },
+  { value: 'mediterranea', label: 'Mediterrânea', img: '/images/EstilosCasa/mediterranea.jpg' },
+  { value: 'americana', label: 'Americana', img: '/images/EstilosCasa/americana.jpg' },
+  { value: 'europeia', label: 'Europeia', img: '/images/EstilosCasa/europeia.jpg' },
+  { value: 'brasileira', label: 'Brasileira', img: '/images/EstilosCasa/brasileira.png' },
+  { value: 'classica', label: 'Clássica', img: '/images/EstilosCasa/classica.jpg' },
+];
 
+const escadaOptions = [
+  { value: 'engastada', label: 'Escada engastada', img: '/images/escadas/1.jpg' },
+  { value: 'vigasLaterais', label: 'Escada com vigas laterais', img: '/images/escadas/2.jpg' },
+  { value: 'vigaCentral', label: 'Escada com viga central', img: '/images/escadas/3.jpg' },
+  { value: 'suspensa', label: 'Escada suspensa', img: '/images/escadas/4.jpg' },
+];
 
 export default function Home() {
   const router = useRouter();
@@ -203,6 +223,20 @@ export default function Home() {
     });
   };
 
+  const handleImageToggle = (section, field, value) => {
+    setFormData(prevFormData => {
+      const newFormData = {
+        ...prevFormData,
+        [section]: {
+          ...prevFormData[section],
+          [field]: value,
+        },
+      };
+      localStorage.setItem('formData', JSON.stringify(newFormData));
+      return newFormData;
+    });
+  };
+
   const handleSubmit = e => {
     e.preventDefault();
     const jsonData = JSON.stringify(formData);
@@ -217,31 +251,24 @@ export default function Home() {
     isClient && (
     <PageContainer>
     <FormContainer onSubmit={handleSubmit}>
+    <SectionWithHeader title="Estrutura" description="Informações sobre a estrutura da obra">
+          <SubSection title="Estilo Arquitetônico">
+            <ImageToggleContainer>
+              {estiloArquitetonicoOptions.map(option => (
+                <ImageToggle
+                  key={option.value}
+                  selected={formData.estrutura.estiloArquitetonico === option.value}
+                  onClick={() => handleImageToggle('estrutura', 'estiloArquitetonico', option.value)}
+                >
+                  <Image src={option.img} alt={option.label} />
+                  <ImageLabel>{option.label}</ImageLabel>
+                </ImageToggle>
+              ))}
+            </ImageToggleContainer>
+          </SubSection>
+        </SectionWithHeader>
       {/* Pavimentos */}
-      <SectionWithHeader title="Pavimentos e Estrutura" description="Informações sobre a estrutura da obra">
-      <SubSection title="Estilo Arquitetônico">
-          <Row>
-            <Column>
-              <Label htmlFor="estiloArquitetonico">Qual o estilo da sua casa? (Precisa no completo?)</Label>
-              <Select
-                id="estiloArquitetonico"
-                name="estiloArquitetonico"
-                value={formData.estrutura.estiloArquitetonico || ''}
-                onChange={(e) => handleChange(e, 'estrutura', 'estiloArquitetonico')}
-              >
-                <option value="">Selecione uma opção</option>
-                <option value="minimalista">Minimalista</option>
-                <option value="contemporanea">Contemporânea</option>
-                <option value="neoClassica">Neo-Clássica</option>
-                <option value="mediterranea">Mediterrânea</option>
-                <option value="americano">Americano</option>
-                <option value="europeia">Europeia</option>
-                <option value="brasileira">Brasileira</option>
-                <option value="classica">Clássica</option>
-              </Select>
-            </Column>
-          </Row>
-        </SubSection>
+      <SectionWithHeader title="Pavimentos e Estrutura" description="Informações sobre os pavimentos">
         <SubSection title="Quantidade de Pavimentos">
           <Row>
             <Column>
@@ -278,23 +305,16 @@ export default function Home() {
 
         {formData.estrutura.quantidadePavimentos === '2' && (
             <SubSection title="Estilo de Escada">
-              <Row>
-                <Column>
-                  <Label htmlFor="estiloEscada">Qual o padrão de escada?</Label>
-                  <Select
-                    id="estiloEscada"
-                    name="estiloEscada"
-                    value={formData.estrutura.estiloEscada || ''}
-                    onChange={(e) => handleChange(e, 'estrutura', 'estiloEscada')}
-                  >
-                    <option value="engastada">Escada engastada com parte inferior fechada</option>
-                    <option value="vigasLaterais">Escada com vigas laterais</option>
-                    <option value="vigaCentral">Escada com viga central</option>
-                    <option value="suspensa">Escada suspensa</option>
-                    <option value="flutuante">Escada flutuante</option>
-                  </Select>
-                </Column>
-              </Row>
+              <ImageToggleContainer>
+                {escadaOptions.map(option => (
+                  <ImageToggle
+                  key={option.value}
+                  selected={formData.estrutura.estiloEscada === option.value}
+                  onClick={() => handleImageToggle('estrutura', 'estiloEscada', option.value)}>
+                    <Image src={option.img} alt={option.label} />
+                    <ImageLabel>{option.label}</ImageLabel>
+                  </ImageToggle>))}
+              </ImageToggleContainer>
             </SubSection>
           )}
       </SectionWithHeader>  

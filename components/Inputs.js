@@ -124,6 +124,43 @@ const Row = styled.div`
   gap: 20px;
 `;
 
+const ImageToggleContainer = styled.div`
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+`;
+
+const ImageToggle = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid ${({ selected }) => (selected ? '#7dd23a' : 'transparent')};
+  border-radius: 8px;
+  padding: 10px;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+  background-color: ${({ selected }) => (selected ? 'rgba(125, 210, 58, 0.2)' : 'white')};
+
+  &:hover {
+    background-color: rgba(125, 210, 58, 0.1);
+    transform: scale(1.05);
+  }
+`;
+
+const Image = styled.img`
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 4px;
+`;
+
+const ImageLabel = styled.span`
+  margin-top: 5px;
+  font-size: 14px;
+  text-align: center;
+`;
+
 const SectionWithHeader = ({ title, description, children }) => (
   <Section>
     <SectionHeader>{title}</SectionHeader>
@@ -156,4 +193,8 @@ export {
   SwitchSlider,
   Column,
   Row,
+  ImageToggleContainer,
+  ImageToggle,
+  Image,
+  ImageLabel,
 };
