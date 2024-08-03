@@ -3,7 +3,8 @@ import { useRouter } from 'next/router';
 import {
   estiloArquitetonicoOptions,
   escadaOptions,
-  pavimentosOptions 
+  pavimentosOptions,
+  telhasOptions
 } from '/utils/listContainersForImages.js';
 import {
   Section,
@@ -123,7 +124,7 @@ const initialState = {
     areaCobertura: "",
     areaLajes: "",
     areaCalhas: "",
-    tipoCobertura: "",
+    tipoCobertura: [],
   },
   eletrica: {
     voltagemEletrica: "",
@@ -378,23 +379,23 @@ export default function Home() {
         </SubSection>
 
         <SubSection title="Tipos de Cobertura">
-          <Row>
-            <Column>
-              <Label htmlFor="tipoCobertura">Tipo de Cobertura</Label>
-              <Select
-                id="tipoCobertura"
-                name="tipoCobertura"
-                value={formData.cobertura.tipoCobertura || ''}
-                onChange={(e) => handleChange(e, 'cobertura', 'tipoCobertura')}
-              >
-                <option value="">Selecione uma opção</option>
-                <option value="termoacustica">Cobertura Telha Termoacústica</option>
-                <option value="fibrocimento">Cobertura Telha Fibrocimento</option>
-                <option value="ceramica">Cobertura Telha Cerâmica</option>
-                <option value="translucida">Cobertura Telha Translúcida</option>
-              </Select>
-            </Column>
-          </Row>
+        <ImageToggleContainer>
+              {telhasOptions.map(option => (
+                <ImageToggle
+                  key={option.value}
+                  selected={Array.isArray(formData.cobertura.tipoCobertura) && formData.cobertura.tipoCobertura.some(item => item.value === option.value)}
+                  onClick={() => handleImageToggle('cobertura', 'tipoCobertura', option.value, true)}
+                >
+                  <ImageLabel>{option.label}</ImageLabel>
+                  <Image src={option.img} alt={option.label} />
+                  <ImageInput
+                        value={Array.isArray(formData.cobertura.tipoCobertura) ? (formData.cobertura.tipoCobertura.find(item => item.value === option.value)?.input || '') : ''}
+                        onClick={(e) => e.stopPropagation()}
+                        onChange={(e) => handleImageInputChange('cobertura', 'tipoCobertura', option.value, e.target.value)}
+                      />
+                </ImageToggle>
+              ))}
+            </ImageToggleContainer>
         </SubSection>
       </SectionWithHeader>
       {/* Paredes Externas */}

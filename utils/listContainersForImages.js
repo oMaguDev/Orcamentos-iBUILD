@@ -21,3 +21,9 @@ export const pavimentosOptions = [
     { value: '2', label: '2 Pavimentos', img: '/images/Pavimentos/2Pavimentos.png'},
     { value: '3', label: '3 Pavimentos', img: '/images/Pavimentos/3Pavimentos.png'},
   ];
+
+export const telhasOptions = [
+    { value: 'termoacustica', label: 'Telha Termoacústica', img: '/images/Telhas/termoacustica.png'},
+    { value: 'ceramica', label: 'Telha de Cerâmica', img: '/images/Telhas/ceramica.png'},
+    { value: 'laje', label: 'Laje Impermeabilizada - Externas', img: '/images/Telhas/laje.png'},
+  ];
