@@ -161,7 +161,7 @@ const ImageLabel = styled.span`
   text-align: center;
 `;
 
-const SectionWithHeader = ({ title, description, children }) => (
+const SectionWithHeader = ({ title, description="", children }) => (
   <Section>
     <SectionHeader>{title}</SectionHeader>
     <SectionDescription>{description}</SectionDescription>
@@ -169,9 +169,10 @@ const SectionWithHeader = ({ title, description, children }) => (
   </Section>
 );
 
-const SubSection = ({ title, children }) => (
+const SubSection = ({ title,description="", children }) => (
   <div>
     <SubSectionHeader>{title}</SubSectionHeader>
+    <SectionDescription>{description}</SectionDescription>
     {children}
   </div>
 );

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import {estiloArquitetonicoOptions,escadaOptions } from '/utils/listContainersForImages.js'
 import {
   Section,
   Label,
@@ -125,23 +126,7 @@ const initialState = {
     tipoHidraulica: "",
   },
 };
-const estiloArquitetonicoOptions = [
-  { value: 'minimalista', label: 'Minimalista', img: '/images/EstilosCasa/minimalista.jpg' },
-  { value: 'contemporanea', label: 'Contemporânea', img: '/images/EstilosCasa/contemporanea.png' },
-  { value: 'neoClassica', label: 'Neo-Clássica', img: '/images/EstilosCasa/neoClassica.jpg' },
-  { value: 'mediterranea', label: 'Mediterrânea', img: '/images/EstilosCasa/mediterranea.jpg' },
-  { value: 'americana', label: 'Americana', img: '/images/EstilosCasa/americana.jpg' },
-  { value: 'europeia', label: 'Europeia', img: '/images/EstilosCasa/europeia.jpg' },
-  { value: 'brasileira', label: 'Brasileira', img: '/images/EstilosCasa/brasileira.png' },
-  { value: 'classica', label: 'Clássica', img: '/images/EstilosCasa/classica.jpg' },
-];
 
-const escadaOptions = [
-  { value: 'engastada', label: 'Escada engastada', img: '/images/escadas/1.jpg' },
-  { value: 'vigasLaterais', label: 'Escada com vigas laterais', img: '/images/escadas/2.jpg' },
-  { value: 'vigaCentral', label: 'Escada com viga central', img: '/images/escadas/3.jpg' },
-  { value: 'suspensa', label: 'Escada suspensa', img: '/images/escadas/4.jpg' },
-];
 
 export default function Home() {
   const router = useRouter();
@@ -251,8 +236,8 @@ export default function Home() {
     isClient && (
     <PageContainer>
     <FormContainer onSubmit={handleSubmit}>
-    <SectionWithHeader title="Estrutura" description="Informações sobre a estrutura da obra">
-          <SubSection title="Estilo Arquitetônico">
+    <SectionWithHeader title="ESTILO ARQUITETÔNICO">
+          <SubSection title="QUAL O ESTILO SUA CASA?" description="Tudo bem se não for exatamente igual, a ideia aqui é nos ajudar a entender qual o estilo do seu projeto">
             <ImageToggleContainer>
               {estiloArquitetonicoOptions.map(option => (
                 <ImageToggle
