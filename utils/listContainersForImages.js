@@ -15,3 +15,9 @@ export const escadaOptions = [
     { value: 'vigaCentral', label: 'Escada com viga central', img: '/images/escadas/3.jpg' },
     { value: 'suspensa', label: 'Escada suspensa', img: '/images/escadas/4.jpg' },
   ];
+
+export const pavimentosOptions = [
+    { value: '1', label: '1 Pavimento', img: '/images/Pavimentos/1Pavimento.png'},
+    { value: '2', label: '2 Pavimentos', img: '/images/Pavimentos/2Pavimentos.png'},
+    { value: '3', label: '3 Pavimentos', img: '/images/Pavimentos/3Pavimentos.png'},
+  ];

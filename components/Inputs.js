@@ -160,6 +160,9 @@ const ImageLabel = styled.span`
   font-size: 14px;
   text-align: center;
 `;
+const ImageInput = styled.input`
+  text-align: center;
+`;
 
 const SectionWithHeader = ({ title, description="", children }) => (
   <Section>
@@ -198,4 +201,5 @@ export {
   ImageToggle,
   Image,
   ImageLabel,
+  ImageInput
 };

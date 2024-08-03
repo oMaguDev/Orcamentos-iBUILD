@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import {estiloArquitetonicoOptions,escadaOptions } from '/utils/listContainersForImages.js'
+import {
+  estiloArquitetonicoOptions,
+  escadaOptions,
+  pavimentosOptions 
+} from '/utils/listContainersForImages.js';
 import {
   Section,
   Label,
@@ -19,8 +23,9 @@ import {
   ImageToggle,
   Image,
   ImageLabel,
+  ImageInput
 } from '../components/Inputs';
-import { FormContainer,PageContainer } from '../components/Completo/FormContainer';
+import { FormContainer, PageContainer } from '../components/Completo/FormContainer';
 
 const initialState = {
   garagem: {
@@ -104,10 +109,11 @@ const initialState = {
     confortoEscritorio: false,
   },
   estrutura: {
-    quantidadePavimentos: "",
-    grandesVaos: false,
-    estiloEscada: "",
     estiloArquitetonico: "",
+    grandesVaos: false,
+    estiloEscada: [],
+    quantidadePavimentos: "",
+
   },
   paredesExternas: {
     metragemParedesExternas: "",
@@ -126,7 +132,6 @@ const initialState = {
     tipoHidraulica: "",
   },
 };
-
 
 export default function Home() {
   const router = useRouter();
@@ -171,7 +176,7 @@ export default function Home() {
       return newFormData;
     });
   };
-  
+
   const handleSubChange = (section, index, e, field) => {
     const { type, checked, value } = e.target;
     let fieldValue = type === 'checkbox' ? checked : value;
@@ -208,101 +213,128 @@ export default function Home() {
     });
   };
 
-  const handleImageToggle = (section, field, value) => {
+  const handleImageToggle = (section, field, value, allowMultiple) => {
     setFormData(prevFormData => {
+      const sectionData = prevFormData[section] || {};
+      const fieldData = sectionData[field] || (allowMultiple ? [] : '');
+  
+      let newFieldData;
+      if (allowMultiple) {
+        // Para múltiplas seleções
+        if (Array.isArray(fieldData) && fieldData.some(item => item.value === value)) {
+          newFieldData = fieldData.filter(item => item.value !== value);
+        } else {
+          newFieldData = [...fieldData, { value, input: '' }];
+        }
+      } else {
+        // Para seleção única
+        newFieldData = { value, input: '' };
+      }
+  
       const newFormData = {
         ...prevFormData,
         [section]: {
-          ...prevFormData[section],
-          [field]: value,
+          ...sectionData,
+          [field]: newFieldData,
         },
       };
       localStorage.setItem('formData', JSON.stringify(newFormData));
       return newFormData;
     });
   };
-
+  
+  const handleImageInputChange = (section, field, value, inputValue) => {
+    setFormData(prevFormData => {
+      const sectionData = prevFormData[section] || {};
+      const fieldData = sectionData[field] || [];
+  
+      let newFieldData;
+      if (Array.isArray(fieldData)) {
+        newFieldData = fieldData.map(item =>
+          item.value === value ? { ...item, input: inputValue } : item
+        );
+      } else {
+        newFieldData = { ...fieldData, input: inputValue };
+      }
+  
+      const newFormData = {
+        ...prevFormData,
+        [section]: {
+          ...sectionData,
+          [field]: newFieldData,
+        },
+      };
+      localStorage.setItem('formData', JSON.stringify(newFormData));
+      return newFormData;
+    });
+  };
+  
+  
   const handleSubmit = e => {
     e.preventDefault();
     const jsonData = JSON.stringify(formData);
     localStorage.setItem('formData', jsonData); // Salva no localStorage
-    router.push({
-      pathname: '/resumo',
-    });
+    router.push('/resumo');
   };
-  
-
   return (
     isClient && (
-    <PageContainer>
-    <FormContainer onSubmit={handleSubmit}>
-    <SectionWithHeader title="ESTILO ARQUITETÔNICO">
-          <SubSection title="QUAL O ESTILO SUA CASA?" description="Tudo bem se não for exatamente igual, a ideia aqui é nos ajudar a entender qual o estilo do seu projeto">
+      <PageContainer>
+        <FormContainer onSubmit={handleSubmit}>
+          <SectionWithHeader title="ESTILO ARQUITETÔNICO">
+            <SubSection title="QUAL O ESTILO SUA CASA?" description="Tudo bem se não for exatamente igual, a ideia aqui é nos ajudar a entender qual o estilo do seu projeto">
             <ImageToggleContainer>
               {estiloArquitetonicoOptions.map(option => (
                 <ImageToggle
                   key={option.value}
-                  selected={formData.estrutura.estiloArquitetonico === option.value}
-                  onClick={() => handleImageToggle('estrutura', 'estiloArquitetonico', option.value)}
+                  selected={formData.estrutura.estiloArquitetonico && formData.estrutura.estiloArquitetonico.value === option.value}
+                  onClick={() => handleImageToggle('estrutura', 'estiloArquitetonico', option.value, false)}
+                >
+                  <ImageLabel>{option.label}</ImageLabel>
+                  <Image src={option.img} alt={option.label} />
+                </ImageToggle>
+              ))}
+            </ImageToggleContainer>
+            </SubSection>
+          </SectionWithHeader>
+          
+          <SectionWithHeader title="QUANTIDADE DE PAVIMENTOS E CÁLCULO DA ESTRUTURA DE STEEL FRAME">
+            <SubSection title="QUANTOS PAVIMENTOS?">
+            <ImageToggleContainer>
+              {pavimentosOptions.map(option => (
+                <ImageToggle
+                  key={option.value}
+                  selected={formData.estrutura.quantidadePavimentos && formData.estrutura.quantidadePavimentos.value === option.value}
+                  onClick={() => handleImageToggle('estrutura', 'quantidadePavimentos', option.value)}
                 >
                   <Image src={option.img} alt={option.label} />
                   <ImageLabel>{option.label}</ImageLabel>
                 </ImageToggle>
               ))}
             </ImageToggleContainer>
-          </SubSection>
-        </SectionWithHeader>
-      {/* Pavimentos */}
-      <SectionWithHeader title="Pavimentos e Estrutura" description="Informações sobre os pavimentos">
-        <SubSection title="Quantidade de Pavimentos">
-          <Row>
-            <Column>
-              <Label htmlFor="quantidadePavimentos">Quantos pavimentos?</Label>
-              <Select
-                id="quantidadePavimentos"
-                name="quantidadePavimentos"
-                value={formData.estrutura.quantidadePavimentos || ''}
-                onChange={(e) => handleChange(e, 'estrutura', 'quantidadePavimentos')}
-                >
-                <option value="">Selecione uma opção</option>
-                <option value="1">1 Pavimento - Térrea</option>
-                <option value="2">2 Pavimentos</option>
-              </Select>
-            </Column>
-            </Row>
-            <Row>
-            <Column>
-              <SwitchContainer>
-                <SwitchLabel>
-                  Obra possui grandes vãos?
-                  <SwitchInput
-                    type="checkbox"
-                    name="grandesVaos"
-                    checked={formData.estrutura.grandesVaos || false}
-                    onChange={(e) => handleChange(e, 'estrutura', 'grandesVaos')}
-                  />
-                  <SwitchSlider checked={formData.estrutura.grandesVaos || false} />
-                </SwitchLabel>
-              </SwitchContainer>
-            </Column>
-          </Row>
-        </SubSection>
-
-        {formData.estrutura.quantidadePavimentos === '2' && (
-            <SubSection title="Estilo de Escada">
-              <ImageToggleContainer>
-                {escadaOptions.map(option => (
-                  <ImageToggle
-                  key={option.value}
-                  selected={formData.estrutura.estiloEscada === option.value}
-                  onClick={() => handleImageToggle('estrutura', 'estiloEscada', option.value)}>
-                    <Image src={option.img} alt={option.label} />
-                    <ImageLabel>{option.label}</ImageLabel>
-                  </ImageToggle>))}
-              </ImageToggleContainer>
             </SubSection>
-          )}
-      </SectionWithHeader>  
+
+            {parseInt(formData.estrutura.quantidadePavimentos.value) >= 2 && (
+              <SubSection title="Estilo de Escada">
+                <ImageToggleContainer>
+                  {escadaOptions.map(option => (
+                    <ImageToggle
+                      key={option.value}
+                      selected={Array.isArray(formData.estrutura.estiloEscada) && formData.estrutura.estiloEscada.some(item => item.value === option.value)}
+                      onClick={() => handleImageToggle('estrutura', 'estiloEscada', option.value, true)}
+                    >
+                      <ImageLabel>{option.label}</ImageLabel>
+                      <Image src={option.img} alt={option.label} />
+                      <ImageInput
+                        value={Array.isArray(formData.estrutura.estiloEscada) ? (formData.estrutura.estiloEscada.find(item => item.value === option.value)?.input || '') : ''}
+                        onClick={(e) => e.stopPropagation()}
+                        onChange={(e) => handleImageInputChange('estrutura', 'estiloEscada', option.value, e.target.value)}
+                      />
+                    </ImageToggle>
+                  ))}
+                </ImageToggleContainer>
+              </SubSection>
+            )}
+          </SectionWithHeader> 
       {/* Cobertura */}
       <SectionWithHeader title="Cobertura" description="Informações sobre a cobertura">
         <SubSection title="Área de Cobertura">
