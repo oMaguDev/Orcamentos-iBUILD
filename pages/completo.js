@@ -5,7 +5,9 @@ import {
   escadaOptions,
   pavimentosOptions,
   telhasOptions,
-  calhasOptions
+  calhasOptions,
+  padrãoParedesExternasOptions,
+  acabamentosParedesExternasOptions
 } from '/utils/listContainersForImages.js';
 import {
   Section,
@@ -116,8 +118,8 @@ const initialState = {
     
   },
   paredesExternas: {
-    metragemParedesExternas: "",
     padraoParedesExternas: "",
+    padraoParedesExternasPintura: [],
   },
   cobertura: {
     areaCobertura: "",
@@ -298,6 +300,133 @@ export default function Home() {
             </ImageToggleContainer>
             </SubSection>
           </SectionWithHeader>
+
+          {/* Cobertura */}
+          <SectionWithHeader title="Cobertura" description="Informações sobre a cobertura">
+            <SubSection title="Tipos de Cobertura">
+              <ImageToggleContainer>
+              {telhasOptions.map(option => (
+                <ImageToggle
+                  key={option.value}
+                  selected={Array.isArray(formData.cobertura.tipoCobertura) && formData.cobertura.tipoCobertura.some(item => item.value === option.value)}
+                  onClick={() => handleImageToggle('cobertura', 'tipoCobertura', option.value, true)}
+                >
+                  <ImageLabel>{option.label}</ImageLabel>
+                  {option.img ? (
+                    <div>
+                    
+                    <Image src={option.img} alt={option.label} />
+                    <ImageInput
+                      title="Quantidade Total na Obra - M²"
+                      value={Array.isArray(formData.cobertura.tipoCobertura) ? (formData.cobertura.tipoCobertura.find(item => item.value === option.value)?.input || '') : ''}
+                      onClick={(e) => e.stopPropagation()}
+                      onChange={(e) => handleImageInputChange('cobertura', 'tipoCobertura', option.value, { field: 'input', value: e.target.value })}
+                      />
+                    </div>
+                  ) : (
+                    <>
+                      <ImageInput
+                        title="Descrever o tipo de telha"
+                        type="text"
+                        value={Array.isArray(formData.cobertura.tipoCobertura) ? (formData.cobertura.tipoCobertura.find(item => item.value === option.value)?.tipoTelha || '') : ''}
+                        onClick={(e) => e.stopPropagation()}
+                        onChange={(e) => {
+                          handleImageInputChange('cobertura', 'tipoCobertura', option.value, { field: 'tipoTelha', value: e.target.value });
+                        }}
+                      />
+                      <ImageInput
+                        title="Valor por m² material e mão de obra"
+                        type="number"
+                        value={Array.isArray(formData.cobertura.tipoCobertura) ? (formData.cobertura.tipoCobertura.find(item => item.value === option.value)?.valor || '') : ''}
+                        onClick={(e) => e.stopPropagation()}
+                        onChange={(e) => {
+                          handleImageInputChange('cobertura', 'tipoCobertura', option.value, { field: 'valor', value: e.target.value });
+                        }}
+                      />
+                      <ImageInput
+                        title="Quantidade Total na Obra - M²"
+                        type="number"
+                        value={Array.isArray(formData.cobertura.tipoCobertura) ? (formData.cobertura.tipoCobertura.find(item => item.value === option.value)?.metragem || '') : ''}
+                        onClick={(e) => e.stopPropagation()}
+                        onChange={(e) => {
+                          handleImageInputChange('cobertura', 'tipoCobertura', option.value, { field: 'metragem', value: e.target.value });
+                        }}
+                      />
+                    </>
+                  )}
+                </ImageToggle>
+              ))}
+              </ImageToggleContainer>
+
+            </SubSection>
+            <SubSection title="Calhas, Rufos e Pingadeiras">
+              <ImageToggleContainer>
+                {calhasOptions.map(option => (
+                  <ImageToggle
+                    key={option.value}
+                    selected={Array.isArray(formData.cobertura.areaCalhas) && formData.cobertura.areaCalhas.some(item => item.value === option.value)}
+                    onClick={() => handleImageToggle('cobertura', 'areaCalhas', option.value, true)}
+                  >
+                    <ImageLabel>{option.label}</ImageLabel>
+                    <Image src={option.img} alt={option.label} />
+                    <ImageInput
+                      title= "Quantidade Total na Obra - ML"
+                      value={Array.isArray(formData.cobertura.areaCalhas) ? (formData.cobertura.areaCalhas.find(item => item.value === option.value)?.input || '') : ''}
+                      onClick={(e) => e.stopPropagation()}
+                      onChange={(e) => handleImageInputChange('cobertura', 'areaCalhas', option.value, { field: 'input', value: e.target.value })}
+                    />
+                  </ImageToggle>
+                ))}
+                </ImageToggleContainer>
+            </SubSection>
+          </SectionWithHeader>
+
+          {/* Paredes Externas */}
+          <SectionWithHeader title="Paredes Externas" description="Informações sobre as paredes externas">
+            <SubSection title="Metragem de Paredes Externas">
+            <ImageToggleContainer>
+                  {padrãoParedesExternasOptions.map(option => (
+                    <ImageToggle
+                    key={option.value}
+                    selected={formData.paredesExternas.padraoParedesExternas && formData.paredesExternas.padraoParedesExternas.value === option.value}
+                    onClick={() => handleImageToggle('paredesExternas', 'padraoParedesExternas', option.value, false)}
+                  >
+                    <ImageLabel>{option.label}</ImageLabel>
+                    <Image src={option.img} alt={option.label} />
+                    {formData.paredesExternas.padraoParedesExternas && formData.paredesExternas.padraoParedesExternas.value === option.value && (
+                      <ImageInput
+                        title="Quantidade Total na Obra - M² de Face"
+                        value={formData.paredesExternas.padraoParedesExternas.input || ''}
+                        onClick={(e) => e.stopPropagation()}
+                        onChange={(e) => handleImageInputChange('paredesExternas', 'padraoParedesExternas', option.value, { field: 'input', value: e.target.value })}
+                      />
+                    )}
+                  </ImageToggle>
+                  ))}
+                </ImageToggleContainer>
+            </SubSection>
+
+            <SubSection title="Acabamentos - Parede Externa (Textura)">
+            <ImageToggleContainer>
+                  {acabamentosParedesExternasOptions.map(option => (
+                    <ImageToggle
+                      key={option.value}
+                      selected={Array.isArray(formData.paredesExternas.padraoParedesExternasPintura) && formData.paredesExternas.padraoParedesExternasPintura.some(item => item.value === option.value)}
+                      onClick={() => handleImageToggle('paredesExternas', 'padraoParedesExternasPintura', option.value, true)}
+                    >
+                      <ImageLabel>{option.label}</ImageLabel>
+                      <Image src={option.img} alt={option.label} />
+                      <ImageInput
+                        title="Quantidade Total na Obra - M² de Face"
+                        value={Array.isArray(formData.paredesExternas.padraoParedesExternasPintura) ? (formData.paredesExternas.padraoParedesExternasPintura.find(item => item.value === option.value)?.input || '') : ''}
+                        onClick={(e) => e.stopPropagation()}
+                        onChange={(e) => handleImageInputChange('paredesExternas', 'padraoParedesExternasPintura', option.value, { field: 'input', value: e.target.value })}
+                      />
+                    </ImageToggle>
+                  ))}
+                </ImageToggleContainer>
+            </SubSection>
+          </SectionWithHeader>
           
           <SectionWithHeader title="QUANTIDADE DE PAVIMENTOS E CÁLCULO DA ESTRUTURA DE STEEL FRAME">
             <SubSection title="QUANTOS PAVIMENTOS?">
@@ -335,163 +464,34 @@ export default function Home() {
                 <ImageToggleContainer>
                   {escadaOptions.map(option => (
                     <ImageToggle
-                      key={option.value}
-                      selected={Array.isArray(formData.estrutura.estiloEscada) && formData.estrutura.estiloEscada.some(item => item.value === option.value)}
-                      onClick={() => handleImageToggle('estrutura', 'estiloEscada', option.value, true)}
-                    >
-                      <ImageLabel>{option.label}</ImageLabel>
-                      <Image src={option.img} alt={option.label} />
-                      <ImageInput
-                        value={Array.isArray(formData.estrutura.estiloEscada) ? (formData.estrutura.estiloEscada.find(item => item.value === option.value)?.input || '') : ''}
-                        onClick={(e) => e.stopPropagation()}
-                        onChange={(e) => handleImageInputChange('estrutura', 'estiloEscada', option.value, { field: 'input', value: e.target.value })}
-                      />
-                    </ImageToggle>
+                    key={option.value}
+                    selected={Array.isArray(formData.estrutura.estiloEscada) && formData.estrutura.estiloEscada.some(item => item.value === option.value)}
+                    onClick={() => handleImageToggle('estrutura', 'estiloEscada', option.value, true)}
+                  >
+                    <ImageLabel>{option.label}</ImageLabel>
+                    <Image src={option.img} alt={option.label} />
+                    {['vigaCentral', 'suspensa'].includes(option.value) && (
+                      <div>
+                        <ImageInput
+                          title="Peso aproximado da escada - Kg"
+                          value={Array.isArray(formData.estrutura.estiloEscada) ? (formData.estrutura.estiloEscada.find(item => item.value === option.value)?.peso || '') : ''}
+                          onClick={(e) => e.stopPropagation()}
+                          onChange={(e) => handleImageInputChange('estrutura', 'estiloEscada', option.value, { field: 'peso', value: e.target.value })}
+                        />
+                        <ImageInput
+                          title="Qual o valor do Kg de aço com mão de obra?"
+                          value={Array.isArray(formData.estrutura.estiloEscada) ? (formData.estrutura.estiloEscada.find(item => item.value === option.value)?.valorAco || '') : ''}
+                          onClick={(e) => e.stopPropagation()}
+                          onChange={(e) => handleImageInputChange('estrutura', 'estiloEscada', option.value, { field: 'valorAco', value: e.target.value })}
+                        />
+                      </div>
+                    )}
+                  </ImageToggle>
                   ))}
                 </ImageToggleContainer>
               </SubSection>
             )}
-          </SectionWithHeader> 
-      {/* Cobertura */}
-      <SectionWithHeader title="Cobertura" description="Informações sobre a cobertura">
-        <SubSection title="Área de Cobertura">
-          <Row>
-            <Column>
-              <Label htmlFor="areaCobertura">Somatória total de área de cobertura incluindo telheiros e eventuais beirais (m²)</Label>
-              <InputNumber
-                type="number"
-                id="areaCobertura"
-                name="areaCobertura"
-                value={formData.cobertura.areaCobertura || ''}
-                onChange={(e) => handleChange(e, 'cobertura', 'areaCobertura')}
-              />
-            </Column>
-            <Column>
-              <Label htmlFor="areaLajes">Somatória total de áreas de lajes impermeabilizadas (m²)</Label>
-              <InputNumber
-                type="number"
-                id="areaLajes"
-                name="areaLajes"
-                value={formData.cobertura.areaLajes || ''}
-                onChange={(e) => handleChange(e, 'cobertura', 'areaLajes')}
-              />
-            </Column>
-          </Row>
-        </SubSection>
-
-        <SubSection title="Calhas, Rufos e Pingadeiras">
-        <ImageToggleContainer>
-                  {calhasOptions.map(option => (
-                    <ImageToggle
-                      key={option.value}
-                      selected={Array.isArray(formData.cobertura.areaCalhas) && formData.cobertura.areaCalhas.some(item => item.value === option.value)}
-                      onClick={() => handleImageToggle('cobertura', 'areaCalhas', option.value, true)}
-                    >
-                      <ImageLabel>{option.label}</ImageLabel>
-                      <Image src={option.img} alt={option.label} />
-                      <ImageInput
-                        title= "Insira a quantidade em m²"
-                        value={Array.isArray(formData.cobertura.areaCalhas) ? (formData.cobertura.areaCalhas.find(item => item.value === option.value)?.input || '') : ''}
-                        onClick={(e) => e.stopPropagation()}
-                        onChange={(e) => handleImageInputChange('cobertura', 'areaCalhas', option.value, { field: 'input', value: e.target.value })}
-                      />
-                    </ImageToggle>
-                  ))}
-                </ImageToggleContainer>
-        </SubSection>
-
-        <SubSection title="Tipos de Cobertura">
-        <ImageToggleContainer>
-  {telhasOptions.map(option => (
-    <ImageToggle
-      key={option.value}
-      selected={Array.isArray(formData.cobertura.tipoCobertura) && formData.cobertura.tipoCobertura.some(item => item.value === option.value)}
-      onClick={() => handleImageToggle('cobertura', 'tipoCobertura', option.value, true)}
-    >
-      <ImageLabel>{option.label}</ImageLabel>
-      {option.img ? (
-        <div>
-
-        <Image src={option.img} alt={option.label} />
-        <ImageInput
-          value={Array.isArray(formData.cobertura.tipoCobertura) ? (formData.cobertura.tipoCobertura.find(item => item.value === option.value)?.input || '') : ''}
-          onClick={(e) => e.stopPropagation()}
-          onChange={(e) => handleImageInputChange('cobertura', 'tipoCobertura', option.value, { field: 'input', value: e.target.value })}
-          />
-        </div>
-      ) : (
-        <>
-          <ImageInput
-            title="Descrever o tipo de telha"
-            type="text"
-            value={Array.isArray(formData.cobertura.tipoCobertura) ? (formData.cobertura.tipoCobertura.find(item => item.value === option.value)?.tipoTelha || '') : ''}
-            onClick={(e) => e.stopPropagation()}
-            onChange={(e) => {
-              handleImageInputChange('cobertura', 'tipoCobertura', option.value, { field: 'tipoTelha', value: e.target.value });
-            }}
-          />
-          <ImageInput
-            title="Valor por m² material e mão de obra"
-            type="number"
-            value={Array.isArray(formData.cobertura.tipoCobertura) ? (formData.cobertura.tipoCobertura.find(item => item.value === option.value)?.valor || '') : ''}
-            onClick={(e) => e.stopPropagation()}
-            onChange={(e) => {
-              handleImageInputChange('cobertura', 'tipoCobertura', option.value, { field: 'valor', value: e.target.value });
-            }}
-          />
-          <ImageInput
-            title="Quantidade Total na Obra - M²"
-            type="number"
-            value={Array.isArray(formData.cobertura.tipoCobertura) ? (formData.cobertura.tipoCobertura.find(item => item.value === option.value)?.metragem || '') : ''}
-            onClick={(e) => e.stopPropagation()}
-            onChange={(e) => {
-              handleImageInputChange('cobertura', 'tipoCobertura', option.value, { field: 'metragem', value: e.target.value });
-            }}
-          />
-        </>
-      )}
-    </ImageToggle>
-  ))}
-</ImageToggleContainer>
-
-        </SubSection>
-      </SectionWithHeader>
-      {/* Paredes Externas */}
-      <SectionWithHeader title="Paredes Externas" description="Informações sobre as paredes externas">
-        <SubSection title="Metragem de Paredes Externas">
-          <Row>
-            <Column>
-              <Label htmlFor="metragemParedesExternas">Somatória total de m² de parede externa</Label>
-              <InputNumber
-                type="number"
-                id="metragemParedesExternas"
-                name="metragemParedesExternas"
-                value={formData.paredesExternas.metragemParedesExternas || ''}
-                onChange={(e) => handleChange(e, 'paredesExternas', 'metragemParedesExternas')}
-              />
-            </Column>
-          </Row>
-        </SubSection>
-
-        <SubSection title="Padrão das Paredes Externas">
-          <Row>
-            <Column>
-              <Label htmlFor="padraoParedesExternas">Qual o padrão das paredes externas?</Label>
-              <Select
-                id="padraoParedesExternas"
-                name="padraoParedesExternas"
-                value={formData.paredesExternas.padraoParedesExternas || ''}
-                onChange={(e) => handleChange(e, 'paredesExternas', 'padraoParedesExternas')}
-              >
-                <option value="">Selecione uma opção</option>
-                <option value="standard">Standard</option>
-                <option value="premium">Premium</option>
-                <option value="supreme">Supreme</option>
-              </Select>
-            </Column>
-          </Row>
-        </SubSection>
-      </SectionWithHeader>
+          </SectionWithHeader>
       {/* Garagem */}
       <SectionWithHeader title="Garagem" description="Informações sobre a garagem">
         <SubSection title="Dimensões">
