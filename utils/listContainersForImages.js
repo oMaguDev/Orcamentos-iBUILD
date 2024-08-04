@@ -17,15 +17,15 @@ export const telhasOptions = [
   ];
 
 export const calhasOptions = [
-    { value: 'calhas', label: 'Calhas', img: 'public\images\Calhas\Calha.png'},
-    { value: 'rufos', label: 'Rufos', img: 'public\images\Calhas\Rufo.png'},
-    { value: 'rufo pingadeira', label: 'Rufo Pingadeira', img: 'public\images\Calhas\pingadeira.png'},
+    { value: 'calhas', label: 'Calhas', img: '/images/Calhas/Calha.png'},
+    { value: 'rufos', label: 'Rufos', img: '/images/Calhas/Rufo.png'},
+    { value: 'rufoPingadeira', label: 'Rufo Pingadeira', img: '/images/Calhas/pingadeira.png'},
   ];
 
 export const padrãoParedesExternasOptions = [
-    { value: 'standard', label: 'Standard', img: 'public\images\Paredes\image085.png'},
-    { value: 'premium', label: 'Premium', img: 'public\images\Paredes\image086.png'},
-    { value: 'supreme', label: 'Supreme', img: 'public\images\Paredes\image087.png'},
+    { value: 'standard', label: 'Standard', img: '/images/Paredes/image085.png'},
+    { value: 'premium', label: 'Premium', img: '/images/Paredes/image086.png'},
+    { value: 'supreme', label: 'Supreme', img: '/images/Paredes/image087.png'},
   ];
 
 export const escadaOptions = [

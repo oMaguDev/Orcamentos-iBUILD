@@ -16,10 +16,12 @@ export const calculateRoomValues = async (data, franchise) => {
     '45k': 2,
   };
   acoConsiderado = acoMap[data.estrutura.quantidadePavimentos];
-
+  
   baseAcabamentos = await loadBaseAcabamentos(franquia);
   baseObraBranca = await loadbaseObraBranca(franquia);
-  // console.log(`baseObraBranca 2 ${JSON.stringify(baseObraBranca)}`); // Convertendo o objeto em string para exibição
+  const areaTotalConstrucao = metragemTotalConstrucao();
+  console.log(`areaTotal: ${areaTotalConstrucao}`)
+
   const paredesExternas = calculateParedesExternasValue();
   const garagemValue = calculateGaragemValue();
   const salaValue = calculateSalaValue();
@@ -68,6 +70,34 @@ const calcularDias = (areaTotalConstrucao) => {
   }
 };
 
+const metragemTotalConstrucao = () => {
+  // Garagem - sala - quartos - banheiros - cozinha - lavabos - gourmet - areaServico - despensa - escritorio
+  const areaQuartos = formData.quartos.reduce((total, quarto) => total + quarto.quartoSize + (quarto.quartoClosetSize || 0) + (quarto.quartoBanheiroSize || 0), 0);
+
+  // Calcula a área total dos lavabos
+  const areaLavabos = formData.lavabos.reduce((total, lavabo) => total + lavabo.areaLavabo, 0);
+
+  // Calcula a área total dos banheiros
+  const areaBanheiros = formData.banheiros.reduce((total, banheiro) => total + banheiro.banheiroSize, 0);
+
+  const areaTotalConstrucao = 
+    (formData.garagem.areaGaragem || 0) + 
+    (formData.sala.hallEntradaSala || 0) + 
+    (formData.sala.salaEstar || 0) + 
+    (formData.sala.tvSala || 0) + 
+    (formData.sala.corredoresSala || 0) + 
+    (formData.cozinha.areaCozinha || 0) + 
+    (formData.areaGourmet.areaGourmet || 0) + 
+    (formData.areaServico.areaServico || 0) + 
+    (formData.despensa.areaDespensa || 0) + 
+    (formData.escritorio.areaEscritorio || 0) + 
+    areaBanheiros + 
+    areaLavabos + 
+    areaQuartos;
+  console.log(`formData.garagem.areaGaragem: ${formData.garagem.areaGaragem} + formData.sala.hallEntradaSala: ${formData.sala.hallEntradaSala} + formData.sala.salaEstar: ${formData.sala.salaEstar} + formData.sala.tvSala: ${formData.sala.tvSala} + formData.sala.corredoresSala: ${formData.sala.corredoresSala} + formData.cozinha.areaCozinha: ${formData.cozinha.areaCozinha} + formData.areaGourmet.areaGourmet: ${formData.areaGourmet.areaGourmet} + formData.areaServico.areaServico: ${formData.areaServico.areaServico} + formData.despensa.areaDespensa: ${formData.despensa.areaDespensa} + formData.escritorio.areaEscritorio: ${formData.escritorio.areaEscritorio} + areaBanheiros: ${areaBanheiros} + areaLavabos: ${areaLavabos} + areaQuartos: ${areaQuartos}`)
+  return areaTotalConstrucao;
+}
+
 const calculateGaragemValue = () => {
   let value = formData.garagemSize * getAcabamentoMultiplier(formData.garagemAcabamento);
   if (formData.garagemConforto) {
@@ -79,7 +109,7 @@ const calculateGaragemValue = () => {
 const calculateSalaValue = () => {
   let areaTotal = formData.sala.hallEntradaSala + formData.sala.salaEstar + formData.sala.tvSala + formData.sala.corredoresSala;
 
-  console.log(`areaTotal ${areaTotal}`);
+  console.log(`areaTotal sala ${areaTotal}`);
   let value = areaTotal * getAcabamentoMultiplier(formData.salaAcabamento); // Ajuste para calcular o valor com base no acabamento
   if (formData.salaConforto) {
     value *= 1.1; // 10% extra for comfort

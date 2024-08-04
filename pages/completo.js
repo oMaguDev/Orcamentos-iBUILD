@@ -4,7 +4,8 @@ import {
   estiloArquitetonicoOptions,
   escadaOptions,
   pavimentosOptions,
-  telhasOptions
+  telhasOptions,
+  calhasOptions
 } from '/utils/listContainersForImages.js';
 import {
   Section,
@@ -56,8 +57,6 @@ const initialState = {
     salaAcabamento: "",
     salaConforto: false,
   },
-  quartos: [],
-  banheiros: [],
   cozinha: {
     areaCozinha: "",
     perimetroCozinha: "",
@@ -69,7 +68,6 @@ const initialState = {
     acabamentoCozinha: "",
     confortoCozinha: false,
   },
-  lavabos: [],
   areaGourmet: {
     areaGourmet: "",
     perimetroGourmet: "",
@@ -115,7 +113,7 @@ const initialState = {
     grandesVaos: false,
     estiloEscada: [],
     quantidadePavimentos: "",
-
+    
   },
   paredesExternas: {
     metragemParedesExternas: "",
@@ -124,12 +122,15 @@ const initialState = {
   cobertura: {
     areaCobertura: "",
     areaLajes: "",
-    areaCalhas: "",
+    areaCalhas: [],
     tipoCobertura: [],
   },
   eletrica: {
     voltagemEletrica: "",
   },
+  lavabos: [],
+  quartos: [],
+  banheiros: [],
   hidraulica: {
     tipoHidraulica: "",
   },
@@ -379,6 +380,26 @@ export default function Home() {
         </SubSection>
 
         <SubSection title="Calhas, Rufos e Pingadeiras">
+        <ImageToggleContainer>
+                  {calhasOptions.map(option => (
+                    <ImageToggle
+                      key={option.value}
+                      selected={Array.isArray(formData.cobertura.areaCalhas) && formData.cobertura.areaCalhas.some(item => item.value === option.value)}
+                      onClick={() => handleImageToggle('cobertura', 'areaCalhas', option.value, true)}
+                    >
+                      <ImageLabel>{option.label}</ImageLabel>
+                      <Image src={option.img} alt={option.label} />
+                      <ImageInput
+                        value={Array.isArray(formData.cobertura.areaCalhas) ? (formData.cobertura.areaCalhas.find(item => item.value === option.value)?.input || '') : ''}
+                        onClick={(e) => e.stopPropagation()}
+                        onChange={(e) => handleImageInputChange('cobertura', 'areaCalhas', option.value, { field: 'input', value: e.target.value })}
+                      />
+                    </ImageToggle>
+                  ))}
+                </ImageToggleContainer>
+
+
+
           <Row>
             <Column>
               <Label htmlFor="areaCalhas">Somatória total de calhas, rufos e pingadeiras (m²)</Label>
