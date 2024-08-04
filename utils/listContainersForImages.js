@@ -22,7 +22,7 @@ export const calhasOptions = [
     { value: 'rufoPingadeira', label: 'Rufo Pingadeira', img: '/images/Calhas/pingadeira.png'},
   ];
 
-export const padrãoParedesExternasOptions = [
+export const padraoParedesExternasOptions = [
     { value: 'standard', label: 'Standard', img: '/images/Paredes/image085.png'},
     { value: 'premium', label: 'Premium', img: '/images/Paredes/image086.png'},
     { value: 'supreme', label: 'Supreme', img: '/images/Paredes/image087.png'},
@@ -53,7 +53,7 @@ export const levantamentoAreaGaragemOptions = [
     { value: 'areaTelhereiros', label: 'Área total de telheiros', img: '/images/GaragemTelheiros/levantamentoAreas/image392.png'},
   ];
   
-export const fundaçãoOptions = [
+export const fundacaoOptions = [
     { value: 'radier', label: 'Radier', img: '/images/GaragemTelheiros/Fundação/image403.png'},
     { value: 'lajePiso', label: 'Laje Piso', img: '/images/GaragemTelheiros/Fundação/image405.png'},
     { value: 'lajePisoImpermeabilizada', label: 'Laje Piso', img: '/images/GaragemTelheiros/Fundação/image407.png'},

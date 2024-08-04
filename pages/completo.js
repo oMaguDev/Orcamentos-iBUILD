@@ -6,10 +6,10 @@ import {
   pavimentosOptions,
   telhasOptions,
   calhasOptions,
-  padrãoParedesExternasOptions,
+  padraoParedesExternasOptions,
   acabamentosParedesExternasOptions,
   levantamentoAreaGaragemOptions,
-  fundaçãoOptions
+  fundacaoOptions
 } from '/utils/listContainersForImages.js';
 import {
   Section,
@@ -387,7 +387,7 @@ export default function Home() {
           <SectionWithHeader title="Paredes Externas" description="Informações sobre as paredes externas">
             <SubSection title="Metragem de Paredes Externas">
             <ImageToggleContainer>
-                  {padrãoParedesExternasOptions.map(option => (
+                  {padraoParedesExternasOptions.map(option => (
                     <ImageToggle
                     key={option.value}
                     selected={formData.paredesExternas.padraoParedesExternas && formData.paredesExternas.padraoParedesExternas.value === option.value}
@@ -546,7 +546,7 @@ export default function Home() {
         
         <SubSection title="Fundação">
           <ImageToggleContainer>
-            {fundaçãoOptions.map(option => (
+            {fundacaoOptions.map(option => (
               <ImageToggle
                 key={option.value}
                 selected={Array.isArray(formData.paredesExternas.padraoParedesExternasPintura) && formData.paredesExternas.padraoParedesExternasPintura.some(item => item.value === option.value)}
@@ -555,7 +555,7 @@ export default function Home() {
                 <ImageLabel>{option.label}</ImageLabel>
                 <Image src={option.img} alt={option.label} />
                 <ImageInput
-                  title="Quantidade Total na Obra - M² de Face"
+                  title="Qtde. M²"
                   value={Array.isArray(formData.paredesExternas.padraoParedesExternasPintura) ? (formData.paredesExternas.padraoParedesExternasPintura.find(item => item.value === option.value)?.input || '') : ''}
                   onClick={(e) => e.stopPropagation()}
                   onChange={(e) => handleImageInputChange('paredesExternas', 'padraoParedesExternasPintura', option.value, { field: 'input', value: e.target.value })}
