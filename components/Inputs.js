@@ -134,7 +134,7 @@ const ImageToggle = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: top;
   border: 2px solid ${({ selected }) => (selected ? '#7dd23a' : 'transparent')};
   border-radius: 8px;
   padding: 10px;
@@ -157,27 +157,40 @@ const Image = styled.img`
 
 const ImageLabel = styled.span`
   margin-top: 5px;
+  margin-bottom: 5px;
   font-size: 14px;
   text-align: center;
 `;
-const ImageInputOnly = styled.input`
-  text-align: center;
-  align-items:center
+const InputContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 4px;
 `;
 
 const ImageInputLabel = styled.label`
   display: block;
   margin-top: 8px;
   margin-bottom: 8px;
-  align-items:center;
+  text-align: center;
+`;
+
+const ImageInputOnly = styled.input`
+  text-align: center;
+  padding: 7px;
+  margin: 5px 0;
 `;
 
 const ImageInputSelect = styled.select`
   text-align: center;
+  margin: 5px 0;
+  padding:7px;
 `;
 
 const ImageInput = ({ title, type, value, onClick, onChange, options }) => (
-  <div>
+  <InputContainer>
     <ImageInputLabel>{title}</ImageInputLabel>
     {type === 'select' ? (
       <ImageInputSelect value={value} onClick={onClick} onChange={onChange}>
@@ -189,7 +202,7 @@ const ImageInput = ({ title, type, value, onClick, onChange, options }) => (
     ) : (
       <ImageInputOnly type={type} value={value} onClick={onClick} onChange={onChange} />
     )}
-  </div>
+  </InputContainer>
 );
 
 
