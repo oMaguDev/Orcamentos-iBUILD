@@ -20,6 +20,8 @@ export const calculateRoomValues = async (data, franchise) => {
   baseAcabamentos = await loadBaseAcabamentos(franquia);
   baseObraBranca = await loadbaseObraBranca(franquia);
   const areaTotalConstrucao = metragemTotalConstrucao();
+  const tempoConstrucaoDias = calcularDias(areaTotalConstrucao)
+  console.log(`Tempo Construcação em dias: ${tempoConstrucaoDias}`)
   console.log(`areaTotal: ${areaTotalConstrucao}`)
 
   const paredesExternas = calculateParedesExternasValue();
@@ -100,6 +102,7 @@ const metragemTotalConstrucao = () => {
 
 const calculateGaragemValue = () => {
   let value = formData.garagemSize * getAcabamentoMultiplier(formData.garagemAcabamento);
+  const areaPiso = formData.garagem.areaGaragem * 1.1
   if (formData.garagemConforto) {
     value *= 1.1; // 10% extra for comfort
   }

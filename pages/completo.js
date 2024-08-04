@@ -118,6 +118,8 @@ const initialState = {
   paredesExternas: {
     metragemParedesExternas: "",
     padraoParedesExternas: "",
+    metragemParedesExternasPintura: "",
+    padraoParedesExternasPintura: "",
   },
   cobertura: {
     areaCobertura: "",
