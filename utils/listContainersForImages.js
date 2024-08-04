@@ -28,23 +28,29 @@ export const padrãoParedesExternasOptions = [
     { value: 'supreme', label: 'Supreme', img: '/images/Paredes/image087.png'},
   ];
 
+export const acabamentosParedesExternasOptions = [
+    { value: 'standardTextura', label: 'Standard - Textura', img: '/images/acabamentosParedesExternas/image335.png'},
+    { value: 'standardPintura', label: 'Standard - Pintura', img: '/images/acabamentosParedesExternas/image336.png'},
+    { value: 'premiumSupremeTextura', label: 'Premium/Supreme - Textura', img: '/images/acabamentosParedesExternas/image338.png'},
+    { value: 'premiumSupremePintura', label: 'Premium/Supreme - Pintura', img: 'images/acabamentosParedesExternas/image344.png'},
+  ];
+
+export const pavimentosOptions = [
+    { value: '1', label: '1 Pavimento', img: '/images/Pavimentos/1Pavimento.png'},
+    { value: '2', label: '2 Pavimentos', img: '/images/Pavimentos/2Pavimentos.png'},
+    { value: '3', label: '3 Pavimentos', img: '/images/Pavimentos/3Pavimentos.png'},
+  ];
+
 export const escadaOptions = [
     { value: 'engastada', label: 'Escada engastada', img: '/images/escadas/1.jpg' },
     { value: 'vigasLaterais', label: 'Escada com vigas laterais', img: '/images/escadas/2.jpg' },
     { value: 'vigaCentral', label: 'Escada com viga central', img: '/images/escadas/3.jpg' },
     { value: 'suspensa', label: 'Escada suspensa', img: '/images/escadas/4.jpg' },
   ];
-  
-export const pavimentosOptions = [
-      { value: '1', label: '1 Pavimento', img: '/images/Pavimentos/1Pavimento.png'},
-      { value: '2', label: '2 Pavimentos', img: '/images/Pavimentos/2Pavimentos.png'},
-      { value: '3', label: '3 Pavimentos', img: '/images/Pavimentos/3Pavimentos.png'},
-    ];
 
-export const pinturaInternaOptions = [
-    { value: 'standard', label: 'STANDARD', description:'Pintura Interna c/ Massa Corrida em Paredes de Gesso - STANDARD', img: 'public\images\Banheiros\Acabamentos - Pintura interna\image745.png'},
-    { value: 'ceramica', label: 'Telha de Cerâmica', img: '/images/Telhas/ceramica.png'},
-    { value: 'laje', label: 'Laje Impermeabilizada - Externas', img: '/images/Telhas/laje.png'},
-    { value: 'outras', label: 'Outras Telhas', img: null}
+  export const levantamentoAreaGaragemOptions = [
+    { value: '1', label: '1 Pavimento', img: '/images/Pavimentos/1Pavimento.png'},
+    { value: '2', label: '2 Pavimentos', img: '/images/Pavimentos/2Pavimentos.png'},
+    { value: '3', label: '3 Pavimentos', img: '/images/Pavimentos/3Pavimentos.png'},
   ];
   
