@@ -26,4 +26,5 @@ export const telhasOptions = [
     { value: 'termoacustica', label: 'Telha Termoacústica', img: '/images/Telhas/termoacustica.png'},
     { value: 'ceramica', label: 'Telha de Cerâmica', img: '/images/Telhas/ceramica.png'},
     { value: 'laje', label: 'Laje Impermeabilizada - Externas', img: '/images/Telhas/laje.png'},
+    { value: 'outras', label: 'Outras Telhas', img: null}
   ];
