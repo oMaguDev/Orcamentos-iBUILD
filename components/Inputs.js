@@ -11,7 +11,7 @@ const SectionHeader = styled.h2`
   font-size: 1.75em;
   font-weight: bold;
   background-color: #e0e0e0;
-  padding: 20px 5px 20px 5px;
+  padding: 40px 5px 40px 5px;
 `;
 
 const SectionDescription = styled.p`
@@ -160,9 +160,29 @@ const ImageLabel = styled.span`
   font-size: 14px;
   text-align: center;
 `;
-const ImageInput = styled.input`
+const ImageInputOnly = styled.input`
   text-align: center;
 `;
+
+const ImageInputLabel = styled.label`
+  display: block;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  align-items:center;
+`;
+
+const ImageInput = ({ title, type, value, onChange, onClick }) => (
+  <div>
+    <ImageInputLabel>{title}</ImageInputLabel>
+    <ImageInputOnly 
+      type={type} 
+      value={value} 
+      onChange={onChange} 
+      onClick={onClick} 
+    />
+  </div>
+);
+
 
 const SectionWithHeader = ({ title, description="", children }) => (
   <Section>

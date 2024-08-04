@@ -271,6 +271,8 @@ export default function Home() {
   };
   
   
+  
+  
   const handleSubmit = e => {
     e.preventDefault();
     const jsonData = JSON.stringify(formData);
@@ -380,22 +382,23 @@ export default function Home() {
 
         <SubSection title="Tipos de Cobertura">
         <ImageToggleContainer>
-              {telhasOptions.map(option => (
-                <ImageToggle
-                  key={option.value}
-                  selected={Array.isArray(formData.cobertura.tipoCobertura) && formData.cobertura.tipoCobertura.some(item => item.value === option.value)}
-                  onClick={() => handleImageToggle('cobertura', 'tipoCobertura', option.value, true)}
-                >
-                  <ImageLabel>{option.label}</ImageLabel>
-                  <Image src={option.img} alt={option.label} />
-                  <ImageInput
-                        value={Array.isArray(formData.cobertura.tipoCobertura) ? (formData.cobertura.tipoCobertura.find(item => item.value === option.value)?.input || '') : ''}
-                        onClick={(e) => e.stopPropagation()}
-                        onChange={(e) => handleImageInputChange('cobertura', 'tipoCobertura', option.value, e.target.value)}
-                      />
-                </ImageToggle>
-              ))}
-            </ImageToggleContainer>
+          {telhasOptions.map(option => (
+            <ImageToggle
+              key={option.value}
+              selected={Array.isArray(formData.cobertura.tipoCobertura) && formData.cobertura.tipoCobertura.some(item => item.value === option.value)}
+              onClick={() => handleImageToggle('cobertura', 'tipoCobertura', option.value, true)}
+            >
+              <ImageLabel>{option.label}</ImageLabel>
+              <Image src={option.img} alt={option.label} />
+              <ImageInput
+                title="Quantidade total na obra em m²"
+                value={Array.isArray(formData.cobertura.tipoCobertura) ? (formData.cobertura.tipoCobertura.find(item => item.value === option.value)?.input || '') : ''}
+                onChange={(e) => handleImageInputChange('cobertura', 'tipoCobertura', option.value, e.target.value)}
+                onClick={(e) => e.stopPropagation()}
+              />
+            </ImageToggle>
+          ))}
+        </ImageToggleContainer>
         </SubSection>
       </SectionWithHeader>
       {/* Paredes Externas */}
