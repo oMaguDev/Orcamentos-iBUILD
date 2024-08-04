@@ -390,6 +390,7 @@ export default function Home() {
                       <ImageLabel>{option.label}</ImageLabel>
                       <Image src={option.img} alt={option.label} />
                       <ImageInput
+                        title= "Insira a quantidade em m²"
                         value={Array.isArray(formData.cobertura.areaCalhas) ? (formData.cobertura.areaCalhas.find(item => item.value === option.value)?.input || '') : ''}
                         onClick={(e) => e.stopPropagation()}
                         onChange={(e) => handleImageInputChange('cobertura', 'areaCalhas', option.value, { field: 'input', value: e.target.value })}
@@ -397,21 +398,6 @@ export default function Home() {
                     </ImageToggle>
                   ))}
                 </ImageToggleContainer>
-
-
-
-          <Row>
-            <Column>
-              <Label htmlFor="areaCalhas">Somatória total de calhas, rufos e pingadeiras (m²)</Label>
-              <InputNumber
-                type="number"
-                id="areaCalhas"
-                name="areaCalhas"
-                value={formData.cobertura.areaCalhas || ''}
-                onChange={(e) => handleChange(e, 'cobertura', 'areaCalhas')}
-              />
-            </Column>
-          </Row>
         </SubSection>
 
         <SubSection title="Tipos de Cobertura">
