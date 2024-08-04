@@ -208,6 +208,62 @@ const SubSection = ({ title,description="", children }) => (
   </div>
 );
 
+const TooltipContainer = styled.div`
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+`;
+
+const TooltipText = styled.span`
+  visibility: hidden;
+  width: 300px;
+  background-color: rgba(0, 0, 0, 0.8);;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%; /* Position above the icon */
+  left: 50%;
+  margin-left: -150px;
+  opacity: 0;
+  transition: opacity 0.3s;
+
+  ::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+  }
+`;
+
+const TooltipIcon = styled.span`
+  font-size: 18px;
+  font-weight: bold;
+  color: black;
+  background: yellow;
+  border-radius: 50%;
+  padding: 2px 5px;
+  margin-left: 5px;
+
+  &:hover + ${TooltipText} {
+    visibility: visible;
+    opacity: 1;
+  }
+`;
+
+const Tooltip = ({ text }) => (
+  <TooltipContainer>
+    <TooltipIcon>!</TooltipIcon>
+    <TooltipText>{text}</TooltipText>
+  </TooltipContainer>
+);
+
 export {
   Section,
   Label,
@@ -229,5 +285,6 @@ export {
   ImageToggle,
   Image,
   ImageLabel,
-  ImageInput
+  ImageInput,
+  Tooltip
 };

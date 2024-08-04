@@ -24,7 +24,8 @@ import {
   ImageToggle,
   Image,
   ImageLabel,
-  ImageInput
+  ImageInput,
+  Tooltip
 } from '../components/Inputs';
 import { FormContainer, PageContainer } from '../components/Completo/FormContainer';
 
@@ -308,6 +309,11 @@ export default function Home() {
                 >
                   <ImageLabel>{option.label}</ImageLabel>
                   <Image src={option.img} alt={option.label} />
+                  <Tooltip text="Se a obra possuir 1 Pavimento e não possui grandes vãos o aço considerado será 35kg/m²
+                                  Se a obra possuir 1 Pavimento e possui grandes vãos o aço considerado será 40kg/m²
+                                  Se a obra possuir 2 Pavimentos e não possui grandes vãos o aço considerado será 40kg/m²
+                                  Se a obra possuir 2 Pavimentos e possui grandes vãos o aço considerado será 45kg/m²
+                                  " />
                   {formData.estrutura.quantidadePavimentos && formData.estrutura.quantidadePavimentos.value === option.value && (
                     <ImageInput
                       title="Selecione o tipo de aço"
