@@ -6,6 +6,7 @@ const Resumo = () => {
   const router = useRouter();
   const [formData, setFormData] = useState(null);
   const [franquia, setFranquia] = useState(null);
+  const [calculatedValues, setCalculatedValues] = useState({});
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -16,6 +17,16 @@ const Resumo = () => {
     }
   }, []);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      if (formData && franquia) {
+        const values = await calculateRoomValues(formData, franquia);
+        setCalculatedValues(values);
+      }
+    };
+    fetchData();
+  }, [formData, franquia]);
+
   const clearData = () => {
     localStorage.removeItem('formData');
     router.push('/completo');
@@ -24,20 +35,15 @@ const Resumo = () => {
   if (!formData) {
     return <div>Loading...</div>;
   }
-
-  const {
-    garagemValue,
-    salaValue,
-    quartoValue,
-    totalValue,
-  } = calculateRoomValues(formData, franquia);
-
+  const formatCurrency = (value) => {
+    return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(value);
+  };
   const renderFormData = (data, sectionName) => (
-    <div>
+    <div key={sectionName}>
       <h3>{sectionName}</h3>
       <ul>
         {Object.entries(data).map(([key, value]) => (
-          <li key={key}><strong>{key}:</strong> {value}</li>
+          <li key={key}><strong>{key}:</strong> {typeof value === 'object' ? JSON.stringify(value) : value}</li>
         ))}
       </ul>
     </div>
@@ -64,13 +70,13 @@ const Resumo = () => {
       {renderFormData(formData.hidraulica, "Hidráulica")}
 
       <h2>Valores Calculados</h2>
-      <p><strong>Garagem:</strong> {garagemValue}</p>
-      <p><strong>Sala:</strong> {salaValue}</p>
-      <p><strong>Quarto:</strong> {quartoValue}</p>
-      <p><strong>Valor Total:</strong> {totalValue}</p>
+      <p><strong>Garagem:</strong> {calculatedValues.garagemValue}</p>
+      <p><strong>Paredes Externas:</strong> {formatCurrency(calculatedValues.paredesExternas)}</p>
+      <p><strong>Quarto:</strong> {calculatedValues.quartoValue}</p>
+      <p><strong>Valor Total:</strong> {calculatedValues.totalValue}</p>
 
       <h2>Franquia</h2>
-      <p>{franquia}</p>
+      <p>{JSON.stringify(franquia)}</p>
 
       <button onClick={clearData}>Limpar Dados e Voltar</button>
     </div>

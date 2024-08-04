@@ -162,6 +162,7 @@ const ImageLabel = styled.span`
 `;
 const ImageInputOnly = styled.input`
   text-align: center;
+  align-items:center
 `;
 
 const ImageInputLabel = styled.label`

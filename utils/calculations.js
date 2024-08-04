@@ -1,5 +1,5 @@
-import { loadBaseAcabamentos } from "./base_acabamentos.js"
-import { loadbaseObraBranca } from "./base_obra_branca"
+import { loadBaseAcabamentos } from "./base_acabamentos.js";
+import { loadbaseObraBranca } from "./base_obra_branca";
 
 let formData;
 let franquia;
@@ -7,19 +7,20 @@ let baseAcabamentos;
 let baseObraBranca;
 let acoConsiderado;
 
-export const calculateRoomValues = (data, franchise) => {
+export const calculateRoomValues = async (data, franchise) => {
   formData = data;
   franquia = franchise;
+  const acoMap = {
+    '35k': 0,
+    '40k': 1,
+    '45k': 2,
+  };
+  acoConsiderado = acoMap[data.estrutura.quantidadePavimentos];
 
-  if (formData.estrutura.quantidadePavimentos === "1") {
-    acoConsiderado = formData.estrutura.grandesVaos ? 1 : 0;
-  } else if (formData.estrutura.quantidadePavimentos > 1) {
-    acoConsiderado = formData.estrutura.grandesVaos ? 2 : 1;
-  }
-
-  baseAcabamentos = loadBaseAcabamentos(franquia);
-  baseObraBranca = loadbaseObraBranca(franquia);
-
+  baseAcabamentos = await loadBaseAcabamentos(franquia);
+  baseObraBranca = await loadbaseObraBranca(franquia);
+  // console.log(`baseObraBranca 2 ${JSON.stringify(baseObraBranca)}`); // Convertendo o objeto em string para exibição
+  const paredesExternas = calculateParedesExternasValue();
   const garagemValue = calculateGaragemValue();
   const salaValue = calculateSalaValue();
   const quartoValue = calculateQuartoValue();
@@ -27,10 +28,11 @@ export const calculateRoomValues = (data, franchise) => {
   const totalValue = garagemValue + salaValue + quartoValue;
 
   return {
-    garagemValue,
-    salaValue,
-    quartoValue,
-    totalValue,
+    paredesExternas
+    // garagemValue,
+    // salaValue,
+    // quartoValue,
+    // totalValue,
   };
 };
 
@@ -64,7 +66,7 @@ const calcularDias = (areaTotalConstrucao) => {
   } else {
     return 0; // valor padrão se a área não se enquadrar em nenhum intervalo
   }
-}
+};
 
 const calculateGaragemValue = () => {
   let value = formData.garagemSize * getAcabamentoMultiplier(formData.garagemAcabamento);
@@ -76,9 +78,10 @@ const calculateGaragemValue = () => {
 
 const calculateSalaValue = () => {
   let areaTotal = formData.sala.hallEntradaSala + formData.sala.salaEstar + formData.sala.tvSala + formData.sala.corredoresSala;
-  
-  console.log(`areaTotal ${areaTotal}`)
-    if (formData.salaConforto) {
+
+  console.log(`areaTotal ${areaTotal}`);
+  let value = areaTotal * getAcabamentoMultiplier(formData.salaAcabamento); // Ajuste para calcular o valor com base no acabamento
+  if (formData.salaConforto) {
     value *= 1.1; // 10% extra for comfort
   }
   return value;
@@ -89,6 +92,12 @@ const calculateQuartoValue = () => {
   if (formData.quartoConforto) {
     value *= 1.1; // 10% extra for comfort
   }
+  return value;
+};
+
+const calculateParedesExternasValue = () => {
+  let value = formData.paredesExternas.metragemParedesExternas * baseObraBranca.paredes.paredesExternas[formData.paredesExternas.padraoParedesExternas];
+  console.log(`Metragem ${formData.paredesExternas.metragemParedesExternas} padrao ${formData.paredesExternas.padraoParedesExternas} valor ${baseObraBranca.paredes.paredesExternas[formData.paredesExternas.padraoParedesExternas]} total ${value}`);
   return value;
 };
 

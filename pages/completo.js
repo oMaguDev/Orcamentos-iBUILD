@@ -424,7 +424,7 @@ export default function Home() {
             }}
           />
           <ImageInput
-            title="Qual o Valor por m² com material e mão de obra?"
+            title="Valor por m² material e mão de obra"
             type="number"
             value={Array.isArray(formData.cobertura.tipoCobertura) ? (formData.cobertura.tipoCobertura.find(item => item.value === option.value)?.valor || '') : ''}
             onClick={(e) => e.stopPropagation()}
