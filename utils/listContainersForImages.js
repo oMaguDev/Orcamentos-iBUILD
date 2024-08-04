@@ -105,10 +105,51 @@ export const levantamentoAreaSalaOptions = [
 
 export const levantamentoAreaEscritórioOptions = [
     { value: 'escritório', label: 'Escritório', img: '/images/EscritórioDespensa/levantamentoAreas/image590.png'},
-    { value: 'despensaV', label: 'Despensa', img: '/images/EscritórioDespensa/levantamentoAreas/image592.png'},
+    { value: 'despensa', label: 'Despensa', img: '/images/EscritórioDespensa/levantamentoAreas/image592.png'},
 ];
 
 export const levantamentoAreaQuartoOptions = [
-  { value: 'escritório', label: 'Escritório', img: '/images/EscritórioDespensa/levantamentoAreas/image590.png'},
-  { value: 'despensaV', label: 'Despensa', img: '/images/EscritórioDespensa/levantamentoAreas/image592.png'},
+  { value: 'quarto', label: 'Quarto', img: '/images/QuartosClosets/levantamentoAreas/image629.png'},
+  { value: 'closet', label: 'Closet', img: '/images/QuartosClosets/levantamentoAreas/image631.png'},
 ];
+
+export const levantamentoAreaCozinhaOptions = [
+  { value: 'cozinha', label: 'Cozinha', img: '/images/CozinhaÁreaGourmet/levantamentoAreas/image676.png'},
+  { value: 'areaGourmet', label: 'Área Gourmet', img: '/images/CozinhaÁreaGourmet/levantamentoAreas/image678.png'},
+];
+
+export const revestimentoParedesOptions = [
+  { value: 'standard', label: 'Standard', img: '/images/CozinhaÁreaGourmet/acabamentosRevestimentoParedes/image710.png'},
+  { value: 'premium', label: 'Premium', img: '/images/CozinhaÁreaGourmet/acabamentosRevestimentoParedes/image710Copia.png'},
+  { value: 'supreme', label: 'Supreme', img: '/images/CozinhaÁreaGourmet/acabamentosRevestimentoParedes/image710Copia(2).png'},
+];
+
+export const balcõesBancadasOptions = [
+  { value: 'standard', label: 'Standard', img: '/images/CozinhaÁreaGourmet/acabamentosBalcõesBancadas/image724.png'},
+  { value: 'premium', label: 'Premium', img: '/images/CozinhaÁreaGourmet/acabamentosBalcõesBancadas/image726.png'},
+  { value: 'supreme', label: 'Supreme', img: '/images/CozinhaÁreaGourmet/acabamentosBalcõesBancadas/image728.png'},
+];
+
+export const metaisCozinhaOptions = [
+  { value: 'standard', list: [
+    {label: 'Cuba de embutir TRAMONTINA Lavínia 56 BL em Aço Inox Polido 56x34 cm - 94085507 (@)', img: '/images/CozinhaÁreaGourmet/acabamentosMetaisCozinha/image770.png'},
+    {label: 'Válvula de escoamento Φ 3 1/2" - TRAMONTINA 94510/012', img: '/images/CozinhaÁreaGourmet/acabamentosMetaisCozinha/image769.png'},
+    {label: 'Cuba de embutir TRAMONTINA Lavínia 56 BL em Aço Inox Polido 56x34 cm - 94085507 (@)', img: '/images/CozinhaÁreaGourmet/acabamentosMetaisCozinha/image779.png'},
+    {label: 'Cuba de embutir TRAMONTINA Lavínia 56 BL em Aço Inox Polido 56x34 cm - 94085507 (@)', img: '/images/CozinhaÁreaGourmet/acabamentosMetaisCozinha/image789.png'}]},
+  { value: 'premium', list: [
+    {label: 'Cuba de embutir TRAMONTINA Lavínia 56 BL em Aço Inox Polido 56x34 cm - 94085507 (@)', img: '/images/CozinhaÁreaGourmet/acabamentosMetaisCozinha/image770Copia.png'},
+    {label: 'Cuba de embutir TRAMONTINA Lavínia 56 BL em Aço Inox Polido 56x34 cm - 94085507 (@)', img: '/images/CozinhaÁreaGourmet/acabamentosMetaisCozinha/image769Copia.png'},
+    {label: 'Cuba de embutir TRAMONTINA Lavínia 56 BL em Aço Inox Polido 56x34 cm - 94085507 (@)', img: '/images/CozinhaÁreaGourmet/acabamentosMetaisCozinha/image781.png'},
+    {label: 'Cuba de embutir TRAMONTINA Lavínia 56 BL em Aço Inox Polido 56x34 cm - 94085507 (@)', img: '/images/CozinhaÁreaGourmet/acabamentosMetaisCozinha/image783.png'}]},
+  { value: 'supreme', list: [
+    {label: 'Cuba de embutir TRAMONTINA Lavínia 56 BL em Aço Inox Polido 56x34 cm - 94085507 (@)', img: '/images/CozinhaÁreaGourmet/acabamentosMetaisCozinha/image775.png'},
+    {label: 'Cuba de embutir TRAMONTINA Lavínia 56 BL em Aço Inox Polido 56x34 cm - 94085507 (@)', img: '/images/CozinhaÁreaGourmet/acabamentosMetaisCozinha/image776.png'},
+    {label: 'Cuba de embutir TRAMONTINA Lavínia 56 BL em Aço Inox Polido 56x34 cm - 94085507 (@)', img: '/images/CozinhaÁreaGourmet/acabamentosMetaisCozinha/image785.png'},
+    {label: 'Cuba de embutir TRAMONTINA Lavínia 56 BL em Aço Inox Polido 56x34 cm - 94085507 (@)', img: '/images/CozinhaÁreaGourmet/acabamentosMetaisCozinha/image787.png'}]},
+  ];
+
+  export const levantamentoAreaBanheiroOptions = [
+    { value: 'banheiro', label: 'Banheiro', img: '/images/Banheiros/levantamentoArea/image802.png'},
+  ];
+
+  
