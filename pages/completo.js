@@ -6,8 +6,10 @@ import {
   pavimentosOptions,
   telhasOptions,
   calhasOptions,
-  padrãoParedesExternasOptions,
-  acabamentosParedesExternasOptions
+  padraoParedesExternasOptions,
+  acabamentosParedesExternasOptions,
+  levantamentoAreaGaragemOptions,
+  fundacaoOptions
 } from '/utils/listContainersForImages.js';
 import {
   Section,
@@ -34,7 +36,7 @@ import { FormContainer, PageContainer } from '../components/Completo/FormContain
 
 const initialState = {
   garagem: {
-    areaGaragem: "",
+    areaGaragem: [],
     telheirosGaragem: "",
     calcadasGaragem: "",
     perimetroGaragem: "",
@@ -385,7 +387,7 @@ export default function Home() {
           <SectionWithHeader title="Paredes Externas" description="Informações sobre as paredes externas">
             <SubSection title="Metragem de Paredes Externas">
             <ImageToggleContainer>
-                  {padrãoParedesExternasOptions.map(option => (
+                  {padraoParedesExternasOptions.map(option => (
                     <ImageToggle
                     key={option.value}
                     selected={formData.paredesExternas.padraoParedesExternas && formData.paredesExternas.padraoParedesExternas.value === option.value}
@@ -403,7 +405,7 @@ export default function Home() {
                     )}
                   </ImageToggle>
                   ))}
-                </ImageToggleContainer>
+            </ImageToggleContainer>
             </SubSection>
 
             <SubSection title="Acabamentos - Parede Externa (Textura)">
@@ -492,68 +494,77 @@ export default function Home() {
               </SubSection>
             )}
           </SectionWithHeader>
+
+
+
       {/* Garagem */}
       <SectionWithHeader title="Garagem" description="Informações sobre a garagem">
         <SubSection title="Dimensões">
-          <Row>
-            <Column>
-              <Label htmlFor="areaGaragem">Área de Garagem e Varandas (m²)</Label>
-              <InputNumber
-                type="number"
-                id="areaGaragem"
-                name="areaGaragem"
-                value={formData.garagem.areaGaragem || ''}
-                onChange={(e) => handleChange(e, 'garagem', 'areaGaragem')}
-                />
-            </Column>
-            <Column>
-              <Label htmlFor="telheirosGaragem">Somatória de Telheiros (m²)</Label>
-              <InputNumber
-                type="number"
-                id="telheirosGaragem"
-                name="telheirosGaragem"
-                value={formData.garagem.telheirosGaragem || ''}
-                onChange={(e) => handleChange(e, 'garagem', 'telheirosGaragem')}
-                />
-            </Column>
-          </Row>
-          <Row>
-            <Column>
-              <Label htmlFor="calcadasGaragem">Somatória de todas as calçadas externas (m²)</Label>
-              <InputNumber
-                type="number"
-                id="calcadasGaragem"
-                name="calcadasGaragem"
-                value={formData.garagem.calcadasGaragem || ''}
-                onChange={(e) => handleChange(e, 'garagem', 'calcadasGaragem')}
-                />
-            </Column>
-          </Row>
-          <Row>
-            <Column>
-              <Label htmlFor="perimetroGaragem">Perímetro</Label>
-              <InputNumber
-                type="number"
-                id="perimetroGaragem"
-                name="perimetroGaragem"
-                value={formData.garagem.perimetroGaragem || ''}
-                onChange={(e) => handleChange(e, 'garagem', 'perimetroGaragem')}
-                />
-            </Column>
-            <Column>
-              <Label htmlFor="peDireitoGaragem">Pé Direito</Label>
-              <InputNumber
-                type="number"
-                id="peDireitoGaragem"
-                name="peDireitoGaragem"
-                value={formData.garagem.peDireitoGaragem || ''}
-                onChange={(e) => handleChange(e, 'garagem', 'peDireitoGaragem')}
-                />
-            </Column>
-          </Row>
+        <ImageToggleContainer>
+          {levantamentoAreaGaragemOptions.map(option => (
+            <ImageToggle
+              key={option.value}
+              selected={Array.isArray(formData.garagem.areaGaragem) && formData.garagem.areaGaragem.some(item => item.value === option.value)}
+              onClick={() => handleImageToggle('garagem', 'areaGaragem', option.value, true)}
+            >
+              <ImageLabel>{option.label}</ImageLabel>
+              <Image src={option.img} alt={option.label} />
+              {formData.garagem.areaGaragem && Array.isArray(formData.garagem.areaGaragem) && formData.garagem.areaGaragem.some(item => item.value === option.value) && (
+                <div>
+                  <ImageInput
+                    title="Área - M²"
+                    value={formData.garagem.areaGaragem.find(item => item.value === option.value)?.area || ''}
+                    onClick={(e) => e.stopPropagation()}
+                    onChange={(e) => handleImageInputChange('garagem', 'areaGaragem', option.value, { field: 'area', value: e.target.value })}
+                  />
+                  <ImageInput
+                    title="Perímetro de todas as paredes - ML"
+                    value={formData.garagem.areaGaragem.find(item => item.value === option.value)?.perimetro || ''}
+                    onClick={(e) => e.stopPropagation()}
+                    onChange={(e) => handleImageInputChange('garagem', 'areaGaragem', option.value, { field: 'perimetro', value: e.target.value })}
+                  />
+                  <ImageInput
+                    title="Pé Direito"
+                    value={formData.garagem.areaGaragem.find(item => item.value === option.value)?.peDireito || ''}
+                    onClick={(e) => e.stopPropagation()}
+                    onChange={(e) => handleImageInputChange('garagem', 'areaGaragem', option.value, { field: 'peDireito', value: e.target.value })}
+                  />
+                  <ImageInput
+                    title="Área total de forros - M²"
+                    value={formData.garagem.areaGaragem.find(item => item.value === option.value)?.areaForros || ''}
+                    onClick={(e) => e.stopPropagation()}
+                    onChange={(e) => handleImageInputChange('garagem', 'areaGaragem', option.value, { field: 'areaForros', value: e.target.value })}
+                  />
+                </div>
+              )}
+            </ImageToggle>
+          ))}
+        </ImageToggleContainer>
+
+          
         </SubSection>
         
-        <SubSection title="Acabamentos">
+        <SubSection title="Fundação">
+          <ImageToggleContainer>
+            {fundacaoOptions.map(option => (
+              <ImageToggle
+                key={option.value}
+                selected={Array.isArray(formData.paredesExternas.padraoParedesExternasPintura) && formData.paredesExternas.padraoParedesExternasPintura.some(item => item.value === option.value)}
+                onClick={() => handleImageToggle('paredesExternas', 'padraoParedesExternasPintura', option.value, true)}
+              >
+                <ImageLabel>{option.label}</ImageLabel>
+                <Image src={option.img} alt={option.label} />
+                <ImageInput
+                  title="Qtde. M²"
+                  value={Array.isArray(formData.paredesExternas.padraoParedesExternasPintura) ? (formData.paredesExternas.padraoParedesExternasPintura.find(item => item.value === option.value)?.input || '') : ''}
+                  onClick={(e) => e.stopPropagation()}
+                  onChange={(e) => handleImageInputChange('paredesExternas', 'padraoParedesExternasPintura', option.value, { field: 'input', value: e.target.value })}
+                />
+              </ImageToggle>
+            ))}
+          </ImageToggleContainer>
+
+
           <Row>
             <Column>
               <Label htmlFor="marmoresGaragem">Área de Mármores e Granitos em m²</Label>
