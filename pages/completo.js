@@ -24,7 +24,8 @@ import {
   ImageToggle,
   Image,
   ImageLabel,
-  ImageInput
+  ImageInput,
+  Tooltip
 } from '../components/Inputs';
 import { FormContainer, PageContainer } from '../components/Completo/FormContainer';
 
@@ -306,8 +307,23 @@ export default function Home() {
                   selected={formData.estrutura.quantidadePavimentos && formData.estrutura.quantidadePavimentos.value === option.value}
                   onClick={() => handleImageToggle('estrutura', 'quantidadePavimentos', option.value)}
                 >
-                  <Image src={option.img} alt={option.label} />
                   <ImageLabel>{option.label}</ImageLabel>
+                  <Image src={option.img} alt={option.label} />
+                  <Tooltip text="Se a obra possuir 1 Pavimento e não possui grandes vãos o aço considerado será 35kg/m²
+                                  Se a obra possuir 1 Pavimento e possui grandes vãos o aço considerado será 40kg/m²
+                                  Se a obra possuir 2 Pavimentos e não possui grandes vãos o aço considerado será 40kg/m²
+                                  Se a obra possuir 2 Pavimentos e possui grandes vãos o aço considerado será 45kg/m²
+                                  " />
+                  {formData.estrutura.quantidadePavimentos && formData.estrutura.quantidadePavimentos.value === option.value && (
+                    <ImageInput
+                      title="Selecione o tipo de aço"
+                      type="select"
+                      value={formData.estrutura.quantidadePavimentos.input || ''}
+                      onClick={(e) => e.stopPropagation()}
+                      onChange={(e) => handleImageInputChange('estrutura', 'quantidadePavimentos', option.value, { field: 'input', value: e.target.value })}
+                      options={['35k', '40k', '45k']}
+                    />
+                  )}
                 </ImageToggle>
               ))}
             </ImageToggleContainer>
@@ -408,7 +424,7 @@ export default function Home() {
             }}
           />
           <ImageInput
-            title="Qual o Valor por m² com material e mão de obra?"
+            title="Valor por m² material e mão de obra"
             type="number"
             value={Array.isArray(formData.cobertura.tipoCobertura) ? (formData.cobertura.tipoCobertura.find(item => item.value === option.value)?.valor || '') : ''}
             onClick={(e) => e.stopPropagation()}

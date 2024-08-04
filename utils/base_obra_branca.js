@@ -15,8 +15,8 @@ export async function loadbaseObraBranca(franquia) {
             finishing: Number(dadosObraBranca.find(item => item.workItemId_scienge === 391)?.total_price) || 9999, //109.41,
             walls: [
                 Number(dadosObraBranca.find(item => item.workItemId_scienge === 80001)?.total_price) || 9999, //17505.60,
-                Number(dadosObraBranca.find(item => item.workItemId_scienge === 398)?.total_price) || 9999, //5356.80,
-                Number(dadosObraBranca.find(item => item.workItemId_scienge === 6873)?.total_price) || 9999, //6832.00,
+                Number(dadosObraBranca.find(item => item.workItemId_scienge === 6873)?.total_price) || 9999, //5356.80,
+                Number(dadosObraBranca.find(item => item.workItemId_scienge === 405)?.total_price) || 9999, //6832.00,
             ],
             one_pavement_meter: Number(dadosObraBranca.find(item => item.workItemId_scienge === 417)?.total_price) || 9999, //1277.00,
         },
@@ -89,6 +89,11 @@ export async function loadbaseObraBranca(franquia) {
             fechamento_interno:{
                 locacao_andaimes_internos: Number(dadosObraBranca.find(item => item.workItemId_scienge === 7807)?.total_price) || 9999,
                 fechamento_placas_gesso: Number(dadosObraBranca.find(item => item.workItemId_scienge === 411)?.total_price) || 9999,
+            },
+            paredesExternas:{
+                'standard':Number(dadosObraBranca.find(item => item.workItemId_scienge === 80001)?.total_price) || 9999, //17505.60,
+                'premium':Number(dadosObraBranca.find(item => item.workItemId_scienge === 6873)?.total_price) || 9999, //5356.80,
+                'supreme':Number(dadosObraBranca.find(item => item.workItemId_scienge === 405)?.total_price) || 9999, //6832.00,
             },
             forros:{
                 Y:{
