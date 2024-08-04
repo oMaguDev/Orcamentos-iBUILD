@@ -8,7 +8,8 @@ import {
   calhasOptions,
   padrãoParedesExternasOptions,
   acabamentosParedesExternasOptions,
-  levantamentoAreaGaragemOptions
+  levantamentoAreaGaragemOptions,
+  fundaçãoOptions
 } from '/utils/listContainersForImages.js';
 import {
   Section,
@@ -35,7 +36,7 @@ import { FormContainer, PageContainer } from '../components/Completo/FormContain
 
 const initialState = {
   garagem: {
-    areaGaragem: "",
+    areaGaragem: [],
     telheirosGaragem: "",
     calcadasGaragem: "",
     perimetroGaragem: "",
@@ -503,34 +504,34 @@ export default function Home() {
           {levantamentoAreaGaragemOptions.map(option => (
             <ImageToggle
               key={option.value}
-              selected={formData.garagem.areaGaragem && formData.garagem.areaGaragem.value === option.value}
-              onClick={() => handleImageToggle('garagem', 'areaGaragem', option.value, false)}
+              selected={Array.isArray(formData.garagem.areaGaragem) && formData.garagem.areaGaragem.some(item => item.value === option.value)}
+              onClick={() => handleImageToggle('garagem', 'areaGaragem', option.value, true)}
             >
               <ImageLabel>{option.label}</ImageLabel>
               <Image src={option.img} alt={option.label} />
-              {formData.garagem.areaGaragem && formData.garagem.areaGaragem.value === option.value && (
+              {formData.garagem.areaGaragem && Array.isArray(formData.garagem.areaGaragem) && formData.garagem.areaGaragem.some(item => item.value === option.value) && (
                 <div>
                   <ImageInput
                     title="Área - M²"
-                    value={formData.garagem.areaGaragem.area || ''}
+                    value={formData.garagem.areaGaragem.find(item => item.value === option.value)?.area || ''}
                     onClick={(e) => e.stopPropagation()}
                     onChange={(e) => handleImageInputChange('garagem', 'areaGaragem', option.value, { field: 'area', value: e.target.value })}
                   />
                   <ImageInput
                     title="Perímetro de todas as paredes - ML"
-                    value={formData.garagem.areaGaragem.perimetro || ''}
+                    value={formData.garagem.areaGaragem.find(item => item.value === option.value)?.perimetro || ''}
                     onClick={(e) => e.stopPropagation()}
                     onChange={(e) => handleImageInputChange('garagem', 'areaGaragem', option.value, { field: 'perimetro', value: e.target.value })}
                   />
                   <ImageInput
                     title="Pé Direito"
-                    value={formData.garagem.areaGaragem.peDireito || ''}
+                    value={formData.garagem.areaGaragem.find(item => item.value === option.value)?.peDireito || ''}
                     onClick={(e) => e.stopPropagation()}
                     onChange={(e) => handleImageInputChange('garagem', 'areaGaragem', option.value, { field: 'peDireito', value: e.target.value })}
                   />
                   <ImageInput
                     title="Área total de forros - M²"
-                    value={formData.garagem.areaGaragem.areaForros || ''}
+                    value={formData.garagem.areaGaragem.find(item => item.value === option.value)?.areaForros || ''}
                     onClick={(e) => e.stopPropagation()}
                     onChange={(e) => handleImageInputChange('garagem', 'areaGaragem', option.value, { field: 'areaForros', value: e.target.value })}
                   />
@@ -539,9 +540,31 @@ export default function Home() {
             </ImageToggle>
           ))}
         </ImageToggleContainer>
+
+          
         </SubSection>
         
-        <SubSection title="Acabamentos">
+        <SubSection title="Fundação">
+          <ImageToggleContainer>
+            {fundaçãoOptions.map(option => (
+              <ImageToggle
+                key={option.value}
+                selected={Array.isArray(formData.paredesExternas.padraoParedesExternasPintura) && formData.paredesExternas.padraoParedesExternasPintura.some(item => item.value === option.value)}
+                onClick={() => handleImageToggle('paredesExternas', 'padraoParedesExternasPintura', option.value, true)}
+              >
+                <ImageLabel>{option.label}</ImageLabel>
+                <Image src={option.img} alt={option.label} />
+                <ImageInput
+                  title="Quantidade Total na Obra - M² de Face"
+                  value={Array.isArray(formData.paredesExternas.padraoParedesExternasPintura) ? (formData.paredesExternas.padraoParedesExternasPintura.find(item => item.value === option.value)?.input || '') : ''}
+                  onClick={(e) => e.stopPropagation()}
+                  onChange={(e) => handleImageInputChange('paredesExternas', 'padraoParedesExternasPintura', option.value, { field: 'input', value: e.target.value })}
+                />
+              </ImageToggle>
+            ))}
+          </ImageToggleContainer>
+
+
           <Row>
             <Column>
               <Label htmlFor="marmoresGaragem">Área de Mármores e Granitos em m²</Label>
