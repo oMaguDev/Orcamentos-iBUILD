@@ -171,15 +171,23 @@ const ImageInputLabel = styled.label`
   align-items:center;
 `;
 
-const ImageInput = ({ title, type, value, onChange, onClick }) => (
+const ImageInputSelect = styled.select`
+  text-align: center;
+`;
+
+const ImageInput = ({ title, type, value, onClick, onChange, options }) => (
   <div>
     <ImageInputLabel>{title}</ImageInputLabel>
-    <ImageInputOnly 
-      type={type} 
-      value={value} 
-      onChange={onChange} 
-      onClick={onClick} 
-    />
+    {type === 'select' ? (
+      <ImageInputSelect value={value} onClick={onClick} onChange={onChange}>
+        <option value="">Selecione um valor</option>
+        {options.map(opt => (
+          <option key={opt} value={opt}>{opt}</option>
+        ))}
+      </ImageInputSelect>
+    ) : (
+      <ImageInputOnly type={type} value={value} onClick={onClick} onChange={onChange} />
+    )}
   </div>
 );
 

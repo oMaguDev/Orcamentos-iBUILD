@@ -306,8 +306,18 @@ export default function Home() {
                   selected={formData.estrutura.quantidadePavimentos && formData.estrutura.quantidadePavimentos.value === option.value}
                   onClick={() => handleImageToggle('estrutura', 'quantidadePavimentos', option.value)}
                 >
-                  <Image src={option.img} alt={option.label} />
                   <ImageLabel>{option.label}</ImageLabel>
+                  <Image src={option.img} alt={option.label} />
+                  {formData.estrutura.quantidadePavimentos && formData.estrutura.quantidadePavimentos.value === option.value && (
+                    <ImageInput
+                      title="Selecione o tipo de aço"
+                      type="select"
+                      value={formData.estrutura.quantidadePavimentos.input || ''}
+                      onClick={(e) => e.stopPropagation()}
+                      onChange={(e) => handleImageInputChange('estrutura', 'quantidadePavimentos', option.value, { field: 'input', value: e.target.value })}
+                      options={['35k', '40k', '45k']}
+                    />
+                  )}
                 </ImageToggle>
               ))}
             </ImageToggleContainer>
