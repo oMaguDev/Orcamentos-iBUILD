@@ -1456,17 +1456,17 @@ export default function Home() {
             >
               <ImageLabel>{option.label}</ImageLabel>
               <Image src={option.img} alt={option.label} />
-              {formData.garagem.areagaragem && Array.isArray(formData.garagem.areagaragem) && formData.garagem.areagaragem.some(item => item.value === option.value) && (
+              {formData.garagem.areaGaragem && Array.isArray(formData.garagem.areaGaragem) && formData.garagem.areaGaragem.some(item => item.value === option.value) && (
                 <div>
                   <ImageInput
                     title="Área - M²"
-                    value={formData.garagem.areagaragem.find(item => item.value === option.value)?.area || ''}
+                    value={formData.garagem.areaGaragem.find(item => item.value === option.value)?.area || ''}
                     onClick={(e) => e.stopPropagation()}
-                    onChange={(e) => handleImageInputChange('garagem', 'areagaragem', option.value, { field: 'area', value: e.target.value })}
+                    onChange={(e) => handleImageInputChange('garagem', 'areaGaragem', option.value, { field: 'area', value: e.target.value })}
                   />
                   <ImageInput
                     title="Perímetro de todas as paredes - ML"
-                    value={formData.garagem.areagaragem.find(item => item.value === option.value)?.perimetro || ''}
+                    value={formData.garagem.areaGaragem.find(item => item.value === option.value)?.perimetro || ''}
                     onClick={(e) => e.stopPropagation()}
                     onChange={(e) => handleImageInputChange('garagem', 'areaGaragem', option.value, { field: 'perimetro', value: e.target.value })}
                   />
@@ -1828,7 +1828,7 @@ export default function Home() {
                       <ImageInput
                         title="Descrever o tipo, medidas e modelo da porta"
                         type="text"
-                        value={Array.isArray(formData.sala.portasMadeiraSala) ? (formData.sala.portasMadeiraSala.find(item => item.value === option.value)?.tipoTelha || '') : ''}
+                        value={Array.isArray(formData.sala.portasMadeiraSala) ? (formData.sala.portasMadeiraSala.find(item => item.value === option.value)?.portasMadeiraSala || '') : ''}
                         onClick={(e) => e.stopPropagation()}
                         onChange={(e) => {
                           handleImageInputChange('sala', 'portasMadeiraSala', option.value, { field: 'portasMadeiraSala', value: e.target.value });
@@ -1865,8 +1865,8 @@ export default function Home() {
             {portasJanelasEsquadriasOptions.map(option => (
               <ImageToggle
                 key={option.value}
-                selected={Array.isArray(formData.sala.portasJanelasEsquadriasSala) && formData.escritorio.portasJanelasEsquadriasSala.some(item => item.value === option.value)}
-                onClick={() => handleImageToggle('sala', 'portasJanelasEsquadriasSala:', option.value, true)}
+                selected={Array.isArray(formData.sala.portasJanelasEsquadriasSala) && formData.sala.portasJanelasEsquadriasSala.some(item => item.value === option.value)}
+                onClick={() => handleImageToggle('sala', 'portasJanelasEsquadriasSala', option.value, true)}
               >
                 <ImageLabel>{option.label}</ImageLabel>
                 <Image src={option.img} alt={option.label} />
