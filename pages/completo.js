@@ -57,6 +57,10 @@ const initialState = {
     fundacaoGaragem: [],
     pisosPorcelanatoGaragem:[],
     pisosLaminadoGaragem: [],
+    peitorilSoleirasGaragem: [],
+    portasMadeiraGaragem: [],
+    portasJanelasEsquadriasGaragem: [],
+    pinturaInternaGaragem: [],
     garagemConforto: false,
   },
   sala: {
@@ -1553,16 +1557,16 @@ export default function Home() {
             {peitorilSoleirasOptions.map(option => (
               <ImageToggle
                 key={option.value}
-                selected={Array.isArray(formData.sala.peitorilSoleirasSala) && formData.sala.peitorilSoleirasSala.some(item => item.value === option.value)}
-                onClick={() => handleImageToggle('sala', 'peitorilSoleirasSala', option.value, true)}
+                selected={Array.isArray(formData.garagem.peitorilSoleirasGaragem) && formData.garagem.peitorilSoleirasGaragem.some(item => item.value === option.value)}
+                onClick={() => handleImageToggle('garagem', 'peitorilSoleirasGaragem', option.value, true)}
               >
                 <ImageLabel>{option.label}</ImageLabel>
                 <Image src={option.img} alt={option.label} />
                 <ImageInput
                   title="Quantidade Total na Obra - ML"
-                  value={Array.isArray(formData.sala.peitorilSoleirasSala) ? (formData.sala.peitorilSoleirasSala.find(item => item.value === option.value)?.input || '') : ''}
+                  value={Array.isArray(formData.garagem.peitorilSoleirasGaragem) ? (formData.garagem.peitorilSoleirasGaragem.find(item => item.value === option.value)?.input || '') : ''}
                   onClick={(e) => e.stopPropagation()}
-                  onChange={(e) => handleImageInputChange('sala', 'peitorilSoleirasSala', option.value, { field: 'input', value: e.target.value })}
+                  onChange={(e) => handleImageInputChange('garagem', 'peitorilSoleirasGaragem', option.value, { field: 'input', value: e.target.value })}
                 />
               </ImageToggle>
             ))}
@@ -1574,8 +1578,8 @@ export default function Home() {
               {portasMadeiraOptions.map(option => (
                 <ImageToggle
                   key={option.value}
-                  selected={Array.isArray(formData.sala.portasMadeiraSala) && formData.sala.portasMadeiraSala.some(item => item.value === option.value)}
-                  onClick={() => handleImageToggle('sala', 'portasMadeiraSala', option.value, true)}
+                  selected={Array.isArray(formData.garagem.portasMadeiraGaragem) && formData.garagem.portasMadeiraGaragem.some(item => item.value === option.value)}
+                  onClick={() => handleImageToggle('garagem', 'portasMadeiraGaragem', option.value, true)}
                 >
                   <ImageLabel>{option.label}</ImageLabel>
                   {option.img ? (
@@ -1584,9 +1588,9 @@ export default function Home() {
                     <Image src={option.img} alt={option.label} />
                     <ImageInput
                       title="Quantidade total na obra - UN"
-                      value={Array.isArray(formData.sala.portasMadeiraSala) ? (formData.sala.portasMadeiraSala.find(item => item.value === option.value)?.input || '') : ''}
+                      value={Array.isArray(formData.garagem.portasMadeiraGaragem) ? (formData.garagem.portasMadeiraGaragem.find(item => item.value === option.value)?.input || '') : ''}
                       onClick={(e) => e.stopPropagation()}
-                      onChange={(e) => handleImageInputChange('sala', 'portasMadeiraSala', option.value, { field: 'input', value: e.target.value })}
+                      onChange={(e) => handleImageInputChange('garagem', 'portasMadeiraGaragem', option.value, { field: 'input', value: e.target.value })}
                       />
                     </div>
                   ) : (
@@ -1594,28 +1598,28 @@ export default function Home() {
                       <ImageInput
                         title="Descrever o tipo, medidas e modelo da porta"
                         type="text"
-                        value={Array.isArray(formData.sala.portasMadeiraSala) ? (formData.sala.portasMadeiraSala.find(item => item.value === option.value)?.tipoTelha || '') : ''}
+                        value={Array.isArray(formData.garagem.portasMadeiraGaragem) ? (formData.garagem.portasMadeiraGaragem.find(item => item.value === option.value)?.portasMadeiraGaragem || '') : ''}
                         onClick={(e) => e.stopPropagation()}
                         onChange={(e) => {
-                          handleImageInputChange('sala', 'portasMadeiraSala', option.value, { field: 'portasMadeiraSala', value: e.target.value });
+                          handleImageInputChange('garagem', 'portasMadeiraGaragem', option.value, { field: 'portasMadeiraGaragem', value: e.target.value });
                         }}
                       />
                       <ImageInput
                         title="Valor unitário com material e mão de obra"
                         type="number"
-                        value={Array.isArray(formData.sala.portasMadeiraSala) ? (formData.sala.portasMadeiraSala.find(item => item.value === option.value)?.valor || '') : ''}
+                        value={Array.isArray(formData.garagem.portasMadeiraGaragem) ? (formData.garagem.portasMadeiraGaragem.find(item => item.value === option.value)?.valor || '') : ''}
                         onClick={(e) => e.stopPropagation()}
                         onChange={(e) => {
-                          handleImageInputChange('sala', 'portasMadeiraSala', option.value, { field: 'valor', value: e.target.value });
+                          handleImageInputChange('garagem', 'portasMadeiraGaragem', option.value, { field: 'valor', value: e.target.value });
                         }}
                       />
                       <ImageInput
                         title="Quantidade Total na Obra - Un"
                         type="number"
-                        value={Array.isArray(formData.sala.portasMadeiraSala) ? (formData.sala.portasMadeiraSala.find(item => item.value === option.value)?.metragem || '') : ''}
+                        value={Array.isArray(formData.garagem.portasMadeiraGaragem) ? (formData.garagem.portasMadeiraGaragem.find(item => item.value === option.value)?.metragem || '') : ''}
                         onClick={(e) => e.stopPropagation()}
                         onChange={(e) => {
-                          handleImageInputChange('sala', 'portasMadeiraSala', option.value, { field: 'metragem', value: e.target.value });
+                          handleImageInputChange('garagem', 'portasMadeiraGaragem', option.value, { field: 'metragem', value: e.target.value });
                         }}
                       />
                     </>
@@ -1631,16 +1635,16 @@ export default function Home() {
             {portasJanelasEsquadriasOptions.map(option => (
               <ImageToggle
                 key={option.value}
-                selected={Array.isArray(formData.sala.portasJanelasEsquadriasSala) && formData.escritorio.portasJanelasEsquadriasSala.some(item => item.value === option.value)}
-                onClick={() => handleImageToggle('sala', 'portasJanelasEsquadriasSala:', option.value, true)}
+                selected={Array.isArray(formData.garagem.portasJanelasEsquadriasGaragem) && formData.garagem.portasJanelasEsquadriasGaragem.some(item => item.value === option.value)}
+                onClick={() => handleImageToggle('garagem', 'portasJanelasEsquadriasGaragem', option.value, true)}
               >
                 <ImageLabel>{option.label}</ImageLabel>
                 <Image src={option.img} alt={option.label} />
                 <ImageInput
                   title="Quantidade total na obra - UN"
-                  value={Array.isArray(formData.sala.portasJanelasEsquadriasSala) ? (formData.sala.portasJanelasEsquadriasSala.find(item => item.value === option.value)?.input || '') : ''}
+                  value={Array.isArray(formData.garagem.portasJanelasEsquadriasGaragem) ? (formData.garagem.portasJanelasEsquadriasGaragem.find(item => item.value === option.value)?.input || '') : ''}
                   onClick={(e) => e.stopPropagation()}
-                  onChange={(e) => handleImageInputChange('sala', 'portasJanelasEsquadriasSala', option.value, { field: 'input', value: e.target.value })}
+                  onChange={(e) => handleImageInputChange('garagem', 'portasJanelasEsquadriasGaragem', option.value, { field: 'input', value: e.target.value })}
                 />
               </ImageToggle>
             ))}
@@ -1652,88 +1656,22 @@ export default function Home() {
             {pinturaInternaOptions.map(option => (
               <ImageToggle
                 key={option.value}
-                selected={Array.isArray(formData.sala.pinturaInternaSala) && formData.sala.pinturaInternaSala.some(item => item.value === option.value)}
-                onClick={() => handleImageToggle('sala', 'pinturaInternaSala', option.value, true, '34,00')}
+                selected={Array.isArray(formData.garagem.pinturaInternaGaragem) && formData.garagem.pinturaInternaGaragem.some(item => item.value === option.value)}
+                onClick={() => handleImageToggle('garagem', 'pinturaInternaGaragem', option.value, true, '34,00')}
               >
                 <ImageLabel>{option.label}</ImageLabel>
                 <Image src={option.img} alt={option.label} />
                 <ImageInput
                   title="Tot. M²/Face:"
-                  value={Array.isArray(formData.sala.pinturaInternaSala) ? (formData.sala.pinturaInternaSala.find(item => item.value === option.value)?.input || '') : ''}
+                  value={Array.isArray(formData.garagem.pinturaInternaGaragem) ? (formData.garagem.pinturaInternaGaragem.find(item => item.value === option.value)?.input || '') : ''}
                   onClick={(e) => e.stopPropagation()}
-                  onChange={(e) => handleImageInputChange('sala', 'pinturaInternaSala', option.value, { field: 'input', value: e.target.value })}
+                  onChange={(e) => handleImageInputChange('garagem', 'pinturaInternaGaragem', option.value, { field: 'input', value: e.target.value })}
                 />
               </ImageToggle>
             ))}
           </ImageToggleContainer>
           </SubSection>
 
-
-
-
-
-
-
-
-
-
-
-          <Row>
-            <Column>
-              <Label htmlFor="portasMadeiraEscritorio">Quantidade de Portas de Madeiras</Label>
-              <InputNumber
-                type="number"
-                id="portasMadeiraEscritorio"
-                name="portasMadeiraEscritorio"
-                value={formData.escritorio.portasMadeiraEscritorio || ''}
-                onChange={(e) => handleChange(e, 'escritorio', 'portasMadeiraEscritorio')}
-              />
-            </Column>
-            <Column>
-              <Label htmlFor="vidrosAluminioEscritorio">M² de Vidros/Esquadria de Alumínio</Label>
-              <InputNumber
-                type="number"
-                id="vidrosAluminioEscritorio"
-                name="vidrosAluminioEscritorio"
-                value={formData.escritorio.vidrosAluminioEscritorio || ''}
-                onChange={(e) => handleChange(e, 'escritorio', 'vidrosAluminioEscritorio')}
-              />
-            </Column>
-          </Row>
-
-        <SubSection title="Acabamentos">
-          <Row>
-            <Column>
-              <Label htmlFor="acabamentoEscritorio">Tipo de Acabamento</Label>
-              <Select
-                id="acabamentoEscritorio"
-                name="acabamentoEscritorio"
-                value={formData.escritorio.acabamentoEscritorio || ''}
-                onChange={(e) => handleChange(e, 'escritorio', 'acabamentoEscritorio')}
-              >
-                <option value="">Selecione uma opção</option>
-                <option value="standard">Standard</option>
-                <option value="premium">Premium</option>
-                <option value="supreme">Supreme</option>
-                <option value="sem_acabamento">Sem acabamento</option>
-              </Select>
-            </Column>
-            <Column>
-              <SwitchContainer>
-                <SwitchLabel>
-                  Conforto Termoacústico
-                  <SwitchInput
-                    type="checkbox"
-                    name="confortoEscritorio"
-                    checked={formData.escritorio.confortoEscritorio || false}
-                    onChange={(e) => handleChange(e, 'escritorio', 'confortoEscritorio')}
-                  />
-                  <SwitchSlider checked={formData.escritorio.confortoEscritorio || false} />
-                </SwitchLabel>
-              </SwitchContainer>
-            </Column>
-          </Row>
-        </SubSection>
       </SectionWithHeader>      
 
       <SectionWithHeader title="SALA, ESTAR-TV, HALL E CORREDORES">
