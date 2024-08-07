@@ -220,24 +220,24 @@ export default function Home() {
     });
   };
 
-  const handleImageToggle = (section, field, value, allowMultiple) => {
+  const handleImageToggle = (section, field, value, allowMultiple, padrao="") => {
     setFormData(prevFormData => {
       const sectionData = prevFormData[section] || {};
       const fieldData = sectionData[field] || (allowMultiple ? [] : '');
-  
+    
       let newFieldData;
       if (allowMultiple) {
         // Para múltiplas seleções
         if (Array.isArray(fieldData) && fieldData.some(item => item.value === value)) {
           newFieldData = fieldData.filter(item => item.value !== value);
         } else {
-          newFieldData = [...fieldData, { value, input: '' }];
+          newFieldData = [...fieldData, { value, input: padrao }];
         }
       } else {
         // Para seleção única
-        newFieldData = { value, input: '' };
+        newFieldData = { value, input: padrao };
       }
-  
+    
       const newFormData = {
         ...prevFormData,
         [section]: {
@@ -249,6 +249,7 @@ export default function Home() {
       return newFormData;
     });
   };
+  
   
   const handleImageInputChange = (section, field, value, input) => {
     setFormData(prevFormData => {
@@ -550,7 +551,7 @@ export default function Home() {
               <ImageToggle
                 key={option.value}
                 selected={Array.isArray(formData.paredesExternas.padraoParedesExternasPintura) && formData.paredesExternas.padraoParedesExternasPintura.some(item => item.value === option.value)}
-                onClick={() => handleImageToggle('paredesExternas', 'padraoParedesExternasPintura', option.value, true)}
+                onClick={() => handleImageToggle('paredesExternas', 'padraoParedesExternasPintura', option.value, true, '34')}
               >
                 <ImageLabel>{option.label}</ImageLabel>
                 <Image src={option.img} alt={option.label} />
