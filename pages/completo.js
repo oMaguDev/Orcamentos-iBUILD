@@ -16,7 +16,8 @@ import {
   peitorilSoleirasOptions,
   portasMadeiraOptions,
   pinturaInternaOptions,
-  portasJanelasEsquadriasOptions
+  portasJanelasEsquadriasOptions,
+  levantamentoAreaSalaOptions
 
 } from '/utils/listContainersForImages.js';
 import {
@@ -67,6 +68,14 @@ const initialState = {
     portasSala: "",
     esquadriasSala: "",
     salaAcabamento: "",
+    areaSala: [],
+    fundacaoSala: [],
+    pisoPorcelanatoSala: [],
+    pisoLaminadoSala: [],
+    peitorilSoleirasSala: [],
+    portasMadeiraSala: [],
+    portasJanelasEsquadriasSala: [],
+    pinturaInternaSala: [],
     salaConforto: false,
   },
   cozinha: {
@@ -1557,6 +1566,71 @@ export default function Home() {
             ))}
           </ImageToggleContainer>
           </SubSection>
+
+
+
+
+
+
+
+
+
+          <Row>
+            <Column>
+              <Label htmlFor="portasMadeiraEscritorio">Quantidade de Portas de Madeiras</Label>
+              <InputNumber
+                type="number"
+                id="portasMadeiraEscritorio"
+                name="portasMadeiraEscritorio"
+                value={formData.escritorio.portasMadeiraEscritorio || ''}
+                onChange={(e) => handleChange(e, 'escritorio', 'portasMadeiraEscritorio')}
+              />
+            </Column>
+            <Column>
+              <Label htmlFor="vidrosAluminioEscritorio">M² de Vidros/Esquadria de Alumínio</Label>
+              <InputNumber
+                type="number"
+                id="vidrosAluminioEscritorio"
+                name="vidrosAluminioEscritorio"
+                value={formData.escritorio.vidrosAluminioEscritorio || ''}
+                onChange={(e) => handleChange(e, 'escritorio', 'vidrosAluminioEscritorio')}
+              />
+            </Column>
+          </Row>
+
+        <SubSection title="Acabamentos">
+          <Row>
+            <Column>
+              <Label htmlFor="acabamentoEscritorio">Tipo de Acabamento</Label>
+              <Select
+                id="acabamentoEscritorio"
+                name="acabamentoEscritorio"
+                value={formData.escritorio.acabamentoEscritorio || ''}
+                onChange={(e) => handleChange(e, 'escritorio', 'acabamentoEscritorio')}
+              >
+                <option value="">Selecione uma opção</option>
+                <option value="standard">Standard</option>
+                <option value="premium">Premium</option>
+                <option value="supreme">Supreme</option>
+                <option value="sem_acabamento">Sem acabamento</option>
+              </Select>
+            </Column>
+            <Column>
+              <SwitchContainer>
+                <SwitchLabel>
+                  Conforto Termoacústico
+                  <SwitchInput
+                    type="checkbox"
+                    name="confortoEscritorio"
+                    checked={formData.escritorio.confortoEscritorio || false}
+                    onChange={(e) => handleChange(e, 'escritorio', 'confortoEscritorio')}
+                  />
+                  <SwitchSlider checked={formData.escritorio.confortoEscritorio || false} />
+                </SwitchLabel>
+              </SwitchContainer>
+            </Column>
+          </Row>
+        </SubSection>
       </SectionWithHeader>
 
       {formData.quartos.map((quarto, index) => (
