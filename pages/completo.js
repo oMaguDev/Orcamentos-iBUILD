@@ -18,7 +18,6 @@ import {
   pinturaInternaOptions,
   portasJanelasEsquadriasOptions,
   levantamentoAreaSalaOptions,
-  levantamentoAreaGaragemOptions
 
 } from '/utils/listContainersForImages.js';
 import {
@@ -55,6 +54,9 @@ const initialState = {
     marmoresGaragemAcabamento: "",
     portasGaragem: "",
     soleirasGaragem: "",
+    fundacaoGaragem: [],
+    pisosPorcelanatoGaragem:[],
+    pisosLaminadoGaragem: [],
     garagemConforto: false,
   },
   sala: {
@@ -1445,36 +1447,36 @@ export default function Home() {
           {levantamentoAreaGaragemOptions.map(option => (
             <ImageToggle
               key={option.value}
-              selected={Array.isArray(formData.garagemTelheiros.areaSala) && formData.sala.areaSala.some(item => item.value === option.value)}
-              onClick={() => handleImageToggle('garagemTelheiros', 'areatelheirosGaragem', option.value, true)}
+              selected={Array.isArray(formData.garagem.areaGaragem) && formData.garagem.areaGaragem.some(item => item.value === option.value)}
+              onClick={() => handleImageToggle('garagem', 'areaGaragem', option.value, true)}
             >
               <ImageLabel>{option.label}</ImageLabel>
               <Image src={option.img} alt={option.label} />
-              {formData.telheirosGaragem.areatelheirosGaragem && Array.isArray(formData.telheirosGaragem.areatelheirosGaragem) && formData.telheirosGaragem.areatelheirosGaragem.some(item => item.value === option.value) && (
+              {formData.garagem.areagaragem && Array.isArray(formData.garagem.areagaragem) && formData.garagem.areagaragem.some(item => item.value === option.value) && (
                 <div>
                   <ImageInput
                     title="Área - M²"
-                    value={formData.telheirosGaragem.areatelheirosGaragem.find(item => item.value === option.value)?.area || ''}
+                    value={formData.garagem.areagaragem.find(item => item.value === option.value)?.area || ''}
                     onClick={(e) => e.stopPropagation()}
-                    onChange={(e) => handleImageInputChange('telheirosGaragem', 'areatelheirosGaragem', option.value, { field: 'area', value: e.target.value })}
+                    onChange={(e) => handleImageInputChange('garagem', 'areagaragem', option.value, { field: 'area', value: e.target.value })}
                   />
                   <ImageInput
                     title="Perímetro de todas as paredes - ML"
-                    value={formData.telheirosGaragem.areatelheirosGaragem.find(item => item.value === option.value)?.perimetro || ''}
+                    value={formData.garagem.areagaragem.find(item => item.value === option.value)?.perimetro || ''}
                     onClick={(e) => e.stopPropagation()}
-                    onChange={(e) => handleImageInputChange('telheirosGaragem', 'areaSala', option.value, { field: 'perimetro', value: e.target.value })}
+                    onChange={(e) => handleImageInputChange('garagem', 'areaGaragem', option.value, { field: 'perimetro', value: e.target.value })}
                   />
                   <ImageInput
                     title="Pé Direito"
-                    value={formData.sala.areaSala.find(item => item.value === option.value)?.peDireito || ''}
+                    value={formData.garagem.areaGaragem.find(item => item.value === option.value)?.peDireito || ''}
                     onClick={(e) => e.stopPropagation()}
-                    onChange={(e) => handleImageInputChange('sala', 'areaSala', option.value, { field: 'peDireito', value: e.target.value })}
+                    onChange={(e) => handleImageInputChange('garagem', 'areaGaragem', option.value, { field: 'peDireito', value: e.target.value })}
                   />
                   <ImageInput
                     title="Área total de forros - M²"
-                    value={formData.sala.areaSala.find(item => item.value === option.value)?.areaForros || ''}
+                    value={formData.garagem.areaGaragem.find(item => item.value === option.value)?.areaForros || ''}
                     onClick={(e) => e.stopPropagation()}
-                    onChange={(e) => handleImageInputChange('sala', 'areaSala', option.value, { field: 'areaForros', value: e.target.value })}
+                    onChange={(e) => handleImageInputChange('garagem', 'areaGaragem', option.value, { field: 'areaForros', value: e.target.value })}
                   />
                 </div>
               )}
@@ -1488,16 +1490,16 @@ export default function Home() {
             {fundacaoOptions.map(option => (
               <ImageToggle
                 key={option.value}
-                selected={Array.isArray(formData.sala.fundacaoSala) && formData.sala.fundacaoSala.some(item => item.value === option.value)}
-                onClick={() => handleImageToggle('sala', 'fundacaoSala', option.value, true, '34')}
+                selected={Array.isArray(formData.garagem.fundacaoGaragem) && formData.garagem.fundacaoGaragem.some(item => item.value === option.value)}
+                onClick={() => handleImageToggle('garagem', 'fundacaoGaragem', option.value, true, '34')}
               >
                 <ImageLabel>{option.label}</ImageLabel>
                 <Image src={option.img} alt={option.label} />
                 <ImageInput
                   title="Qtde. M²"
-                  value={Array.isArray(formData.sala.fundacaoSala) ? (formData.sala.fundacaoSala.find(item => item.value === option.value)?.input || '') : ''}
+                  value={Array.isArray(formData.garagem.fundacaoGaragem) ? (formData.garagem.fundacaoGaragem.find(item => item.value === option.value)?.input || '') : ''}
                   onClick={(e) => e.stopPropagation()}
-                  onChange={(e) => handleImageInputChange('sala', 'fundacaoSala', option.value, { field: 'input', value: e.target.value })}
+                  onChange={(e) => handleImageInputChange('garagem', 'fundacaoGaragem', option.value, { field: 'input', value: e.target.value })}
                 />
               </ImageToggle>
             ))}
@@ -1509,16 +1511,16 @@ export default function Home() {
             {pisosPorcelanatoOptions.map(option => (
               <ImageToggle
                 key={option.value}
-                selected={Array.isArray(formData.sala.pisoPocelanatosala) && formData.sala.pisoPocelanatosala.some(item => item.value === option.value)}
-                onClick={() => handleImageToggle('sala', 'pisoPocelanatosala', option.value, true, '34')}
+                selected={Array.isArray(formData.garagem.pisosPorcelanatoGaragem) && formData.garagem.pisosPorcelanatoGaragem.some(item => item.value === option.value)}
+                onClick={() => handleImageToggle('garagem', 'pisosPorcelanatoGaragem', option.value, true, '34')}
               >
                 <ImageLabel>{option.label}</ImageLabel>
                 <Image src={option.img} alt={option.label} />
                 <ImageInput
                   title="Qtde. M²"
-                  value={Array.isArray(formData.sala.pisoPocelanatosala) ? (formData.sala.pisoPocelanatosala.find(item => item.value === option.value)?.input || '') : ''}
+                  value={Array.isArray(formData.garagem.pisosPorcelanatoGaragem) ? (formData.garagem.pisosPorcelanatoGaragem.find(item => item.value === option.value)?.input || '') : ''}
                   onClick={(e) => e.stopPropagation()}
-                  onChange={(e) => handleImageInputChange('sala', 'pisoPocelanatosala', option.value, { field: 'input', value: e.target.value })}
+                  onChange={(e) => handleImageInputChange('garagem', 'pisosPorcelanatoGaragem', option.value, { field: 'input', value: e.target.value })}
                 />
               </ImageToggle>
             ))}
@@ -1530,16 +1532,16 @@ export default function Home() {
             {pisosLaminadoOptions.map(option => (
               <ImageToggle
                 key={option.value}
-                selected={Array.isArray(formData.sala.pisoLaminadoSala) && formData.sala.pisoLaminadoSala.some(item => item.value === option.value)}
-                onClick={() => handleImageToggle('sala', 'pisoLaminadoSala', option.value, true, '34')}
+                selected={Array.isArray(formData.garagem.pisosLaminadoGaragem) && formData.garagem.pisosLaminadoGaragem.some(item => item.value === option.value)}
+                onClick={() => handleImageToggle('garagem', 'pisosLaminadoGaragem', option.value, true, '34')}
               >
                 <ImageLabel>{option.label}</ImageLabel>
                 <Image src={option.img} alt={option.label} />
                 <ImageInput
                   title="Qtde. M²"
-                  value={Array.isArray(formData.sala.pisoLaminadoSala) ? (formData.sala.pisoLaminadoSala.find(item => item.value === option.value)?.input || '') : ''}
+                  value={Array.isArray(formData.garagem.pisosLaminadoGaragem) ? (formData.garagem.pisosLaminadoGaragem.find(item => item.value === option.value)?.input || '') : ''}
                   onClick={(e) => e.stopPropagation()}
-                  onChange={(e) => handleImageInputChange('sala', 'pisoLaminadoSala', option.value, { field: 'input', value: e.target.value })}
+                  onChange={(e) => handleImageInputChange('garagem', 'pisosLaminadoGaragem', option.value, { field: 'input', value: e.target.value })}
                 />
               </ImageToggle>
             ))}
