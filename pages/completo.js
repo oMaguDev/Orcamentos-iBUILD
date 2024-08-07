@@ -9,7 +9,15 @@ import {
   padraoParedesExternasOptions,
   acabamentosParedesExternasOptions,
   levantamentoAreaGaragemOptions,
-  fundacaoOptions
+  fundacaoOptions,
+  levantamentoAreaEscritórioOptions,
+  pisosPorcelanatoOptions,
+  pisosLaminadoOptions,
+  peitorilSoleirasOptions,
+  portasMadeiraOptions,
+  pinturaInternaOptions,
+  portasJanelasEsquadriasOptions
+
 } from '/utils/listContainersForImages.js';
 import {
   Section,
@@ -104,12 +112,17 @@ const initialState = {
     confortoDespensa: false,
   },
   escritorio: {
-    areaEscritorio: "",
-    perimetroEscritorio: "",
+    areaEscritorio: [],
+    fundacaoEscritorio: [],
+    pisoPocelanatoEscritorio: [],
+    pisoLaminadoEscritorio: [],
     peDireitoEscritorio: "",
-    portasMadeiraEscritorio: "",
+    peitorilSoleirasEscritorio:[],
+    portasMadeiraEscritorio: [],
     vidrosAluminioEscritorio: "",
     acabamentoEscritorio: "",
+    pinturaInternaEscritorio: [],
+    portasJanelasEsquadriasEscritorio: [],
     confortoEscritorio: false,
   },
   estrutura: {
@@ -1415,45 +1428,242 @@ export default function Home() {
         </SubSection>
       </SectionWithHeader>
 
-      <SectionWithHeader title="Escritório" description="Informações sobre o escritório">
-        <SubSection title="Dimensões">
-          <Row>
-            <Column>
-              <Label htmlFor="areaEscritorio">Área do Escritório (m²)</Label>
-              <InputNumber
-                type="number"
-                id="areaEscritorio"
-                name="areaEscritorio"
-                value={formData.escritorio.areaEscritorio || ''}
-                onChange={(e) => handleChange(e, 'escritorio', 'areaEscritorio')}
-              />
-            </Column>
-          </Row>
-          <Row>
-          <Column>
-              <Label htmlFor="perimetroEscritorio">Perímetro</Label>
-              <InputNumber
-                type="number"
-                id="perimetroEscritorio"
-                name="perimetroEscritorio"
-                value={formData.escritorio.perimetroEscritorio || ''}
-                onChange={(e) => handleChange(e, 'escritorio', 'perimetroEscritorio')}
-              />
-            </Column>
-            <Column>
-              <Label htmlFor="peDireitoEscritorio">Pé Direito</Label>
-              <InputNumber
-                type="number"
-                id="peDireitoEscritorio"
-                name="peDireitoEscritorio"
-                value={formData.escritorio.peDireitoEscritorio || ''}
-                onChange={(e) => handleChange(e, 'escritorio', 'peDireitoEscritorio')}
-              />
-            </Column>
-          </Row>
+      <SectionWithHeader title="ESCRITÓRIO E DESPENSA">
+        <SubSection title="Levantamento de Áreas" description="Somatória total de m² de parede externa, inclusive volumes de caixa d'água, decorativos, beirais e etc.">
+          
+        <ImageToggleContainer>
+          {levantamentoAreaEscritórioOptions.map(option => (
+            <ImageToggle
+              key={option.value}
+              selected={Array.isArray(formData.escritorio.areaEscritorio) && formData.escritorio.areaEscritorio.some(item => item.value === option.value)}
+              onClick={() => handleImageToggle('escritorio', 'areaEscritorio', option.value, true)}
+            >
+              <ImageLabel>{option.label}</ImageLabel>
+              <Image src={option.img} alt={option.label} />
+              {formData.escritorio.areaEscritorio && Array.isArray(formData.escritorio.areaEscritorio) && formData.escritorio.areaEscritorio.some(item => item.value === option.value) && (
+                <div>
+                  <ImageInput
+                    title="Área - M²"
+                    value={formData.escritorio.areaEscritorio.find(item => item.value === option.value)?.area || ''}
+                    onClick={(e) => e.stopPropagation()}
+                    onChange={(e) => handleImageInputChange('escritorio', 'areaEscritorio', option.value, { field: 'area', value: e.target.value })}
+                  />
+                  <ImageInput
+                    title="Perímetro de todas as paredes - ML"
+                    value={formData.escritorio.areaEscritorio.find(item => item.value === option.value)?.perimetro || ''}
+                    onClick={(e) => e.stopPropagation()}
+                    onChange={(e) => handleImageInputChange('escritorio', 'areaEscritorio', option.value, { field: 'perimetro', value: e.target.value })}
+                  />
+                  <ImageInput
+                    title="Pé Direito"
+                    value={formData.escritorio.areaEscritorio.find(item => item.value === option.value)?.peDireito || ''}
+                    onClick={(e) => e.stopPropagation()}
+                    onChange={(e) => handleImageInputChange('escritorio', 'areaEscritorio', option.value, { field: 'peDireito', value: e.target.value })}
+                  />
+                  <ImageInput
+                    title="Área total de forros - M²"
+                    value={formData.escritorio.areaEscritorio.find(item => item.value === option.value)?.areaForros || ''}
+                    onClick={(e) => e.stopPropagation()}
+                    onChange={(e) => handleImageInputChange('escritorio', 'areaEscritorio', option.value, { field: 'areaForros', value: e.target.value })}
+                  />
+                </div>
+              )}
+            </ImageToggle>
+          ))}
+        </ImageToggleContainer>   
         </SubSection>
 
-        <SubSection title="Esquadrias de Madeira, Vidro e Alumínio">
+        <SubSection title="Fundação" description="Somatória total de m² de pisos">
+        <ImageToggleContainer>
+            {fundacaoOptions.map(option => (
+              <ImageToggle
+                key={option.value}
+                selected={Array.isArray(formData.escritorio.fundacaoEscritorio) && formData.escritorio.fundacaoEscritorio.some(item => item.value === option.value)}
+                onClick={() => handleImageToggle('escritorio', 'fundacaoEscritorio', option.value, true, '34')}
+              >
+                <ImageLabel>{option.label}</ImageLabel>
+                <Image src={option.img} alt={option.label} />
+                <ImageInput
+                  title="Qtde. M²"
+                  value={Array.isArray(formData.escritorio.fundacaoEscritorio) ? (formData.escritorio.fundacaoEscritorio.find(item => item.value === option.value)?.input || '') : ''}
+                  onClick={(e) => e.stopPropagation()}
+                  onChange={(e) => handleImageInputChange('escritorio', 'fundacaoEscritorio', option.value, { field: 'input', value: e.target.value })}
+                />
+              </ImageToggle>
+            ))}
+          </ImageToggleContainer>
+          </SubSection>
+
+          <SubSection title="Acabamentos - Pisos Porcelanato" description="Somatória total de m² de pisos.">
+        <ImageToggleContainer>
+            {pisosPorcelanatoOptions.map(option => (
+              <ImageToggle
+                key={option.value}
+                selected={Array.isArray(formData.escritorio.pisoPocelanatoEscritorio) && formData.escritorio.pisoPocelanatoEscritorio.some(item => item.value === option.value)}
+                onClick={() => handleImageToggle('escritorio', 'pisoPocelanatoEscritorio', option.value, true, '34')}
+              >
+                <ImageLabel>{option.label}</ImageLabel>
+                <Image src={option.img} alt={option.label} />
+                <ImageInput
+                  title="Qtde. M²"
+                  value={Array.isArray(formData.escritorio.pisoPocelanatoEscritorio) ? (formData.escritorio.pisoPocelanatoEscritorio.find(item => item.value === option.value)?.input || '') : ''}
+                  onClick={(e) => e.stopPropagation()}
+                  onChange={(e) => handleImageInputChange('escritorio', 'pisoPocelanatoEscritorio', option.value, { field: 'input', value: e.target.value })}
+                />
+              </ImageToggle>
+            ))}
+          </ImageToggleContainer>
+          </SubSection>
+
+          <SubSection title="Acabamentos - Pisos Laminados" description="Somatória total de m² de pisos.">
+        <ImageToggleContainer>
+            {pisosLaminadoOptions.map(option => (
+              <ImageToggle
+                key={option.value}
+                selected={Array.isArray(formData.escritorio.pisoLaminadoEscritorio) && formData.escritorio.pisoLaminadoEscritorio.some(item => item.value === option.value)}
+                onClick={() => handleImageToggle('escritorio', 'pisoLaminadoEscritorio', option.value, true, '34')}
+              >
+                <ImageLabel>{option.label}</ImageLabel>
+                <Image src={option.img} alt={option.label} />
+                <ImageInput
+                  title="Qtde. M²"
+                  value={Array.isArray(formData.escritorio.pisoLaminadoEscritorio) ? (formData.escritorio.pisoLaminadoEscritorio.find(item => item.value === option.value)?.input || '') : ''}
+                  onClick={(e) => e.stopPropagation()}
+                  onChange={(e) => handleImageInputChange('escritorio', 'pisoLaminadoEscritorio', option.value, { field: 'input', value: e.target.value })}
+                />
+              </ImageToggle>
+            ))}
+          </ImageToggleContainer>
+          </SubSection>
+
+          <SubSection title="Acabamentos - Peitoril e Soleiras" description="Somatória total de soleiras em ML da garagem.">
+        <ImageToggleContainer>
+            {peitorilSoleirasOptions.map(option => (
+              <ImageToggle
+                key={option.value}
+                selected={Array.isArray(formData.escritorio.peitorilSoleirasEscritorio) && formData.escritorio.peitorilSoleirasEscritorio.some(item => item.value === option.value)}
+                onClick={() => handleImageToggle('escritorio', 'peitorilSoleirasEscritorio', option.value, true)}
+              >
+                <ImageLabel>{option.label}</ImageLabel>
+                <Image src={option.img} alt={option.label} />
+                <ImageInput
+                  title="Quantidade Total na Obra - ML"
+                  value={Array.isArray(formData.escritorio.peitorilSoleirasEscritorio) ? (formData.escritorio.peitorilSoleirasEscritorio.find(item => item.value === option.value)?.input || '') : ''}
+                  onClick={(e) => e.stopPropagation()}
+                  onChange={(e) => handleImageInputChange('escritorio', 'peitorilSoleirasEscritorio', option.value, { field: 'input', value: e.target.value })}
+                />
+              </ImageToggle>
+            ))}
+          </ImageToggleContainer>
+          </SubSection>
+
+          <SubSection title="Acabamentos - Portas de Madeira" description="Quantidade total de portas no ambiente.">
+          <ImageToggleContainer>
+              {portasMadeiraOptions.map(option => (
+                <ImageToggle
+                  key={option.value}
+                  selected={Array.isArray(formData.escritorio.portasMadeiraEscritorio) && formData.escritorio.portasMadeiraEscritorio.some(item => item.value === option.value)}
+                  onClick={() => handleImageToggle('escritorio', 'portasMadeiraEscritorio', option.value, true)}
+                >
+                  <ImageLabel>{option.label}</ImageLabel>
+                  {option.img ? (
+                    <div>
+                    
+                    <Image src={option.img} alt={option.label} />
+                    <ImageInput
+                      title="Quantidade total na obra - UN"
+                      value={Array.isArray(formData.escritorio.portasMadeiraEscritorio) ? (formData.escritorio.portasMadeiraEscritorio.find(item => item.value === option.value)?.input || '') : ''}
+                      onClick={(e) => e.stopPropagation()}
+                      onChange={(e) => handleImageInputChange('escritorio', 'portasMadeiraEscritorio', option.value, { field: 'input', value: e.target.value })}
+                      />
+                    </div>
+                  ) : (
+                    <>
+                      <ImageInput
+                        title="Descrever o tipo, medidas e modelo da porta"
+                        type="text"
+                        value={Array.isArray(formData.escritorio.portasMadeiraEscritorio) ? (formData.escritorio.portasMadeiraEscritorio.find(item => item.value === option.value)?.tipoTelha || '') : ''}
+                        onClick={(e) => e.stopPropagation()}
+                        onChange={(e) => {
+                          handleImageInputChange('escritorio', 'portasMadeiraEscritorio', option.value, { field: 'portasMadeiraEscritorio', value: e.target.value });
+                        }}
+                      />
+                      <ImageInput
+                        title="Valor unitário com material e mão de obra"
+                        type="number"
+                        value={Array.isArray(formData.escritorio.portasMadeiraEscritorio) ? (formData.escritorio.portasMadeiraEscritorio.find(item => item.value === option.value)?.valor || '') : ''}
+                        onClick={(e) => e.stopPropagation()}
+                        onChange={(e) => {
+                          handleImageInputChange('escritorio', 'portasMadeiraEscritorio', option.value, { field: 'valor', value: e.target.value });
+                        }}
+                      />
+                      <ImageInput
+                        title="Quantidade Total na Obra - Un"
+                        type="number"
+                        value={Array.isArray(formData.escritorio.portasMadeiraEscritorio) ? (formData.escritorio.portasMadeiraEscritorio.find(item => item.value === option.value)?.metragem || '') : ''}
+                        onClick={(e) => e.stopPropagation()}
+                        onChange={(e) => {
+                          handleImageInputChange('escritorio', 'portasMadeiraEscritorio', option.value, { field: 'metragem', value: e.target.value });
+                        }}
+                      />
+                    </>
+                  )}
+                </ImageToggle>
+              ))}
+              </ImageToggleContainer>
+          </SubSection>
+
+
+          <SubSection title="Acabamentos - Portas e Janelas Esquadrias" description="Somatória total de m² de pisos da garagem.">
+        <ImageToggleContainer>
+            {portasJanelasEsquadriasOptions.map(option => (
+              <ImageToggle
+                key={option.value}
+                selected={Array.isArray(formData.escritorio.portasJanelasEsquadriasEscritorio) && formData.escritorio.portasJanelasEsquadriasEscritorio.some(item => item.value === option.value)}
+                onClick={() => handleImageToggle('escritorio', 'portasJanelasEsquadriasEscritorio:', option.value, true)}
+              >
+                <ImageLabel>{option.label}</ImageLabel>
+                <Image src={option.img} alt={option.label} />
+                <ImageInput
+                  title="Quantidade total na obra - UN"
+                  value={Array.isArray(formData.escritorio.portasJanelasEsquadriasEscritorio) ? (formData.escritorio.portasJanelasEsquadriasEscritorio.find(item => item.value === option.value)?.input || '') : ''}
+                  onClick={(e) => e.stopPropagation()}
+                  onChange={(e) => handleImageInputChange('escritorio', 'portasJanelasEsquadriasEscritorio', option.value, { field: 'input', value: e.target.value })}
+                />
+              </ImageToggle>
+            ))}
+          </ImageToggleContainer>
+          </SubSection>
+
+          <SubSection title="Acabamentos - Pintura Interna" description="Somatória total de M²/Face de paredes a serem pintadas.">
+        <ImageToggleContainer>
+            {pinturaInternaOptions.map(option => (
+              <ImageToggle
+                key={option.value}
+                selected={Array.isArray(formData.escritorio.pinturaInternaEscritorio) && formData.escritorio.pinturaInternaEscritorio.some(item => item.value === option.value)}
+                onClick={() => handleImageToggle('escritorio', 'pinturaInternaEscritorio', option.value, true, '34,00')}
+              >
+                <ImageLabel>{option.label}</ImageLabel>
+                <Image src={option.img} alt={option.label} />
+                <ImageInput
+                  title="Tot. M²/Face:"
+                  value={Array.isArray(formData.escritorio.pinturaInternaEscritorio) ? (formData.escritorio.pinturaInternaEscritorio.find(item => item.value === option.value)?.input || '') : ''}
+                  onClick={(e) => e.stopPropagation()}
+                  onChange={(e) => handleImageInputChange('escritorio', 'pinturaInternaEscritorio', option.value, { field: 'input', value: e.target.value })}
+                />
+              </ImageToggle>
+            ))}
+          </ImageToggleContainer>
+          </SubSection>
+
+
+
+
+
+
+
+
+
           <Row>
             <Column>
               <Label htmlFor="portasMadeiraEscritorio">Quantidade de Portas de Madeiras</Label>
@@ -1476,7 +1686,6 @@ export default function Home() {
               />
             </Column>
           </Row>
-        </SubSection>
 
         <SubSection title="Acabamentos">
           <Row>
