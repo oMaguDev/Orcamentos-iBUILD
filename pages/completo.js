@@ -2328,7 +2328,7 @@ export default function Home() {
               <ImageToggle
                 key={option.value}
                 selected={Array.isArray(quarto.fundacaoQuarto) && quarto.fundacaoQuarto.some(item => item.value === option.value)}
-                onClick={() => handleImageToggleSub('quarto', index, 'fundacaoQuarto', option.value, true, '34')}
+                onClick={() => handleImageToggleSub('quartos', index, 'fundacaoQuarto', option.value, true, '34')}
               >
                 <ImageLabel>{option.label}</ImageLabel>
                 <Image src={option.img} alt={option.label} />
@@ -2349,7 +2349,7 @@ export default function Home() {
               <ImageToggle
                 key={option.value}
                 selected={Array.isArray(quarto.pisoPocelanatoQuarto) && quarto.pisoPocelanatoQuarto.some(item => item.value === option.value)}
-                onClick={() => handleImageToggleSub('quarto', index, 'pisoPocelanatoQuarto', option.value, true, '34')}
+                onClick={() => handleImageToggleSub('quartos', index, 'pisoPocelanatoQuarto', option.value, true, '34')}
               >
                 <ImageLabel>{option.label}</ImageLabel>
                 <Image src={option.img} alt={option.label} />
@@ -2357,7 +2357,7 @@ export default function Home() {
                   title="Qtde. M²"
                   value={Array.isArray(quarto.pisoPocelanatoQuarto) ? (quarto.pisoPocelanatoQuarto.find(item => item.value === option.value)?.input || '') : ''}
                   onClick={(e) => e.stopPropagation()}
-                  onChange={(e) => handleImageInputChange('quarto', index, 'pisoPocelanatoQuarto', option.value, { field: 'input', value: e.target.value })}
+                  onChange={(e) => handleImageInputChangeSub('quartos', index, 'pisoPocelanatoQuarto', option.value, { field: 'input', value: e.target.value })}
                 />
               </ImageToggle>
             ))}
@@ -2370,7 +2370,7 @@ export default function Home() {
               <ImageToggle
                 key={option.value}
                 selected={Array.isArray(quarto.pisoLaminadoQuarto) && quarto.pisoLaminadoQuarto.some(item => item.value === option.value)}
-                onClick={() => handleImageToggleSub('quarto', index, 'pisoLaminadoQuarto', option.value, true, '34')}
+                onClick={() => handleImageToggleSub('quartos', index, 'pisoLaminadoQuarto', option.value, true, '34')}
               >
                 <ImageLabel>{option.label}</ImageLabel>
                 <Image src={option.img} alt={option.label} />
@@ -2378,7 +2378,7 @@ export default function Home() {
                   title="Qtde. M²"
                   value={Array.isArray(quarto.pisoLaminadoQuarto) ? (quarto.pisoLaminadoQuarto.find(item => item.value === option.value)?.input || '') : ''}
                   onClick={(e) => e.stopPropagation()}
-                  onChange={(e) => handleImageInputChange('quarto', index, 'pisoLaminadoQuarto', option.value, { field: 'input', value: e.target.value })}
+                  onChange={(e) => handleImageInputChangeSub('quartos', index, 'pisoLaminadoQuarto', option.value, { field: 'input', value: e.target.value })}
                 />
               </ImageToggle>
             ))}
@@ -2391,7 +2391,7 @@ export default function Home() {
               <ImageToggle
                 key={option.value}
                 selected={Array.isArray(quarto.peitorilSoleirasQuarto) && quarto.peitorilSoleirasQuarto.some(item => item.value === option.value)}
-                onClick={() => handleImageToggleSub('quarto', index, 'peitorilSoleirasQuarto', option.value, true)}
+                onClick={() => handleImageToggleSub('quartos', index, 'peitorilSoleirasQuarto', option.value, true)}
               >
                 <ImageLabel>{option.label}</ImageLabel>
                 <Image src={option.img} alt={option.label} />
@@ -2399,7 +2399,7 @@ export default function Home() {
                   title="Quantidade Total na Obra - ML"
                   value={Array.isArray(quarto.peitorilSoleirasQuarto) ? (quarto.peitorilSoleirasQuarto.find(item => item.value === option.value)?.input || '') : ''}
                   onClick={(e) => e.stopPropagation()}
-                  onChange={(e) => handleImageInputChange('quarto', index, 'peitorilSoleirasQuarto', option.value, { field: 'input', value: e.target.value })}
+                  onChange={(e) => handleImageInputChangeSub('quartos', index, 'peitorilSoleirasQuarto', option.value, { field: 'input', value: e.target.value })}
                 />
               </ImageToggle>
             ))}
@@ -2412,7 +2412,7 @@ export default function Home() {
                 <ImageToggle
                   key={option.value}
                   selected={Array.isArray(quarto.portasMadeiraQuarto) && quarto.portasMadeiraQuarto.some(item => item.value === option.value)}
-                  onClick={() => handleImageToggleSub('quarto', index, 'portasMadeiraQuarto', option.value, true)}
+                  onClick={() => handleImageToggleSub('quartos', index, 'portasMadeiraQuarto', option.value, true)}
                 >
                   <ImageLabel>{option.label}</ImageLabel>
                   {option.img ? (
@@ -2423,7 +2423,7 @@ export default function Home() {
                       title="Quantidade total na obra - UN"
                       value={Array.isArray(quarto.portasMadeiraQuarto) ? (quarto.portasMadeiraQuarto.find(item => item.value === option.value)?.input || '') : ''}
                       onClick={(e) => e.stopPropagation()}
-                      onChange={(e) => handleImageInputChange('quarto', index, 'portasMadeiraQuarto', option.value, { field: 'input', value: e.target.value })}
+                      onChange={(e) => handleImageInputChangeSub('quartos', index, 'portasMadeiraQuarto', option.value, { field: 'input', value: e.target.value })}
                       />
                     </div>
                   ) : (
@@ -2431,10 +2431,10 @@ export default function Home() {
                       <ImageInput
                         title="Descrever o tipo, medidas e modelo da porta"
                         type="text"
-                        value={Array.isArray(quarto.portasMadeiraQuarto) ? (quarto.portasMadeiraQuarto.find(item => item.value === option.value)?.tipoTelha || '') : ''}
+                        value={Array.isArray(quarto.portasMadeiraQuarto) ? (quarto.portasMadeiraQuarto.find(item => item.value === option.value)?.portasMadeiraQuarto || '') : ''}
                         onClick={(e) => e.stopPropagation()}
                         onChange={(e) => {
-                          handleImageInputChange('quarto', index, 'portasMadeiraQuarto', option.value, { field: 'portasMadeiraQuarto', value: e.target.value });
+                          handleImageInputChangeSub('quartos', index, 'portasMadeiraQuarto', option.value, { field: 'portasMadeiraQuarto', value: e.target.value });
                         }}
                       />
                       <ImageInput
@@ -2443,7 +2443,7 @@ export default function Home() {
                         value={Array.isArray(quarto.portasMadeiraQuarto) ? (quarto.portasMadeiraQuarto.find(item => item.value === option.value)?.valor || '') : ''}
                         onClick={(e) => e.stopPropagation()}
                         onChange={(e) => {
-                          handleImageInputChange('quarto', index, 'portasMadeiraQuarto', option.value, { field: 'valor', value: e.target.value });
+                          handleImageInputChangeSub('quartos', index, 'portasMadeiraQuarto', option.value, { field: 'valor', value: e.target.value });
                         }}
                       />
                       <ImageInput
@@ -2452,7 +2452,7 @@ export default function Home() {
                         value={Array.isArray(quarto.portasMadeiraQuarto) ? (quarto.portasMadeiraQuarto.find(item => item.value === option.value)?.metragem || '') : ''}
                         onClick={(e) => e.stopPropagation()}
                         onChange={(e) => {
-                          handleImageInputChange('quarto', index, 'portasMadeiraQuarto', option.value, { field: 'metragem', value: e.target.value });
+                          handleImageInputChangeSub('quartos', index, 'portasMadeiraQuarto', option.value, { field: 'metragem', value: e.target.value });
                         }}
                       />
                     </>
@@ -2469,7 +2469,7 @@ export default function Home() {
               <ImageToggle
                 key={option.value}
                 selected={Array.isArray(quarto.portasJanelasEsquadriasQuarto) && quarto.portasJanelasEsquadriasQuarto.some(item => item.value === option.value)}
-                onClick={() => handleImageToggleSub('quarto', index, 'portasJanelasEsquadriasQuarto:', option.value, true)}
+                onClick={() => handleImageToggleSub('quartos', index, 'portasJanelasEsquadriasQuarto', option.value, true)}
               >
                 <ImageLabel>{option.label}</ImageLabel>
                 <Image src={option.img} alt={option.label} />
@@ -2477,7 +2477,7 @@ export default function Home() {
                   title="Quantidade total na obra - UN"
                   value={Array.isArray(quarto.portasJanelasEsquadriasQuarto) ? (quarto.portasJanelasEsquadriasQuarto.find(item => item.value === option.value)?.input || '') : ''}
                   onClick={(e) => e.stopPropagation()}
-                  onChange={(e) => handleImageInputChange('quarto', index, 'portasJanelasEsquadriasQuarto', option.value, { field: 'input', value: e.target.value })}
+                  onChange={(e) => handleImageInputChangeSub('quartos', index, 'portasJanelasEsquadriasQuarto', option.value, { field: 'input', value: e.target.value })}
                 />
               </ImageToggle>
             ))}
@@ -2490,7 +2490,7 @@ export default function Home() {
               <ImageToggle
                 key={option.value}
                 selected={Array.isArray(quarto.pinturaInternaQuarto) && quarto.pinturaInternaQuarto.some(item => item.value === option.value)}
-                onClick={() => handleImageToggleSub('quarto', index, 'pinturaInternaQuarto', option.value, true, '34,00')}
+                onClick={() => handleImageToggleSub('quartos', index, 'pinturaInternaQuarto', option.value, true, '34,00')}
               >
                 <ImageLabel>{option.label}</ImageLabel>
                 <Image src={option.img} alt={option.label} />
@@ -2498,147 +2498,12 @@ export default function Home() {
                   title="Tot. M²/Face:"
                   value={Array.isArray(quarto.pinturaInternaQuarto) ? (quarto.pinturaInternaQuarto.find(item => item.value === option.value)?.input || '') : ''}
                   onClick={(e) => e.stopPropagation()}
-                  onChange={(e) => handleImageInputChange('quarto', index, 'pinturaInternaQuarto', option.value, { field: 'input', value: e.target.value })}
+                  onChange={(e) => handleImageInputChangeSub('quartos', index, 'pinturaInternaQuarto', option.value, { field: 'input', value: e.target.value })}
                 />
               </ImageToggle>
             ))}
           </ImageToggleContainer>
           </SubSection>
-
-
-
-
-
-
-
-
-
-            <Row>
-              <Column>
-                <Label htmlFor={`quartoSize${index}`}>Área do Quarto (m²)</Label>
-                <InputNumber
-                  type="number"
-                  id={`quartoSize${index}`}
-                  name={`quartoSize${index}`}
-                  value={quarto.quartoSize || ''}
-                  onChange={(e) => handleSubChange('quartos', index, e, 'quartoSize')}
-                />
-              </Column>
-              <Column>
-                <Label htmlFor={`quartoClosetSize${index}`}>Área do Closet (m²)</Label>
-                <InputNumber
-                  type="number"
-                  id={`quartoClosetSize${index}`}
-                  name={`quartoClosetSize${index}`}
-                  value={quarto.quartoClosetSize || ''}
-                  onChange={(e) => handleSubChange('quartos', index, e, 'quartoClosetSize')}
-                />
-              </Column>
-              <Column>
-                <Label htmlFor={`quartoBanheiroSize${index}`}>Área do Banheiro (m²)</Label>
-                <InputNumber
-                  type="number"
-                  id={`quartoBanheiroSize${index}`}
-                  name={`quartoBanheiroSize${index}`}
-                  value={quarto.quartoBanheiroSize || ''}
-                  onChange={(e) => handleSubChange('quartos', index, e, 'quartoBanheiroSize')}
-                />
-              </Column>
-            </Row>
-            <Row>
-            <Column>
-                <Label htmlFor={`perimetroQuarto${index}`}>Perímetro</Label>
-                <InputNumber
-                  type="number"
-                  id={`perimetroQuarto${index}`}
-                  name={`perimetroQuarto${index}`}
-                  value={quarto.perimetro || ''}
-                  onChange={(e) => handleSubChange('quartos', index, e, 'perimetro')}
-                />
-              </Column>
-              <Column>
-                <Label htmlFor={`peDireitoQuarto${index}`}>Pé Direito</Label>
-                <InputNumber
-                  type="number"
-                  id={`peDireitoQuarto${index}`}
-                  name={`peDireitoQuarto${index}`}
-                  value={quarto.peDireito || ''}
-                  onChange={(e) => handleSubChange('quartos', index, e, 'peDireito')}
-                />
-              </Column>
-            </Row>
-          </SubSection>
-          <SubSection title="Esquadrias de Madeira, Vidros e Alumínio">
-            <Row>
-              <Column>
-              <Label htmlFor={`portasQuarto${index}`}>Quantidade de Portas de Madeira</Label>
-                <InputNumber
-                  type="number"
-                  id={`portasQuarto${index}`}
-                  name={`portasQuarto${index}`}
-                  value={quarto.portasQuarto || ''}
-                  onChange={(e) => handleSubChange('quartos', index, e, 'portasQuarto')}
-                />
-              </Column>
-              <Column>
-              <Label htmlFor={`esquadriasQuarto${index}`}>M² de Vidros/Esquadrias de Alumínio</Label>
-                <InputNumber
-                  type="number"
-                  id={`esquadriasQuarto${index}`}
-                  name={`esquadriasQuarto${index}`}
-                  value={quarto.esquadriasQuarto || ''}
-                  onChange={(e) => handleSubChange('quartos', index, e, 'esquadriasQuarto')}
-                />
-              </Column>
-            </Row>
-          </SubSection>
-          <SubSection title="Mármores e Granitos">
-            <Row>
-              <Column>
-                <Label htmlFor={`marmores${index}`}>Quantidade de Balcões e Bancadas</Label>
-                <InputNumber
-                  type="number"
-                  id={`marmores${index}`}
-                  name={`marmores${index}`}
-                  value={quarto.marmores || ''}
-                  onChange={(e) => handleSubChange('quartos', index, e, 'marmores')}
-                />
-              </Column>
-            </Row>
-          </SubSection>
-
-          <SubSection title="Acabamentos">
-            <Row>
-              <Column>
-                <Label htmlFor={`acabamento${index}`}>Tipo de Acabamento</Label>
-                <Select
-                  id={`acabamento${index}`}
-                  name={`acabamento${index}`}
-                  value={quarto.acabamento || ''}
-                  onChange={(e) => handleSubChange('quartos', index, e, 'acabamento')}
-                >
-                  <option value="">Selecione uma opção</option>
-                  <option value="standard">Standard</option>
-                  <option value="premium">Premium</option>
-                  <option value="supreme">Supreme</option>
-                  <option value="sem_acabamento">Sem acabamento</option>
-                </Select>
-              </Column>
-              <Column>
-                <SwitchContainer>
-                  <SwitchLabel>
-                    Conforto Termoacústico
-                    <SwitchInput
-                      type="checkbox"
-                      name={`conforto${index}`}
-                      checked={quarto.conforto || false}
-                      onChange={(e) => handleSubChange('quartos', index, e, 'conforto')}
-                    />
-                    <SwitchSlider checked={quarto.conforto || false} />
-                  </SwitchLabel>
-                </SwitchContainer>
-              </Column>
-            </Row>
           </SubSection>
         </SectionWithHeader>
       ))}
