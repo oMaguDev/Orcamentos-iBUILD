@@ -2327,16 +2327,16 @@ export default function Home() {
             {fundacaoOptions.map(option => (
               <ImageToggle
                 key={option.value}
-                selected={Array.isArray(formData.escritorio.fundacaoEscritorio) && formData.escritorio.fundacaoEscritorio.some(item => item.value === option.value)}
-                onClick={() => handleImageToggle('escritorio', 'fundacaoEscritorio', option.value, true, '34')}
+                selected={Array.isArray(quarto.fundacaoQuarto) && quarto.fundacaoQuarto.some(item => item.value === option.value)}
+                onClick={() => handleImageToggleSub('quarto', index, 'fundacaoQuarto', option.value, true, '34')}
               >
                 <ImageLabel>{option.label}</ImageLabel>
                 <Image src={option.img} alt={option.label} />
                 <ImageInput
                   title="Qtde. M²"
-                  value={Array.isArray(formData.escritorio.fundacaoEscritorio) ? (formData.escritorio.fundacaoEscritorio.find(item => item.value === option.value)?.input || '') : ''}
+                  value={Array.isArray(quarto.fundacaoQuarto) ? (quarto.fundacaoQuarto.find(item => item.value === option.value)?.input || '') : ''}
                   onClick={(e) => e.stopPropagation()}
-                  onChange={(e) => handleImageInputChangeSub('quartos',index, 'fundacaoEscritorio', option.value, { field: 'input', value: e.target.value })}
+                  onChange={(e) => handleImageInputChangeSub('quartos', index, 'fundacaoQuarto', option.value, { field: 'input', value: e.target.value })}
                 />
               </ImageToggle>
             ))}
@@ -2348,16 +2348,16 @@ export default function Home() {
             {pisosPorcelanatoOptions.map(option => (
               <ImageToggle
                 key={option.value}
-                selected={Array.isArray(formData.escritorio.pisoPocelanatoEscritorio) && formData.escritorio.pisoPocelanatoEscritorio.some(item => item.value === option.value)}
-                onClick={() => handleImageToggle('escritorio', 'pisoPocelanatoEscritorio', option.value, true, '34')}
+                selected={Array.isArray(quarto.pisoPocelanatoQuarto) && quarto.pisoPocelanatoQuarto.some(item => item.value === option.value)}
+                onClick={() => handleImageToggleSub('quarto', index, 'pisoPocelanatoQuarto', option.value, true, '34')}
               >
                 <ImageLabel>{option.label}</ImageLabel>
                 <Image src={option.img} alt={option.label} />
                 <ImageInput
                   title="Qtde. M²"
-                  value={Array.isArray(formData.escritorio.pisoPocelanatoEscritorio) ? (formData.escritorio.pisoPocelanatoEscritorio.find(item => item.value === option.value)?.input || '') : ''}
+                  value={Array.isArray(quarto.pisoPocelanatoQuarto) ? (quarto.pisoPocelanatoQuarto.find(item => item.value === option.value)?.input || '') : ''}
                   onClick={(e) => e.stopPropagation()}
-                  onChange={(e) => handleImageInputChange('escritorio', 'pisoPocelanatoEscritorio', option.value, { field: 'input', value: e.target.value })}
+                  onChange={(e) => handleImageInputChange('quarto', index, 'pisoPocelanatoQuarto', option.value, { field: 'input', value: e.target.value })}
                 />
               </ImageToggle>
             ))}
@@ -2369,16 +2369,16 @@ export default function Home() {
             {pisosLaminadoOptions.map(option => (
               <ImageToggle
                 key={option.value}
-                selected={Array.isArray(formData.escritorio.pisoLaminadoEscritorio) && formData.escritorio.pisoLaminadoEscritorio.some(item => item.value === option.value)}
-                onClick={() => handleImageToggle('escritorio', 'pisoLaminadoEscritorio', option.value, true, '34')}
+                selected={Array.isArray(quarto.pisoLaminadoQuarto) && quarto.pisoLaminadoQuarto.some(item => item.value === option.value)}
+                onClick={() => handleImageToggleSub('quarto', index, 'pisoLaminadoQuarto', option.value, true, '34')}
               >
                 <ImageLabel>{option.label}</ImageLabel>
                 <Image src={option.img} alt={option.label} />
                 <ImageInput
                   title="Qtde. M²"
-                  value={Array.isArray(formData.escritorio.pisoLaminadoEscritorio) ? (formData.escritorio.pisoLaminadoEscritorio.find(item => item.value === option.value)?.input || '') : ''}
+                  value={Array.isArray(quarto.pisoLaminadoQuarto) ? (quarto.pisoLaminadoQuarto.find(item => item.value === option.value)?.input || '') : ''}
                   onClick={(e) => e.stopPropagation()}
-                  onChange={(e) => handleImageInputChange('escritorio', 'pisoLaminadoEscritorio', option.value, { field: 'input', value: e.target.value })}
+                  onChange={(e) => handleImageInputChange('quarto', index, 'pisoLaminadoQuarto', option.value, { field: 'input', value: e.target.value })}
                 />
               </ImageToggle>
             ))}
@@ -2390,16 +2390,16 @@ export default function Home() {
             {peitorilSoleirasOptions.map(option => (
               <ImageToggle
                 key={option.value}
-                selected={Array.isArray(formData.escritorio.peitorilSoleirasEscritorio) && formData.escritorio.peitorilSoleirasEscritorio.some(item => item.value === option.value)}
-                onClick={() => handleImageToggle('escritorio', 'peitorilSoleirasEscritorio', option.value, true)}
+                selected={Array.isArray(quarto.peitorilSoleirasQuarto) && quarto.peitorilSoleirasQuarto.some(item => item.value === option.value)}
+                onClick={() => handleImageToggleSub('quarto', index, 'peitorilSoleirasQuarto', option.value, true)}
               >
                 <ImageLabel>{option.label}</ImageLabel>
                 <Image src={option.img} alt={option.label} />
                 <ImageInput
                   title="Quantidade Total na Obra - ML"
-                  value={Array.isArray(formData.escritorio.peitorilSoleirasEscritorio) ? (formData.escritorio.peitorilSoleirasEscritorio.find(item => item.value === option.value)?.input || '') : ''}
+                  value={Array.isArray(quarto.peitorilSoleirasQuarto) ? (quarto.peitorilSoleirasQuarto.find(item => item.value === option.value)?.input || '') : ''}
                   onClick={(e) => e.stopPropagation()}
-                  onChange={(e) => handleImageInputChange('escritorio', 'peitorilSoleirasEscritorio', option.value, { field: 'input', value: e.target.value })}
+                  onChange={(e) => handleImageInputChange('quarto', index, 'peitorilSoleirasQuarto', option.value, { field: 'input', value: e.target.value })}
                 />
               </ImageToggle>
             ))}
@@ -2411,8 +2411,8 @@ export default function Home() {
               {portasMadeiraOptions.map(option => (
                 <ImageToggle
                   key={option.value}
-                  selected={Array.isArray(formData.escritorio.portasMadeiraEscritorio) && formData.escritorio.portasMadeiraEscritorio.some(item => item.value === option.value)}
-                  onClick={() => handleImageToggle('escritorio', 'portasMadeiraEscritorio', option.value, true)}
+                  selected={Array.isArray(quarto.portasMadeiraQuarto) && quarto.portasMadeiraQuarto.some(item => item.value === option.value)}
+                  onClick={() => handleImageToggleSub('quarto', index, 'portasMadeiraQuarto', option.value, true)}
                 >
                   <ImageLabel>{option.label}</ImageLabel>
                   {option.img ? (
@@ -2421,9 +2421,9 @@ export default function Home() {
                     <Image src={option.img} alt={option.label} />
                     <ImageInput
                       title="Quantidade total na obra - UN"
-                      value={Array.isArray(formData.escritorio.portasMadeiraEscritorio) ? (formData.escritorio.portasMadeiraEscritorio.find(item => item.value === option.value)?.input || '') : ''}
+                      value={Array.isArray(quarto.portasMadeiraQuarto) ? (quarto.portasMadeiraQuarto.find(item => item.value === option.value)?.input || '') : ''}
                       onClick={(e) => e.stopPropagation()}
-                      onChange={(e) => handleImageInputChange('escritorio', 'portasMadeiraEscritorio', option.value, { field: 'input', value: e.target.value })}
+                      onChange={(e) => handleImageInputChange('quarto', index, 'portasMadeiraQuarto', option.value, { field: 'input', value: e.target.value })}
                       />
                     </div>
                   ) : (
@@ -2431,28 +2431,28 @@ export default function Home() {
                       <ImageInput
                         title="Descrever o tipo, medidas e modelo da porta"
                         type="text"
-                        value={Array.isArray(formData.escritorio.portasMadeiraEscritorio) ? (formData.escritorio.portasMadeiraEscritorio.find(item => item.value === option.value)?.tipoTelha || '') : ''}
+                        value={Array.isArray(quarto.portasMadeiraQuarto) ? (quarto.portasMadeiraQuarto.find(item => item.value === option.value)?.tipoTelha || '') : ''}
                         onClick={(e) => e.stopPropagation()}
                         onChange={(e) => {
-                          handleImageInputChange('escritorio', 'portasMadeiraEscritorio', option.value, { field: 'portasMadeiraEscritorio', value: e.target.value });
+                          handleImageInputChange('quarto', index, 'portasMadeiraQuarto', option.value, { field: 'portasMadeiraQuarto', value: e.target.value });
                         }}
                       />
                       <ImageInput
                         title="Valor unitário com material e mão de obra"
                         type="number"
-                        value={Array.isArray(formData.escritorio.portasMadeiraEscritorio) ? (formData.escritorio.portasMadeiraEscritorio.find(item => item.value === option.value)?.valor || '') : ''}
+                        value={Array.isArray(quarto.portasMadeiraQuarto) ? (quarto.portasMadeiraQuarto.find(item => item.value === option.value)?.valor || '') : ''}
                         onClick={(e) => e.stopPropagation()}
                         onChange={(e) => {
-                          handleImageInputChange('escritorio', 'portasMadeiraEscritorio', option.value, { field: 'valor', value: e.target.value });
+                          handleImageInputChange('quarto', index, 'portasMadeiraQuarto', option.value, { field: 'valor', value: e.target.value });
                         }}
                       />
                       <ImageInput
                         title="Quantidade Total na Obra - Un"
                         type="number"
-                        value={Array.isArray(formData.escritorio.portasMadeiraEscritorio) ? (formData.escritorio.portasMadeiraEscritorio.find(item => item.value === option.value)?.metragem || '') : ''}
+                        value={Array.isArray(quarto.portasMadeiraQuarto) ? (quarto.portasMadeiraQuarto.find(item => item.value === option.value)?.metragem || '') : ''}
                         onClick={(e) => e.stopPropagation()}
                         onChange={(e) => {
-                          handleImageInputChange('escritorio', 'portasMadeiraEscritorio', option.value, { field: 'metragem', value: e.target.value });
+                          handleImageInputChange('quarto', index, 'portasMadeiraQuarto', option.value, { field: 'metragem', value: e.target.value });
                         }}
                       />
                     </>
@@ -2468,16 +2468,16 @@ export default function Home() {
             {portasJanelasEsquadriasOptions.map(option => (
               <ImageToggle
                 key={option.value}
-                selected={Array.isArray(formData.escritorio.portasJanelasEsquadriasEscritorio) && formData.escritorio.portasJanelasEsquadriasEscritorio.some(item => item.value === option.value)}
-                onClick={() => handleImageToggle('escritorio', 'portasJanelasEsquadriasEscritorio:', option.value, true)}
+                selected={Array.isArray(quarto.portasJanelasEsquadriasQuarto) && quarto.portasJanelasEsquadriasQuarto.some(item => item.value === option.value)}
+                onClick={() => handleImageToggleSub('quarto', index, 'portasJanelasEsquadriasQuarto:', option.value, true)}
               >
                 <ImageLabel>{option.label}</ImageLabel>
                 <Image src={option.img} alt={option.label} />
                 <ImageInput
                   title="Quantidade total na obra - UN"
-                  value={Array.isArray(formData.escritorio.portasJanelasEsquadriasEscritorio) ? (formData.escritorio.portasJanelasEsquadriasEscritorio.find(item => item.value === option.value)?.input || '') : ''}
+                  value={Array.isArray(quarto.portasJanelasEsquadriasQuarto) ? (quarto.portasJanelasEsquadriasQuarto.find(item => item.value === option.value)?.input || '') : ''}
                   onClick={(e) => e.stopPropagation()}
-                  onChange={(e) => handleImageInputChange('escritorio', 'portasJanelasEsquadriasEscritorio', option.value, { field: 'input', value: e.target.value })}
+                  onChange={(e) => handleImageInputChange('quarto', index, 'portasJanelasEsquadriasQuarto', option.value, { field: 'input', value: e.target.value })}
                 />
               </ImageToggle>
             ))}
@@ -2489,16 +2489,16 @@ export default function Home() {
             {pinturaInternaOptions.map(option => (
               <ImageToggle
                 key={option.value}
-                selected={Array.isArray(formData.escritorio.pinturaInternaEscritorio) && formData.escritorio.pinturaInternaEscritorio.some(item => item.value === option.value)}
-                onClick={() => handleImageToggle('escritorio', 'pinturaInternaEscritorio', option.value, true, '34,00')}
+                selected={Array.isArray(quarto.pinturaInternaQuarto) && quarto.pinturaInternaQuarto.some(item => item.value === option.value)}
+                onClick={() => handleImageToggleSub('quarto', index, 'pinturaInternaQuarto', option.value, true, '34,00')}
               >
                 <ImageLabel>{option.label}</ImageLabel>
                 <Image src={option.img} alt={option.label} />
                 <ImageInput
                   title="Tot. M²/Face:"
-                  value={Array.isArray(formData.escritorio.pinturaInternaEscritorio) ? (formData.escritorio.pinturaInternaEscritorio.find(item => item.value === option.value)?.input || '') : ''}
+                  value={Array.isArray(quarto.pinturaInternaQuarto) ? (quarto.pinturaInternaQuarto.find(item => item.value === option.value)?.input || '') : ''}
                   onClick={(e) => e.stopPropagation()}
-                  onChange={(e) => handleImageInputChange('escritorio', 'pinturaInternaEscritorio', option.value, { field: 'input', value: e.target.value })}
+                  onChange={(e) => handleImageInputChange('quarto', index, 'pinturaInternaQuarto', option.value, { field: 'input', value: e.target.value })}
                 />
               </ImageToggle>
             ))}
