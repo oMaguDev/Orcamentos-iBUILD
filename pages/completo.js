@@ -18,7 +18,7 @@ import {
   pinturaInternaOptions,
   portasJanelasEsquadriasOptions,
   levantamentoAreaSalaOptions,
-  levantamentoAreQuartosOptions
+  levantamentoAreaQuartoOptions
 
 } from '/utils/listContainersForImages.js';
 import {
@@ -280,6 +280,38 @@ export default function Home() {
     });
   };
   
+  const handleImageToggleSub = (section, index, field, value, allowMultiple, padrao = "") => {
+    setFormData(prevFormData => {
+      const sectionData = [...prevFormData[section]];
+      const itemData = sectionData[index] || {};
+      const fieldData = itemData[field] || (allowMultiple ? [] : '');
+  
+      let newFieldData;
+      if (allowMultiple) {
+        if (Array.isArray(fieldData) && fieldData.some(item => item.value === value)) {
+          newFieldData = fieldData.filter(item => item.value !== value);
+        } else {
+          newFieldData = [...fieldData, { value, input: padrao }];
+        }
+      } else {
+        newFieldData = { value, input: padrao };
+      }
+  
+      sectionData[index] = {
+        ...itemData,
+        [field]: newFieldData,
+      };
+  
+      const newFormData = {
+        ...prevFormData,
+        [section]: sectionData,
+      };
+  
+      localStorage.setItem('formData', JSON.stringify(newFormData));
+      return newFormData;
+    });
+  };
+  
   
   const handleImageInputChange = (section, field, value, input) => {
     setFormData(prevFormData => {
@@ -307,6 +339,37 @@ export default function Home() {
     });
   };
  
+  const handleImageInputChangeSub = (section, index, field, value, input) => {
+    setFormData(prevFormData => {
+      const sectionData = [...prevFormData[section]];
+      const itemData = sectionData[index] || {};
+      const fieldData = itemData[field] || (Array.isArray(itemData[field]) ? [] : {});
+  
+      let newFieldData;
+      if (Array.isArray(fieldData)) {
+        newFieldData = fieldData.map(item =>
+          item.value === value ? { ...item, [input.field]: input.value } : item
+        );
+      } else {
+        newFieldData = { ...fieldData, [input.field]: input.value };
+      }
+  
+      sectionData[index] = {
+        ...itemData,
+        [field]: newFieldData,
+      };
+  
+      const newFormData = {
+        ...prevFormData,
+        [section]: sectionData,
+      };
+  
+      localStorage.setItem('formData', JSON.stringify(newFormData));
+      return newFormData;
+    });
+  };
+  
+
   const handleSubmit = e => {
     e.preventDefault();
     const jsonData = JSON.stringify(formData);
@@ -2218,11 +2281,11 @@ export default function Home() {
 
         <SubSection title="Levantamento de Áreas" description="Somatória total de m² de parede externa, inclusive volumes de caixa d'água, decorativos, beirais e etc.">
         <ImageToggleContainer>
-          {levantamentoAreQuartosOptions.map(option => (
+          {levantamentoAreaQuartoOptions.map(option => (
             <ImageToggle
               key={option.value}
               selected={Array.isArray(quarto.areaQuarto) && quarto.areaQuarto.some(item => item.value === option.value)}
-              onClick={() => handleImageToggle('quartos', index, e, 'areaQuarto', option.value, true)}
+              onClick={() => handleImageToggleSub('quartos', index, 'areaQuarto', option.value, true)}
             >
               <ImageLabel>{option.label}</ImageLabel>
               <Image src={option.img} alt={option.label} />
@@ -2232,25 +2295,25 @@ export default function Home() {
                     title="Área - M²"
                     value={quarto.areaQuarto.find(item => item.value === option.value)?.area || ''}
                     onClick={(e) => e.stopPropagation()}
-                    onChange={(e) => handleImageInputChange('quartos', index, e, 'areaQuarto', option.value, { field: 'area', value: e.target.value })}
+                    onChange={(e) => handleImageInputChangeSub('quartos', index, 'areaQuarto', option.value, { field: 'area', value: e.target.value })}
                   />
                   <ImageInput
                     title="Perímetro de todas as paredes - ML"
                     value={quarto.areaQuarto.find(item => item.value === option.value)?.perimetro || ''}
                     onClick={(e) => e.stopPropagation()}
-                    onChange={(e) => handleImageInputChange('quartos', index, e, 'areaQuarto', option.value, { field: 'perimetro', value: e.target.value })}
+                    onChange={(e) => handleImageInputChangeSub('quartos', index, 'areaQuarto', option.value, { field: 'perimetro', value: e.target.value })}
                   />
                   <ImageInput
                     title="Pé Direito"
                     value={quarto.areaQuarto.find(item => item.value === option.value)?.peDireito || ''}
                     onClick={(e) => e.stopPropagation()}
-                    onChange={(e) => handleImageInputChange('quartos', index, e, 'areaQuarto', option.value, { field: 'peDireito', value: e.target.value })}
+                    onChange={(e) => handleImageInputChangeSub('quartos', index, 'areaQuarto', option.value, { field: 'peDireito', value: e.target.value })}
                   />
                   <ImageInput
                     title="Área total de forros - M²"
                     value={quarto.areaQuarto.find(item => item.value === option.value)?.areaForros || ''}
                     onClick={(e) => e.stopPropagation()}
-                    onChange={(e) => handleImageInputChange('quartos', index, e, 'areaQuarto', option.value, { field: 'areaForros', value: e.target.value })}
+                    onChange={(e) => handleImageInputChangeSub('quartos', index, 'areaQuarto', option.value, { field: 'areaForros', value: e.target.value })}
                   />
                 </div>
               )}
@@ -2273,7 +2336,7 @@ export default function Home() {
                   title="Qtde. M²"
                   value={Array.isArray(formData.escritorio.fundacaoEscritorio) ? (formData.escritorio.fundacaoEscritorio.find(item => item.value === option.value)?.input || '') : ''}
                   onClick={(e) => e.stopPropagation()}
-                  onChange={(e) => handleImageInputChange('escritorio', 'fundacaoEscritorio', option.value, { field: 'input', value: e.target.value })}
+                  onChange={(e) => handleImageInputChangeSub('quartos',index, 'fundacaoEscritorio', option.value, { field: 'input', value: e.target.value })}
                 />
               </ImageToggle>
             ))}
