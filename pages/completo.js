@@ -410,7 +410,6 @@ export default function Home() {
             </ImageToggleContainer>
             </SubSection>
           </SectionWithHeader>
-
           {/* Cobertura */}
           <SectionWithHeader title="Cobertura" description="Informações sobre a cobertura">
             <SubSection title="Tipos de Cobertura">
@@ -490,7 +489,6 @@ export default function Home() {
                 </ImageToggleContainer>
             </SubSection>
           </SectionWithHeader>
-
           {/* Paredes Externas */}
           <SectionWithHeader title="Paredes Externas" description="Informações sobre as paredes externas">
             <SubSection title="Metragem de Paredes Externas">
@@ -536,8 +534,7 @@ export default function Home() {
                   ))}
                 </ImageToggleContainer>
             </SubSection>
-          </SectionWithHeader>
-          
+          </SectionWithHeader>      
           <SectionWithHeader title="QUANTIDADE DE PAVIMENTOS E CÁLCULO DA ESTRUTURA DE STEEL FRAME">
             <SubSection title="QUANTOS PAVIMENTOS?">
             <ImageToggleContainer>
@@ -602,9 +599,8 @@ export default function Home() {
               </SubSection>
             )}
           </SectionWithHeader>
-
-      {/* Garagem */}
-      <SectionWithHeader title="Garagem" description="Informações sobre a garagem">
+          {/* Garagem */}
+          <SectionWithHeader title="Garagem" description="Informações sobre a garagem">
         <SubSection title="Dimensões">
         <ImageToggleContainer>
           {levantamentoAreaGaragemOptions.map(option => (
@@ -740,9 +736,9 @@ export default function Home() {
             </Column>
           </Row>
         </SubSection>
-      </SectionWithHeader>
-      {/* Sala */}
-      <SectionWithHeader title="Sala" description="Informações sobre a sala">
+          </SectionWithHeader>
+          {/* Sala */}
+          <SectionWithHeader title="Sala" description="Informações sobre a sala">
         <SubSection title="Dimensões">
           <Row>
             <Column>
@@ -898,9 +894,8 @@ export default function Home() {
             </Column>
           </Row>
         </SubSection>
-      </SectionWithHeader>
-
-      <SectionWithHeader title="Cozinha" description="Informações sobre a cozinha">
+          </SectionWithHeader>
+          <SectionWithHeader title="Cozinha" description="Informações sobre a cozinha">
         <SubSection title="Dimensões">
           <Row>
             <Column>
@@ -1035,9 +1030,8 @@ export default function Home() {
             </Column>
           </Row>
         </SubSection>
-      </SectionWithHeader>
-
-      {formData.lavabos.map((lavabo, index) => (
+          </SectionWithHeader>
+          {formData.lavabos.map((lavabo, index) => (
         <SectionWithHeader key={index} title={`Lavabo ${index + 1}`} description={`Informações sobre o lavabo ${index + 1}`}>
           <SubSection title="Dimensões">
             <Row>
@@ -1163,10 +1157,9 @@ export default function Home() {
             </Row>
           </SubSection>
         </SectionWithHeader>
-      ))}
-      <button type="button" onClick={() => addSubItem('lavabos')}>Adicionar Lavabo</button>
-
-      <SectionWithHeader title="Área Gourmet" description="Informações sobre a área gourmet">
+          ))}
+          <button type="button" onClick={() => addSubItem('lavabos')}>Adicionar Lavabo</button>     
+          <SectionWithHeader title="Área Gourmet" description="Informações sobre a área gourmet">
         <SubSection title="Dimensões">
           <Row>
             <Column>
@@ -1292,9 +1285,8 @@ export default function Home() {
             </Column>
           </Row>
         </SubSection>
-      </SectionWithHeader>
-
-      <SectionWithHeader title="Área de Serviço" description="Informações sobre a área de serviço">
+          </SectionWithHeader>     
+          <SectionWithHeader title="Área de Serviço" description="Informações sobre a área de serviço">
         <SubSection title="Dimensões">
           <Row>
             <Column>
@@ -1420,9 +1412,8 @@ export default function Home() {
             </Column>
           </Row>
         </SubSection>
-      </SectionWithHeader>
-
-      <SectionWithHeader title="Despensa" description="Informações sobre a despensa">
+          </SectionWithHeader>     
+          <SectionWithHeader title="Despensa" description="Informações sobre a despensa">
         <SubSection title="Dimensões">
           <Row>
             <Column>
@@ -1518,9 +1509,8 @@ export default function Home() {
             </Column>
           </Row>
         </SubSection>
-      </SectionWithHeader>
-
-      <SectionWithHeader title="GARAGEM E TELHEIROS">
+          </SectionWithHeader>   
+          <SectionWithHeader title="GARAGEM E TELHEIROS">
         <SubSection title="Levantamento de Áreas" description="Somatória total de m² de parede externa, inclusive volumes de caixa d'água, decorativos, beirais e etc.">
           
         <ImageToggleContainer>
@@ -1748,9 +1738,8 @@ export default function Home() {
           </ImageToggleContainer>
           </SubSection>
 
-      </SectionWithHeader>      
-
-      <SectionWithHeader title="SALA, ESTAR-TV, HALL E CORREDORES">
+          </SectionWithHeader>      
+          <SectionWithHeader title="SALA, ESTAR-TV, HALL E CORREDORES">
         <SubSection title="Levantamento de Áreas" description="Somatória total de m² de parede externa, inclusive volumes de caixa d'água, decorativos, beirais e etc.">
           
         <ImageToggleContainer>
@@ -2044,9 +2033,8 @@ export default function Home() {
             </Column>
           </Row>
         </SubSection>
-      </SectionWithHeader>
-
-      <SectionWithHeader title="ESCRITÓRIO E DESPENSA">
+          </SectionWithHeader>
+          <SectionWithHeader title="ESCRITÓRIO E DESPENSA">
         <SubSection title="Levantamento de Áreas" description="Somatória total de m² de parede externa, inclusive volumes de caixa d'água, decorativos, beirais e etc.">
           
         <ImageToggleContainer>
@@ -2273,9 +2261,8 @@ export default function Home() {
             ))}
           </ImageToggleContainer>
           </SubSection>
-      </SectionWithHeader>
-        
-      {formData.quartos.map((quarto, index) => (
+          </SectionWithHeader>
+          {formData.quartos.map((quarto, index) => (
         <SectionWithHeader key={index} title={`QUARTOS E CLOSETS ${index + 1}`}>
 
         <SubSection title="Levantamento de Áreas" description="Somatória total de m² de parede externa, inclusive volumes de caixa d'água, decorativos, beirais e etc.">
@@ -2505,10 +2492,9 @@ export default function Home() {
           </SubSection>
           </SubSection>
         </SectionWithHeader>
-      ))}
-      <button type="button" onClick={() => addSubItem('quartos')}>Adicionar Quarto</button> 
-
-      <SectionWithHeader title="COZINHA E ÁREA GOURMET">
+          ))}
+          <button type="button" onClick={() => addSubItem('quartos')}>Adicionar Quarto</button> 
+          <SectionWithHeader title="COZINHA E ÁREA GOURMET">
         <SubSection title="Levantamento de Áreas" description="Somatória total de m² de parede externa, inclusive volumes de caixa d'água, decorativos, beirais e etc.">
         <ImageToggleContainer>
           {levantamentoAreaCozinhaOptions.map(option => (
@@ -2842,9 +2828,8 @@ export default function Home() {
             </Column>
           </Row>
         </SubSection>
-      </SectionWithHeader>
-
-      {formData.banheiros.map((banheiro, index) => (
+          </SectionWithHeader>
+          {formData.banheiros.map((banheiro, index) => (
         <SectionWithHeader key={index} title={`BANHEIROS ${index + 1}`}>
 
         <SubSection title="Levantamento de Áreas" description="Somatória total de m² de parede externa, inclusive volumes de caixa d'água, decorativos, beirais e etc.">
@@ -3138,9 +3123,8 @@ export default function Home() {
 
           </SubSection>
         </SectionWithHeader>
-      ))}
-      <button type="button" onClick={() => addSubItem('quartos')}>Adicionar Quarto</button>
-
-
-
-
+          ))}
+          <button type="button" onClick={() => addSubItem('quartos')}>Adicionar Quarto</button>
+      </FormContainer>
+    </PageContainer>
+    ))}

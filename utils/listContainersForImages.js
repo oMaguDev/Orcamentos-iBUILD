@@ -124,7 +124,7 @@ export const revestimentoParedesOptions = [
   { value: 'supreme', label: 'Supreme', img: '/images/CozinhaÁreaGourmet/acabamentosRevestimentoParedes/image710Copia(2).png'},
 ];
 
-export const balcõesBancadasOptions = [
+export const balcoesBancadasOptions = [
   { value: 'standard', label: 'Standard', img: '/images/CozinhaÁreaGourmet/acabamentosBalcõesBancadas/image724.png'},
   { value: 'premium', label: 'Premium', img: '/images/CozinhaÁreaGourmet/acabamentosBalcõesBancadas/image726.png'},
   { value: 'supreme', label: 'Supreme', img: '/images/CozinhaÁreaGourmet/acabamentosBalcõesBancadas/image728.png'},
